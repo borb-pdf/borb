@@ -82,6 +82,8 @@ class RecursiveReferenceVisitor(ReadVisitor):
                 continue
             done_ids.add(id(m))
 
+            # 0017.pdf, done_ids == 450 is cursed
+
             # handle parent link for dictionaries
             if isinstance(m, dict):
                 for k, v in m.items():

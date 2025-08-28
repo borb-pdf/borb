@@ -59,9 +59,6 @@ class DrawBoundingBoxes(Sink):
 
         self.__count += 1
 
-        # TODO: use calculated height
-        event._TextEvent__height = 10  # type: ignore[attr-defined]
-
         # render
         if self.__count in self.__event_indices_to_mark:
             Shape(

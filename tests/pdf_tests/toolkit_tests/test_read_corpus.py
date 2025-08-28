@@ -7,6 +7,9 @@ import unittest
 from borb.pdf import PDF, Document
 from borb.pdf.toolkit.pipeline import Pipeline
 from borb.pdf.toolkit.sink.get_text import GetText
+from borb.pdf.toolkit.source.flow.enrich_text_events import EnrichTextEvents
+from borb.pdf.toolkit.source.flow.filter_ocr_artifacts import FilterOCRArtifacts
+from borb.pdf.toolkit.source.flow.paragraph_of_text_pipe import ParagraphOfTextPipe
 from borb.pdf.toolkit.source.operator.source import Source
 
 
@@ -22,7 +25,7 @@ class TestReadCorpus(unittest.TestCase):
     # Ensure that the directory specified by this path exists and contains the necessary
     # PDF files before running the tests.
     CORPUS_DIRECTORY: pathlib.Path = pathlib.Path(
-        "/home/joris-schellekens/Code/borb-pdf-corpus"
+        "/home/joris-schellekens/Code/borb-pdf-corpus/first-page-pdf"
     )
 
     # @unittest.skip
@@ -137,8 +140,19 @@ class TestReadCorpus(unittest.TestCase):
 
     # @unittest.skip
     def test_read_single_pdf(self):
-        d: Document = PDF.read(where_from=TestReadCorpus.CORPUS_DIRECTORY / "0002.pdf")
 
-        while d.get_number_of_pages() > 1:
-            d.pop_page(1)
-        txt: str = Pipeline([Source(), GetText()]).process(d)[0]
+        d: Document = PDF.read(where_from=TestReadCorpus.CORPUS_DIRECTORY / '0019.pdf')
+
+        from borb.pdf.toolkit.source.flow.line_of_text_pipe import LineOfTextPipe
+        from borb.pdf.toolkit.sink.draw_bounding_boxes import DrawBoundingBoxes
+        Pipeline(
+            [
+                Source(),  # process input data
+                EnrichTextEvents(),
+                FilterOCRArtifacts(),
+                LineOfTextPipe(),  # gather lines of text
+                DrawBoundingBoxes(text_event_indices_to_mark=[i for i in range(0, 100)]),
+            ]
+        ).process(d)
+
+        PDF.write(what=d, where_to="/home/joris-schellekens/0017_c.pdf")

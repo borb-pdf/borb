@@ -198,22 +198,25 @@ class HorizontalBreak(LayoutElement):
         HorizontalBreak._append_newline_to_content_stream(page)
 
         # store graphics state
-        page["Contents"]["DecodedBytes"] += b"q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="q\n")
 
         # set color
         rgb_line_color: RGBColor = self.__line_color.to_rgb_color()
-        page["Contents"]["DecodedBytes"] += (
-            f"{round(rgb_line_color.get_red() / 255, 7)} "
+        LayoutElement._append_to_content_stream(
+            page=page,
+            bytes_or_string=f"{round(rgb_line_color.get_red() / 255, 7)} "
             f"{round(rgb_line_color.get_green() / 255, 7)} "
-            f"{round(rgb_line_color.get_blue() / 255, 7)} rg\n"
-        ).encode("latin1")
+            f"{round(rgb_line_color.get_blue() / 255, 7)} rg\n",
+        )
 
         # set width
-        page["Contents"]["DecodedBytes"] += f"{self.__line_width} w\n".encode("latin1")
+        LayoutElement._append_to_content_stream(
+            page=page, bytes_or_string=f"{self.__line_width} w\n"
+        )
 
         # set dash pattern
         # fmt: off
-        page["Contents"]["DecodedBytes"] += f"{self.__dash_pattern} {self.__dash_phase}d\n".encode('latin1')
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__dash_pattern} {self.__dash_phase}d\n")
         # fmt: on
 
         h: int = self.__line_width + self.get_padding_top() + self.get_padding_bottom()
@@ -227,9 +230,9 @@ class HorizontalBreak(LayoutElement):
 
         # draw line
         # fmt: off
-        page["Contents"]["DecodedBytes"] += f"{available_space[0] + self.get_padding_left()} {background_y} m\n".encode('latin1')
-        page["Contents"]["DecodedBytes"] += f"{available_space[0] + available_space[2] - self.get_padding_right() - self.get_padding_left()} {background_y} l\n".encode('latin1')
-        page["Contents"]["DecodedBytes"] += b"S\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{available_space[0] + self.get_padding_left()} {background_y} m\n")
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{available_space[0] + available_space[2] - self.get_padding_right() - self.get_padding_left()} {background_y} l\n")
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="S\n")
         # fmt: on
 
         # set box
@@ -241,4 +244,4 @@ class HorizontalBreak(LayoutElement):
         )
 
         # restore graphics state
-        page["Contents"]["DecodedBytes"] += b"Q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")

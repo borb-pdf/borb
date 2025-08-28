@@ -142,19 +142,77 @@ class LayoutElement:
 
     @staticmethod
     def _append_newline_to_content_stream(page: Page) -> None:
+        if "Contents" not in page:
+            return
+        from borb.pdf.primitives import stream
+
+        last_stream: typing.Optional[stream] = None
+        if isinstance(page["Contents"], stream):
+            last_stream = page["Contents"]
+        if isinstance(page["Contents"], list):
+            last_stream = page["Contents"][-1]
+        if last_stream is None:
+            return
+        if not isinstance(last_stream, stream):
+            return
         if (
-            len(page["Contents"]["DecodedBytes"]) > 0
-            and page["Contents"]["DecodedBytes"][-1] != b"\n"[0]
+            len(last_stream["DecodedBytes"]) > 0
+            and last_stream["DecodedBytes"][-1] != b"\n"[0]
         ):
-            page["Contents"]["DecodedBytes"] += b"\n"
+            last_stream["DecodedBytes"] += b"\n"
 
     @staticmethod
     def _append_space_to_content_stream(page: Page) -> None:
+        if "Contents" not in page:
+            return
+        from borb.pdf.primitives import stream
+
+        last_stream: typing.Optional[stream] = None
+        if isinstance(page["Contents"], stream):
+            last_stream = page["Contents"]
+        if isinstance(page["Contents"], list):
+            last_stream = page["Contents"][-1]
+        if last_stream is None:
+            return
+        if not isinstance(last_stream, stream):
+            return
         if (
-            len(page["Contents"]["DecodedBytes"]) > 0
-            and page["Contents"]["DecodedBytes"][-1] != b" "[0]
+            len(last_stream["DecodedBytes"]) > 0
+            and last_stream["DecodedBytes"][-1] != b" "[0]
         ):
-            page["Contents"]["DecodedBytes"] += b"\n"
+            last_stream["DecodedBytes"] += b" "
+
+    @staticmethod
+    def _append_to_content_stream(
+        page: Page, bytes_or_string: typing.Union[bytes, str]
+    ) -> None:
+        if "Contents" not in page:
+            return
+
+        # IF the input argument is a string
+        # THEN convert it to bytes
+        bytes_to_append = (
+            bytes_or_string
+            if isinstance(bytes_or_string, bytes)
+            else bytes_or_string.encode("latin1")
+        )
+
+        # IF page / Contents is a stream
+        # THEN append to the stream
+        from borb.pdf.primitives import stream
+
+        if isinstance(page["Contents"], stream):
+            page["Contents"]["DecodedBytes"] += bytes_to_append
+            return
+
+        # IF page / Contents is an array
+        # THEN append to the last stream of the array
+        if isinstance(page["Contents"], list):
+            last_stream: stream = page["Contents"][-1]
+            if not isinstance(last_stream, stream):
+                return
+            last_stream["DecodedBytes"] += bytes_to_append
+            return
 
     @staticmethod
     def _begin_marked_content_with_dictionary(
@@ -171,14 +229,12 @@ class LayoutElement:
             return
         if not conformance.requires_tagged_pdf():
             return
+
         # leading newline (if needed)
-        if (
-            len(page["Contents"]["DecodedBytes"]) > 0
-            and page["Contents"]["DecodedBytes"][-1] != b"\n"[0]
-        ):
-            page["Contents"]["DecodedBytes"] += b"\n"
+        LayoutElement._append_newline_to_content_stream(page=page)
 
         # find existing BDC declarations
+        # TODO: handle Page / Contents / <list>
         import re
 
         mcids: typing.Set[int] = set()
@@ -197,9 +253,9 @@ class LayoutElement:
         # inject "/P << /MCID 0 >> BDC"
         # fmt: off
         if alt is None:
-            page["Contents"]["DecodedBytes"] += f"/{structure_element_type} << /MCID {next_mcid} >> BDC\n".encode("latin1")
+            LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"/{structure_element_type} << /MCID {next_mcid} >> BDC\n")
         else:
-            page["Contents"]["DecodedBytes"] += f"/{structure_element_type} << /MCID {next_mcid} /Alt {alt} >> BDC\n".encode("latin1")
+            LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"/{structure_element_type} << /MCID {next_mcid} /Alt {alt} >> BDC\n")
         # fmt: on
 
     @staticmethod
@@ -213,15 +269,12 @@ class LayoutElement:
             return
         if not conformance.requires_tagged_pdf():
             return
+
         # leading newline (if needed)
-        if (
-            len(page["Contents"]["DecodedBytes"]) > 0
-            and page["Contents"]["DecodedBytes"][-1] != b"\n"[0]
-        ):
-            page["Contents"]["DecodedBytes"] += b"\n"
+        LayoutElement._append_newline_to_content_stream(page=page)
 
         # inject "EMC"
-        page["Contents"]["DecodedBytes"] += f"EMC\n".encode("latin1")
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"EMC\n")
 
     def _paint_background_and_borders(
         self, page: "Page", rectangle: typing.Tuple[int, int, int, int]
@@ -247,31 +300,33 @@ class LayoutElement:
         LayoutElement._append_newline_to_content_stream(page)
 
         # store the graphics state
-        page["Contents"]["DecodedBytes"] += b"q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="q\n")
 
         # IF the background color is specified
         # THEN write the operator to set the background color
         if self.__background_color is not None:
             rgb_background_color: RGBColor = self.__background_color.to_rgb_color()
-            page["Contents"]["DecodedBytes"] += (
-                f"{round(rgb_background_color.get_red() / 255, 7)} "
+            LayoutElement._append_to_content_stream(
+                page=page,
+                bytes_or_string=f"{round(rgb_background_color.get_red() / 255, 7)} "
                 f"{round(rgb_background_color.get_green() / 255, 7)} "
-                f"{round(rgb_background_color.get_blue() / 255, 7)} rg\n"
-            ).encode("latin1")
+                f"{round(rgb_background_color.get_blue() / 255, 7)} rg\n",
+            )
 
         # IF the border color is specified
         # THEN write the operator to set the border color
         if self.__border_color is not None:
             rgb_border_color: RGBColor = self.__border_color.to_rgb_color()
-            page["Contents"]["DecodedBytes"] += (
-                f"{round(rgb_border_color.get_red() / 255, 7)} "
+            LayoutElement._append_to_content_stream(
+                page=page,
+                bytes_or_string=f"{round(rgb_border_color.get_red() / 255, 7)} "
                 f"{round(rgb_border_color.get_green() / 255, 7)} "
-                f"{round(rgb_border_color.get_blue() / 255, 7)} RG\n"
-            ).encode("latin1")
+                f"{round(rgb_border_color.get_blue() / 255, 7)} RG\n",
+            )
 
         # set dash pattern
         # fmt: off
-        page["Contents"]["DecodedBytes"] += f"{self.__border_dash_pattern} {self.__border_dash_phase} d\n".encode('latin1')
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_dash_pattern} {self.__border_dash_phase} d\n")
         # fmt: on
 
         # IF all the border widths are the same
@@ -282,16 +337,24 @@ class LayoutElement:
             == self.__border_width_right
             == self.__border_width_top
         ):
-            page["Contents"][
-                "DecodedBytes"
-            ] += f"{self.__border_width_bottom} w\n".encode("latin1")
-            page["Contents"]["DecodedBytes"] += f"{x} {y} {w} {h} re\n".encode("latin1")
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"{self.__border_width_bottom} w\n"
+            )
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"{x} {y} {w} {h} re\n"
+            )
             if self.__background_color is not None and self.__border_color is not None:
-                page["Contents"]["DecodedBytes"] += b"B\n"
+                LayoutElement._append_to_content_stream(
+                    page=page, bytes_or_string="B\n"
+                )
             elif self.__background_color is not None:
-                page["Contents"]["DecodedBytes"] += b"f\n"
+                LayoutElement._append_to_content_stream(
+                    page=page, bytes_or_string="f\n"
+                )
             elif self.__border_color is not None:
-                page["Contents"]["DecodedBytes"] += b"S\n"
+                LayoutElement._append_to_content_stream(
+                    page=page, bytes_or_string="S\n"
+                )
 
         # IF the border widths are different
         # THEN we need to construct a path
@@ -299,30 +362,30 @@ class LayoutElement:
             # bottom
             if self.__border_color is not None and self.__border_width_bottom > 0:
                 # fmt: off
-                page["Contents"]["DecodedBytes"] += f"{self.__border_width_bottom} w\n".encode('latin1')
-                page["Contents"]["DecodedBytes"] += f"{x} {y} m {x+w} {y} l S\n".encode('latin1')
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_bottom} w\n")
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y} m {x+w} {y} l S\n")
                 # fmt: on
             # left
             if self.__border_color is not None and self.__border_width_left > 0:
                 # fmt: off
-                page["Contents"]["DecodedBytes"] += f"{self.__border_width_left} w\n".encode('latin1')
-                page["Contents"]["DecodedBytes"] += f"{x} {y} m {x} {y+h} l S\n".encode('latin1')
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_left} w\n")
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y} m {x} {y+h} l S\n")
                 # fmt: on
             # right
             if self.__border_color is not None and self.__border_width_right > 0:
                 # fmt: off
-                page["Contents"]["DecodedBytes"] += f"{self.__border_width_right} w\n".encode('latin1')
-                page["Contents"]["DecodedBytes"] += f"{x+w} {y} m {x+w} {y+h} l S\n".encode('latin1')
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_right} w\n")
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x+w} {y} m {x+w} {y+h} l S\n")
                 # fmt: on
             # top
             if self.__border_color is not None and self.__border_width_top > 0:
                 # fmt: off
-                page["Contents"]["DecodedBytes"] += f"{self.__border_width_top} w\n".encode('latin1')
-                page["Contents"]["DecodedBytes"] += f"{x} {y+h} m {x+w} {y+h} l S\n".encode('latin1')
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_top} w\n")
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y+h} m {x+w} {y+h} l S\n")
                 # fmt: on
 
         # restore the graphics state
-        page["Contents"]["DecodedBytes"] += b"Q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")
 
         return
 

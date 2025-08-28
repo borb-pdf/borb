@@ -252,17 +252,20 @@ class Watermark(Image):
         Watermark._append_newline_to_content_stream(page)
 
         # store graphics state
-        page["Contents"]["DecodedBytes"] += b"q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="q\n")
 
         # write cm operator
-        page["Contents"]["DecodedBytes"] += (
-            f"{img.width} 0 "
+        LayoutElement._append_to_content_stream(
+            page=page,
+            bytes_or_string=f"{img.width} 0 "
             f"0 {img.height} "
-            f"{page.get_size()[0]//2 - img.width//2} {page.get_size()[1]//2 - img.height//2} cm\n"
-        ).encode("latin1")
+            f"{page.get_size()[0]//2 - img.width//2} {page.get_size()[1]//2 - img.height//2} cm\n",
+        )
 
         # write Do operator
-        page["Contents"]["DecodedBytes"] += f"/{image_name} Do\n".encode("latin1")
+        LayoutElement._append_to_content_stream(
+            page=page, bytes_or_string=f"/{image_name} Do\n"
+        )
 
         # restore graphics state
-        page["Contents"]["DecodedBytes"] += b"Q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")

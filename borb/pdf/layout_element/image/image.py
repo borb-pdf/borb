@@ -335,20 +335,23 @@ class Image(LayoutElement):
         Image._append_newline_to_content_stream(page)
 
         # store graphics state
-        page["Contents"]["DecodedBytes"] += b"q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="q\n")
 
         # write cm operator
-        page["Contents"]["DecodedBytes"] += (
-            f"{self.__size[0]} 0 "
+        LayoutElement._append_to_content_stream(
+            page=page,
+            bytes_or_string=f"{self.__size[0]} 0 "
             f"0 {self.__size[1]} "
-            f"{background_x + self.get_padding_left()} {background_y + self.get_padding_bottom()} cm\n"
-        ).encode("latin1")
+            f"{background_x + self.get_padding_left()} {background_y + self.get_padding_bottom()} cm\n",
+        )
 
         # write Do operator
-        page["Contents"]["DecodedBytes"] += f"/{image_name} Do\n".encode("latin1")
+        LayoutElement._append_to_content_stream(
+            page=page, bytes_or_string=f"/{image_name} Do\n"
+        )
 
         # restore graphics state
-        page["Contents"]["DecodedBytes"] += b"Q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")
 
         # EMC
         Image._end_marked_content(page=page)  # type: ignore[attr-defined]

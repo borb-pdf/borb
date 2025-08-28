@@ -107,7 +107,7 @@ class PlaintextXRefVisitor(XRefVisitor):
             # read 'f' or 'n'
             i = j + 1
             j = PDFBytes.next_newline(pdf_bytes=self.get_bytes(), start=i + 1)
-            f_or_n: str = self.get_bytes()[i:j].decode()
+            f_or_n: str = self.get_bytes()[i : i + 1].decode()
 
             # add to XREF
             xref += [

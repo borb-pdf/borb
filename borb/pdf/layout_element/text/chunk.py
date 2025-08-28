@@ -357,40 +357,44 @@ class Chunk(LayoutElement):
         Chunk._append_newline_to_content_stream(page)
 
         # store graphics state
-        page["Contents"]["DecodedBytes"] += b"q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="q\n")
 
         # character spacing
         if self.__character_spacing != 0:
-            page["Contents"][
-                "DecodedBytes"
-            ] += f"{self.__character_spacing} Tc\n".encode("latin1")
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"{self.__character_spacing} Tc\n"
+            )
 
         # word spacing
         if self.__word_spacing != 0:
-            page["Contents"]["DecodedBytes"] += f"{self.__word_spacing} Tw\n".encode(
-                "latin1"
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"{self.__word_spacing} Tw\n"
             )
 
         # begin text
-        page["Contents"]["DecodedBytes"] += b"BT\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="BT\n")
 
         # set font_color
         rgb_font_color: RGBColor = self.__font_color.to_rgb_color()
-        page["Contents"]["DecodedBytes"] += (
-            f"{round(rgb_font_color.get_red() / 255, 7)} "
+        LayoutElement._append_to_content_stream(
+            page=page,
+            bytes_or_string=f"{round(rgb_font_color.get_red() / 255, 7)} "
             f"{round(rgb_font_color.get_green() / 255, 7)} "
-            f"{round(rgb_font_color.get_blue() / 255, 7)} rg\n"
-        ).encode("latin1")
+            f"{round(rgb_font_color.get_blue() / 255, 7)} rg\n",
+        )
 
         # apply font, font_size
-        page["Contents"]["DecodedBytes"] += f"/{font_name} 1 Tf\n".encode("latin1")
+        LayoutElement._append_to_content_stream(
+            page=page, bytes_or_string=f"/{font_name} 1 Tf\n"
+        )
 
         # move to position
-        page["Contents"]["DecodedBytes"] += (
-            f"{self.__font_size} 0 "
+        LayoutElement._append_to_content_stream(
+            page=page,
+            bytes_or_string=f"{self.__font_size} 0 "
             f"0 {self.__font_size} "
-            f"{background_x + self.get_padding_left()} {background_y + self.get_padding_bottom()} Tm\n"
-        ).encode("latin1")
+            f"{background_x + self.get_padding_left()} {background_y + self.get_padding_bottom()} Tm\n",
+        )
 
         # write text
         from borb.pdf.font.simple_font.symbol.symbol import Symbol
@@ -401,20 +405,26 @@ class Chunk(LayoutElement):
             tj_arg: str = Chunk.__escape_special_chars_in_hex_mode(
                 font=self.__font, s=self.__text
             )
-            page["Contents"]["DecodedBytes"] += f"[{tj_arg}] TJ\n".encode("latin1")
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"[{tj_arg}] TJ\n"
+            )
 
         elif isinstance(self.__font, StandardType1Font):
             tj_arg = Chunk.__escape_special_chars_in_ascii_mode(self.__text)  # type: ignore[no-redef]
-            page["Contents"]["DecodedBytes"] += f"({tj_arg}) Tj\n".encode("latin1")
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"({tj_arg}) Tj\n"
+            )
 
         else:
             tj_arg = Chunk.__escape_special_chars_in_hex_mode(
                 font=self.__font, s=self.__text
             )
-            page["Contents"]["DecodedBytes"] += f"[{tj_arg}] TJ\n".encode("latin1")
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"[{tj_arg}] TJ\n"
+            )
 
         # end text
-        page["Contents"]["DecodedBytes"] += b"ET\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="ET\n")
 
         # restore graphics state
-        page["Contents"]["DecodedBytes"] += b"Q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")

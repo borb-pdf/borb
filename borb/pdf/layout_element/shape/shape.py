@@ -378,36 +378,40 @@ class Shape(LayoutElement):
         Shape._append_newline_to_content_stream(page)
 
         # store graphics state
-        page["Contents"]["DecodedBytes"] += b"q\n"
+        LayoutElement._append_to_content_stream(page, "q\n")
 
         # set fill color
         if self.__fill_color is not None:
             rgb_fill_color: RGBColor = self.__fill_color.to_rgb_color()
-            page["Contents"]["DecodedBytes"] += (
-                f"{round(rgb_fill_color.get_red() / 255, 7)} "
+            LayoutElement._append_to_content_stream(
+                page=page,
+                bytes_or_string=f"{round(rgb_fill_color.get_red() / 255, 7)} "
                 f"{round(rgb_fill_color.get_green() / 255, 7)} "
-                f"{round(rgb_fill_color.get_blue() / 255, 7)} rg\n"
-            ).encode("latin1")
+                f"{round(rgb_fill_color.get_blue() / 255, 7)} rg\n",
+            )
 
         # set stroke color
         if self.__stroke_color is not None:
             rgb_stroke_color: RGBColor = self.__stroke_color.to_rgb_color()
-            page["Contents"]["DecodedBytes"] += (
-                f"{round(rgb_stroke_color.get_red() / 255, 7)} "
+            LayoutElement._append_to_content_stream(
+                page=page,
+                bytes_or_string=f"{round(rgb_stroke_color.get_red() / 255, 7)} "
                 f"{round(rgb_stroke_color.get_green() / 255, 7)} "
-                f"{round(rgb_stroke_color.get_blue() / 255, 7)} RG\n"
-            ).encode("latin1")
+                f"{round(rgb_stroke_color.get_blue() / 255, 7)} RG\n",
+            )
 
         # set width
-        page["Contents"]["DecodedBytes"] += f"{self.__line_width} w\n".encode("latin1")
+        LayoutElement._append_to_content_stream(
+            page=page, bytes_or_string=f"{self.__line_width} w\n"
+        )
 
         # set Line Cap Style
-        page["Contents"]["DecodedBytes"] += f"1 J\n".encode("latin1")
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"1 J\n")
 
         # set dash pattern
-        page["Contents"][
-            "DecodedBytes"
-        ] += f"{self.__dash_pattern} {self.__dash_phase} d\n".encode("latin1")
+        LayoutElement._append_to_content_stream(
+            page=page, bytes_or_string=f"{self.__dash_pattern} {self.__dash_phase} d\n"
+        )
 
         # draw/fill path
         min_x: float = math.inf
@@ -432,31 +436,31 @@ class Shape(LayoutElement):
         if isinstance(self.__coordinates[0], list):
             for polygon in self.__coordinates:
                 # fmt: off
-                page["Contents"]["DecodedBytes"] += f"{round(polygon[0][0] + x_delta, 7)} {round(polygon[0][1] + y_delta, 7)} m\n".encode('latin1')    # type: ignore[index]
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(polygon[0][0] + x_delta, 7)} {round(polygon[0][1] + y_delta, 7)} m\n")
                 for x, y in polygon[1:]:                                                                            # type: ignore[misc]
-                    page["Contents"]["DecodedBytes"] += f"{round(x + x_delta, 7)} {round(y + y_delta, 7)} l\n".encode('latin1')
+                    LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(x + x_delta, 7)} {round(y + y_delta, 7)} l\n")
                 if self.__fill_color is not None and self.__stroke_color is not None:
-                    page["Contents"]["DecodedBytes"] += b"B\n"
+                    LayoutElement._append_to_content_stream(page=page, bytes_or_string="B\n")
                 elif self.__fill_color is not None:
-                    page["Contents"]["DecodedBytes"] += b"f\n"
+                    LayoutElement._append_to_content_stream(page=page, bytes_or_string="f\n")
                 elif self.__stroke_color is not None:
-                    page["Contents"]["DecodedBytes"] += b"S\n"
+                    LayoutElement._append_to_content_stream(page=page, bytes_or_string="S\n")
                 # fmt: on
         else:
             # fmt: off
-            page["Contents"]["DecodedBytes"] += f"{round(self.__coordinates[0][0] + x_delta, 7)} {round(self.__coordinates[0][1] + y_delta, 7)} m\n".encode('latin1')
+            LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(self.__coordinates[0][0] + x_delta, 7)} {round(self.__coordinates[0][1] + y_delta, 7)} m\n")
             for x, y in self.__coordinates[1:]:
-                page["Contents"]["DecodedBytes"] += f"{round(x + x_delta, 7)} {round(y + y_delta, 7)} l\n".encode('latin1')    # type: ignore[operator]
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(x + x_delta, 7)} {round(y + y_delta, 7)} l\n")
             if self.__fill_color is not None and self.__stroke_color is not None:
-                page["Contents"]["DecodedBytes"] += b"B\n"
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string="B\n")
             elif self.__fill_color is not None:
-                page["Contents"]["DecodedBytes"] += b"f\n"
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string="f\n")
             elif self.__stroke_color is not None:
-                page["Contents"]["DecodedBytes"] += b"S\n"
+                LayoutElement._append_to_content_stream(page=page, bytes_or_string="S\n")
             # fmt: on
 
         # restore graphics state
-        page["Contents"]["DecodedBytes"] += b"Q\n"
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")
 
         # EMC
         Shape._end_marked_content(page=page)  # type: ignore[attr-defined]
