@@ -154,19 +154,6 @@ class Heading(Paragraph):
         return y
 
     @staticmethod
-    def __get_font_for_outline_level(outline_level: int = 0):
-        from borb.pdf import Standard14Fonts
-
-        return {
-            0: Standard14Fonts.get("Helvetica-Bold"),
-            1: Standard14Fonts.get("Helvetica"),
-            2: Standard14Fonts.get("Helvetica"),
-            3: Standard14Fonts.get("Helvetica"),
-            4: Standard14Fonts.get("Helvetica-Italic"),
-            5: Standard14Fonts.get("Helvetica"),
-        }.get(outline_level, Standard14Fonts.get("Helvetica"))
-
-    @staticmethod
     def __get_font_color_for_outline_level(
         outline_level: int = 0,
     ):
@@ -180,6 +167,19 @@ class Heading(Paragraph):
             4: HexColor("#2F5496"),
             5: HexColor("#1F3763"),
         }.get(outline_level, X11Color.BLACK)
+
+    @staticmethod
+    def __get_font_for_outline_level(outline_level: int = 0):
+        from borb.pdf import Standard14Fonts
+
+        return {
+            0: Standard14Fonts.get("Helvetica-Bold"),
+            1: Standard14Fonts.get("Helvetica"),
+            2: Standard14Fonts.get("Helvetica"),
+            3: Standard14Fonts.get("Helvetica"),
+            4: Standard14Fonts.get("Helvetica-Italic"),
+            5: Standard14Fonts.get("Helvetica"),
+        }.get(outline_level, Standard14Fonts.get("Helvetica"))
 
     @staticmethod
     def __get_font_size_for_outline_level(outline_level: int = 0):

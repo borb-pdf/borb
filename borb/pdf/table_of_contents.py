@@ -42,10 +42,10 @@ class TableOfContents(Page):
     #
     def __init__(self, height_in_points: int = 842, width_in_points: int = 595):
         super().__init__(height_in_points, width_in_points)
+        self.__end_page_index: typing.Optional[int] = None
         self.__entries: typing.List[typing.Tuple[int, int, str]] = []
-        self._start_page_index: typing.Optional[int] = None
-        self._end_page_index: typing.Optional[int] = None
-        self._persistent_document: typing.Optional[Document] = None
+        self.__persistent_document: typing.Optional[Document] = None
+        self.__start_page_index: typing.Optional[int] = None
 
     #
     # PRIVATE
@@ -61,9 +61,9 @@ class TableOfContents(Page):
         self.__entries += [(outline_level, page_number, text)]
 
         # store a reference to the Document
-        if self._persistent_document is None:
+        if self.__persistent_document is None:
             print(f"setting self._persistent_document to {self.get_document()}")
-            self._persistent_document = self.get_document()
+            self.__persistent_document = self.get_document()
 
         # calculate new page range
         from borb.pdf import Table
@@ -166,36 +166,36 @@ class TableOfContents(Page):
         new_nof_pages_needed: int = len(entries_per_page)
         print(f"TOC requires {new_nof_pages_needed} page(s)")
 
-        # initial setup of self._start_page_index and self_end_page_index
-        if self._start_page_index is None:
-            self._start_page_index = min(
+        # initial setup of self.__start_page_index and self_end_page_index
+        if self.__start_page_index is None:
+            self.__start_page_index = min(
                 [
                     x
                     for x, y in [
                         (i, doc.get_page(i))
                         for i in range(
-                            0, self._persistent_document.get_number_of_pages()
+                            0, self.__persistent_document.get_number_of_pages()
                         )
                     ]
                     if isinstance(y, TableOfContents)
                 ]
             )
-            self._end_page_index = self._start_page_index + new_nof_pages_needed - 1
+            self.__end_page_index = self.__start_page_index + new_nof_pages_needed - 1
             print(
-                f"TOC starts at {self._start_page_index}, ends at page {self._end_page_index}"
+                f"TOC starts at {self.__start_page_index}, ends at page {self.__end_page_index}"
             )
 
         # remove old page(s)
-        old_nof_pages_needed: int = self._end_page_index - self._start_page_index + 1
+        old_nof_pages_needed: int = self.__end_page_index - self.__start_page_index + 1
         for i in range(0, old_nof_pages_needed):
-            print(f"removing old TOC at page {self._start_page_index}")
-            self._persistent_document.pop_page(self._start_page_index)
+            print(f"removing old TOC at page {self.__start_page_index}")
+            self.__persistent_document.pop_page(self.__start_page_index)
 
         # previously we (the TOC) took up old_nof_pages_needed
         # we now to take up new_nof_pages_needed
         # shift everything, if needed
         if new_nof_pages_needed > old_nof_pages_needed:
-            self._end_page_index = self._start_page_index + new_nof_pages_needed - 1
+            self.__end_page_index = self.__start_page_index + new_nof_pages_needed - 1
             TableOfContents.__shift_outlines(
                 document=self._persisent_document,
                 delta=new_nof_pages_needed - old_nof_pages_needed,
@@ -207,10 +207,10 @@ class TableOfContents(Page):
 
             # create Page
             toc_page: Page = TableOfContents()
-            toc_page._start_page_index = self._start_page_index
-            toc_page._end_page_index = self._end_page_index
+            toc_page._start_page_index = self.__start_page_index
+            toc_page._end_page_index = self.__end_page_index
             toc_page.__entries = self.__entries
-            toc_page._persistent_document = self._persistent_document
+            toc_page._persistent_document = self.__persistent_document
 
             # set PageLayout
             layout_for_toc_page: PageLayout = SingleColumnLayout(toc_page)
@@ -220,8 +220,8 @@ class TableOfContents(Page):
             entries_per_page = entries_per_page[1:]
 
             # insert Page
-            self._persistent_document.insert_page(
-                page=toc_page, index=self._start_page_index + i
+            self.__persistent_document.insert_page(
+                page=toc_page, index=self.__start_page_index + i
             )
 
         # return
