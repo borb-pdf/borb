@@ -1,4 +1,18 @@
-import math
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Represents a table of contents within a PDF document.
+
+The `TableOfContents` class is responsible for generating and rendering
+a table of contents on a dedicated page. It collects and organizes
+headings defined throughout the document and presents them in a hierarchical
+list structure. Each entry is displayed according to its level, with
+configurable visual properties such as indentation, numbering, and alignment.
+
+This ensures that the table of contents provides a clear and structured
+overview of the document's content, improving readability and organization.
+"""
+
 import typing
 
 from borb.pdf.layout_element.text.paragraph import Paragraph
@@ -10,6 +24,18 @@ from borb.pdf.document import Document
 
 
 class TableOfContents(Page):
+    """
+    Represents a table of contents within a PDF document.
+
+    The `TableOfContents` class is responsible for generating and rendering
+    a table of contents on a dedicated page. It collects and organizes
+    headings defined throughout the document and presents them in a hierarchical
+    list structure. Each entry is displayed according to its level, with
+    configurable visual properties such as indentation, numbering, and alignment.
+
+    This ensures that the table of contents provides a clear and structured
+    overview of the document's content, improving readability and organization.
+    """
 
     #
     # CONSTRUCTOR

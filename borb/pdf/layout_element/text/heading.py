@@ -145,6 +145,15 @@ class Heading(Paragraph):
     #
 
     @staticmethod
+    def __get_children_of_outlines_dictionary(x):
+        if "First" not in x:
+            return []
+        y = [x["First"]]
+        while "Next" in y[-1]:
+            y += [y[-1]["Next"]]
+        return y
+
+    @staticmethod
     def __get_font_for_outline_level(outline_level: int = 0):
         from borb.pdf import Standard14Fonts
 
@@ -284,14 +293,6 @@ class Heading(Paragraph):
         # IF there are multiple entries
         # THEN we need to determine the correct parent
 
-        def __children_of_outlines_dictionary(x):
-            if "First" not in x:
-                return []
-            y = [x["First"]]
-            while "Next" in y[-1]:
-                y += [y[-1]["Next"]]
-            return y
-
         # now we walk over the entire outlines dictionary tree
         done: typing.List[typing.Tuple[int, typing.Dict]] = []
         todo: typing.List[typing.Tuple[int, typing.Dict]] = [(-1, outlines_dictionary)]
@@ -299,7 +300,7 @@ class Heading(Paragraph):
             x: typing.Tuple[int, typing.Dict] = todo[0]
             todo.pop()
             done += [x]
-            for y in __children_of_outlines_dictionary(x[1]):
+            for y in Heading.__get_children_of_outlines_dictionary(x[1]):
                 todo += [(x[0] + 1, y)]
 
         # find the parent outlines dictionary level
