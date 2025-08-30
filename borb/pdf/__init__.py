@@ -182,4 +182,5 @@ from borb.pdf.toolkit.sink.get_text import GetText
 from borb.pdf.toolkit.sink.sink import Sink
 from borb.pdf.toolkit.source.operator.source import Source
 from borb.pdf.visitor.pdf import PDF
+from borb.pdf.table_of_contents import TableOfContents
 # fmt: on

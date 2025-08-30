@@ -184,13 +184,13 @@ class Heading(Paragraph):
     @staticmethod
     def __get_font_size_for_outline_level(outline_level: int = 0):
         return {
-            0: 16,
-            1: 13,
-            2: 12,
-            3: 11,
-            4: 11,
-            5: 11,
-        }.get(outline_level, 11)
+            0: 17,
+            1: 14,
+            2: 13,
+            3: 12,
+            4: 12,
+            5: 12,
+        }.get(outline_level, 12)
 
     @staticmethod
     def __get_padding_for_outline_level(
@@ -274,6 +274,7 @@ class Heading(Paragraph):
         if "First" not in outlines_dictionary or "Last" not in outlines_dictionary:
             outlines_dictionary[name("First")] = new_outlines_dictionary
             outlines_dictionary[name("Last")] = new_outlines_dictionary
+            outlines_dictionary[name("Count")] = 1
             new_outlines_dictionary[name("Parent")] = outlines_dictionary
 
             # update TOC(s)
@@ -298,7 +299,7 @@ class Heading(Paragraph):
         todo: typing.List[typing.Tuple[int, typing.Dict]] = [(-1, outlines_dictionary)]
         while len(todo) > 0:
             x: typing.Tuple[int, typing.Dict] = todo[0]
-            todo.pop()
+            todo.pop(0)
             done += [x]
             for y in Heading.__get_children_of_outlines_dictionary(x[1]):
                 todo += [(x[0] + 1, y)]
@@ -326,7 +327,7 @@ class Heading(Paragraph):
             parent_outlines_dictionary[name("Last")] = new_outlines_dictionary
 
         # update /Count
-        outlines_dictionary_to_update = outlines_dictionary
+        outlines_dictionary_to_update = parent_outlines_dictionary
         while outlines_dictionary_to_update:
             # fmt: off
             outlines_dictionary_to_update[name("Count")] = outlines_dictionary_to_update.get(name("Count"), 0) + 1
@@ -339,7 +340,6 @@ class Heading(Paragraph):
             for x in [doc.get_page(i) for i in range(0, doc.get_number_of_pages())]
             if isinstance(x, TableOfContents)
         ]
-        print(f"{len(tocs)} TOC page(s) found")
         if len(tocs) > 0:
             tocs[0]._TableOfContents__append_entry(
                 self.__outline_level, page_nr, self.__text
