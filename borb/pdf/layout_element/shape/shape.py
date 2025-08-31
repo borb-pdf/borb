@@ -435,6 +435,7 @@ class Shape(LayoutElement):
 
         if isinstance(self.__coordinates[0], list):
             for polygon in self.__coordinates:
+                assert isinstance(polygon, list)
                 # fmt: off
                 LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(polygon[0][0] + x_delta, 7)} {round(polygon[0][1] + y_delta, 7)} m\n")
                 for x, y in polygon[1:]:                                                                            # type: ignore[misc]
