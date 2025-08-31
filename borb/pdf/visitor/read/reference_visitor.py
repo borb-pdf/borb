@@ -226,7 +226,7 @@ class ReferenceVisitor(ReadVisitor):
         # THEN call __visit_object_stm_reference
         if r.get_index_in_parent_stream() is not None:
             retval = self.__visit_object_stm_reference(r) or r, -1
-            r._reference__referenced_object = retval[0]
+            r._reference__referenced_object = retval[0]  # type: ignore[attr-defined]
             return r.get_referenced_object()
 
         # IF the reference has a byte offset
