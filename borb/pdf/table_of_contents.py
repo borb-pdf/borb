@@ -140,6 +140,7 @@ class TableOfContents(Page):
         new_nof_pages_needed: int = len(entries_per_page)
 
         # initial setup of self.__start_page_index and self.__end_page_index
+        assert self.__persistent_document is not None
         if self.__start_page_index is None:
             self.__start_page_index = min(
                 [
