@@ -450,7 +450,7 @@ class Shape(LayoutElement):
         else:
             # fmt: off
             LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(self.__coordinates[0][0] + x_delta, 7)} {round(self.__coordinates[0][1] + y_delta, 7)} m\n")
-            for x, y in self.__coordinates[1:]:
+            for x, y in self.__coordinates[1:]: # type: ignore[assignment]
                 LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{round(x + x_delta, 7)} {round(y + y_delta, 7)} l\n")
             if self.__fill_color is not None and self.__stroke_color is not None:
                 LayoutElement._append_to_content_stream(page=page, bytes_or_string="B\n")
