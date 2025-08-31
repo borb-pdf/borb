@@ -284,7 +284,7 @@ class Heading(Paragraph):
                 if isinstance(x, TableOfContents)
             ]
             if len(tocs) > 0:
-                tocs[0]._TableOfContents__append_entry(
+                tocs[0]._TableOfContents__append_entry(  # type: ignore[attr-defined]
                     self.__outline_level, page_nr, self.__text
                 )
 
@@ -341,6 +341,6 @@ class Heading(Paragraph):
             if isinstance(x, TableOfContents)
         ]
         if len(tocs) > 0:
-            tocs[0]._TableOfContents__append_entry(
+            tocs[0]._TableOfContents__append_entry(  # type: ignore[attr-defined]
                 self.__outline_level, page_nr, self.__text
             )
