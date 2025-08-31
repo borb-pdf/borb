@@ -178,10 +178,10 @@ class TableOfContents(Page):
 
             # create Page
             toc_page: Page = TableOfContents()
-            toc_page.__start_page_index = self.__start_page_index
-            toc_page.__end_page_index = self.__end_page_index
-            toc_page.__entries = self.__entries
-            toc_page.__persistent_document = self.__persistent_document
+            toc_page.__start_page_index = self.__start_page_index           # type: ignore[attr-defined]
+            toc_page.__end_page_index = self.__end_page_index               # type: ignore[attr-defined]
+            toc_page.__entries = self.__entries                             # type: ignore[attr-defined]
+            toc_page.__persistent_document = self.__persistent_document     # type: ignore[attr-defined]
 
             # set PageLayout
             layout_for_toc_page: PageLayout = SingleColumnLayout(toc_page)
