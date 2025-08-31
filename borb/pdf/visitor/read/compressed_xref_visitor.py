@@ -271,7 +271,7 @@ class CompressedXRefVisitor(XRefVisitor):
         # set the byte offset
         for ref in xref:
             if ref.get_parent_stream_object_nr() is not None:
-                ref.__byte_offset = next(
+                ref.__byte_offset = next(  # type: ignore[attr-defined]
                     iter(
                         [
                             x.get_byte_offset()
