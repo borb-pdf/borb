@@ -331,7 +331,7 @@ class Heading(Paragraph):
         while outlines_dictionary_to_update:
             # fmt: off
             outlines_dictionary_to_update[name("Count")] = outlines_dictionary_to_update.get(name("Count"), 0) + 1
-            outlines_dictionary_to_update = outlines_dictionary_to_update.get(name("Parent"), None)
+            outlines_dictionary_to_update = outlines_dictionary_to_update.get(name("Parent"), None)     # type: ignore[assignment]
             # fmt: on
 
         # update TOC(s)
