@@ -315,4 +315,4 @@ class ReferenceVisitor(ReadVisitor):
             )
 
         # default
-        return self.__visit_reference(matching_ref), i
+        return self.__visit_reference(matching_ref), i  # type: ignore[return-value]
