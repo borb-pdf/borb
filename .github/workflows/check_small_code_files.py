@@ -116,6 +116,7 @@ if __name__ == "__main__":
             "emoji.py",
             "layout_element.py",
             "line_art.py",
+            "map.py",
             "pantone_color.py",
             "shape.py",
             "slideshow.py",
