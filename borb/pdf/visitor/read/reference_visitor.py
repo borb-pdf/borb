@@ -111,7 +111,7 @@ class ReferenceVisitor(ReadVisitor):
                 )
                 or o
             )
-            return self.__visit_reference(o)
+            return self.__visit_reference(o)  # type: ignore[return-value]
         return o
 
     def __visit_byte_offset_reference(self, r: reference) -> typing.Optional[PDFType]:
