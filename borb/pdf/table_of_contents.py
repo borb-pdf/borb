@@ -253,6 +253,12 @@ class TableOfContents(Page):
         return t
 
     @staticmethod
+    def __shift_outlines(document: Document, delta: int) -> None:
+        if delta == 0:
+            return
+        pass
+
+    @staticmethod
     def __undo_update_table(table: Table) -> Table:
 
         # decrease number of rows
@@ -306,12 +312,6 @@ class TableOfContents(Page):
 
         # return
         return table
-
-    @staticmethod
-    def __shift_outlines(document: Document, delta: int) -> None:
-        if delta == 0:
-            return
-        pass
 
     #
     # PUBLIC
