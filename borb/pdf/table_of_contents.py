@@ -265,17 +265,17 @@ class TableOfContents(Page):
     def __undo_update_table(table: Table) -> Table:
 
         # decrease number of rows
-        table._Table__number_of_rows -= 1
+        table._Table__number_of_rows -= 1  # type: ignore[attr-defined]
 
         # find elements to be removed
-        to_remove = table._Table__inner_layout_elements[-3:]
+        to_remove = table._Table__inner_layout_elements[-3:]  # type: ignore[attr-defined]
 
         # remove the elements
-        table._Table__inner_layout_elements = table._Table__inner_layout_elements[:-3]
+        table._Table__inner_layout_elements = table._Table__inner_layout_elements[:-3]  # type: ignore[attr-defined]
 
         # remove the mapping
         for e in to_remove:
-            table._Table__inner_layout_element_to_table_coordinates.remove(e)
+            table._Table__inner_layout_element_to_table_coordinates.remove(e)  # type: ignore[attr-defined]
 
     @staticmethod
     def __update_table(
