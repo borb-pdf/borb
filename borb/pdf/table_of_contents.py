@@ -277,6 +277,9 @@ class TableOfContents(Page):
         for e in to_remove:
             table._Table__inner_layout_element_to_table_coordinates.remove(e)  # type: ignore[attr-defined]
 
+        # return
+        return table
+
     @staticmethod
     def __update_table(
         level: int, number: typing.List[int], page_nr: int, table: Table, text: str

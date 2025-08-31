@@ -305,7 +305,7 @@ class Map(Shape):
 
         # set width
         LayoutElement._append_to_content_stream(
-            page=page, bytes_or_string=f"{self._Shape__line_width} w\n"
+            page=page, bytes_or_string=f"{self._Shape__line_width} w\n"  # type: ignore[attr-defined]
         )
 
         # set Line Cap Style
@@ -313,7 +313,7 @@ class Map(Shape):
 
         # set dash pattern
         # fmt: off
-        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self._Shape__dash_pattern} {self._Shape__dash_phase} d\n")
+        LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self._Shape__dash_pattern} {self._Shape__dash_phase} d\n")    # type: ignore[attr-defined]
         # fmt: on
 
         # draw each shape
