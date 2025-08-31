@@ -283,10 +283,10 @@ class TableOfContents(Page):
     ) -> Table:
 
         # dangerous
-        table._Table__number_of_rows += 1
-        table._Table__available_table_coordinates += [
-            (table._Table__number_of_rows - 1, i) for i in range(0, 3)
-        ]
+        # fmt: off
+        table._Table__number_of_rows += 1                                                                           # type: ignore[attr-defined]
+        table._Table__available_table_coordinates += [(table._Table__number_of_rows - 1, i) for i in range(0, 3)]   # type: ignore[attr-defined]
+        # fmt: on
 
         # convert (list of) number(s) to legible text
         number_as_str: str = ".".join([str(x) for x in number])
