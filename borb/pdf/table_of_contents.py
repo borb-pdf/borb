@@ -44,6 +44,18 @@ class TableOfContents(Page):
     # CONSTRUCTOR
     #
     def __init__(self, height_in_points: int = 842, width_in_points: int = 595):
+        """
+        Initialize a new TableOfContents object with specified dimensions.
+
+        The `TableOfContents` class represents a dedicated page in a PDF document
+        that lists the document's headings in a structured, hierarchical format.
+        This constructor allows the creation of the table of contents page with
+        customizable dimensions, typically matching standard page sizes such as
+        A4 or letter.
+
+        :param height_in_points:    The height of the page in points. Default is 842 points (A4 height).
+        :param width_in_points:     The width of the page in points. Default is 595 points (A4 width).
+        """
         super().__init__(height_in_points, width_in_points)
         self.__end_page_index: typing.Optional[int] = None
         self.__entries: typing.List[typing.Tuple[int, int, str]] = []
