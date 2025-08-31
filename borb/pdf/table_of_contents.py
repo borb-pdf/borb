@@ -157,6 +157,8 @@ class TableOfContents(Page):
             self.__end_page_index = self.__start_page_index + new_nof_pages_needed - 1
 
         # remove old page(s)
+        assert self.__end_page_index is not None
+        assert self.__start_page_index is not None
         old_nof_pages_needed: int = self.__end_page_index - self.__start_page_index + 1
         for i in range(0, old_nof_pages_needed):
             self.__persistent_document.pop_page(self.__start_page_index)
@@ -167,7 +169,7 @@ class TableOfContents(Page):
         if new_nof_pages_needed > old_nof_pages_needed:
             self.__end_page_index = self.__start_page_index + new_nof_pages_needed - 1
             TableOfContents.__shift_outlines(
-                document=self.__persisent_document,
+                document=self.__persistent_document,
                 delta=new_nof_pages_needed - old_nof_pages_needed,
             )
 
