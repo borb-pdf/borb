@@ -15,7 +15,10 @@ overview of the document's content, improving readability and organization.
 
 import typing
 
+from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.color.hex_color import HexColor
+from borb.pdf.color.color import Color
+from borb.pdf.font.font import Font
 from borb.pdf.layout_element.table.table import Table
 from borb.pdf.layout_element.table.fixed_column_width_table import FixedColumnWidthTable
 from borb.pdf.layout_element.text.paragraph import Paragraph
@@ -43,7 +46,15 @@ class TableOfContents(Page):
     #
     # CONSTRUCTOR
     #
-    def __init__(self, height_in_points: int = 842, width_in_points: int = 595):
+    def __init__(
+        self,
+        height_in_points: int = 842,
+        table_of_contents_font_color: Color = HexColor("2F5496"),
+        table_of_contents_font: Font = Standard14Fonts.get("Helvetica"),
+        table_of_contents_font_size: int = 17,
+        table_of_contents_title: str = "Contents",
+        width_in_points: int = 595,
+    ):
         """
         Initialize a new TableOfContents object with specified dimensions.
 
@@ -61,6 +72,10 @@ class TableOfContents(Page):
         self.__entries: typing.List[typing.Tuple[int, int, str]] = []
         self.__persistent_document: typing.Optional[Document] = None
         self.__start_page_index: typing.Optional[int] = None
+        self.__table_of_contents_font_color: Color = table_of_contents_font_color
+        self.__table_of_contents_font: Font = table_of_contents_font
+        self.__table_of_contents_font_size: int = table_of_contents_font_size
+        self.__table_of_contents_title: str = table_of_contents_title
 
     #
     # PRIVATE
@@ -200,6 +215,7 @@ class TableOfContents(Page):
 
     @staticmethod
     def __create_initial_table(
+        self,
         include_title: bool,
         level: int,
         number: typing.List[int],
@@ -214,10 +230,10 @@ class TableOfContents(Page):
             t.append_layout_element(
                 Table.TableCell(
                     Paragraph(
-                        "Contents",
+                        text=self.__table_of_contents_title,
                         padding_bottom=20,
-                        font_size=17,
-                        font_color=HexColor("2F5496"),
+                        font_size=self.__table_of_contents_font_size,
+                        font_color=self.__table_of_contents_font_color,
                     ),
                     column_span=3,
                     row_span=1,
@@ -259,6 +275,7 @@ class TableOfContents(Page):
     def __shift_outlines(document: Document, delta: int) -> None:
         if delta == 0:
             return
+        # TODO
         pass
 
     @staticmethod

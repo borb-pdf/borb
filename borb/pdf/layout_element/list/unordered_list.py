@@ -215,8 +215,11 @@ class UnorderedList(List):
         w0: int = max([w for w, _ in index_sizes])
 
         # figure out the width of the widest item
+        margin_between_bullet_and_item: int = 5
         element_sizes: typing.List[typing.Tuple[int, int]] = [
-            e.get_size(available_space=(avail_w - w0, avail_h))
+            e.get_size(
+                available_space=(avail_w - w0 - margin_between_bullet_and_item, avail_h)
+            )
             for e in self._List__list_items  # type: ignore[attr-defined]
         ]
         w1: int = max([w for w, _ in element_sizes])
@@ -228,7 +231,11 @@ class UnorderedList(List):
 
         # return
         return (
-            w0 + 5 + w1 + self.get_padding_left() + self.get_padding_right(),
+            w0
+            + margin_between_bullet_and_item
+            + w1
+            + self.get_padding_left()
+            + self.get_padding_right(),
             total_height + self.get_padding_top() + self.get_padding_bottom(),
         )
 
@@ -256,7 +263,14 @@ class UnorderedList(List):
         )
 
         # figure out the width reserved for content items
-        w1: int = w - 5 - self.get_padding_left() - self.get_padding_right() - w0
+        margin_between_bullet_and_item: int = 5
+        w1: int = (
+            w
+            - margin_between_bullet_and_item
+            - self.get_padding_left()
+            - self.get_padding_right()
+            - w0
+        )
 
         # calculate where the background/borders need to be painted
         # fmt: off
@@ -315,7 +329,10 @@ class UnorderedList(List):
             # paint item element
             el.paint(
                 available_space=(
-                    background_x + self.get_padding_left() + w0 + 5,
+                    background_x
+                    + self.get_padding_left()
+                    + w0
+                    + margin_between_bullet_and_item,
                     bottom_y,
                     w1,
                     max(elem_h, index_h),
