@@ -250,5 +250,6 @@ dmypy.json
 
 # secrets
 tests/secrets.py
+tests/license.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm

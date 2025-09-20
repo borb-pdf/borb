@@ -74,6 +74,12 @@ class ReferencedObjectVisitor(WriteNewVisitor):
         ref: reference = node.reference  # type: ignore[attr-defined]
         obj: PDFType = node.object  # type: ignore[attr-defined]
 
+        # Make sure the reference is pointing to the right byte offset.
+        # We may need to do this if some other visitor edited the bytestream
+        # between the moment when the object was started, and now (the moment when the object is being written).
+        # InjectVersionAsCommentVisitor is an example of such a visitor.
+        ref._reference__byte_offset = self.tell()
+
         # recurse
         self._append_bytes_or_str(
             f"{ref.get_object_nr()} {ref.get_generation_nr()} obj\n"
