@@ -49,8 +49,8 @@ class TableOfContents(Page):
     def __init__(
         self,
         height_in_points: int = 842,
-        table_of_contents_font_color: Color = HexColor("2F5496"),
-        table_of_contents_font: Font = Standard14Fonts.get("Helvetica"),
+        table_of_contents_font_color: typing.Optional[Color] = None,
+        table_of_contents_font: typing.Optional[Font] = None,
         table_of_contents_font_size: int = 17,
         table_of_contents_title: str = "Contents",
         width_in_points: int = 595,
@@ -67,15 +67,17 @@ class TableOfContents(Page):
         :param height_in_points:    The height of the page in points. Default is 842 points (A4 height).
         :param width_in_points:     The width of the page in points. Default is 595 points (A4 width).
         """
+        # fmt: off
         super().__init__(height_in_points, width_in_points)
         self.__end_page_index: typing.Optional[int] = None
         self.__entries: typing.List[typing.Tuple[int, int, str]] = []
         self.__persistent_document: typing.Optional[Document] = None
         self.__start_page_index: typing.Optional[int] = None
-        self.__table_of_contents_font_color: Color = table_of_contents_font_color
-        self.__table_of_contents_font: Font = table_of_contents_font
+        self.__table_of_contents_font_color: Color = table_of_contents_font_color or HexColor("2F5496")
+        self.__table_of_contents_font: Font = table_of_contents_font or Standard14Fonts.get("Helvetica")
         self.__table_of_contents_font_size: int = table_of_contents_font_size
         self.__table_of_contents_title: str = table_of_contents_title
+        # fmt: on
 
     #
     # PRIVATE
@@ -103,7 +105,7 @@ class TableOfContents(Page):
 
             if len(entries_per_page) == 0:
                 entries_per_page += [
-                    TableOfContents.__create_initial_table(
+                    self.__create_initial_table(
                         include_title=True,
                         level=self.__entries[i][0],
                         number=number_as_list,
@@ -125,7 +127,7 @@ class TableOfContents(Page):
                 number_as_list[-1] += 1
 
             # add the new data
-            existing_table = TableOfContents.__update_table(
+            existing_table = self.__update_table(
                 level=self.__entries[i][0],
                 number=number_as_list,
                 page_nr=self.__entries[i][1],
@@ -138,11 +140,11 @@ class TableOfContents(Page):
             if existing_table.get_size((W, H))[1] > H * 0.8:
 
                 # UNDO
-                existing_table = TableOfContents.__undo_update_table(existing_table)
+                existing_table = self.__undo_update_table(existing_table)
 
                 # create a new Table
                 entries_per_page += [
-                    TableOfContents.__create_initial_table(
+                    self.__create_initial_table(
                         include_title=False,
                         level=self.__entries[i][0],
                         number=number_as_list,
@@ -213,7 +215,6 @@ class TableOfContents(Page):
         # return
         return self
 
-    @staticmethod
     def __create_initial_table(
         self,
         include_title: bool,
@@ -271,15 +272,13 @@ class TableOfContents(Page):
         # return
         return t
 
-    @staticmethod
-    def __shift_outlines(document: Document, delta: int) -> None:
+    def __shift_outlines(self, document: Document, delta: int) -> None:
         if delta == 0:
             return
         # TODO
         pass
 
-    @staticmethod
-    def __undo_update_table(table: Table) -> Table:
+    def __undo_update_table(self, table: Table) -> Table:
 
         # decrease number of rows
         table._Table__number_of_rows -= 1  # type: ignore[attr-defined]
@@ -297,9 +296,13 @@ class TableOfContents(Page):
         # return
         return table
 
-    @staticmethod
     def __update_table(
-        level: int, number: typing.List[int], page_nr: int, table: Table, text: str
+        self,
+        level: int,
+        number: typing.List[int],
+        page_nr: int,
+        table: Table,
+        text: str,
     ) -> Table:
 
         # dangerous
