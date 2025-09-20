@@ -78,7 +78,7 @@ class ReferencedObjectVisitor(WriteNewVisitor):
         # We may need to do this if some other visitor edited the bytestream
         # between the moment when the object was started, and now (the moment when the object is being written).
         # InjectVersionAsCommentVisitor is an example of such a visitor.
-        ref._reference__byte_offset = self.tell()
+        ref._reference__byte_offset = self.tell()  # type: ignore[attr-defined]
 
         # recurse
         self._append_bytes_or_str(
