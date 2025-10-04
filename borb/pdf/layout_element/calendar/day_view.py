@@ -69,6 +69,39 @@ class DayView(LayoutElement):
         until_hour: typing.Optional[datetime.datetime] = None,
         vertical_alignment: LayoutElement.VerticalAlignment = LayoutElement.VerticalAlignment.TOP,
     ):
+        """
+        Initialize a DayView layout element representing a single day in a calendar.
+
+        The DayView renders a vertical timeline from `from_hour` to `until_hour`,
+        divided into 30-minute slots, with optional styling such as background color,
+        borders, padding, and font size. This constructor also allows configuration
+        of the visual layout of event lanes and spacing.
+
+        :param background_color: Background color of the DayView.
+        :param border_color: Color of the borders around the DayView.
+        :param border_dash_pattern: Optional dash pattern for borders.
+        :param border_dash_phase: Phase offset for dashed borders.
+        :param border_width_bottom: Width of the bottom border.
+        :param border_width_left: Width of the left border.
+        :param border_width_right: Width of the right border.
+        :param border_width_top: Width of the top border.
+        :param font_size: Base font size for text in the DayView.
+        :param from_hour: The starting hour of the day view. Defaults to 9:00 AM today.
+        :param gutter_width: Width of the gutter separating time and event columns.
+        :param horizontal_alignment: Horizontal alignment of the DayView in the layout.
+        :param item_height: Height of each time slot row.
+        :param lane_width: Width of each event lane column.
+        :param margin_bottom: Bottom margin of the DayView.
+        :param margin_left: Left margin of the DayView.
+        :param margin_right: Right margin of the DayView.
+        :param margin_top: Top margin of the DayView.
+        :param padding_bottom: Bottom padding inside the DayView.
+        :param padding_left: Left padding inside the DayView.
+        :param padding_right: Right padding inside the DayView.
+        :param padding_top: Top padding inside the DayView.
+        :param until_hour: The ending hour of the day view. Defaults to 5:00 PM today.
+        :param vertical_alignment: Vertical alignment of the DayView in the layout.
+        """
         # calculate from_hour
         now: datetime.datetime = datetime.datetime.now()
         self.__from_hour = from_hour or datetime.datetime(
