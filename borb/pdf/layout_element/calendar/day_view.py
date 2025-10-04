@@ -252,7 +252,7 @@ class DayView(LayoutElement):
 
         # render the (second) background
         Shape(
-            coordinates=[
+            coordinates=[  # type: ignore[arg-type]
                 (0, 0),
                 (0, h),
                 (w - hour_label_width, h),
@@ -276,7 +276,7 @@ class DayView(LayoutElement):
         number_of_half_hours: int = (self.__until_hour - self.__from_hour).seconds // 1800
         for i in range(0, number_of_half_hours + 1):
             Shape(
-                coordinates=[(0, 0), (w, 0)],
+                coordinates=[(0, 0), (w, 0)],   # type: ignore[arg-type]
                 fill_color=None,
                 stroke_color=X11Color.LIGHT_GRAY,
                 dash_pattern=[] if i % 2 == 0 else [3, 3],
@@ -322,7 +322,7 @@ class DayView(LayoutElement):
             )
 
             # loop over everything in the swimlane
-            i: int = 0
+            i: int = 0  # type: ignore[no-redef]
             while i < len(lane):
 
                 # IF the swimlane does not contain anything at the given time
@@ -342,7 +342,7 @@ class DayView(LayoutElement):
 
                 # draw background
                 Shape(
-                    coordinates=[
+                    coordinates=[  # type: ignore[arg-type]
                         (0, 0),
                         (0, event_height),
                         (self.__lane_width, event_height),
@@ -363,7 +363,7 @@ class DayView(LayoutElement):
 
                 # draw gutter
                 Shape(
-                    coordinates=[
+                    coordinates=[  # type: ignore[arg-type]
                         (0, 0),
                         (0, event_height),
                         (self.__lane_width // 10, event_height),
