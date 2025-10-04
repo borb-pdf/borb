@@ -51,13 +51,13 @@ class Shape(LayoutElement):
         coordinates: typing.Union[PolygonType, typing.List[PolygonType]],
         background_color: typing.Optional[Color] = None,
         border_color: typing.Optional[Color] = None,
-        border_dash_pattern: typing.List[int] = [],
+        border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
         border_width_top: int = 0,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         horizontal_alignment: LayoutElement.HorizontalAlignment = LayoutElement.HorizontalAlignment.LEFT,
@@ -133,7 +133,7 @@ class Shape(LayoutElement):
         self.__stroke_color: typing.Optional[Color] = stroke_color
         self.__fill_color: typing.Optional[Color] = fill_color
         self.__line_width: int = line_width
-        self.__dash_pattern: typing.List[int] = dash_pattern
+        self.__dash_pattern: typing.List[int] = dash_pattern or []
         self.__dash_phase: int = dash_phase
 
     #

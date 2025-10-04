@@ -33,13 +33,13 @@ class HorizontalBreak(LayoutElement):
         self,
         background_color: typing.Optional[Color] = None,
         border_color: typing.Optional[Color] = None,
-        border_dash_pattern: typing.List[int] = [],
+        border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
         border_width_top: int = 0,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         horizontal_alignment: LayoutElement.HorizontalAlignment = LayoutElement.HorizontalAlignment.LEFT,
         line_color: Color = X11Color.BLACK,
@@ -105,7 +105,7 @@ class HorizontalBreak(LayoutElement):
             vertical_alignment=vertical_alignment,
         )
         self.__dash_phase: int = dash_phase
-        self.__dash_pattern: typing.List[int] = dash_pattern
+        self.__dash_pattern: typing.List[int] = dash_pattern or []
         self.__line_color: Color = line_color
         self.__line_width: int = line_width
 

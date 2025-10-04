@@ -39,7 +39,7 @@ class LineArt:
 
     @staticmethod
     def arrow_down(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -78,7 +78,7 @@ class LineArt:
 
     @staticmethod
     def arrow_left(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -117,7 +117,7 @@ class LineArt:
 
     @staticmethod
     def arrow_right(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -156,7 +156,7 @@ class LineArt:
 
     @staticmethod
     def arrow_up(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -195,7 +195,7 @@ class LineArt:
 
     @staticmethod
     def blob(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -241,7 +241,7 @@ class LineArt:
 
     @staticmethod
     def circle(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -633,7 +633,7 @@ class LineArt:
 
     @staticmethod
     def cross(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -677,7 +677,7 @@ class LineArt:
 
     @staticmethod
     def dragon_curve(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -744,7 +744,7 @@ class LineArt:
 
     @staticmethod
     def five_pointed_star(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -774,7 +774,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_card(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -810,7 +810,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_collate(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -846,7 +846,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_data(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -882,7 +882,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_database(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -1634,7 +1634,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_decision(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -1670,7 +1670,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_delay(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -1884,7 +1884,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_direct_data(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -1913,7 +1913,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_display(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2128,7 +2128,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_document(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2402,7 +2402,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_extract(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2437,7 +2437,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_internal_storage(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2480,7 +2480,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_loop_limit(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2518,7 +2518,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_manual_input(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2554,7 +2554,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_manual_operation(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2590,7 +2590,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_merge(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2625,7 +2625,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_multiple_documents(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2906,7 +2906,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_off_page_reference(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2943,7 +2943,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_on_page_reference(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -2972,7 +2972,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_or(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -3368,7 +3368,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_paper_tape(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -3880,7 +3880,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_predefined_document(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4158,7 +4158,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_predefined_process(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4200,7 +4200,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_preparation(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4238,7 +4238,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_process(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4274,7 +4274,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_process_iso_9000(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4312,7 +4312,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_sequential_data(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4666,7 +4666,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_sort(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -4704,7 +4704,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_stored_data(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -5096,7 +5096,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_summing_junction(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -5492,7 +5492,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_termination(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -5884,7 +5884,7 @@ class LineArt:
 
     @staticmethod
     def flowchart_transport(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -5913,7 +5913,7 @@ class LineArt:
 
     @staticmethod
     def four_pointed_star(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -5944,7 +5944,7 @@ class LineArt:
     @staticmethod
     def fraction_of_circle(
         angle_in_degrees: int,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -5989,7 +5989,7 @@ class LineArt:
 
     @staticmethod
     def half_of_circle(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6019,7 +6019,7 @@ class LineArt:
 
     @staticmethod
     def heart(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6412,7 +6412,7 @@ class LineArt:
 
     @staticmethod
     def heptagon(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6442,7 +6442,7 @@ class LineArt:
 
     @staticmethod
     def hexagon(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6472,7 +6472,7 @@ class LineArt:
 
     @staticmethod
     def isosceles_triangle(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6504,7 +6504,7 @@ class LineArt:
     def lissajours(
         x_frequency: int,
         y_frequency: int,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6545,7 +6545,7 @@ class LineArt:
     @staticmethod
     def n_gon(
         number_of_sides: int,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6587,7 +6587,7 @@ class LineArt:
     @staticmethod
     def n_pointed_star(
         number_of_points: int,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6631,7 +6631,7 @@ class LineArt:
     @staticmethod
     def n_toothed_gear(
         number_of_teeth: int,
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6682,7 +6682,7 @@ class LineArt:
 
     @staticmethod
     def octagon(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6712,7 +6712,7 @@ class LineArt:
 
     @staticmethod
     def parallelogram(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6748,7 +6748,7 @@ class LineArt:
 
     @staticmethod
     def pentagon(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6778,7 +6778,7 @@ class LineArt:
 
     @staticmethod
     def rectangle(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6814,7 +6814,7 @@ class LineArt:
 
     @staticmethod
     def rectangular_maze(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         horizontal_scale: int = 10,
@@ -6966,7 +6966,7 @@ class LineArt:
 
     @staticmethod
     def right_angled_triangle(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -6996,7 +6996,7 @@ class LineArt:
 
     @staticmethod
     def six_pointed_star(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -7026,7 +7026,7 @@ class LineArt:
 
     @staticmethod
     def square(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -7056,7 +7056,7 @@ class LineArt:
 
     @staticmethod
     def sticky_note(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -7096,7 +7096,7 @@ class LineArt:
 
     @staticmethod
     def three_quarters_of_circle(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,
@@ -7126,7 +7126,7 @@ class LineArt:
 
     @staticmethod
     def trapezoid(
-        dash_pattern: typing.List[int] = [],
+        dash_pattern: typing.Optional[typing.List[int]] = None,
         dash_phase: int = 0,
         fill_color: typing.Optional[Color] = None,
         line_width: int = 1,

@@ -54,7 +54,7 @@ class LayoutElement:
         self,
         background_color: typing.Optional[Color] = None,
         border_color: typing.Optional[Color] = None,
-        border_dash_pattern: typing.List[int] = [],
+        border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
@@ -114,7 +114,7 @@ class LayoutElement:
         # fmt: on
         self.__background_color: typing.Optional[Color] = background_color
         self.__border_color: typing.Optional[Color] = border_color
-        self.__border_dash_pattern: typing.List[int] = border_dash_pattern
+        self.__border_dash_pattern: typing.List[int] = border_dash_pattern or []
         self.__border_dash_phase: int = border_dash_phase
         self.__border_width_bottom: int = border_width_bottom
         self.__border_width_left: int = border_width_left

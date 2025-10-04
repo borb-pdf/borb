@@ -141,17 +141,20 @@ class TestReadCorpus(unittest.TestCase):
     # @unittest.skip
     def test_read_single_pdf(self):
 
-        d: Document = PDF.read(where_from=TestReadCorpus.CORPUS_DIRECTORY / '0019.pdf')
+        d: Document = PDF.read(where_from=TestReadCorpus.CORPUS_DIRECTORY / "0019.pdf")
 
         from borb.pdf.toolkit.source.flow.line_of_text_pipe import LineOfTextPipe
         from borb.pdf.toolkit.sink.draw_bounding_boxes import DrawBoundingBoxes
+
         Pipeline(
             [
                 Source(),  # process input data
                 EnrichTextEvents(),
                 FilterOCRArtifacts(),
                 LineOfTextPipe(),  # gather lines of text
-                DrawBoundingBoxes(text_event_indices_to_mark=[i for i in range(0, 100)]),
+                DrawBoundingBoxes(
+                    text_event_indices_to_mark=[i for i in range(0, 100)]
+                ),
             ]
         ).process(d)
 

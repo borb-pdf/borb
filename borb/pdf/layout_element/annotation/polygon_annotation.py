@@ -39,7 +39,7 @@ class PolygonAnnotation(Annotation):
         shape: Shape,
         background_color: typing.Optional[Color] = None,
         border_color: typing.Optional[Color] = None,
-        border_dash_pattern: typing.List[int] = [],
+        border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,

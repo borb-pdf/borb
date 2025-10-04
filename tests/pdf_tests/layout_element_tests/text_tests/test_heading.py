@@ -22,7 +22,7 @@ class TestHeading(unittest.TestCase):
         w: int = p.get_size()[0] - 2 * (p.get_size()[0] // 10)
         h: int = p.get_size()[1] - 2 * (p.get_size()[1] // 10)
 
-        Heading('Lorem Ipsum').paint(
+        Heading("Lorem Ipsum").paint(
             available_space=(x, y, w, h),
             page=p,
         )

@@ -73,8 +73,8 @@ class TableOfContents(Page):
         self.__entries: typing.List[typing.Tuple[int, int, str]] = []
         self.__persistent_document: typing.Optional[Document] = None
         self.__start_page_index: typing.Optional[int] = None
-        self.__table_of_contents_font_color: Color = table_of_contents_font_color or HexColor("2F5496") # type: ignore[assignment]
-        self.__table_of_contents_font: Font = table_of_contents_font or Standard14Fonts.get("Helvetica")
+        self.__table_of_contents_font_color: Color = table_of_contents_font_color or HexColor("2F5496")
+        self.__table_of_contents_font: Font = table_of_contents_font or Standard14Fonts.get("Helvetica") # type: ignore[assignment]
         self.__table_of_contents_font_size: int = table_of_contents_font_size
         self.__table_of_contents_title: str = table_of_contents_title
         # fmt: on
