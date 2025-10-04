@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+A layout element that represents a single day in a calendar view.
+
+This class renders a vertical timeline from a start hour to an end hour,
+divided into 30-minute slots. Events can be pushed into the view and will
+be displayed at their scheduled times. The DayView supports styling via
+background color, borders, padding, and font size.
+"""
 import datetime
 import typing
 
@@ -21,6 +29,14 @@ DayViewEventType = collections.namedtuple(
 
 
 class DayView(LayoutElement):
+    """
+    A layout element that represents a single day in a calendar view.
+
+    This class renders a vertical timeline from a start hour to an end hour,
+    divided into 30-minute slots. Events can be pushed into the view and will
+    be displayed at their scheduled times. The DayView supports styling via
+    background color, borders, padding, and font size.
+    """
 
     #
     # CONSTRUCTOR
@@ -106,46 +122,18 @@ class DayView(LayoutElement):
     # PUBLIC
     #
 
-    def push_event(
-        self,
-        from_hour: datetime.datetime,
-        until_hour: datetime.datetime,
-        color: Color = X11Color.SLATE_GRAY,
-        description: str = "",
-        title: str = "",
-    ) -> "DayView":
-
-        # append event
-        self.__events += [
-            DayViewEventType(
-                color=color,
-                description=description,
-                from_hour=from_hour,
-                title=title,
-                until_hour=until_hour,
-            )
-        ]
-
-        # calculate a grid
-        # fmt: off
-        number_of_half_hours: int = (self.__until_hour - self.__from_hour).seconds // 1800
-        self.__grid = [[-1 for _ in range(0, number_of_half_hours)]]
-        for i, e in enumerate(self.__events):
-            from_index: int = (e.from_hour - self.__from_hour).seconds // 1800
-            to_index: int = (e.until_hour - self.__from_hour).seconds // 1800
-            if any([x != -1 for x in self.__grid[-1][from_index:to_index+1]]):
-                self.__grid += [[-1 for _ in range(0, number_of_half_hours)]]
-            for j in range(from_index, to_index):
-                self.__grid[-1][j] = i
-        # fmt: on
-
-        # return
-        return self
-
     def get_size(
         self, available_space: typing.Tuple[int, int]
     ) -> typing.Tuple[int, int]:
+        """
+        Calculate and return the size of the layout element based on available space.
 
+        This function uses the available space to compute the size (width, height)
+        of the layout element in points.
+
+        :param available_space: Tuple representing the available space (width, height).
+        :return:                Tuple containing the size (width, height) in points.
+        """
         # calculate number_of_lines
         number_of_lines: int = len(self.__grid)
 
@@ -177,7 +165,15 @@ class DayView(LayoutElement):
     def paint(
         self, available_space: typing.Tuple[int, int, int, int], page: Page
     ) -> None:
+        """
+        Render the layout element onto the provided page using the available space.
 
+        This function renders the layout element within the given available space on the specified page.
+
+        :param available_space: A tuple representing the available space (left, top, right, bottom).
+        :param page:            The Page object on which to render the LayoutElement.
+        :return:                None.
+        """
         # determine width/height
         w, h = self.get_size(available_space=(available_space[2], available_space[3]))
 
@@ -382,3 +378,55 @@ class DayView(LayoutElement):
 
                 # skip to the next event (or empty slot) in the lane
                 i = max([x for x in range(0, len(lane)) if lane[x] == lane[i]]) + 1
+
+    def push_event(
+        self,
+        from_hour: datetime.datetime,
+        until_hour: datetime.datetime,
+        color: Color = X11Color.SLATE_GRAY,
+        description: str = "",
+        title: str = "",
+    ) -> "DayView":
+        """
+        Add an event to the current DayView.
+
+        The event will be displayed between the specified start and end times.
+        Both from_hour and until_hour must fall within the DayView’s configured
+        range and align to 30-minute intervals. If an event overlaps an existing one,
+        a ValueError may be raised depending on implementation.
+
+        :param from_hour: The start time of the event.
+        :param until_hour: The end time of the event.
+        :param color: The background color used to display the event. Defaults to X11Color.SLATE_GRAY.
+        :param description: An optional longer description of the event. Defaults to an empty string.
+        :param title: A short title or label to display for the event. Defaults to an empty string.
+        :returns: The current DayView instance, allowing method chaining.
+        :raises ValueError: If the event times are invalid (e.g., outside the view range,
+                            not aligned to 30-minute slots, or overlapping another event).
+        """
+        # append event
+        self.__events += [
+            DayViewEventType(
+                color=color,
+                description=description,
+                from_hour=from_hour,
+                title=title,
+                until_hour=until_hour,
+            )
+        ]
+
+        # calculate a grid
+        # fmt: off
+        number_of_half_hours: int = (self.__until_hour - self.__from_hour).seconds // 1800
+        self.__grid = [[-1 for _ in range(0, number_of_half_hours)]]
+        for i, e in enumerate(self.__events):
+            from_index: int = (e.from_hour - self.__from_hour).seconds // 1800
+            to_index: int = (e.until_hour - self.__from_hour).seconds // 1800
+            if any([x != -1 for x in self.__grid[-1][from_index:to_index+1]]):
+                self.__grid += [[-1 for _ in range(0, number_of_half_hours)]]
+            for j in range(from_index, to_index):
+                self.__grid[-1][j] = i
+        # fmt: on
+
+        # return
+        return self
