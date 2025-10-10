@@ -7,11 +7,14 @@ from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
+from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
+    SelfTruncatingHeterogeneousParagraph,
+)
 from borb.pdf.page import Page
 from borb.pdf.visitor.pdf import PDF
 
 
-class TestHeterogeneousParagraph(unittest.TestCase):
+class TestSelfTruncatingHeterogeneousParagraph(unittest.TestCase):
 
     def build_temporary_document(self) -> float:
         d: Document = Document()
@@ -26,7 +29,7 @@ class TestHeterogeneousParagraph(unittest.TestCase):
         h: int = p.get_size()[1] - 2 * (p.get_size()[1] // 10)
 
         delta: float = time.time()
-        HeterogeneousParagraph(
+        SelfTruncatingHeterogeneousParagraph(
             chunks=[
                 Chunk(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
@@ -40,6 +43,7 @@ class TestHeterogeneousParagraph(unittest.TestCase):
                 ),
             ],
             text_alignment=LayoutElement.TextAlignment.JUSTIFIED,
+            max_height=64,
         ).paint(
             available_space=(x, y, w, h),
             page=p,
@@ -52,7 +56,7 @@ class TestHeterogeneousParagraph(unittest.TestCase):
         # return
         return delta
 
-    def test_heterogeneous_paragraph_speed(self):
+    def test_self_truncating_heterogeneous_paragraph_speed(self):
 
         layout_speed_in_seconds: typing.List[float] = []
         for i in range(0, 100):

@@ -1,5 +1,3 @@
-import time
-import typing
 import unittest
 
 from borb.pdf.document import Document
@@ -7,13 +5,16 @@ from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
+from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
+    SelfTruncatingHeterogeneousParagraph,
+)
 from borb.pdf.page import Page
 from borb.pdf.visitor.pdf import PDF
 
 
-class TestHeterogeneousParagraph(unittest.TestCase):
+class TestSelfTruncatingHeterogeneousParagraph(unittest.TestCase):
 
-    def build_temporary_document(self) -> float:
+    def test_self_truncating_heterogeneous_paragraph(self):
         d: Document = Document()
 
         p: Page = Page()
@@ -25,8 +26,7 @@ class TestHeterogeneousParagraph(unittest.TestCase):
         w: int = p.get_size()[0] - 2 * (p.get_size()[0] // 10)
         h: int = p.get_size()[1] - 2 * (p.get_size()[1] // 10)
 
-        delta: float = time.time()
-        HeterogeneousParagraph(
+        SelfTruncatingHeterogeneousParagraph(
             chunks=[
                 Chunk(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
@@ -40,27 +40,12 @@ class TestHeterogeneousParagraph(unittest.TestCase):
                 ),
             ],
             text_alignment=LayoutElement.TextAlignment.JUSTIFIED,
+            max_height=64,
         ).paint(
             available_space=(x, y, w, h),
             page=p,
         )
-        delta = time.time() - delta
 
-        # persist
-        PDF.write(what=d, where_to="assets/build_temporary_document.pdf")
-
-        # return
-        return delta
-
-    def test_heterogeneous_paragraph_speed(self):
-
-        layout_speed_in_seconds: typing.List[float] = []
-        for i in range(0, 100):
-            layout_speed_in_seconds += [self.build_temporary_document()]
-            print(f"{i:03d}: {round(layout_speed_in_seconds[-1], 5)}s")
-
-        # print average
-        avg: float = sum(layout_speed_in_seconds) / len(layout_speed_in_seconds)
-        print(f"AVG: {round(avg, 5)}s")
-
-        assert 0 < avg < 0.01
+        PDF.write(
+            what=d, where_to="assets/test_self_truncating_heterogeneous_paragraph.pdf"
+        )
