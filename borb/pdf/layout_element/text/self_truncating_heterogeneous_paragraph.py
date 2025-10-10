@@ -142,7 +142,7 @@ class SelfTruncatingHeterogeneousParagraph(HeterogeneousParagraph):
         self.__max_width: typing.Optional[int] = max_width
         self.__max_height: typing.Optional[int] = max_height
         self.__truncation_chunk: Chunk = truncation_chunk or Chunk("...")
-        self.__truncation_index: int = len(self._HeterogeneousParagraph__chunks)
+        self.__truncation_index: int = len(self._HeterogeneousParagraph__chunks)  # type: ignore[attr-defined]
 
     #
     # PRIVATE
@@ -159,11 +159,13 @@ class SelfTruncatingHeterogeneousParagraph(HeterogeneousParagraph):
 
         # IF we have truncated the text
         # THEN append the truncation chunk
-        chunks_to_render = self._HeterogeneousParagraph__chunks
-        if self.__truncation_index != len(self._HeterogeneousParagraph__chunks) - 1:
-            chunks_to_render = self._HeterogeneousParagraph__chunks[
+        chunks_to_render = self._HeterogeneousParagraph__chunks  # type: ignore[attr-defined]
+        if self.__truncation_index != len(self._HeterogeneousParagraph__chunks) - 1:  # type: ignore[attr-defined]
+            chunks_to_render = self._HeterogeneousParagraph__chunks[  # type: ignore[attr-defined]
                 : self.__truncation_index
-            ] + [self.__truncation_chunk]
+            ] + [
+                self.__truncation_chunk
+            ]
 
         # convert these chunks to lines
         for c in chunks_to_render:
@@ -218,7 +220,7 @@ class SelfTruncatingHeterogeneousParagraph(HeterogeneousParagraph):
         uncached_super_get_size = super().get_size.__wrapped__
 
         # perform binary search
-        chunks = self._HeterogeneousParagraph__chunks
+        chunks = self._HeterogeneousParagraph__chunks  # type: ignore[attr-defined]
         n = len(chunks)
         low, high = 0, n
         best_fit = 0  # full text fits by default
