@@ -148,7 +148,7 @@ class SelfTruncatingHeterogeneousParagraph(HeterogeneousParagraph):
     # PRIVATE
     #
 
-    def __get_lines(
+    def __get_lines(  # type: ignore[override]
         self,
         available_space: typing.Tuple[int, int],
         preserve_whitespaces: bool = False,
