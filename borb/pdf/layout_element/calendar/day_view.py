@@ -13,9 +13,11 @@ import typing
 
 from borb.pdf import HexColor
 from borb.pdf.layout_element.shape.shape import Shape
+from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
+    SelfTruncatingHeterogeneousParagraph,
+)
 from borb.pdf.page import Page
 from borb.pdf.layout_element.text.chunk import Chunk
-from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.color.color import Color
@@ -335,7 +337,7 @@ class DayView(LayoutElement):
                 event_top: int = background_y + h - i * self.__item_height
                 event_bottom: int = (
                     event_top
-                    + ((event.until_hour - event.from_hour).seconds // 1800)
+                    - ((event.until_hour - event.from_hour).seconds // 1800)
                     * self.__item_height
                 )
                 event_height: int = event_top - event_bottom
@@ -383,7 +385,7 @@ class DayView(LayoutElement):
                 )
 
                 # draw paragraph
-                HeterogeneousParagraph(
+                SelfTruncatingHeterogeneousParagraph(
                     chunks=[
                         Chunk(
                             event.title,
@@ -399,6 +401,7 @@ class DayView(LayoutElement):
                     padding_right=self.__font_size // 2,
                     padding_top=self.__font_size // 2,
                     padding_bottom=self.__font_size // 2,
+                    max_height=event_height,
                 ).paint(
                     available_space=(
                         lane_x + self.__lane_width // 10,
@@ -455,7 +458,7 @@ class DayView(LayoutElement):
         for i, e in enumerate(self.__events):
             from_index: int = (e.from_hour - self.__from_hour).seconds // 1800
             to_index: int = (e.until_hour - self.__from_hour).seconds // 1800
-            if any([x != -1 for x in self.__grid[-1][from_index:to_index+1]]):
+            if any([x != -1 for x in self.__grid[-1][from_index:to_index]]):
                 self.__grid += [[-1 for _ in range(0, number_of_half_hours)]]
             for j in range(from_index, to_index):
                 self.__grid[-1][j] = i

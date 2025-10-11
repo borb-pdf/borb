@@ -24,14 +24,14 @@ class TestDayView(unittest.TestCase):
 
         (
             DayView(
-                font_size=8,
-                lane_width=100,
+                font_size=10,
+                lane_width=128,
             )
             .push_event(
                 color=HexColor("FFB703"),
-                from_hour=datetime.datetime(year=2025, month=10, day=2, hour=9),
+                from_hour=datetime.datetime(year=2025, month=10, day=2, hour=12),
                 until_hour=datetime.datetime(
-                    year=2025, month=10, day=2, hour=9, minute=30
+                    year=2025, month=10, day=2, hour=12, minute=30
                 ),
                 title="Lorem",
                 description="ipsum dolor sit amet, consectetur adipiscing elit",
