@@ -392,6 +392,7 @@ class DayView(LayoutElement):
                             font_size=self.__font_size,
                             font="Helvetica-Bold",
                         ),
+                        Chunk(": ", font_size=self.__font_size),
                         Chunk(
                             event.description,
                             font_size=self.__font_size,
@@ -458,10 +459,12 @@ class DayView(LayoutElement):
         for i, e in enumerate(self.__events):
             from_index: int = (e.from_hour - self.__from_hour).seconds // 1800
             to_index: int = (e.until_hour - self.__from_hour).seconds // 1800
-            if any([x != -1 for x in self.__grid[-1][from_index:to_index]]):
+            lane_with_free_slots: typing.Optional[int] = next(iter([i for i in range(0, len(self.__grid)) if all([x == -1 for x in self.__grid[i][from_index:to_index]])]), None)
+            if lane_with_free_slots is None:
                 self.__grid += [[-1 for _ in range(0, number_of_half_hours)]]
+                lane_with_free_slots = -1
             for j in range(from_index, to_index):
-                self.__grid[-1][j] = i
+                self.__grid[lane_with_free_slots][j] = i
         # fmt: on
 
         # return
