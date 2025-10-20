@@ -116,7 +116,7 @@ class WeekView(CalendarView):
 
         # store events
         self.__events: typing.List[DayViewEventType] = []
-        self.__grid: typing.List[typing.List[int]] = []
+        self.__grid: typing.Dict[int, typing.List[typing.List[int]]] = {}
 
         # call to super
         self.__font_size: int = font_size
