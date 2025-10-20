@@ -123,6 +123,7 @@ if __name__ == "__main__":
             "smart_art.py",
             "source.py",
             "table.py",
+            "week_view.py",
         ],
     )
     checker.perform_check_on_directory()
