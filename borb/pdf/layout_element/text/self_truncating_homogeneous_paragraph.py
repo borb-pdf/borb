@@ -17,14 +17,13 @@ for common use cases where mixed styling is not required.
 This makes the component ideal for static text fields, UI labels, or table cells
 where space is limited but text should remain stylistically consistent.
 """
-from borb.pdf.color.color import Color
-from borb.pdf.font.font import Font
-from borb.pdf.color.x11_color import X11Color
-from borb.pdf.layout_element.layout_element import LayoutElement
-from borb.pdf.layout_element.text.chunk import Chunk
-
 import typing
 
+from borb.pdf.color.color import Color
+from borb.pdf.color.x11_color import X11Color
+from borb.pdf.font.font import Font
+from borb.pdf.layout_element.layout_element import LayoutElement
+from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
     SelfTruncatingHeterogeneousParagraph,
 )

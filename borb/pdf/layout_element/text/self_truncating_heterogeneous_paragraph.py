@@ -18,13 +18,13 @@ Layout constraints may be provided explicitly via ``max_width`` and ``max_height
 or inherited from the rendering context’s available space. All standard paragraph
 styling parameters—alignment, padding, margins, and line spacing—are preserved.
 """
-from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
-from borb.pdf.layout_element.layout_element import LayoutElement
-from borb.pdf.color.color import Color
-from borb.pdf.layout_element.text.chunk import Chunk
-
 import functools
 import typing
+
+from borb.pdf.color.color import Color
+from borb.pdf.layout_element.layout_element import LayoutElement
+from borb.pdf.layout_element.text.chunk import Chunk
+from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
 
 
 class SelfTruncatingHeterogeneousParagraph(HeterogeneousParagraph):

@@ -15,18 +15,18 @@ overview of the document's content, improving readability and organization.
 
 import typing
 
-from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
-from borb.pdf.color.hex_color import HexColor
 from borb.pdf.color.color import Color
+from borb.pdf.color.hex_color import HexColor
+from borb.pdf.document import Document
 from borb.pdf.font.font import Font
-from borb.pdf.layout_element.table.table import Table
-from borb.pdf.layout_element.table.fixed_column_width_table import FixedColumnWidthTable
-from borb.pdf.layout_element.text.paragraph import Paragraph
+from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.layout_element import LayoutElement
+from borb.pdf.layout_element.table.fixed_column_width_table import FixedColumnWidthTable
+from borb.pdf.layout_element.table.table import Table
+from borb.pdf.layout_element.text.paragraph import Paragraph
+from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
-from borb.pdf.page import Page
-from borb.pdf.document import Document
 
 
 class TableOfContents(Page):

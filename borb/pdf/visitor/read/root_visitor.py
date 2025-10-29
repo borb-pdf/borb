@@ -23,7 +23,7 @@ Key responsibilities:
 """
 import typing
 
-from borb.pdf.primitives import PDFType, reference, stream
+from borb.pdf.primitives import PDFType, reference
 from borb.pdf.visitor.read.read_visitor import ReadVisitor
 
 

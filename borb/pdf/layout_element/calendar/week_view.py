@@ -12,19 +12,19 @@ WeekView handles grid calculation, event placement, and layout rendering.
 import datetime
 import typing
 
-from borb.pdf.layout_element.text.chunk import Chunk
+from borb.pdf.color.color import Color
 from borb.pdf.color.hex_color import HexColor
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.layout_element.calendar.calendar_view import CalendarView
-from borb.pdf.color.color import Color
+from borb.pdf.layout_element.calendar.day_view import DayViewEventType
 from borb.pdf.layout_element.layout_element import LayoutElement
+from borb.pdf.layout_element.shape.shape import Shape
+from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
     SelfTruncatingHeterogeneousParagraph,
 )
 from borb.pdf.page import Page
-from borb.pdf.layout_element.shape.shape import Shape
-from borb.pdf.layout_element.calendar.day_view import DayViewEventType
 
 
 class WeekView(CalendarView):

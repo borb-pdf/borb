@@ -75,8 +75,8 @@ from borb.pdf.layout_element.annotation.highlight_annotation import HighlightAnn
 from borb.pdf.layout_element.annotation.ink_annotation import InkAnnotation
 from borb.pdf.layout_element.annotation.line_annotation import LineAnnotation
 from borb.pdf.layout_element.annotation.link_annotation import LinkAnnotation
-from borb.pdf.layout_element.annotation.polygon_annotation import PolygonAnnotation
 from borb.pdf.layout_element.annotation.poly_line_annotation import PolyLineAnnotation
+from borb.pdf.layout_element.annotation.polygon_annotation import PolygonAnnotation
 from borb.pdf.layout_element.annotation.redact_annotation import RedactAnnotation
 from borb.pdf.layout_element.annotation.remote_go_to_annotation import RemoteGoToAnnotation
 from borb.pdf.layout_element.annotation.rubber_stamp_annotation import RubberStampAnnotation
