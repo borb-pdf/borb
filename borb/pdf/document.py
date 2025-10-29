@@ -307,6 +307,7 @@ class Document(dict):
 
             # IF we processed a Page
             # THEN move ahead by 1
+            assert isinstance(n, Page)
             if isinstance(n, Page):
                 i += 1
 

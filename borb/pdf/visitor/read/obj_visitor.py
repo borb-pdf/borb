@@ -107,6 +107,8 @@ class ObjVisitor(ReadVisitor):
         i += 3
 
         # read newline or SPACE (\n\r )
+        if self.get_bytes()[i : i + 2] == b"\n\n":
+            i += 2
         if self.get_bytes()[i : i + 2] == b"\n\r":
             i += 2
         if self.get_bytes()[i : i + 2] == b"\r\n":

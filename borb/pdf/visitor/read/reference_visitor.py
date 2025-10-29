@@ -20,6 +20,7 @@ references to be resolved and processed within a comprehensive parsing framework
 import typing
 
 from borb.pdf.primitives import PDFType, reference, stream
+from borb.pdf.visitor.node_visitor import NodeVisitor
 from borb.pdf.visitor.read.compressed_xref_visitor import CompressedXRefVisitor
 from borb.pdf.visitor.read.compression.decode_stream import decode_stream
 from borb.pdf.visitor.read.document_visitor import DocumentVisitor
@@ -51,6 +52,23 @@ class ReferenceVisitor(ReadVisitor):
     #
     # CONSTRUCTOR
     #
+
+    def __init__(self, root: typing.Optional[NodeVisitor] = None) -> None:
+        """
+        Initialize a ReadVisitor instance.
+
+        This constructor initializes the `ReadVisitor` class, which is a visitor
+        for processing PDF nodes. The visitor may optionally be given a reference
+        to a root visitor (`FacadeVisitor`) to delegate the processing of PDF nodes.
+        The root visitor serves as the main controller for node traversal, and this
+        class allows for interaction with that root instance.
+
+        :param root: An optional reference to the root visitor (`FacadeVisitor`)
+                     which will be used to delegate the visiting of PDF nodes.
+        """
+        super().__init__()
+        self.__obj_stm_cache: typing.Dict[typing.Tuple[int, int], typing.Any] = {}
+        super().__init__(root=root)
 
     #
     # PRIVATE
@@ -97,9 +115,13 @@ class ReferenceVisitor(ReadVisitor):
 
     def __resolve_references(self, o: PDFType) -> PDFType:
         if isinstance(o, list):
-            return [self.__resolve_references(x) for x in o]
+            for i in range(0, len(o)):
+                o[i] = self.__resolve_references(o[i])
+            return o
         if isinstance(o, dict):
-            return {k: self.__resolve_references(v) for k, v in o.items()}
+            for k, v in o.items():
+                o[k] = self.__resolve_references(v)
+            return o
         if isinstance(o, reference):
             object_nr: typing.Optional[int] = o.get_object_nr()
             generation_nr: typing.Optional[int] = o.get_generation_nr()
@@ -112,6 +134,7 @@ class ReferenceVisitor(ReadVisitor):
                 or o
             )
             return self.__visit_reference(o)  # type: ignore[return-value]
+        # default
         return o
 
     def __visit_byte_offset_reference(self, r: reference) -> typing.Optional[PDFType]:
@@ -138,9 +161,18 @@ class ReferenceVisitor(ReadVisitor):
         index_in_parent_stream: typing.Optional[int] = r.get_index_in_parent_stream()
         assert parent_stream_object_nr is not None
         assert index_in_parent_stream is not None
-        r2: typing.Optional[reference] = self.__look_up_reference(
-            object_nr=parent_stream_object_nr, generation_nr=0
+
+        # check cache
+        cached_object: typing.Optional[typing.Any] = self.__obj_stm_cache.get(
+            (parent_stream_object_nr, index_in_parent_stream), None
         )
+        if cached_object is not None:
+            return cached_object
+
+        # look up parent (stream) object
+        # fmt: off
+        r2: typing.Optional[reference] = self.__look_up_reference(object_nr=parent_stream_object_nr, generation_nr=0)
+        # fmt: on
 
         try:
             assert r2 is not None
@@ -203,9 +235,15 @@ class ReferenceVisitor(ReadVisitor):
         # header:  list of object numbers and their offsets (within the stream)
         header: typing.List[int] = [int(x) for x in object_stm_header.split()]
 
+        # populate cache
+        for i in range(0, len(objs)):
+            self.__obj_stm_cache[(r.get_parent_stream_object_nr(), i)] = objs[i]
+
         # return
         referenced_object = objs[index_in_parent_stream]
         referenced_object = self.__resolve_references(referenced_object)
+
+        # return
         return referenced_object
 
     def __visit_reference(self, r: reference) -> typing.Optional[PDFType]:

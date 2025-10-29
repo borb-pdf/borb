@@ -16,6 +16,7 @@ are replaced with their corresponding objects for accurate rendering or processi
 """
 import typing
 
+from borb.pdf.document import Document
 from borb.pdf.primitives import PDFType, reference
 from borb.pdf.visitor.read.read_visitor import ReadVisitor
 
@@ -44,8 +45,31 @@ class RecursiveReferenceVisitor(ReadVisitor):
     # PRIVATE
     #
 
-    def __lookup(self, ref: reference) -> PDFType:
-        return ref.get_referenced_object() or ref
+    def __lookup(self, doc: Document, ref: reference) -> PDFType:
+        # IF the reference has been resolved in the past
+        # THEN return that value
+        if ref.get_referenced_object() is not None:
+            return ref.get_referenced_object()
+        # IF the document XREF contains the reference
+        # THEN return that
+        matching_ref: typing.Optional[reference] = next(
+            iter(
+                [
+                    r
+                    for r in doc["XRef"]
+                    if r.get_object_nr() == ref.get_object_nr()
+                    and r.get_generation_nr() == ref.get_generation_nr()
+                ]
+            ),
+            None,
+        )
+        if (
+            matching_ref is not None
+            and matching_ref.get_referenced_object() is not None
+        ):
+            return matching_ref.get_referenced_object()
+        # default
+        return ref
 
     #
     # PUBLIC
@@ -82,13 +106,11 @@ class RecursiveReferenceVisitor(ReadVisitor):
                 continue
             done_ids.add(id(m))
 
-            # 0017.pdf, done_ids == 450 is cursed
-
             # handle parent link for dictionaries
             if isinstance(m, dict):
                 for k, v in m.items():
                     if isinstance(v, reference):
-                        m[k] = self.__lookup(v)
+                        m[k] = self.__lookup(doc=node, ref=v)
                     if isinstance(m[k], dict) or isinstance(m[k], list):
                         if id(m[k]) not in done_ids:
                             stk += [m[k]]
@@ -97,7 +119,7 @@ class RecursiveReferenceVisitor(ReadVisitor):
             if isinstance(m, list):
                 for i, v in enumerate(m):
                     if isinstance(v, reference):
-                        m[i] = self.__lookup(v)
+                        m[i] = self.__lookup(doc=node, ref=v)
                     if isinstance(m[i], dict) or isinstance(m[i], list):
                         if id(m[i]) not in done_ids:
                             stk += [m[i]]

@@ -7,9 +7,6 @@ import unittest
 from borb.pdf import PDF, Document
 from borb.pdf.toolkit.pipeline import Pipeline
 from borb.pdf.toolkit.sink.get_text import GetText
-from borb.pdf.toolkit.source.flow.enrich_text_events import EnrichTextEvents
-from borb.pdf.toolkit.source.flow.filter_ocr_artifacts import FilterOCRArtifacts
-from borb.pdf.toolkit.source.flow.paragraph_of_text_pipe import ParagraphOfTextPipe
 from borb.pdf.toolkit.source.operator.source import Source
 
 
@@ -138,24 +135,9 @@ class TestReadCorpus(unittest.TestCase):
             for pdf_file in negative:
                 print(f"\t\t- {pdf_file}")
 
-    # @unittest.skip
+    @unittest.skip
     def test_read_single_pdf(self):
 
-        d: Document = PDF.read(where_from=TestReadCorpus.CORPUS_DIRECTORY / "0019.pdf")
-
-        from borb.pdf.toolkit.source.flow.line_of_text_pipe import LineOfTextPipe
-        from borb.pdf.toolkit.sink.draw_bounding_boxes import DrawBoundingBoxes
-
-        Pipeline(
-            [
-                Source(),  # process input data
-                EnrichTextEvents(),
-                FilterOCRArtifacts(),
-                LineOfTextPipe(),  # gather lines of text
-                DrawBoundingBoxes(
-                    text_event_indices_to_mark=[i for i in range(0, 100)]
-                ),
-            ]
-        ).process(d)
-
-        PDF.write(what=d, where_to="/home/joris-schellekens/0017_c.pdf")
+        d: Document = PDF.read(where_from="/home/joris-schellekens/Downloads/68192.pdf")
+        print(d.get_number_of_pages())
+        print(d.get_page(0))

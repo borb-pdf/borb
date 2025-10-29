@@ -23,7 +23,7 @@ Key responsibilities:
 """
 import typing
 
-from borb.pdf.primitives import PDFType, reference
+from borb.pdf.primitives import PDFType, reference, stream
 from borb.pdf.visitor.read.read_visitor import ReadVisitor
 
 
@@ -155,15 +155,16 @@ class RootVisitor(ReadVisitor):
         ):
             self.__source = node
             node = 0
-        # print(f'stack depth: {RootVisitor.__get_stack_size()}, byte pos: {node}')
         if isinstance(node, int) and node in self.__cache:
             return self.__cache[node]
+        # print(f'stack depth: {RootVisitor.__get_stack_size()}, byte pos: {node}')
         for v in self.__visitors:
             if v is self:
                 continue
             w = v.visit(node)
             if w is not None:
-                # store in cache
+                # IF the object is more than 256 bytes
+                # THEN store it in cache
                 if (
                     isinstance(node, int)
                     and isinstance(w, tuple)
@@ -176,6 +177,6 @@ class RootVisitor(ReadVisitor):
                 return w
         # debug
         if isinstance(node, int):
-            print(f"unable to map bytes[{node}:]")
+            print(f"unable to map bytes[{node}:] to an object")
         # default case
         return None
