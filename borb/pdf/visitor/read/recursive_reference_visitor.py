@@ -64,11 +64,13 @@ class RecursiveReferenceVisitor(ReadVisitor):
             ),
             None,
         )
-        if (
-            matching_ref is not None
-            and matching_ref.get_referenced_object() is not None
-        ):
-            return matching_ref.get_referenced_object()
+
+        if matching_ref is not None:
+            # fmt: off
+            matching_ref_referenced_object: typing.Optional[PDFType] = matching_ref.get_referenced_object()
+            if matching_ref_referenced_object is not None:
+                return matching_ref_referenced_object
+            # fmt: on
         # default
         return ref
 
