@@ -237,7 +237,7 @@ class ReferenceVisitor(ReadVisitor):
 
         # populate cache
         for i in range(0, len(objs)):
-            self.__obj_stm_cache[(r.get_parent_stream_object_nr(), i)] = objs[i]
+            self.__obj_stm_cache[(parent_stream_object_nr, i)] = objs[i]
 
         # return
         referenced_object = objs[index_in_parent_stream]
