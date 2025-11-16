@@ -48,8 +48,9 @@ class RecursiveReferenceVisitor(ReadVisitor):
     def __lookup(self, doc: Document, ref: reference) -> PDFType:
         # IF the reference has been resolved in the past
         # THEN return that value
-        if ref.get_referenced_object() is not None:
-            return ref.get_referenced_object()
+        ref_referenced_object: typing.Optional[PDFType] = ref.get_referenced_object()
+        if ref_referenced_object is not None:
+            return ref_referenced_object
         # IF the document XREF contains the reference
         # THEN return that
         matching_ref: typing.Optional[reference] = next(
