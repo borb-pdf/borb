@@ -17,6 +17,7 @@ This class:
 `ReferenceVisitor` is essential for managing PDF document structure, as it allows
 references to be resolved and processed within a comprehensive parsing framework.
 """
+import logging
 import typing
 
 from borb.pdf.primitives import PDFType, reference, stream
@@ -145,14 +146,16 @@ class ReferenceVisitor(ReadVisitor):
             assert byte_offset is not None
             referenced_object_and_blank = self.root_generic_visit(byte_offset)
             if referenced_object_and_blank is None:
-                print(
+                logger = logging.getLogger(__name__)
+                logger.debug(
                     f"Unable to resolve {r.get_object_nr()} {r.get_generation_nr()} R (redirects to byte {r.get_byte_offset()}), read returns None"
                 )
                 return r
             return referenced_object_and_blank[0]
         except Exception as e:
-            print(
-                f"Unable to resolve {r.get_object_nr()} {r.get_generation_nr()} R (redirects to byte {r.get_byte_offset()}), read raises {e}"
+            logger = logging.getLogger(__name__)
+            logger.debug(
+                f"Unable to resolve {r.get_object_nr()} {r.get_generation_nr()} R (redirects to byte {r.get_byte_offset()}), read returns None"
             )
             return None
 

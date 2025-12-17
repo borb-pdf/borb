@@ -21,6 +21,7 @@ Key responsibilities:
   classes, which process each part of the document as defined by the PDF
   specification.
 """
+import logging
 import typing
 
 from borb.pdf.primitives import PDFType, reference
@@ -177,6 +178,9 @@ class RootVisitor(ReadVisitor):
                 return w
         # debug
         if isinstance(node, int):
-            print(f"unable to map bytes[{node}:] to an object")
+            logger = logging.getLogger(__name__)
+            logger.debug(
+                f"Unable to map byte-sequence starting at {node} to a PDF object."
+            )
         # default case
         return None

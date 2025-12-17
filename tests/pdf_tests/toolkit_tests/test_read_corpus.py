@@ -35,8 +35,6 @@ class TestReadCorpus(unittest.TestCase):
         for pdf_file in TestReadCorpus.CORPUS_DIRECTORY.iterdir():
             if not pdf_file.name.endswith(".pdf"):
                 continue
-            if not pdf_file.name.endswith("_page_0.pdf"):
-                continue
             if pdf_file.name in [
                 "0365_page_0.pdf",
                 "0390_page_0.pdf",

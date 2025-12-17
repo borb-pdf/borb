@@ -19,6 +19,7 @@ This class:
 PDFs that use uncompressed XRef tables, supporting document reconstruction and
 efficient navigation within the PDF byte stream.
 """
+import logging
 import typing
 
 from borb.pdf.primitives import PDFType, reference
@@ -75,6 +76,19 @@ class PlaintextXRefVisitor(XRefVisitor):
         """
         if not isinstance(node, int):
             return None
+
+        # IF the bytes do not align with 'xref' being present at the right position
+        # THEN look-ahead/back 8 bytes
+        xref_offset: int = 0
+        for i in range(-8, 8):
+            if self.get_bytes()[node + i : node + i + 4] == b"xref":
+                xref_offset = i
+                break
+
+        if xref_offset != 0:
+            logger = logging.getLogger(__name__)
+            logger.debug(f"XREF found at {node+xref_offset} instead of {node}")
+            node = node + xref_offset
 
         # XREF should start with 'xref'
         if self.get_bytes()[node : node + 4] != b"xref":
