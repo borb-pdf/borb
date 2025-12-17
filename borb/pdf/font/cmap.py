@@ -216,9 +216,10 @@ class CMap(stream):
         :return: The character code corresponding to the given Unicode character.
         """
         if len(self.__character_to_character_code) == 0:
-            self.__character_to_character_code = {
-                v: k for k, v in self.__character_code_to_character.items()
-            }
+            # pick the first code for each character
+            self.__character_to_character_code = {}
+            for k, v in self.__character_code_to_character.items():
+              self.__character_to_character_code.setdefault(v, k)
         return self.__character_to_character_code.get(character, -1)
 
     def last_character_code(self) -> int:

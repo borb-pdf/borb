@@ -359,6 +359,12 @@ class LayoutElement:
         # IF the border widths are different
         # THEN we need to construct a path
         else:
+            # background
+            if self.__background_color is not None:
+                LayoutElement._append_to_content_stream(
+                    page=page, bytes_or_string=f"{x} {y} {w} {h} re\nf\n"
+                )
+
             # bottom
             if self.__border_color is not None and self.__border_width_bottom > 0:
                 # fmt: off

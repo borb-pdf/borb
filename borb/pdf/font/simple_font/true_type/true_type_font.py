@@ -203,6 +203,9 @@ class TrueTypeFont(SimpleFont):
         if all([font_name[i] == "\x00" for i in range(0, len(font_name), 2)]):
             font_name = "".join([font_name[i] for i in range(1, len(font_name), 2)])
 
+        # remove spaces
+        font_name = font_name.replace(' ', '')
+
         # return
         return font_name
 
