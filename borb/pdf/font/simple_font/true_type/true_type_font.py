@@ -203,8 +203,21 @@ class TrueTypeFont(SimpleFont):
         if all([font_name[i] == "\x00" for i in range(0, len(font_name), 2)]):
             font_name = "".join([font_name[i] for i in range(1, len(font_name), 2)])
 
+        # IF the font_name contains special characters (which would break a content stream)
+        # THEN we leave those out and replace by <HYPHEN>
+        font_name_without_special_chars: str = ""
+        for c in font_name:
+            # delimiters
+            if c in ["(", ")", "<", ">", "[", "]", "{", "}" "/", "%"]:
+                continue
+            # whitespace characters
+            if c in ["\x00", "\x09", "\x0a", "\x0c", "\x0d", "\x20"]:
+                continue
+            # default
+            font_name_without_special_chars += c
+
         # return
-        return font_name
+        return font_name_without_special_chars
 
     @staticmethod
     def __true_type_from_file(where_from: pathlib.Path) -> "Font":
