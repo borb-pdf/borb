@@ -161,7 +161,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
 
         # lookup these references
         for ref in refs_to_process:
-            self.root_generic_visit(node=ref)
+            self.root_generic_visit(node=ref)  # type: ignore[arg-type]
 
         # return
         return retval_and_blank[0]
