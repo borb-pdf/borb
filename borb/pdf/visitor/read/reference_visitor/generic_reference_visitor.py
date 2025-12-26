@@ -151,7 +151,12 @@ class GenericReferenceVisitor(ReadVisitor):
         # IF the reference is not in use
         # THEN return None
         if ref is None:
-            return None
+            return (
+                reference(
+                    object_nr=object_nr, generation_nr=generation_nr, is_in_use=False
+                ),
+                i,
+            )
 
         # delegate
         referenced_object_and_blank = self._visit_from_object(node=ref)

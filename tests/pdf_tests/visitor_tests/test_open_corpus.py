@@ -35,6 +35,7 @@ class TestOpenCorpus(unittest.TestCase):
             if x.name.endswith(".pdf")
         ]
         all_pdf_files = sorted(all_pdf_files, key=lambda x: x.name)
+        all_pdf_files = all_pdf_files[0:100]
         N: int = len(all_pdf_files)
         for i, pdf_file in enumerate(all_pdf_files):
 

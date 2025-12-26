@@ -133,7 +133,9 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
 
         # call visit
         retval_and_blank = obj_stm_root_visitor.visit(b)
-        assert retval_and_blank is not None
+        assert (
+            retval_and_blank is not None
+        ), f"Unable to process (parent) object stream '{b[0:32].decode()} ... {b[-32:].decode()}'"
 
         # find all references mentioned in the object
         objs_to_scan: typing.List[PDFType] = [retval_and_blank[0]]
@@ -164,7 +166,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
             self.root_generic_visit(node=ref)  # type: ignore[arg-type]
 
         # return
-        return retval_and_blank[0]
+        return retval_and_blank
 
     def _visit_from_object(
         self, node: reference
@@ -211,7 +213,9 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
 
         # fetch the underlying stream
         # fmt: off
-        parent_stream_obj_and_blank = self.root_generic_visit(parent_ref.get_byte_offset())
+        parent_ref_byte_offset: typing.Optional[int] = parent_ref.get_byte_offset()
+        assert parent_ref_byte_offset is not None, f"Reference {node} does not point to a byte-offset."
+        parent_stream_obj_and_blank = self.root_generic_visit(parent_ref_byte_offset)
         assert parent_stream_obj_and_blank is not None, f"Reference {node} points to a (parent) stream object reference, which did not resolve to an object."
         parent_stream_obj, _ = parent_stream_obj_and_blank
         assert isinstance(parent_stream_obj, stream), f"Reference {node} points to a (parent) stream object reference, which did not resolve to a stream object."
@@ -268,7 +272,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
         ):
             try:
                 ref_to_update._reference__referenced_object = objs[  # type: ignore[attr-defined]
-                    ref_to_update.get_index_in_parent_stream()  # type: ignore[arg-type, index]
+                    ref_to_update.get_index_in_parent_stream()  # type: ignore[index]
                 ]
             except:
                 pass

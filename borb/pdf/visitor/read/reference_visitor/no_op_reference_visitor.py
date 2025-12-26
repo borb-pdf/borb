@@ -135,6 +135,9 @@ class NoOpReferenceVisitor(GenericReferenceVisitor):
         ref: typing.Optional[reference] = self._get_document_bound_reference(
             reference(object_nr=object_nr, generation_nr=generation_nr)
         )
+        assert (
+            ref is not None
+        ), f"Unable to retrieve document-bound reference for {object_nr} {generation_nr} R."
 
         # return
         return ref, i
