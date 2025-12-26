@@ -278,7 +278,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
                 pass
 
         # return
-        return node.get_referenced_object(), -1
+        return node.get_referenced_object() or node, -1
 
     #
     # PUBLIC
