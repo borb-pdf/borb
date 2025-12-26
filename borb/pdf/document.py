@@ -307,7 +307,7 @@ class Document(dict):
 
             # IF we processed a Page
             # THEN move ahead by 1
-            assert isinstance(n, Page)
+            assert isinstance(n, Page), "Document contains an object that is not a Page"
             if isinstance(n, Page):
                 i += 1
 

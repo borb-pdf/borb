@@ -50,7 +50,7 @@ class ReadVisitor(NodeVisitor):
                      which will be used to delegate the visiting of PDF nodes.
         """
         super().__init__()
-        self.__root: typing.Optional[NodeVisitor] = root
+        self.__parent: typing.Optional[NodeVisitor] = root
 
     #
     # PRIVATE
@@ -71,8 +71,21 @@ class ReadVisitor(NodeVisitor):
 
         :return: The raw PDF byte data as a `bytes` object.
         """
-        assert self.__root is not None
-        return self.__root._RootVisitor__source  # type: ignore[attr-defined]
+        # go to FIRST root visitor
+        # this is to ensure that when we are working with an object stream
+        # we process the bytes from the stream, rather than the bytes from the
+        # underlying PDF document
+        from borb.pdf.visitor.read.root_visitor import RootVisitor
+
+        root_visitor: ReadVisitor = self
+        while root_visitor._ReadVisitor__parent is not None:
+            root_visitor = root_visitor._ReadVisitor__parent
+            if isinstance(root_visitor, RootVisitor):
+                break
+
+        # return its source
+        assert isinstance(root_visitor, RootVisitor)
+        return root_visitor._RootVisitor__source  # type: ignore[attr-defined]
 
     def root_generic_visit(
         self, node: typing.Union[bytes, int]
@@ -89,7 +102,7 @@ class ReadVisitor(NodeVisitor):
         :param node:    The PDF node to be visited, represented as a `PDFType`.
         :return:        True if the node was processed by the root visitor, False otherwise.
         """
-        r: typing.Optional[NodeVisitor] = self.__root
+        r: typing.Optional[NodeVisitor] = self.__parent
         from borb.pdf.visitor.read.root_visitor import RootVisitor
 
         if r is not None and isinstance(r, RootVisitor):

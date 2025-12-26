@@ -90,7 +90,27 @@ class FlateDecode:
         # initial transform
         import zlib
 
-        bytes_after_zlib = zlib.decompress(bytes_in, bufsize=4092)
+        bytes_after_zlib: typing.Optional[bytes] = None
+        zlib_errors: typing.List[Exception] = []
+        try:
+            bytes_after_zlib = zlib.decompress(bytes_in)
+        except Exception as ex0:
+            zlib_errors += [ex0]
+
+        if bytes_after_zlib is None:
+            try:
+                bytes_after_zlib = zlib.decompress(bytes_in, wbits=-15)
+            except Exception as ex0:
+                zlib_errors += [ex0]
+
+        if bytes_after_zlib is None:
+            try:
+                bytes_after_zlib = zlib.decompress(bytes_in, wbits=15)
+            except Exception as ex0:
+                zlib_errors += [ex0]
+
+        if bytes_after_zlib is None:
+            raise zlib_errors[0]
 
         # LZW and Flate encoding compress more compactly if their input data is highly predictable. One way of
         # increasing the predictability of many continuous-tone sampled images is to replace each sample with the

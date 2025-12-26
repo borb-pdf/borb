@@ -21,9 +21,8 @@ class TestReadCorpus(unittest.TestCase):
     #
     # Ensure that the directory specified by this path exists and contains the necessary
     # PDF files before running the tests.
-    CORPUS_DIRECTORY: pathlib.Path = pathlib.Path(
-        "/home/joris-schellekens/Code/borb-pdf-corpus/first-page-pdf"
-    )
+    FIRST_PAGE_PDF_DIR: pathlib.Path = pathlib.Path("/home/joris-schellekens/Code/borb-pdf-corpus/first-page-pdf")
+    FIRST_PAGE_TXT_DIR: pathlib.Path = pathlib.Path("/home/joris-schellekens/Code/borb-pdf-corpus/first-page-txt")
 
     # @unittest.skip
     def test_read_corpus(self):
@@ -32,51 +31,50 @@ class TestReadCorpus(unittest.TestCase):
         negative: typing.List[pathlib.Path] = []
         negative_timing: typing.List[float] = []
         error_buckets: typing.Dict[int, int] = {x: 0 for x in range(0, 110, 10)}
-        for pdf_file in TestReadCorpus.CORPUS_DIRECTORY.iterdir():
-            if not pdf_file.name.endswith(".pdf"):
-                continue
+        all_pdf_files = [x for x in TestReadCorpus.FIRST_PAGE_PDF_DIR.iterdir() if x.name.endswith(".pdf")]
+        all_pdf_files = sorted(all_pdf_files, key=lambda x: x.name)
+        all_pdf_files = all_pdf_files[0:100]
+        N: int = len(all_pdf_files)
+        for i, pdf_file in enumerate(all_pdf_files):
+
+            # known errors
             if pdf_file.name in [
-                "0365_page_0.pdf",
-                "0390_page_0.pdf",
-                "0457_page_0.pdf",
-                "0364_page_0.pdf",
-                "0565_page_0.pdf",
-                "0539_page_0.pdf",  # bracket balancing in source.py
-                "0240_page_0.pdf",  # bracket balancing in source.py
-                "0487_page_0.pdf",  # infinite loop?
-                "0458_page_0.pdf",  # infinite loop?
-                "0465_page_0.pdf",  # infinite loop?
-                "0407_page_0.pdf",  # infinite loop?
-                "0218_page_0.pdf",
-                "0275_page_0.pdf",
-                "0237_page_0.pdf",
-                "0051_page_0.pdf",
-                "0191_page_0.pdf",
-                "0332_page_0.pdf",
+                "0025.pdf",
+                "0028.pdf",
+                "0046.pdf",
+                "0051.pdf",
+                "0389.pdf",
+                "0398.pdf",
             ]:
                 continue
 
             # try opening
             before: float = time.time()
             try:
-                print(f"Attempting to read {pdf_file}")
                 d: Document = PDF.read(where_from=pdf_file)
                 positive_timing += [time.time() - before]
                 positive += [pdf_file]
 
-                txt0: str = (
-                    Pipeline([Source(), GetText()]).process(d.get_page(0)).get(0, "")
+                # debug
+                print(
+                    f"count: {i}, total: {N}, count-as-%: {round(i / N, 2)}, pos: {len(positive)}, pos-as-%:{round(len(positive) / i, 2) if i != 0 else 0}, now-reading: {pdf_file.name}"
                 )
+
+                # get text
+                txt0: str = Pipeline([Source(), GetText()]).process(d.get_page(0)).get(0, "")
                 txt1: str = ""
-                with open(
-                    TestReadCorpus.CORPUS_DIRECTORY
-                    / (pdf_file.name.replace(".pdf", ".txt"))
-                ) as fh:
+                with open(TestReadCorpus.FIRST_PAGE_TXT_DIR / (pdf_file.name.replace(".pdf", ".txt"))) as fh:
                     txt1 = fh.read()
+
+                # process text
                 txt0_trimmed = re.sub("[^a-zA-Z0-9]+", "", txt0)
                 txt1_trimmed = re.sub("[^a-zA-Z0-9]+", "", txt1)
+
+                # process text
                 l0 = len(txt0_trimmed)
                 l1 = len(txt1_trimmed)
+
+                # update errors
                 error: int = 0
                 if max(l0, l1) > 0:
                     error = abs(l0 - l1) / max(l0, l1)
@@ -88,24 +86,19 @@ class TestReadCorpus(unittest.TestCase):
                     else:
                         error = error_up
                 error_buckets[error] += 1
-                print(
-                    f"name: {pdf_file.name}, len0: {len(txt0_trimmed)}, len1:  {len(txt1_trimmed)}, err: {error}"
-                )
 
             except Exception as e:
                 negative_timing += [time.time() - before]
                 negative += [pdf_file]
 
-            if len(positive) + len(negative) >= 200:
-                break
-
         # debug
         # fmt: off
         n: int = sum(error_buckets.values())
-        print("ERROR:")
-        for k,v in error_buckets.items():
-            print(f"\t{k}: {round(v/n, 2)*100}")
-        print('\n')
+        if n != 0:
+            print("ERROR:")
+            for k,v in error_buckets.items():
+                print(f"\t{k}: {round(v/n, 2)*100}")
+            print('\n')
         # fmt: on
 
         # fmt: off

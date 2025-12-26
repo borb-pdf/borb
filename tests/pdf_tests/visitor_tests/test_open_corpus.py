@@ -29,18 +29,16 @@ class TestOpenCorpus(unittest.TestCase):
         negative: typing.List[pathlib.Path] = []
         negative_timing: typing.List[float] = []
         reasons_for_failure: typing.Dict[str, int] = {}
-        M: typing.List[pathlib.Path] = [
+        all_pdf_files: typing.List[pathlib.Path] = [
             x
             for x in TestOpenCorpus.CORPUS_DIRECTORY.iterdir()
             if x.name.endswith(".pdf")
         ]
-        M = sorted(M, key=lambda x: x.name)
-        N: int = len(M)
-        for i, pdf_file in enumerate(M):
-            if not pdf_file.name.endswith(".pdf"):
-                continue
+        all_pdf_files = sorted(all_pdf_files, key=lambda x: x.name)
+        N: int = len(all_pdf_files)
+        for i, pdf_file in enumerate(all_pdf_files):
 
-            # KNOWN ERRORS
+            # known errors
             # fmt: off
             if pdf_file.name in ["0605.pdf"]:
                 continue
@@ -59,7 +57,6 @@ class TestOpenCorpus(unittest.TestCase):
                 positive_timing += [time.time() - before]
                 positive += [pdf_file]
             except Exception as e:
-                print(f"Unable to read {pdf_file}")
                 reasons_for_failure[str(e)] = reasons_for_failure.get(str(e), 0) + 1
                 negative_timing += [time.time() - before]
                 negative += [pdf_file]
@@ -98,5 +95,5 @@ class TestOpenCorpus(unittest.TestCase):
 
     # @unittest.skip
     def test_open_single_file_from_corpus(self):
-        d = PDF.read(where_from=TestOpenCorpus.CORPUS_DIRECTORY / "0000.pdf")
+        d = PDF.read(where_from=TestOpenCorpus.CORPUS_DIRECTORY / "0069.pdf")
         d.get_page(0)

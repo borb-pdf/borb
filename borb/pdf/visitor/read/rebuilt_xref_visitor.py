@@ -88,7 +88,7 @@ class RebuiltXREFVisitor(ReadVisitor):
             i += 1
 
         # add to (root) xref tables
-        self._ReadVisitor__root._RootVisitor__xref += xref  # type: ignore[attr-defined]
+        self._ReadVisitor__parent._RootVisitor__xref += xref  # type: ignore[attr-defined]
 
         # return
         return xref, -1

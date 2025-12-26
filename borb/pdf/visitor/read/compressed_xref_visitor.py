@@ -282,7 +282,7 @@ class CompressedXRefVisitor(XRefVisitor):
                 )
 
         # add to (root) xref tables
-        self._ReadVisitor__root._RootVisitor__xref += xref  # type: ignore[attr-defined]
+        self._ReadVisitor__parent._RootVisitor__xref += xref  # type: ignore[attr-defined]
 
         # IF the /Prev key has been set
         # THEN process the previous xref as well

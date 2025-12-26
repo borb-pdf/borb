@@ -65,13 +65,15 @@ class StrVisitor(ReadVisitor):
         retval: bytes = b""
         i: int = node
         j: int = node + 1
-        while self.get_bytes()[j : j + 1] != StrVisitor.__STR_CLOSE_BRACKET:
+        nested_bracket_depth: int = 1
+        while nested_bracket_depth > 0:
 
             # Within a literal string, the REVERSE SOLIDUS is used as an escape character. The character immediately
             # following the REVERSE SOLIDUS determines its precise interpretation as shown in Table 3. If the character
             # following the REVERSE SOLIDUS is not one of those shown in Table 3, the REVERSE SOLIDUS shall be
             # ignored.
-            if self.get_bytes()[j : j + 1] == b"\\":
+            ch = self.get_bytes()[j : j + 1]
+            if ch == b"\\":
 
                 # Sequence              Meaning
                 # \nLINE FEED           (0Ah) (LF)
@@ -82,8 +84,19 @@ class StrVisitor(ReadVisitor):
                 # \(LEFT PARENTHESIS    (28h)
                 # \)RIGHT PARENTHESIS   (29h)
                 # \\REVERSE SOLIDUS     (5Ch) (Backslash)
-                if self.get_bytes()[j + 1 : j + 2] in b"nrtbf()":
-                    retval += self.get_bytes()[j + 1 : j + 2]
+                nxt_ch = self.get_bytes()[j + 1 : j + 2]
+                if nxt_ch in b"nrtbf":
+                    retval += {
+                        b"n": b"\n",
+                        b"r": b"\r",
+                        b"t": b"\t",
+                        b"b": b"\b",
+                        b"f": b"\f",
+                    }[nxt_ch]
+                    j += 2
+                    continue
+                if nxt_ch in b"()\\":
+                    retval += nxt_ch
                     j += 2
                     continue
 
@@ -92,8 +105,21 @@ class StrVisitor(ReadVisitor):
                     tmp: bytes = self.get_bytes()[j : j + 3]
                 except:
                     pass
+
+            # update nesting depth
+            if ch == b"(":
+                nested_bracket_depth += 1
+            elif ch == b")":
+                nested_bracket_depth -= 1
+
+            # IF we hit the final bracket (depth == 0)
+            # THEN break
+            if nested_bracket_depth == 0:
+                break
+
             # default
-            retval += self.get_bytes()[j : j + 1]
+            retval += ch
             j += 1
 
+        # return
         return retval.decode(encoding="latin-1"), j + 1
