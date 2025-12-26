@@ -100,7 +100,7 @@ class DeferredReferenceVisitor(ReadVisitor):
             if isinstance(m, dict):
                 for k, v in m.items():
                     if isinstance(v, reference):
-                        m[k] = v.get_referenced_object()
+                        m[k] = v.get_referenced_object()  # type: ignore[assignment]
                     if isinstance(m[k], dict) or isinstance(m[k], list):
                         if id(m[k]) not in done_ids:
                             stk += [m[k]]
@@ -109,7 +109,7 @@ class DeferredReferenceVisitor(ReadVisitor):
             if isinstance(m, list):
                 for i, v in enumerate(m):
                     if isinstance(v, reference):
-                        m[i] = v.get_referenced_object()
+                        m[i] = v.get_referenced_object()  # type: ignore[assignment]
                     if isinstance(m[i], dict) or isinstance(m[i], list):
                         if id(m[i]) not in done_ids:
                             stk += [m[i]]

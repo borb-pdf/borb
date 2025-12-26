@@ -268,7 +268,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
         ):
             try:
                 ref_to_update._reference__referenced_object = objs[  # type: ignore[attr-defined]
-                    ref_to_update.get_index_in_parent_stream()  # type: ignore[arg-type]
+                    ref_to_update.get_index_in_parent_stream()  # type: ignore[arg-type, index]
                 ]
             except:
                 pass
