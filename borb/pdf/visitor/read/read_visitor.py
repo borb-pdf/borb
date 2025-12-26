@@ -78,8 +78,8 @@ class ReadVisitor(NodeVisitor):
         from borb.pdf.visitor.read.root_visitor import RootVisitor
 
         root_visitor: ReadVisitor = self
-        while root_visitor._ReadVisitor__parent is not None:
-            root_visitor = root_visitor._ReadVisitor__parent
+        while root_visitor._ReadVisitor__parent is not None:  # type: ignore[attr-defined]
+            root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
             if isinstance(root_visitor, RootVisitor):
                 break
 

@@ -163,7 +163,7 @@ class DocumentVisitor(ReadVisitor):
             DeferredReferenceVisitor,
         )
 
-        retval = DeferredReferenceVisitor(self._ReadVisitor__parent).visit(retval)  # type: ignore[assignment]
+        retval = DeferredReferenceVisitor(self._ReadVisitor__parent).visit(retval)  # type: ignore[assignment, attr-defined]
         assert isinstance(retval, Document)
 
         # (back)link Page(s) to Document

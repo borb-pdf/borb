@@ -67,8 +67,8 @@ class GenericReferenceVisitor(ReadVisitor):
     def _get_document_bound_reference(self, r: reference) -> typing.Optional[reference]:
         # go to root visitor
         root_visitor: ReadVisitor = self
-        while root_visitor._ReadVisitor__parent is not None:
-            root_visitor = root_visitor._ReadVisitor__parent
+        while root_visitor._ReadVisitor__parent is not None:  # type: ignore[attr-defined]
+            root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # loop over its xref(s) in reverse order
         for xref_table_entry in root_visitor._RootVisitor__xref[::-1]:  # type: ignore[attr-defined]
@@ -84,20 +84,20 @@ class GenericReferenceVisitor(ReadVisitor):
     def _is_being_resolved(self, r: reference) -> bool:
         # go to root visitor
         root_visitor: ReadVisitor = self
-        while root_visitor._ReadVisitor__parent is not None:
-            root_visitor = root_visitor._ReadVisitor__parent
+        while root_visitor._ReadVisitor__parent is not None:  # type: ignore[attr-defined]
+            root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # lookup
-        return id(r) in root_visitor._RootVisitor__references_being_resolved
+        return id(r) in root_visitor._RootVisitor__references_being_resolved  # type: ignore[attr-defined]
 
     def _mark_as_being_resolved(self, r: reference) -> None:
         # go to root visitor
         root_visitor: ReadVisitor = self
-        while root_visitor._ReadVisitor__parent is not None:
-            root_visitor = root_visitor._ReadVisitor__parent
+        while root_visitor._ReadVisitor__parent is not None:  # type: ignore[attr-defined]
+            root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # add
-        root_visitor._RootVisitor__references_being_resolved.add(id(r))
+        root_visitor._RootVisitor__references_being_resolved.add(id(r))  # type: ignore[attr-defined]
 
     def _visit_from_bytes(
         self, node: typing.Union[int, PDFType]
@@ -151,7 +151,7 @@ class GenericReferenceVisitor(ReadVisitor):
         # IF the reference is not in use
         # THEN return None
         if ref is None:
-            return None, i
+            return None
 
         # delegate
         referenced_object_and_blank = self._visit_from_object(node=ref)

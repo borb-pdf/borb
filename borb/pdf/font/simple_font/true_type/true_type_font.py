@@ -63,7 +63,7 @@ class TrueTypeFont(SimpleFont):
         # 1 beginbfchar
         # <0000> <0000>
         # endbfchar
-        import fontTools.agl  # type: ignore[import-not-found]
+        import fontTools.agl  # type: ignore[import-not-found, import-untyped]
 
         pairs: typing.List[typing.Tuple[str, str]] = []
         for character_code, character_name in enumerate(ttf_font_file.glyphOrder):

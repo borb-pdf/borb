@@ -84,8 +84,8 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
     ) -> typing.List[reference]:
         # go to root visitor
         root_visitor: ReadVisitor = self
-        while root_visitor._ReadVisitor__parent is not None:
-            root_visitor = root_visitor._ReadVisitor__parent
+        while root_visitor._ReadVisitor__parent is not None:  # type: ignore[attr-defined]
+            root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # loop over its xref(s) in reverse order
         refs = []
@@ -108,9 +108,9 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
             ByteOffsetReferenceVisitor,
         )
 
-        obj_stm_root_visitor._RootVisitor__visitors = [
+        obj_stm_root_visitor._RootVisitor__visitors = [  # type: ignore[attr-defined]
             x
-            for x in obj_stm_root_visitor._RootVisitor__visitors
+            for x in obj_stm_root_visitor._RootVisitor__visitors  # type: ignore[attr-defined]
             if not isinstance(x, ByteOffsetReferenceVisitor)
         ]
 
@@ -119,23 +119,24 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
             NoOpReferenceVisitor,
         )
 
-        obj_stm_root_visitor._RootVisitor__visitors = [
+        obj_stm_root_visitor._RootVisitor__visitors = [  # type: ignore[attr-defined]
             (
                 x
                 if not isinstance(x, ObjStmReferenceVisitor)
                 else NoOpReferenceVisitor(root=obj_stm_root_visitor)
             )
-            for x in obj_stm_root_visitor._RootVisitor__visitors
+            for x in obj_stm_root_visitor._RootVisitor__visitors  # type: ignore[attr-defined]
         ]
 
         # chain it in the hierarchy
-        obj_stm_root_visitor._ReadVisitor__parent = self._ReadVisitor__parent
+        obj_stm_root_visitor._ReadVisitor__parent = self._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # call visit
-        retval = obj_stm_root_visitor.visit(b)
+        retval_and_blank = obj_stm_root_visitor.visit(b)
+        assert retval_and_blank is not None
 
         # find all references mentioned in the object
-        objs_to_scan: typing.List[PDFType] = [retval[0]]
+        objs_to_scan: typing.List[PDFType] = [retval_and_blank[0]]
         objs_scanned: typing.List[PDFType] = []
         refs_to_process: typing.List[reference] = []
         while len(objs_to_scan) > 0:
@@ -163,7 +164,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
             self.root_generic_visit(node=ref)
 
         # return
-        return retval
+        return retval_and_blank[0]
 
     def _visit_from_object(
         self, node: reference
@@ -266,8 +267,8 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
             object_nr=parent_stream_object_nr
         ):
             try:
-                ref_to_update._reference__referenced_object = objs[
-                    ref_to_update.get_index_in_parent_stream()
+                ref_to_update._reference__referenced_object = objs[  # type: ignore[attr-defined]
+                    ref_to_update.get_index_in_parent_stream()  # type: ignore[arg-type]
                 ]
             except:
                 pass

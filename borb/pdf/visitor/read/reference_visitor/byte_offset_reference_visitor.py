@@ -19,7 +19,7 @@ correctness and avoiding infinite recursion.
 import logging
 import typing
 
-from borb.pdf.primitives import PDFType
+from borb.pdf.primitives import PDFType, reference
 from borb.pdf.visitor.node_visitor import NodeVisitor
 from borb.pdf.visitor.read.reference_visitor.generic_reference_visitor import (
     GenericReferenceVisitor,
@@ -72,12 +72,13 @@ class ByteOffsetReferenceVisitor(GenericReferenceVisitor):
     #
 
     def _visit_from_object(
-        self, node: typing.Union[int, PDFType]
+        self, node: reference
     ) -> typing.Optional[typing.Tuple[PDFType, int]]:
 
         # IF there is no byte offset
         # THEN return
-        if node.get_byte_offset() is None:
+        node_byte_offset: typing.Optional[int] = node.get_byte_offset()
+        if node_byte_offset is None:
             return None
 
         # IF we are already resolving the reference
@@ -89,16 +90,16 @@ class ByteOffsetReferenceVisitor(GenericReferenceVisitor):
         self._mark_as_being_resolved(node)
 
         # visit the byte offset
-        referenced_object_and_blank = self.root_generic_visit(node.get_byte_offset())
+        referenced_object_and_blank = self.root_generic_visit(node_byte_offset)
         if referenced_object_and_blank is None:
             # fmt: off
             logger = logging.getLogger(__name__)
-            logger.debug(f"Unable to resolve {node.get_object_nr()} {node.get_generation_nr()} R (redirects to byte {node.get_byte_offset()}), read returns None")
+            logger.debug(f"Unable to resolve {node} R (redirects to byte {node.get_byte_offset()}), read returns None")
             return node, -1
             # fmt: on
 
         # set the referenced_object in the reference
-        node._reference__referenced_object = referenced_object_and_blank[0]
+        node._reference__referenced_object = referenced_object_and_blank[0]  # type: ignore[attr-defined]
 
         # return
         return referenced_object_and_blank[0], -1

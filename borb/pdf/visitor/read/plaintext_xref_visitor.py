@@ -80,9 +80,14 @@ class PlaintextXRefVisitor(XRefVisitor):
         # IF the bytes do not align with 'xref' being present at the right position
         # THEN look-ahead/back 8 bytes
         xref_offset: int = 0
-        for i in range(-8, 8):
-            if self.get_bytes()[node + i : node + i + 4] == b"xref":
-                xref_offset = i
+        for potential_xref_offset in range(-8, 8):
+            if (
+                self.get_bytes()[
+                    node + potential_xref_offset : node + potential_xref_offset + 4
+                ]
+                == b"xref"
+            ):
+                xref_offset = potential_xref_offset
                 break
 
         if xref_offset != 0:
