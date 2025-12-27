@@ -13,13 +13,11 @@ import typing
 from borb.pdf.color.color import Color
 from borb.pdf.color.rgb_color import RGBColor
 from borb.pdf.color.x11_color import X11Color
-from borb.pdf.layout_element.image.image import Image
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.primitives import name, stream
 
 
-class Watermark(Image):
+class Watermark(LayoutElement):
     """
     Represents a watermark to be applied to PDF documents, inheriting from the Image class.
 
@@ -91,93 +89,77 @@ class Watermark(Image):
         :param transparency:           Transparency level of the watermark (default is 0.6).
         :param vertical_alignment:      Vertical alignment of the watermark (default is TOP).
         """
-        self.__text: str = text
-        self.__font_size: int = font_size
-        self.__transparency: float = transparency
-        self.__font_color: Color = font_color
         self.__angle_in_degrees: int = angle_in_degrees
+        self.__font_color: Color = font_color
+        self.__font_size: int = font_size
+        self.__text: str = text
+        self.__transparency: float = transparency
 
         # call super
-        super().__init__(
-            bytes_path_pil_image_or_url=Watermark.__create_watermark_image(
-                text=text,
-                font_size=font_size,
-                transparency=transparency,
-                font_color=font_color,
-                angle_in_degrees=angle_in_degrees,
-                size=(100, 100),
-            )
-        )
+        super().__init__()
 
     #
     # PRIVATE
     #
 
     @staticmethod
-    def __create_watermark_image(
-        size: typing.Tuple[int, int],
+    def __get_pil_image(
         text: str,
-        angle_in_degrees: int = 45,
-        font_color: Color = X11Color.RED,
-        font_size: int = 24,
+        angle_in_degrees: int = 0,
+        font_color: Color = X11Color.BLACK,
+        font_size: int = 20,
+        height: int = 100,
         transparency: float = 0.6,
+        width: int = 100,
     ):
-        from PIL import Image as PILImageModule  # type: ignore[import-untyped, import-not-found]
-        from PIL import ImageDraw, ImageFont  # type: ignore[import-untyped, import-not-found]
+        from PIL import Image, ImageDraw, ImageFont
 
-        # build new PIL.Image to hold text
-        text_img: PILImageModule.Image = PILImageModule.new(
-            mode="RGBA", size=(size[0], size[1]), color=(0, 0, 0, 0)
-        )
+        # Create a fully transparent image (RGBA)
+        img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
-        # determine hex representation of font color
+        # Prepare drawing context
+        draw = ImageDraw.Draw(img)
+
+        # Load a font (fallback-safe)
+        try:
+            font = ImageFont.truetype("DejaVuSans.ttf", size=font_size)
+        except IOError:
+            font = ImageFont.load_default()
+
+        # Measure text size
+        text_bbox = draw.textbbox((0, 0), text, font=font)
+        text_width = text_bbox[2] - text_bbox[0]
+        text_height = text_bbox[3] - text_bbox[1]
+
+        # Center the text
+        x = (width - text_width) // 2
+        y = (height - text_height) // 2
+
+        # Draw black text (fully opaque)
         rgb_font_color: RGBColor = font_color.to_rgb_color()
-        font_color_as_hex_str: str = "#"
-        font_color_as_hex_str += hex(rgb_font_color.get_red())[2:].zfill(2).upper()
-        font_color_as_hex_str += hex(rgb_font_color.get_green())[2:].zfill(2).upper()
-        font_color_as_hex_str += hex(rgb_font_color.get_blue())[2:].zfill(2).upper()
-        font_color_as_hex_str += hex(int(transparency * 255))[2:].zfill(2).upper()
-
-        # draw text
-        draw: ImageDraw.ImageDraw = ImageDraw.ImageDraw(text_img)
         draw.text(
-            xy=(size[0] // 2, size[0] // 2),
-            font=ImageFont.load_default(size=font_size),
-            text=text,
-            fill=font_color_as_hex_str,
-            stroke_fill=font_color_as_hex_str,
+            (x, y),
+            text,
+            fill=(
+                rgb_font_color.get_red(),
+                rgb_font_color.get_green(),
+                rgb_font_color.get_blue(),
+                255 - int(255 * transparency),
+            ),
+            font=font,
         )
 
-        # rotate
-        text_img = text_img.rotate(
-            angle=angle_in_degrees, center=(size[0] // 2, size[0] // 2)
-        )
-
-        # determine minimum dimensions of the (rotated) image_tests
-        min_x: int = size[0]
-        min_y: int = size[1]
-        max_x: int = 0
-        max_y: int = 0
-        data = text_img.getdata()
-        for y in range(0, size[1]):
-            for x in range(0, size[0]):
-                if data[y * size[0] + x] != (0, 0, 0, 0):
-                    min_x = min(min_x, x)
-                    min_y = min(min_y, y)
-                    max_x = max(max_x, x)
-                    max_y = max(max_y, y)
-
-        # crop text_image
-        text_img = text_img.crop(box=(min_x, min_y, max_x, max_y))
+        # Rotate around center, preserve alpha
+        if angle_in_degrees != 0:
+            img = img.rotate(
+                angle=angle_in_degrees,
+                resample=Image.BICUBIC,
+                expand=False,
+                center=(width // 2, height // 2),
+            )
 
         # return
-        return text_img
-
-    @staticmethod
-    def __get_image_bytes(img) -> bytes:
-        bytestream = io.BytesIO()
-        img.save(bytestream, format="PNG")
-        return bytestream.getvalue()
+        return img
 
     #
     # PUBLIC
@@ -209,63 +191,35 @@ class Watermark(Image):
         :param page:            The Page object on which to render the LayoutElement.
         :return:                None.
         """
-        img = self.__create_watermark_image(
-            text=self.__text,
-            size=page.get_size(),
-            transparency=self.__transparency,
-            font_color=self.__font_color,
-            angle_in_degrees=self.__angle_in_degrees,
+
+        # useful constant(s)
+        x: int = page.get_size()[0] // 10
+        y: int = page.get_size()[1] // 10
+        w: int = page.get_size()[0] - 2 * (page.get_size()[0] // 10)
+        h: int = page.get_size()[1] - 2 * (page.get_size()[1] // 10)
+
+        # generate the image to draw
+        from borb.pdf.layout_element.image.image import Image
+
+        img_to_draw = Image(
+            bytes_path_pil_image_or_url=self.__get_pil_image(
+                text=self.__text,
+                angle_in_degrees=self.__angle_in_degrees,
+                font_color=self.__font_color,
+                font_size=self.__font_size,
+                height=min(w, h),
+                width=min(w, h),
+            ),
+            horizontal_alignment=LayoutElement.HorizontalAlignment.MIDDLE,
+            vertical_alignment=LayoutElement.VerticalAlignment.MIDDLE,
+            size=(min(w, h), min(w, h)),
         )
-        self._LayoutElement__previous_paint_box = (
-            0,
-            0,
-            page.get_size()[0],
-            page.get_size()[1],
-        )
 
-        # resources
-        if "Resources" not in page:
-            page["Resources"] = {}
-        if "XObject" not in page["Resources"]:
-            page["Resources"]["XObject"] = {}
-
-        # create new image_name
-        image_name: str = "Im1"
-        while image_name in page["Resources"]["XObject"]:
-            image_name = f"Im{int(image_name[2:])+1}"
-        page["Resources"]["XObject"][image_name] = img
-
-        # Im (stream)
-        image_stream: stream = stream()
-        image_stream["Filter"] = name("DCTDecode")
-        image_stream["Bytes"] = self.__get_image_bytes(img)
-        image_stream["Type"] = name("XObject")
-        image_stream["Subtype"] = name("Image")
-        image_stream["Length"] = len(image_stream["Bytes"])
-        image_stream["Width"] = img.width
-        image_stream["Height"] = img.height
-        image_stream["BitsPerComponent"] = 8
-        image_stream["ColorSpace"] = name("DeviceRGB")
-        page["Resources"]["XObject"][image_name] = image_stream
-
-        # leading newline (if needed)
-        Watermark._append_newline_to_content_stream(page)
-
-        # store graphics state
-        LayoutElement._append_to_content_stream(page=page, bytes_or_string="q\n")
-
-        # write cm operator
-        LayoutElement._append_to_content_stream(
+        # draw
+        img_to_draw.paint(
+            available_space=(x, y, w, h),
             page=page,
-            bytes_or_string=f"{img.width} 0 "
-            f"0 {img.height} "
-            f"{page.get_size()[0]//2 - img.width//2} {page.get_size()[1]//2 - img.height//2} cm\n",
         )
 
-        # write Do operator
-        LayoutElement._append_to_content_stream(
-            page=page, bytes_or_string=f"/{image_name} Do\n"
-        )
-
-        # restore graphics state
-        LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")
+        # hack
+        self._LayoutElement__previous_paint_box = (0, 0, 0, 0)
