@@ -84,9 +84,6 @@ class RootVisitor(ReadVisitor):
         from borb.pdf.visitor.read.list_visitor import ListVisitor
         from borb.pdf.visitor.read.str_visitor import StrVisitor
         from borb.pdf.visitor.read.hex_str_visitor import HexStrVisitor
-        from borb.pdf.visitor.read.reference_visitor.generic_reference_visitor import (
-            GenericReferenceVisitor,
-        )
         from borb.pdf.visitor.read.obj_visitor import ObjVisitor
         from borb.pdf.visitor.read.name_visitor import NameVisitor
         from borb.pdf.visitor.read.float_visitor import FloatVisitor

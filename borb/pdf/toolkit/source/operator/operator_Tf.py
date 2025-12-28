@@ -81,9 +81,7 @@ class OperatorTf(Operator):
         """
         assert isinstance(operands[0], name)
         assert isinstance(operands[1], float) or isinstance(operands[1], int)
-        source.font = (
-            page.get("Resources", {}).get("Font", {}).get(operands[0][1:], None)
-        )
+        source.font = page.get("Resources", {}).get("Font", {}).get(operands[0], None)
         source.font_size = operands[1]
         pass
 

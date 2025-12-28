@@ -19,7 +19,7 @@ from borb.pdf.color.x11_color import X11Color
 from borb.pdf.font.font import Font
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.page import Page
-from borb.pdf.primitives import PDFType, name, stream, hexstr
+from borb.pdf.primitives import PDFType, name, stream
 from borb.pdf.toolkit.event import Event
 from borb.pdf.toolkit.pipe import Pipe
 from borb.pdf.visitor.read.compression.decode_stream import decode_stream
@@ -391,133 +391,43 @@ class Source(Pipe):
                 "DecodedBytes", b""
             )
 
+        # re-use the visitor(s)
+        from borb.pdf.visitor.read.bool_visitor import BoolVisitor
+        from borb.pdf.visitor.read.dict_visitor import DictVisitor
+        from borb.pdf.visitor.read.float_visitor import FloatVisitor
+        from borb.pdf.visitor.read.hex_str_visitor import HexStrVisitor
+        from borb.pdf.visitor.read.int_visitor import IntVisitor
+        from borb.pdf.visitor.read.list_visitor import ListVisitor
+        from borb.pdf.visitor.read.name_visitor import NameVisitor
+        from borb.pdf.visitor.read.root_visitor import RootVisitor
+        from borb.pdf.visitor.read.str_visitor import StrVisitor
+
+        operand_visitor: RootVisitor = RootVisitor()
+        operand_visitor._RootVisitor__visitors = [
+            # aggregation types
+            DictVisitor(root=operand_visitor),
+            ListVisitor(root=operand_visitor),
+            # primitive types
+            StrVisitor(root=operand_visitor),
+            HexStrVisitor(root=operand_visitor),
+            NameVisitor(root=operand_visitor),
+            BoolVisitor(root=operand_visitor),
+            FloatVisitor(root=operand_visitor),
+            IntVisitor(root=operand_visitor),
+        ]
+
         operands: typing.List[
             typing.Union[PDFType, typing.Literal[b"<<"], typing.Literal[b"["]]
         ] = []
         i: int = 0
         while i < len(content_stream_bytes):
 
-            # float
-            if content_stream_bytes[i] in b"0123456789.-":
-                j: int = i
-                has_leading_digits: bool = False
-                has_trailing_digits: bool = False
-                has_dot: bool = False
-                if content_stream_bytes[j] in b"-":
-                    j += 1
-                while content_stream_bytes[j] in b"0123456789":
-                    has_leading_digits = True
-                    j += 1
-                if content_stream_bytes[j] in b".":
-                    has_dot = True
-                    j += 1
-                while content_stream_bytes[j] in b"0123456789":
-                    has_trailing_digits = True
-                    j += 1
-                if has_dot and (has_leading_digits or has_trailing_digits):
-                    operands += [float(content_stream_bytes[i:j].decode())]
-                    i = j
-                    continue
-
-            # integer
-            if content_stream_bytes[i] in b"0123456789-":
-                j = i
-                if content_stream_bytes[j] in b"-":
-                    j += 1
-                while content_stream_bytes[j] in b"0123456789":
-                    j += 1
-                operands += [int(content_stream_bytes[i:j].decode())]
-                i = j
-                continue
-
-            # name
-            if content_stream_bytes[i] in b"/":
-                j = i + 1
-                while (
-                    (content_stream_bytes[j : j + 1] != b" ")
-                    and (content_stream_bytes[j : j + 2] != b"\n\r")
-                    and (content_stream_bytes[j : j + 2] != b"\r\n")
-                    and (content_stream_bytes[j : j + 1] != b"\n")
-                    and (content_stream_bytes[j : j + 1] != b"\r")
-                    and (content_stream_bytes[j : j + 1] != b"[")
-                    and (content_stream_bytes[j : j + 1] != b"]")
-                    and (content_stream_bytes[j : j + 1] != b"<")
-                    and (content_stream_bytes[j : j + 1] != b">")
-                    and (content_stream_bytes[j : j + 1] != b"/")
-                ):
-                    j += 1
-                operands += [name(content_stream_bytes[i:j].decode())]
-                i = j
-                continue
-
-            # string
-            if content_stream_bytes[i] in b"(":
-                j = i
-                while content_stream_bytes[j : j + 1] != b")":
-                    if content_stream_bytes[j:].startswith(b"\\n"):
-                        j += 2
-                        continue
-                    if content_stream_bytes[j:].startswith(b"\\r"):
-                        j += 2
-                        continue
-                    if content_stream_bytes[j:].startswith(b"\\t"):
-                        j += 2
-                        continue
-                    if content_stream_bytes[j:].startswith(b"\\b"):
-                        j += 2
-                        continue
-                    if content_stream_bytes[j:].startswith(b"\\f"):
-                        j += 2
-                        continue
-                    if content_stream_bytes[j:].startswith(b"\\("):
-                        j += 2
-                        continue
-                    if content_stream_bytes[j:].startswith(b"\\)"):
-                        j += 2
-                        continue
-                    j += 1
-                j += 1
-                operands += [content_stream_bytes[i + 1 : j - 1].decode("latin1")]
-                i = j
-                continue
-
-            # hex string
-            if (content_stream_bytes[i:].startswith(b"<")) and (
-                not content_stream_bytes[i:].startswith(b"<<")
-            ):
-                j = i + 1
-                while content_stream_bytes[j] in b"0123456789ABCDEFabcdef":
-                    j += 1
-
-                j += 1
-                operands += [hexstr(content_stream_bytes[i + 1 : j - 1].decode())]
-                i = j
-                continue
-
-            # open array [
-            if content_stream_bytes[i] in b"[":
-                operands += [b"["]
-                i += 1
-                continue
-            # close array ]
-            if content_stream_bytes[i] in b"]":
-                array_open_bracket_pos: int = operands.index(b"[")
-                arr = operands[array_open_bracket_pos + 1 :]
-                operands = operands[:array_open_bracket_pos] + [arr]  # type: ignore[assignment]
-                i += 1
-                continue
-
-            # open dictionary
-            if content_stream_bytes[i:].startswith(b"<<"):
-                operands += [b"<<"]
-                i += 2
-                continue
-            if content_stream_bytes[i:].startswith(b">>"):
-                dict_open_brackets_pos: int = operands.index(b"<<")
-                arr = operands[dict_open_brackets_pos + 1 :]  # type: ignore[assignment]
-                arr_as_dict = {arr[k]: arr[k + 1] for k in range(0, len(arr), 2)}
-                operands = operands[:dict_open_brackets_pos] + [arr_as_dict]  # type: ignore[assignment]
-                i += 2
+            # process things using RootVisitor
+            operand_visitor._RootVisitor__source = b""
+            operand_and_pos = operand_visitor.visit(content_stream_bytes[i:])
+            if operand_and_pos is not None:
+                operands += [operand_and_pos[0]]
+                i += operand_and_pos[1]
                 continue
 
             # space

@@ -77,7 +77,7 @@ class OperatorDP(Operator):
             property_dictionary = operands[1]  # type: ignore[assignment]
         if isinstance(operands[1], name):
             property_dictionary = (
-                page.get("Resources", {}).get("Properties", {}).get(operands[0][1:], {})
+                page.get("Resources", {}).get("Properties", {}).get(operands[0], {})
             )
         # TODO
         pass

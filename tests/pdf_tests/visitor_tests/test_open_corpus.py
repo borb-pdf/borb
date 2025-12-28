@@ -96,5 +96,5 @@ class TestOpenCorpus(unittest.TestCase):
 
     # @unittest.skip
     def test_open_single_file_from_corpus(self):
-        d = PDF.read(where_from=TestOpenCorpus.CORPUS_DIRECTORY / "0069.pdf")
+        d = PDF.read(where_from=TestOpenCorpus.CORPUS_DIRECTORY / "0004.pdf")
         d.get_page(0)
