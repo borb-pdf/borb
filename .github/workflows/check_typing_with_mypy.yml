@@ -1,14 +1,6 @@
 name: Check Typing
 
-on:
-  # Run this workflow on pushes, pull requests to main, or when manually triggered.
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+on: [push]
 
 jobs:
   check_typing:
