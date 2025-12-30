@@ -1,14 +1,6 @@
 name: Check Code Formatting with Black
 
-on:
-  # Run this workflow on pushes and pull requests to the main branch, or when manually triggered.
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+on: [push]
 
 jobs:
   check_code_formatting_with_black:
