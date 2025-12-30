@@ -231,23 +231,23 @@ class OperatorTj(Operator):
                 / 1000
             )
 
-        # Determine x,y
-        mtx = OperatorTj.__mul(
-            source.text_matrix,
-            source.transformation_matrix,
-        )
+        # Determine corner points
+        # fmt: off
+        mtx = OperatorTj.__mul(source.text_matrix, source.transformation_matrix)
         mtx[0][0] *= source.font_size
         mtx[1][1] *= source.font_size
-        p0 = OperatorTj.__cross(mtx, [0, source.text_rise, 1])
-        p1 = OperatorTj.__cross(
-            mtx,
-            [width, source.text_rise, 1],
-        )
-        p2 = OperatorTj.__cross(mtx, [0, source.text_rise + source.font_size, 1])
-        x = round(min([p0[0], p1[0]]))
-        y = round(min([p0[1], p1[1]]))
-        absolute_width: int = round(abs(p0[0] - p1[0]))
-        absolute_height = round(abs(p2[1] - p1[1]))
+        bottom_left_corner = OperatorTj.__cross(mtx, [0, source.text_rise, 1])
+        bottom_right_corner = OperatorTj.__cross(mtx,[width, source.text_rise, 1])
+        top_left_corner = OperatorTj.__cross(mtx, [0, source.text_rise + source.font_size, 1])
+        # fmt: on
+
+        # determine x,y, width, height
+        # fmt: off
+        x = round(min([bottom_left_corner[0], bottom_right_corner[0]]))
+        y = round(min([bottom_left_corner[1], bottom_right_corner[1]]))
+        absolute_width: int = round(abs(bottom_left_corner[0] - bottom_right_corner[0]))
+        absolute_height = round(abs(top_left_corner[1] - bottom_right_corner[1]))
+        # fmt: on
 
         # Trigger event
         source.text(
@@ -263,12 +263,6 @@ class OperatorTj(Operator):
 
         # Update text rendering location
         # This code only takes into account the text-matrix
-        p0 = OperatorTj.__cross(source.text_matrix, [0, 1, 1])
-        p1 = OperatorTj.__cross(
-            source.text_matrix,
-            [width, 1, 1],
-        )
-        width_in_text_matrix_space: int = round(abs(p0[0] - p1[0]))
         source.text_matrix[2][0] += absolute_width
 
     def get_name(self) -> str:

@@ -184,7 +184,7 @@ class FixedColumnWidthTable(Table):
 
         This function renders the layout element within the given available space on the specified page.
 
-        :param available_space: A tuple representing the available space (left, top, right, bottom).
+        :param available_space: A tuple representing the available space (x, y, width, height).
         :param page:            The Page object on which to render the LayoutElement.
         :return:                None.
         """
