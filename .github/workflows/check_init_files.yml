@@ -1,15 +1,6 @@
 name: Check Init Files
 
-on:
-  # Trigger the workflow on push and pull request events
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-
+on: [push]
 
 jobs:
   check_init_files:
