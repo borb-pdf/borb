@@ -182,9 +182,9 @@ class Regex(Sink):
 
                 # IF the y-gap is too large
                 # THEN don't merge rectangles
-                next_y: float = r[1]
-                next_height: float = r[3]
-                prev_y: float = match_rectangles[-1][1]
+                next_y: float = r[1]  # type: ignore [no-redef]
+                next_height: float = r[3]  # type: ignore [no-redef]
+                prev_y: float = match_rectangles[-1][1]  # type: ignore [no-redef]
                 if abs(prev_y - next_y) > next_height // 2:
                     match_rectangles += [r]
                     continue

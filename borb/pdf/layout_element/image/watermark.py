@@ -111,7 +111,7 @@ class Watermark(LayoutElement):
         transparency: float = 0.6,
         width: int = 100,
     ):
-        from PIL import Image, ImageDraw, ImageFont
+        from PIL import Image, ImageDraw, ImageFont  # type: ignore[import-not-found]
 
         # Create a fully transparent image (RGBA)
         img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
