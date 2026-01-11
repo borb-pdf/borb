@@ -1,8 +1,21 @@
-import collections
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+A sink class that captures text matching a regular expression from the PDF content pipeline.
+
+The Regex class sits at the end of the PDF processing pipeline, serving as a sink to
+detect and collect text fragments whose content matches a given regular expression.
+As the page content is processed, it evaluates text rendering events against the
+configured pattern and records the bounding boxes of all matching occurrences.
+
+This class does not alter the content stream but rather listens for text-related events,
+aggregates matches across the page, and exposes their positional information for
+downstream processing, analysis, or extraction workflows.
+"""
 import re
 import typing
 
-from borb.pdf import Pipe, PageSize, Sink
+from borb.pdf import PageSize, Sink
 from borb.pdf.toolkit.source.event.text_event import TextEvent
 
 # define a Rectangle
@@ -10,6 +23,18 @@ RectangleType = typing.Tuple[float, float, float, float]
 
 
 class Regex(Sink):
+    """
+    A sink class that captures text matching a regular expression from the PDF content pipeline.
+
+    The Regex class sits at the end of the PDF processing pipeline, serving as a sink to
+    detect and collect text fragments whose content matches a given regular expression.
+    As the page content is processed, it evaluates text rendering events against the
+    configured pattern and records the bounding boxes of all matching occurrences.
+
+    This class does not alter the content stream but rather listens for text-related events,
+    aggregates matches across the page, and exposes their positional information for
+    downstream processing, analysis, or extraction workflows.
+    """
 
     #
     # CONSTRUCTOR
