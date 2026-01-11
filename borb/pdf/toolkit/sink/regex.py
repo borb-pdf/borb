@@ -131,9 +131,19 @@ class Regex(Sink):
         char_rectangles: typing.List[typing.Optional[RectangleType]] = []
         text: str = ""
         for evt in self.__events_per_page[page_nr]:
-            rs: typing.List[RectangleType] = Regex.__split_event_into_rectangles(evt)
 
+            # IF we do not yet have any text (and thus rectangles)
+            # THEN simply add the new text (and rectangles)
+            rs: typing.List[RectangleType] = Regex.__split_event_into_rectangles(evt)
             if len(char_rectangles) == 0:
+                char_rectangles += rs
+                text += evt.get_text()
+                continue
+
+            # IF our previous character was a space or newline
+            # THEN  we do not attempt to add in another space or newline
+            #       we do not compare x-gap or y-gap
+            if char_rectangles[-1] is None:
                 char_rectangles += rs
                 text += evt.get_text()
                 continue
@@ -142,7 +152,7 @@ class Regex(Sink):
             # THEN add a newline (and None to the char_rectangles)
             next_y: float = rs[0][1]  # typing: ignore[index]
             next_height: float = rs[0][3]  # typing: ignore[index]
-            prev_y: float = char_rectangles[-1][1]
+            prev_y: float = char_rectangles[-1][1]  # typing: ignore[index]
             if abs(prev_y - next_y) > next_height // 2:
                 char_rectangles += [None]
                 text += "\n"
@@ -154,7 +164,9 @@ class Regex(Sink):
             # THEN add a space (and None to the char_rectangles)
             next_left: float = rs[0][0]  # typing: ignore[index]
             next_width: float = rs[0][2]  # typing: ignore[index]
-            prev_right: float = char_rectangles[-1][0] + char_rectangles[-1][2]
+            prev_right: float = (
+                char_rectangles[-1][0] + char_rectangles[-1][2]
+            )  # typing: ignore[index]
             if abs(prev_right - next_left) > (0.250 * next_width):
                 char_rectangles += [None]
                 text += " "
