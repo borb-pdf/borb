@@ -61,6 +61,11 @@ class Regex(Sink):
     #
 
     @staticmethod
+    def __indo_european_reading_order(e: TextEvent) -> int:
+        y_upside_down: int = int(PageSize.A4_PORTRAIT[1] - e.get_y())
+        return int(y_upside_down * PageSize.A4_PORTRAIT[1] + e.get_x())
+
+    @staticmethod
     def __split_event_into_rectangles(e: TextEvent) -> typing.List[RectangleType]:
         out: typing.List[RectangleType] = []
         x: float = e.get_x()
@@ -113,15 +118,10 @@ class Regex(Sink):
             event
         ]
 
-        # define sort function
-        def __indo_european_reading_order(e: TextEvent) -> int:
-            y_upside_down: int = int(PageSize.A4_PORTRAIT[1] - e.get_y())
-            return int(y_upside_down * PageSize.A4_PORTRAIT[1] + e.get_x())
-
         # sort
         self.__events_per_page[page_nr] = sorted(
             self.__events_per_page[page_nr],
-            key=__indo_european_reading_order,
+            key=Regex.__indo_european_reading_order,
         )
 
         # split the TextEvent into RectangleType objects
