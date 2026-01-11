@@ -403,7 +403,7 @@ class Source(Pipe):
         from borb.pdf.visitor.read.str_visitor import StrVisitor
 
         operand_visitor: RootVisitor = RootVisitor()
-        operand_visitor._RootVisitor__visitors = [
+        operand_visitor._RootVisitor__visitors = [  # type: ignore [attr-defined]
             # aggregation types
             DictVisitor(root=operand_visitor),
             ListVisitor(root=operand_visitor),
@@ -423,7 +423,7 @@ class Source(Pipe):
         while i < len(content_stream_bytes):
 
             # process things using RootVisitor
-            operand_visitor._RootVisitor__source = b""
+            operand_visitor._RootVisitor__source = b""  # type: ignore [attr-defined]
             operand_and_pos = operand_visitor.visit(content_stream_bytes[i:])
             if operand_and_pos is not None:
                 operands += [operand_and_pos[0]]
