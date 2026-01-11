@@ -15,7 +15,8 @@ downstream processing, analysis, or extraction workflows.
 import re
 import typing
 
-from borb.pdf import PageSize, Sink
+from borb.pdf.page_size import PageSize
+from borb.pdf.toolkit.sink.sink import Sink
 from borb.pdf.toolkit.source.event.text_event import TextEvent
 
 # define a Rectangle
