@@ -190,7 +190,6 @@ class Watermark(LayoutElement):
         :param page:            The Page object on which to render the LayoutElement.
         :return:                None.
         """
-
         # useful constant(s)
         x: int = page.get_size()[0] // 10
         y: int = page.get_size()[1] // 10
