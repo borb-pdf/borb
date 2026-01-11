@@ -15,6 +15,7 @@ downstream processing, analysis, or extraction workflows.
 import re
 import typing
 
+from borb.pdf.toolkit.event import Event
 from borb.pdf.page_size import PageSize
 from borb.pdf.toolkit.sink.sink import Sink
 from borb.pdf.toolkit.source.event.text_event import TextEvent
@@ -97,7 +98,7 @@ class Regex(Sink):
         """
         return self.__rectangles_per_page
 
-    def process(self, event: TextEvent):
+    def process(self, event: Event):
         """
         Process the given event.
 
@@ -139,8 +140,8 @@ class Regex(Sink):
 
             # IF the y-gap is too large
             # THEN add a newline (and None to the char_rectangles)
-            next_y: float = rs[0][1]
-            next_height: float = rs[0][3]
+            next_y: float = rs[0][1]  # typing: ignore[index]
+            next_height: float = rs[0][3]  # typing: ignore[index]
             prev_y: float = char_rectangles[-1][1]
             if abs(prev_y - next_y) > next_height // 2:
                 char_rectangles += [None]
@@ -151,8 +152,8 @@ class Regex(Sink):
 
             # IF the x-gap is too large
             # THEN add a space (and None to the char_rectangles)
-            next_left: float = rs[0][0]
-            next_width: float = rs[0][2]
+            next_left: float = rs[0][0]  # typing: ignore[index]
+            next_width: float = rs[0][2]  # typing: ignore[index]
             prev_right: float = char_rectangles[-1][0] + char_rectangles[-1][2]
             if abs(prev_right - next_left) > (0.250 * next_width):
                 char_rectangles += [None]
