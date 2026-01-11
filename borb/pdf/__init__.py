@@ -75,8 +75,8 @@ from borb.pdf.layout_element.annotation.highlight_annotation import HighlightAnn
 from borb.pdf.layout_element.annotation.ink_annotation import InkAnnotation
 from borb.pdf.layout_element.annotation.line_annotation import LineAnnotation
 from borb.pdf.layout_element.annotation.link_annotation import LinkAnnotation
-from borb.pdf.layout_element.annotation.poly_line_annotation import PolyLineAnnotation
 from borb.pdf.layout_element.annotation.polygon_annotation import PolygonAnnotation
+from borb.pdf.layout_element.annotation.poly_line_annotation import PolyLineAnnotation
 from borb.pdf.layout_element.annotation.redact_annotation import RedactAnnotation
 from borb.pdf.layout_element.annotation.remote_go_to_annotation import RemoteGoToAnnotation
 from borb.pdf.layout_element.annotation.rubber_stamp_annotation import RubberStampAnnotation
@@ -86,7 +86,10 @@ from borb.pdf.layout_element.annotation.squiggly_annotation import SquigglyAnnot
 from borb.pdf.layout_element.annotation.strike_out_annotation import StrikeOutAnnotation
 from borb.pdf.layout_element.annotation.text_annotation import TextAnnotation
 from borb.pdf.layout_element.calendar.calendar_view import CalendarView
+from borb.pdf.layout_element.calendar.calendar_view import CalendarView
 from borb.pdf.layout_element.calendar.day_view import DayView
+from borb.pdf.layout_element.calendar.day_view import DayView
+from borb.pdf.layout_element.calendar.week_view import WeekView
 from borb.pdf.layout_element.form.button import Button
 from borb.pdf.layout_element.form.check_box import CheckBox
 from borb.pdf.layout_element.form.country_drop_down_list import CountryDropDownList
@@ -182,6 +185,7 @@ from borb.pdf.toolkit.sink.get_images import GetImages
 from borb.pdf.toolkit.sink.get_keywords_by_pagewise_tf_idf import GetKeywordsByPagewiseTFIDF
 from borb.pdf.toolkit.sink.get_regular_expression import GetRegularExpression
 from borb.pdf.toolkit.sink.get_text import GetText
+from borb.pdf.toolkit.sink.regex import Regex
 from borb.pdf.toolkit.sink.sink import Sink
 from borb.pdf.toolkit.source.operator.source import Source
 from borb.pdf.visitor.pdf import PDF
