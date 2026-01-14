@@ -167,12 +167,16 @@ class Regex(Sink):
             prev_right: float = (
                 char_rectangles[-1][0] + char_rectangles[-1][2]
             )  # typing: ignore[index]
-            if abs(prev_right - next_left) > (0.250 * next_width):
+            if abs(prev_right - next_left) > (0.250 * next_width / len(evt.get_text())):
                 char_rectangles += [None]
                 text += " "
                 char_rectangles += rs
                 text += evt.get_text()
                 continue
+
+            # default (append)
+            char_rectangles += rs
+            text += evt.get_text()
 
         # now apply the regex
         self.__rectangles_per_page[page_nr] = []

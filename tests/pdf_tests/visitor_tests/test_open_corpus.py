@@ -22,7 +22,7 @@ class TestOpenCorpus(unittest.TestCase):
         "/home/joris-schellekens/Code/borb-pdf-corpus/pdf"
     )
 
-    #@unittest.skip
+    # @unittest.skip
     def test_open_corpus(self):
         positive: typing.List[pathlib.Path] = []
         positive_timing: typing.List[float] = []

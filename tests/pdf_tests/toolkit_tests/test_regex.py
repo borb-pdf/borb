@@ -1,8 +1,19 @@
 import random
 import unittest
 
-from borb.pdf import Document, Page, SingleColumnLayout, Paragraph, Lipsum, PageLayout, PDF, Source, Pipeline, \
-    SquareAnnotation, X11Color
+from borb.pdf import (
+    Document,
+    Page,
+    SingleColumnLayout,
+    Paragraph,
+    Lipsum,
+    PageLayout,
+    PDF,
+    Source,
+    Pipeline,
+    SquareAnnotation,
+    X11Color,
+)
 from borb.pdf.toolkit.sink.regex import Regex
 
 
@@ -31,8 +42,7 @@ class TestRegex(unittest.TestCase):
             )
 
         # store
-        PDF.write(what=d,
-                  where_to='assets/test_regex.pdf')
+        PDF.write(what=d, where_to="assets/test_regex.pdf")
 
         # step 2: read PDF
         d: Document = PDF.read("assets/test_regex.pdf")
@@ -41,7 +51,7 @@ class TestRegex(unittest.TestCase):
         rectangles = Pipeline(
             [
                 Source(),
-                Regex(pattern='[qQ]uam'),
+                Regex(pattern="[qQ]uam"),
             ]
         ).process(d)
 
@@ -50,11 +60,10 @@ class TestRegex(unittest.TestCase):
 
         # step 4: mark
         for i, r in enumerate(rectangles[0]):
-            x,y,w,h = r
-            SquareAnnotation(stroke_color=X11Color.RED,
-                         size=(w, h)).paint(available_space=(x, y, w, h),
-                                                          page=d.get_page(0))
+            x, y, w, h = r
+            SquareAnnotation(stroke_color=X11Color.RED, size=(w, h)).paint(
+                available_space=(x, y, w, h), page=d.get_page(0)
+            )
 
         # store
-        PDF.write(what=d,
-                  where_to='assets/test_regex_marked.pdf')
+        PDF.write(what=d, where_to="assets/test_regex_marked.pdf")

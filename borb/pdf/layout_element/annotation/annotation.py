@@ -181,6 +181,8 @@ class Annotation(LayoutElement, dict):
     # PRIVATE
     #
 
+    __hash__ = object.__hash__
+
     #
     # PUBLIC
     #

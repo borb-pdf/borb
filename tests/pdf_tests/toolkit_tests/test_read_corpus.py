@@ -21,8 +21,12 @@ class TestReadCorpus(unittest.TestCase):
     #
     # Ensure that the directory specified by this path exists and contains the necessary
     # PDF files before running the tests.
-    FIRST_PAGE_PDF_DIR: pathlib.Path = pathlib.Path("/home/joris-schellekens/Code/borb-pdf-corpus/first-page-pdf")
-    FIRST_PAGE_TXT_DIR: pathlib.Path = pathlib.Path("/home/joris-schellekens/Code/borb-pdf-corpus/first-page-txt")
+    FIRST_PAGE_PDF_DIR: pathlib.Path = pathlib.Path(
+        "/home/joris-schellekens/Code/borb-pdf-corpus/first-page-pdf"
+    )
+    FIRST_PAGE_TXT_DIR: pathlib.Path = pathlib.Path(
+        "/home/joris-schellekens/Code/borb-pdf-corpus/first-page-txt"
+    )
 
     # @unittest.skip
     def test_read_corpus(self):
@@ -31,7 +35,11 @@ class TestReadCorpus(unittest.TestCase):
         negative: typing.List[pathlib.Path] = []
         negative_timing: typing.List[float] = []
         error_buckets: typing.Dict[int, int] = {x: 0 for x in range(0, 110, 10)}
-        all_pdf_files = [x for x in TestReadCorpus.FIRST_PAGE_PDF_DIR.iterdir() if x.name.endswith(".pdf")]
+        all_pdf_files = [
+            x
+            for x in TestReadCorpus.FIRST_PAGE_PDF_DIR.iterdir()
+            if x.name.endswith(".pdf")
+        ]
         all_pdf_files = sorted(all_pdf_files, key=lambda x: x.name)
         all_pdf_files = all_pdf_files[0:100]
         N: int = len(all_pdf_files)
@@ -61,9 +69,14 @@ class TestReadCorpus(unittest.TestCase):
                 )
 
                 # get text
-                txt0: str = Pipeline([Source(), GetText()]).process(d.get_page(0)).get(0, "")
+                txt0: str = (
+                    Pipeline([Source(), GetText()]).process(d.get_page(0)).get(0, "")
+                )
                 txt1: str = ""
-                with open(TestReadCorpus.FIRST_PAGE_TXT_DIR / (pdf_file.name.replace(".pdf", ".txt"))) as fh:
+                with open(
+                    TestReadCorpus.FIRST_PAGE_TXT_DIR
+                    / (pdf_file.name.replace(".pdf", ".txt"))
+                ) as fh:
                     txt1 = fh.read()
 
                 # process text
