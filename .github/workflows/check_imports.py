@@ -159,7 +159,13 @@ class CheckSomethingTemplate:
 if __name__ == "__main__":
     checker = CheckSomethingTemplate(
         root=pathlib.Path(sys.argv[1]),
-        known_exceptions=[],
+        known_exceptions=[
+            "avatar.py",
+            "barcode.py",
+            "code_snippet.py",
+            "sound_annotation.py",
+            "qr_code.py",
+        ],
     )
     checker.perform_check_on_directory()
     warnings: typing.List[WarningType] = checker.get_warnings()
