@@ -35,6 +35,11 @@ class CheckSomethingTemplate:
     # PRIVATE
     #
 
+    @staticmethod
+    def __strip_comment(line: str) -> str:
+        # Remove inline comments, but keep code
+        return line.split("#", 1)[0].strip() + "\n"
+
     #
     # PUBLIC
     #
@@ -94,8 +99,17 @@ class CheckSomethingTemplate:
             return
 
         # gather all imports
-        imports = [(i, x) for i, x in lines if x.startswith("from ") and "import" in x]
-        imports += [(i, x) for i, x in lines if x.startswith("import ")]
+        # gather all imports
+        imports = [
+            (i, CheckSomethingTemplate.__strip_comment(x))
+            for i, x in lines
+            if x.lstrip().startswith("from ") and "import" in x
+        ]
+        imports += [
+            (i, CheckSomethingTemplate.__strip_comment(x))
+            for i, x in lines
+            if x.lstrip().startswith("import ")
+        ]
 
         # remove self-imports
         imports = [(i, x) for i, x in imports if not x.startswith("from borb.")]
