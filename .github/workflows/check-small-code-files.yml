@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check size of all .py files
       - name: Check size of all .py files
         run: |
-          python ./.github/workflows/check_small_code_files.py borb/
+          python ./.github/workflows/check_small_code_files.py .

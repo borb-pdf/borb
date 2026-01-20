@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check whether all parameters of defs are sorted
       - name: Check whether all parameters of defs are sorted
         run: |
-          python ./.github/workflows/check_method_parameter_order.py borb/
+          python ./.github/workflows/check_method_parameter_order.py .

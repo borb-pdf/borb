@@ -26,4 +26,4 @@ jobs:
       # Step 4: Check code formatting with Black
       - name: Run Black for Code Formatting Check
         run: |
-          black --check borb/
+          black --check .

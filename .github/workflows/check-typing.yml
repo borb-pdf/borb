@@ -26,4 +26,4 @@ jobs:
       # Step 4: Check typing annotations using mypy
       - name: Run Mypy for static type check
         run: |
-          mypy borb/
+          mypy .

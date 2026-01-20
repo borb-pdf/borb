@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check for visibility markers (CONSTRUCTOR / PRIVATE / PUBLIC) in code files
       - name: Check Visibility Markers in Code Files
         run: |
-          python ./.github/workflows/check_visibility_markers.py borb/
+          python ./.github/workflows/check_visibility_markers.py .

@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check whether the __init__.py files are not empty
       - name: Check whether the __init__.py files are not empty
         run: |
-          python ./.github/workflows/check_init_files.py borb/
+          python ./.github/workflows/check_init_files.py .

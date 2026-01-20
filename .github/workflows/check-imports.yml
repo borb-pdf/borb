@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check whether the imports only include known dependencies
       - name: Check whether the imports only include known dependencies
         run: |
-          python ./.github/workflows/check_imports.py borb/
+          python ./.github/workflows/check_imports.py .

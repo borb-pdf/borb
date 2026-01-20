@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check whether the python bash is present in all .py files
       - name: Check whether the python bash is present in all .py files
         run: |
-          python ./.github/workflows/check_python_shebang.py borb/
+          python ./.github/workflows/check_python_shebang.py .
