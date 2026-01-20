@@ -1,8 +1,8 @@
 import math
 import unittest
 
-import matplotlib
-import matplotlib.pyplot as plt
+import matplotlib  # type: ignore[import-not-found]
+import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.chart import Chart
