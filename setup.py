@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """This module contains the build information for this project."""
-import setuptools
+import setuptools  # type: ignore[import-untyped]
 
 # open readme
 with open("README.md", "r", encoding="utf-8") as fh:
