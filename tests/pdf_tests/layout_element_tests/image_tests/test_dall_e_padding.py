@@ -17,7 +17,7 @@ class TestDallEPadding(unittest.TestCase):
         except:
             pass
 
-    @unittest.skip
+    @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_padding_left(self):
         d: Document = Document()
 
@@ -43,7 +43,7 @@ class TestDallEPadding(unittest.TestCase):
 
         PDF.write(what=d, where_to=f"assets/test_dall_e_padding_left.pdf")
 
-    @unittest.skip
+    @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_padding_top(self):
         d: Document = Document()
 
@@ -69,7 +69,7 @@ class TestDallEPadding(unittest.TestCase):
 
         PDF.write(what=d, where_to=f"assets/test_dall_e_padding_top.pdf")
 
-    @unittest.skip
+    @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_padding_right(self):
         d: Document = Document()
 
@@ -95,7 +95,7 @@ class TestDallEPadding(unittest.TestCase):
 
         PDF.write(what=d, where_to=f"assets/test_dall_e_padding_right.pdf")
 
-    @unittest.skip
+    @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_padding_bottom(self):
         d: Document = Document()
 

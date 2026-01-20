@@ -9,7 +9,7 @@ from borb.pdf.visitor.pdf import PDF
 
 class TestDallEBackground(unittest.TestCase):
 
-    @unittest.skip
+    @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_background(self):
         d: Document = Document()
 

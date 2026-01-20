@@ -139,7 +139,7 @@ class TestReadCorpus(unittest.TestCase):
             for pdf_file in negative:
                 print(f"\t\t- {pdf_file}")
 
-    @unittest.skip
+    @unittest.skipIf(True, "Only used for debugging")
     def test_read_single_pdf(self):
 
         d: Document = PDF.read(where_from="/home/joris-schellekens/Downloads/68192.pdf")

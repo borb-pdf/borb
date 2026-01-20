@@ -8,7 +8,7 @@ from borb.pdf.visitor.pdf import PDF
 
 class TestDallE(unittest.TestCase):
 
-    @unittest.skip
+    @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e(self):
         d: Document = Document()
 

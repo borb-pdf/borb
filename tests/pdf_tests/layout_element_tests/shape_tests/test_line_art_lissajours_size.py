@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.layout_element.shape.line_art import LineArt
 
 
-@unittest.skip
+@unittest.skipIf(True, "Takes a long time to execute")
 class TestLineArtLissajoursSize(unittest.TestCase):
 
     def test_line_art_lissajours_001_001_size(self):

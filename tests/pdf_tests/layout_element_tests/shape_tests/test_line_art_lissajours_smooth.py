@@ -6,7 +6,7 @@ from borb.pdf.page import Page
 from borb.pdf.visitor.pdf import PDF
 
 
-@unittest.skip
+@unittest.skipIf(True, "Takes a long time to execute")
 class TestLineArtLissajoursSmooth(unittest.TestCase):
 
     def test_line_art_lissajours_001_001_smooth(self):
