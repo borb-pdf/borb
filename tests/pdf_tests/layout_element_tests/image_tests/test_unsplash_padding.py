@@ -11,7 +11,7 @@ class TestUnsplash(unittest.TestCase):
 
     def setUp(self):
         try:
-            from tests.secrets import populate_os_environ
+            from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
 
             populate_os_environ()
         except:

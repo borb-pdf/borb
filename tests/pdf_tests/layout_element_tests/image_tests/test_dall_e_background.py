@@ -23,7 +23,7 @@ class TestDallEBackground(unittest.TestCase):
         h: int = p.get_size()[1] - 2 * (p.get_size()[1] // 10)
 
         try:
-            from tests.secrets import populate_os_environ
+            from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
 
             populate_os_environ()
         except:

@@ -15,7 +15,7 @@ class TestUnsplash(unittest.TestCase):
         d.append_page(p)
 
         try:
-            from tests.secrets import populate_os_environ
+            from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
 
             populate_os_environ()
         except:

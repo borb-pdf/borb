@@ -2,7 +2,7 @@ import unittest
 
 from borb.pdf import Font, Page, Document, Chunk, PDF
 from borb.pdf.font.simple_font.true_type.google_true_type_font import GoogleTrueTypeFont
-from tests.secrets import populate_os_environ
+from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
 
 
 class TestFontNameWithSpecialCharacters(unittest.TestCase):

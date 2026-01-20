@@ -15,7 +15,7 @@ from borb.pdf import (
     Font,
     FixedColumnWidthTable,
 )
-from tests.secrets import populate_os_environ
+from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
 
 
 class TestGroceryList(unittest.TestCase):
