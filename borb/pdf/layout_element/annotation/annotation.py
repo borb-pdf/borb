@@ -142,9 +142,9 @@ class Annotation(LayoutElement, dict):
         # recently modified. The format should be a date string as described in
         # 7.9.4, “Dates,” but conforming readers shall accept and display a string
         # in any format.
-        from datetime import datetime
+        import datetime
 
-        self["M"] = datetime.now().strftime("D:%Y%m%d%H%M%S+00'00'")
+        self["M"] = datetime.datetime.now().strftime("D:%Y%m%d%H%M%S+00'00'")
 
         # (Optional; PDF 1.1) An array of numbers in the range 0.0 to 1.0,
         # representing a colour used for the following purposes:
