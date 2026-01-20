@@ -14,7 +14,7 @@ from borb.pdf import (
     Image,
 )
 from borb.pdf.conformance import Conformance
-from tests.secrets import populate_os_environ
+from tests.secrets import populate_os_environ   # type: ignore[import-not-found]
 
 
 class TestConformance(unittest.TestCase):
