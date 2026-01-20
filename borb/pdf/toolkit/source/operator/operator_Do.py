@@ -93,7 +93,7 @@ class OperatorDo(Operator):
         xobject: typing.Optional[PDFType] = (
             page.get("Resources", {})
             .get("XObject", {})
-            .get(xobject_resource_name[1:], None)
+            .get(xobject_resource_name, None)
         )
 
         # /Image

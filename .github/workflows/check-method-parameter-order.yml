@@ -1,9 +1,9 @@
-name: Check Methods Sorted
+name: Check Method Parameter Order
 
 on: [push]
 
 jobs:
-  check_methods_sorted:
+  check_method_parameter_order:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.x'  # Choose your Python version
 
-      # Step 3: Check whether all defs are sorted
-      - name: Check whether all defs are sorted
+      # Step 3: Check whether all parameters of defs are sorted
+      - name: Check whether all parameters of defs are sorted
         run: |
-          python ./.github/workflows/check_methods_sorted.py borb/
+          python ./.github/workflows/check_method_parameter_order.py borb/

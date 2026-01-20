@@ -1,9 +1,9 @@
-name: Check ConformanceCheck order
+name: Check Method Order
 
 on: [push]
 
 jobs:
-  check_init_files:
+  check_method_order:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.x'  # Choose your Python version
 
-      # Step 3: Check whether the conformance_checks.py file is sorted
-      - name: Check whether the ConformanceChecks are sorted
+      # Step 3: Check whether all defs are sorted
+      - name: Check whether all defs are sorted
         run: |
-          python ./.github/workflows/check_conformance_check_order.py borb/
+          python ./.github/workflows/check_method_order.py borb/

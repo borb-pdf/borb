@@ -1,4 +1,4 @@
-name: Smoke Test(s) Against Multiple Python Versions
+name: Check Python Version Compatibility
 
 on: [push]
 

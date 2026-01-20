@@ -1,9 +1,9 @@
-name: Check Argument Name
+name: Check ConformanceCheck order
 
 on: [push]
 
 jobs:
-  check_imports_dependencies:
+  check_conformance_check_order:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.x'  # Choose your Python version
 
-      # Step 3: Check whether the argument names are meaningful
-      - name: Check whether the argument names are meaningful
+      # Step 3: Check whether the conformance_checks.py file is sorted
+      - name: Check whether the ConformanceChecks are sorted
         run: |
-          python ./.github/workflows/check_argument_name.py borb/
+          python ./.github/workflows/check_conformance_check_order.py borb/

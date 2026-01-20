@@ -1,9 +1,9 @@
-name: Check Imports Dependencies
+name: Check Imports
 
 on: [push]
 
 jobs:
-  check_imports_dependencies:
+  check_imports:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,4 +20,4 @@ jobs:
       # Step 3: Check whether the imports only include known dependencies
       - name: Check whether the imports only include known dependencies
         run: |
-          python ./.github/workflows/check_imports_dependencies.py borb/
+          python ./.github/workflows/check_imports.py borb/

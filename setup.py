@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 # requirements
 required = [
-    "setuptools>=51.1.1",       # standard
+    "setuptools>=51.1.1",  # standard
 ]
 
 setuptools.setup(

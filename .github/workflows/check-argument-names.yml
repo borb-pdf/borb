@@ -1,9 +1,9 @@
-name: Check Method Parameters Sorted
+name: Check Argument Names
 
 on: [push]
 
 jobs:
-  check_method_parameters_sorted:
+  check_argument_names:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.x'  # Choose your Python version
 
-      # Step 3: Check whether all parameters of defs are sorted
-      - name: Check whether all parameters of defs are sorted
+      # Step 3: Check whether the argument names are meaningful
+      - name: Check whether the argument names are meaningful
         run: |
-          python ./.github/workflows/check_method_parameters_sorted.py borb/
+          python ./.github/workflows/check_argument_names.py borb/

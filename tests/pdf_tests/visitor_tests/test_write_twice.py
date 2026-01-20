@@ -14,7 +14,11 @@ from borb.pdf import (
     LayoutElement,
     SquareAnnotation,
     TextAnnotation,
-    TableUtil, Heading, Table, HexColor, FixedColumnWidthTable,
+    TableUtil,
+    Heading,
+    Table,
+    HexColor,
+    FixedColumnWidthTable,
 )
 
 
@@ -59,9 +63,7 @@ class TestWriteTwice(unittest.TestCase):
         PDF.write(what=d1, where_to="assets/test_write_read_write_without_copy_a.pdf")
 
         # read
-        d1 = PDF.read(
-            where_from="assets/test_write_read_write_without_copy_a.pdf"
-        )
+        d1 = PDF.read(where_from="assets/test_write_read_write_without_copy_a.pdf")
 
         # write
         PDF.write(what=d1, where_to="assets/test_write_read_write_without_copy_b.pdf")
