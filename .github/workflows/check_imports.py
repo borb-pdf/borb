@@ -120,6 +120,7 @@ class CheckSomethingTemplate:
             if x
             not in [
                 "import base64\n",
+                "import black\n",
                 "import collections\n",
                 "import copy\n",
                 "import datetime\n",
@@ -127,6 +128,7 @@ class CheckSomethingTemplate:
                 "import functools\n",
                 "import hashlib\n",
                 "import io\n",
+                "import itertools\n",
                 "import json\n",
                 "import logging\n",
                 "import math\n",
@@ -134,8 +136,10 @@ class CheckSomethingTemplate:
                 "import pathlib\n",
                 "import random\n",
                 "import re\n",
+                "import requests\n",
                 "import setuptools\n",
                 "import sys\n",
+                "import threading\n",
                 "import typing\n",
                 "import zlib\n",
             ]
