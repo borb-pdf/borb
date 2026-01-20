@@ -20,7 +20,7 @@ class TestGetKeywordsByPagewiseTFIDFFromCorpus(unittest.TestCase):
 
         # process
         keywords = Pipeline([Source(), GetKeywordsByPagewiseTFIDF(10)]).process(
-            PDF.read(pdf_path)
+            PDF.read(pdf_path)  # type: ignore[arg-type]
         )
 
         # return
