@@ -99,7 +99,6 @@ class CheckSomethingTemplate:
             return
 
         # gather all imports
-        # gather all imports
         imports = [
             (i, CheckSomethingTemplate.__strip_comment(x))
             for i, x in lines
@@ -120,18 +119,25 @@ class CheckSomethingTemplate:
             for i, x in imports
             if x
             not in [
+                "import base64\n",
                 "import collections\n",
+                "import copy\n",
                 "import datetime\n",
                 "import enum\n",
                 "import functools\n",
+                "import hashlib\n",
                 "import io\n",
+                "import json\n",
                 "import logging\n",
                 "import math\n",
                 "import os\n",
                 "import pathlib\n",
+                "import random\n",
                 "import re\n",
                 "import setuptools\n",
+                "import sys\n",
                 "import typing\n",
+                "import zlib\n",
             ]
         ]
 
