@@ -80,7 +80,7 @@ class PDFBytes:
         end: typing.Optional[int] = None,
     ) -> int:
         start = start or 0
-        end = end or (start - 1024)
+        end = max(0, end or (start - 1024))
         assert start >= 0
         assert end >= 0
         assert end < start

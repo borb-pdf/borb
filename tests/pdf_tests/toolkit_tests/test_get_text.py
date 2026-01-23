@@ -58,3 +58,19 @@ class TestGetText(unittest.TestCase):
         assert 0 in text
         assert len(text[0]) > 0
         assert len(text[0]) < 2000
+
+    def test_get_text_from_small_document(self):
+
+        # create PDF
+        d: Document = Document()
+        p: Page = Page()
+        d.append_page(p)
+        l: PageLayout = SingleColumnLayout(p)
+        l.append_layout_element(Paragraph("Hello world!"))
+        PDF.write(what=d, where_to="assets/test_get_text_from_small_document.pdf")
+
+        # read
+        d = PDF.read("assets/test_get_text_from_small_document.pdf")
+
+        # get text
+        Pipeline([Source(), GetText()]).process(d)

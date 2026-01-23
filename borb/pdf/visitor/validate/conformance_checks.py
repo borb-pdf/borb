@@ -78,9 +78,9 @@ class ConformanceChecks:
     def __get_channel_count_from_jpg2000_image(obj: typing.Any) -> typing.Optional[int]:
         try:
             from PIL import Image  # type: ignore[import-not-found]
-            from io import BytesIO
+            import io
 
-            with Image.open(BytesIO(obj)) as img:
+            with Image.open(io.BytesIO(obj)) as img:
                 return len(img.getbands())
         except Exception:
             return None
