@@ -68,7 +68,13 @@ class UsageStatistics:
         # send (aggregate) events
         import sys
         import json
-        import requests  # type: ignore[import-untyped]
+
+        try:
+            import requests  # type: ignore[import-untyped]
+        except ImportError:
+            # IF    we can not import requests
+            # THEN  return gracefully
+            return
 
         for evt in aggregate_events.values():
 
