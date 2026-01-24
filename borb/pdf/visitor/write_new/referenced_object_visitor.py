@@ -16,6 +16,7 @@ The output follows this structure:
     <serialized object>
     endobj
 """
+
 import typing
 
 from borb.pdf.primitives import reference, PDFType

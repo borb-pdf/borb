@@ -13,6 +13,7 @@ Note:
     of the page or other operations until the 'EX' operator is encountered, which ends
     the compatibility section.
 """
+
 import typing
 
 from borb.pdf.page import Page

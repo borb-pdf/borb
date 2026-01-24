@@ -9,6 +9,7 @@ reference point, `BelowImage` enables selective extraction, manipulation, or ana
 of content that appears below that image, making it useful for document processing tasks
 that depend on spatial relationships between images and surrounding text.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

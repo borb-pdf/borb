@@ -18,6 +18,7 @@ Note:
     'y' operator modifies the current point to the final endpoint of the curve.
     For more information on Bézier curves, refer to section 8.5.2.2 of the PDF specification.
 """
+
 import typing
 
 from borb.pdf.page import Page

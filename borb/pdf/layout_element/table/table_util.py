@@ -8,6 +8,7 @@ It simplifies the process of converting raw tabular data into a table format sui
 This class allows for customization of table appearance, such as font size,
 padding, alignment, and the designation of headers.
 """
+
 import typing
 
 from borb.pdf.color.x11_color import X11Color

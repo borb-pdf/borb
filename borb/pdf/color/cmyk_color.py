@@ -15,6 +15,7 @@ the absence of light, CMYK works oppositely. White is the paper's natural color,
 from combining all inks. To achieve deeper black tones and reduce ink usage, black ink is often used
 instead of a combination of cyan, magenta, and yellow.
 """
+
 from borb.pdf.color.color import Color
 from borb.pdf.color.rgb_color import RGBColor
 

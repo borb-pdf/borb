@@ -10,6 +10,7 @@ a gray level for nonstroking operations. The `gray` operand must be a number bet
 
 This operator is commonly used for setting fill colors in grayscale.
 """
+
 import typing
 
 from borb.pdf.color.grayscale_color import GrayscaleColor

@@ -9,6 +9,7 @@ PDFs or other layouts. It supports both horizontal and vertical layouts, offerin
 sequences, steps, or categorized information. This class allows you to combine text and images to create organized
 and aesthetically pleasing visuals in your documents.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -23,6 +23,7 @@ Current event types include:
 The flexibility of this class allows for new event types to be added in the future as
 needed, facilitating ongoing expansion and customization of the PDF processing pipeline.
 """
+
 import typing
 
 from borb.pdf.document import Document

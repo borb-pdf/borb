@@ -16,6 +16,7 @@ Note:
     - The operator name ends with the digit '0' to indicate this specific behavior.
     - For more details on glyph positioning and metrics, refer to PDF specification section 9.2.4, "Glyph Positioning and Metrics."
 """
+
 import typing
 
 from borb.pdf.page import Page

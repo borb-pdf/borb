@@ -17,6 +17,7 @@ The effect of the 'Do' operator depends on the `Subtype` of the XObject, as it d
 
 For more information about XObjects and how they are used, refer to section 7.8.3, "Resource Dictionaries," and the appropriate sections on XObject types (Image, Form, and PostScript).
 """
+
 import typing
 
 from borb.pdf.page import Page

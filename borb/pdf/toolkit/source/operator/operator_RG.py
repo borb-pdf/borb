@@ -19,6 +19,7 @@ Note:
     The RG operator affects only the stroking color. To set the color for filling paths, use the
     'rg' operator for nonstroking operations.
 """
+
 import typing
 
 from borb.pdf.color.rgb_color import RGBColor

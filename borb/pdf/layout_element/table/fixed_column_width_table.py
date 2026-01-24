@@ -8,6 +8,7 @@ has a predefined and fixed width, regardless of the content. This ensures consis
 alignment and appearance across all rows, making it suitable for structured data where
 uniformity in column width is important.
 """
+
 import functools
 import math
 import typing

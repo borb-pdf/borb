@@ -8,6 +8,7 @@ of a given text within the PDF page. This is useful for selectively extracting o
 elements that appear to the left of specific textual content, allowing for precise targeting in
 content extraction and manipulation.
 """
+
 from borb.pdf.toolkit.event import Event
 from borb.pdf.toolkit.pipe import Pipe
 

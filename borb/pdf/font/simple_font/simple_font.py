@@ -10,6 +10,7 @@ foundation for more specialized font classes (e.g., `Type1Font`), offering basic
 functionality while allowing for more specific implementations. Simple fonts are used
 in a variety of contexts, from basic text rendering to complex document layouts.
 """
+
 import typing
 
 from borb.pdf.font.font import Font

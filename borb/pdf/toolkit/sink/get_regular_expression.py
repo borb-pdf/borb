@@ -7,6 +7,7 @@ This class processes `TextEvent` objects, reconstructs textual content per page,
 applies a specified regular expression to identify matches. For each match, metadata
 such as bounding boxes, font properties, and the regex match object are stored.
 """
+
 import collections
 import typing
 

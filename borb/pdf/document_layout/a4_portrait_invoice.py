@@ -7,6 +7,7 @@ The `A4PortraitInvoice` class enables users to create and customize an invoice i
 It provides methods to set various invoice properties, including the company's address, billing and
 shipping addresses, line items, taxes, discounts, and payment terms.
 """
+
 import datetime
 import pathlib
 import typing

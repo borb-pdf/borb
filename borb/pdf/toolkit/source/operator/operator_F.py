@@ -11,6 +11,7 @@ Note:
     While PDF reader applications must support this operator, PDF writer applications
     are encouraged to use 'f' instead.
 """
+
 import typing
 
 from borb.pdf.page import Page

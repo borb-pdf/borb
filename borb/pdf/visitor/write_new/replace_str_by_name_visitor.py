@@ -15,6 +15,7 @@ string objects with name objects wherever required. This automatic conversion
 helps maintain PDF format compliance without requiring users to manually
 distinguish between string and name object types.
 """
+
 import typing
 
 from borb.pdf.document import Document

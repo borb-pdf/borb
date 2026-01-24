@@ -19,6 +19,7 @@ Note:
     - The size is expressed in unscaled text space units, and it is used to scale
       text characters when drawing text.
 """
+
 import typing
 
 from borb.pdf.page import Page

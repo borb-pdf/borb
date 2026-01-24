@@ -7,6 +7,7 @@ This class is designed to display a horizontal progress bar that reflects the co
 status of a task or process within a PDF layout. The progress bar can be customized for
 appearance, size, and percentage completion.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

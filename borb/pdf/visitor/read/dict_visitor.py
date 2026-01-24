@@ -16,6 +16,7 @@ This class:
 `DictVisitor` is intended to facilitate structured handling of metadata, resources,
 and other dictionary-based elements in the PDF.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, name

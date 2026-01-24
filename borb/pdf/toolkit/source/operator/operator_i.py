@@ -15,6 +15,7 @@ Parameters:
 
 Refer to the PDF specification section 10.6.2, "Flatness Tolerance," for more details.
 """
+
 import typing
 
 from borb.pdf.page import Page

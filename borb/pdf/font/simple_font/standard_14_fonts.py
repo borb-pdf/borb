@@ -7,6 +7,7 @@ This utility class handles the standard 14 fonts, which include commonly used fo
 such as Helvetica, Times, and Courier. It provides methods to retrieve these fonts
 by their names.
 """
+
 import typing
 
 from borb.pdf.font.font import Font

@@ -20,6 +20,7 @@ Note:
     Refer to PDF specification section 8.3.2, "Coordinate Spaces", for more information
     on how coordinate transformations are applied in PDF graphics.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -11,6 +11,7 @@ mappings, font metrics, and rendering capabilities, allowing for accurate text l
 and display in PDF documents. As a subclass of `Font`, it extends the basic functionality
 of a font while offering specialized handling for TrueType fonts.
 """
+
 import pathlib
 import typing
 

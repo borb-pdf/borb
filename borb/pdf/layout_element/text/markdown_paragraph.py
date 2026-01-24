@@ -14,6 +14,7 @@ Markdown-like formatting rules:
 - `**bold**`: Bold text.
 - `~highlight~`: Highlighted text with a yellow background.
 """
+
 import collections
 import typing
 

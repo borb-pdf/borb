@@ -8,6 +8,7 @@ PDF document. Since it inherits from the `Image` class, it inherits all methods 
 attributes related to image handling in the PDF, while adding specific functionality
 for encoding and displaying QR code data.
 """
+
 import enum
 import math
 import typing

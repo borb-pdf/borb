@@ -20,6 +20,7 @@ Note:
     - The 'scn' operator is versatile and supports color spaces beyond the standard Device color spaces (RGB, CMYK, and Gray).
     - For stroking operations in these advanced color spaces, use the 'SCN' operator.
 """
+
 import typing
 
 from borb.pdf.page import Page

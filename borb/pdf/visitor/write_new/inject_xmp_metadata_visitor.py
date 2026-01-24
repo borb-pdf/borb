@@ -14,6 +14,7 @@ producer, keywords, creation date, author, title, and more, with the format
 conforming to Adobe's XMP specification. The class also ensures that the
 metadata injection complies with the document's conformance level (e.g., PDF/A).
 """
+
 import typing
 
 from borb.pdf.conformance import Conformance

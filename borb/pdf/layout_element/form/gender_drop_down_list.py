@@ -8,6 +8,7 @@ form element that allows users to select their gender from predefined options.
 This dropdown simplifies data entry by providing a limited set of choices,
 enhancing the user experience in PDF forms.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

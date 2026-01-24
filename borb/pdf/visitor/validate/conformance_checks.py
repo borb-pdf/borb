@@ -17,6 +17,7 @@ The veraPDF Validation project is dual-licensed, see:
 
 Source: https://github.com/veraPDF
 """
+
 import datetime
 import re
 import typing

@@ -8,6 +8,7 @@ or embedded files. This class is responsible for traversing nodes that contain s
 data and writing them in the appropriate binary format. It ensures that the data is
 correctly encoded, compressed (if necessary), and stored in compliance with PDF standards.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, stream

@@ -12,6 +12,7 @@ The class follows the visitor pattern to traverse the document, creating a
 logical structure hierarchy based on the marked content. If a StructTreeRoot
 is missing, it is injected into the document's catalog.
 """
+
 import re
 import typing
 

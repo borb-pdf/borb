@@ -7,6 +7,7 @@ Circle annotations (PDF 1.3) display an ellipse on the page. When opened, they s
 window containing the text of the associated note. The ellipse is inscribed within the annotation
 rectangle defined by the annotation dictionary's Rect entry (see Table 168).
 """
+
 import typing
 
 from borb.pdf.color.color import Color

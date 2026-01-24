@@ -17,6 +17,7 @@ Note:
     specification section 11.7.4.4, "Special Path-Painting Considerations," for
     additional details on these interactions.
 """
+
 import typing
 
 from borb.pdf.page import Page

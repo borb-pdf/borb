@@ -8,6 +8,7 @@ specific position and with a defined size. It extends `LayoutElement` and suppor
 rendering onto a `Page` while respecting layout properties such as alignment,
 margins, padding, and borders.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

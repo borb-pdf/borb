@@ -6,6 +6,7 @@ A tagging class representing a form field in a PDF.
 This class serves as a base for different types of form fields, such as text fields, checkboxes, and dropdowns.
 It inherits from LayoutElement but does not add any additional functionality on its own.
 """
+
 import typing
 
 from borb.pdf.font.font import Font

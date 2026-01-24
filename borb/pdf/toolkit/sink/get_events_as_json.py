@@ -7,6 +7,7 @@ This class is designed to collect events from a PDF document, such as shape fill
 and serialize these events into a JSON format. The events are organized by the page number of the PDF document
 and saved to a specified file location.
 """
+
 import pathlib
 import typing
 

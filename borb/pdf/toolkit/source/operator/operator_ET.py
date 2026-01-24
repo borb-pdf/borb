@@ -11,6 +11,7 @@ Text objects are initialized with the 'BT' (Begin Text) operator and represent s
 of text-related operations. Once 'ET' is called, the text-specific state is cleared, and
 the content stream continues with other graphics or text operations.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -9,6 +9,7 @@ they display a pop-up window containing the text of the associated note.
 
 Table 179 shows the annotation dictionary entries specific to these types of annotations.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -7,6 +7,7 @@ This class stores various elements and properties associated with the page, such
 text, images, and layout information. It provides a structured way to manage the
 content and metadata of a page within the PDF.
 """
+
 import typing
 
 from borb.pdf.primitives import stream, name

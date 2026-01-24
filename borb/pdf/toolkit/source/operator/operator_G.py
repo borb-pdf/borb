@@ -11,6 +11,7 @@ a gray level for stroking operations. The `gray` operand must be a number betwee
 This operator is commonly used for monochromatic graphics or when working with
 grayscale content.
 """
+
 import typing
 
 from borb.pdf.color.grayscale_color import GrayscaleColor

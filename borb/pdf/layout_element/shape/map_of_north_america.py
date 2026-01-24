@@ -9,6 +9,7 @@ specific fill and stroke colors for individual countries.
 
 Use this class to create and manipulate a map focused on North America within a PDF document.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

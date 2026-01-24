@@ -8,6 +8,7 @@ a defined x-coordinate threshold. This can be useful for extracting or manipulat
 within a specific horizontal region of the page, such as filtering out text or objects that
 appear to the right of a particular point.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

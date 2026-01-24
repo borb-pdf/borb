@@ -9,6 +9,7 @@ resetting fields, or navigating to different sections of the document.
 Buttons enhance user interactivity and improve the overall functionality
 of PDF forms.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

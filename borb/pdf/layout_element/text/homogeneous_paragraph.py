@@ -8,6 +8,7 @@ text shares the same styling properties, such as font, size, and color.
 Unlike `HeterogeneousParagraph`, the text in this paragraph is uniform
 and does not vary in style between different parts of the paragraph.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

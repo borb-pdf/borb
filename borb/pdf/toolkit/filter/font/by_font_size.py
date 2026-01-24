@@ -8,6 +8,7 @@ extraction or manipulation of text segments that match a given size. `ByFontSize
 handling content where text size denotes hierarchy or emphasis, such as headings, subheadings, or
 body text in structured documents.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

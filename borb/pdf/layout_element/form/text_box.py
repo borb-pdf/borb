@@ -7,6 +7,7 @@ The `TextBox` class is used to create and manage text input fields that allow
 users to enter a single line of text within PDF forms. Text boxes are ideal for
 capturing brief inputs such as names, email addresses, or other concise data.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

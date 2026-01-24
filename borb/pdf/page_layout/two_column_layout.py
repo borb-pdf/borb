@@ -11,6 +11,7 @@ and comprehension. It automatically manages the flow of content, ensuring
 that any overflow transitions seamlessly to the next column or page as
 needed.
 """
+
 import typing
 
 from borb.pdf.page import Page

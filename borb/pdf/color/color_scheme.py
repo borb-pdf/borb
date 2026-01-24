@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """A class that provides static methods to generate color schemes based on the HSV color model."""
+
 import typing
 
 from borb.pdf.color.color import Color

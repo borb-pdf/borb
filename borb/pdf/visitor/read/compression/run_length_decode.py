@@ -14,6 +14,7 @@ image compression or certain types of text and binary data.
 The algorithm identifies runs of the same byte value and decompresses them by repeating
 the byte for the specified number of times, thus reproducing the original data.
 """
+
 import logging
 
 logger = logging.getLogger(__name__)

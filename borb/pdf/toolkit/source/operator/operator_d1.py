@@ -25,6 +25,7 @@ Note:
     - The bounding box must be large enough to fully enclose the glyph. If marks fall outside this box, the result is unpredictable.
     - For more details on glyph positioning and metrics, refer to PDF specification section 9.2.4, "Glyph Positioning and Metrics."
 """
+
 import typing
 
 from borb.pdf.page import Page

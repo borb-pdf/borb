@@ -8,6 +8,7 @@ from the `Image` class, which provides core functionality for handling images in
 The screenshot can be captured directly from the user's screen and then processed like any
 other image object.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

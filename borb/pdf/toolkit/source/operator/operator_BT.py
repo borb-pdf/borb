@@ -14,6 +14,7 @@ Note:
     Text objects cannot be nested. A second 'BT' operator cannot appear before an 'ET' operator
     has been encountered to close the first text object.
 """
+
 import typing
 
 from borb.pdf.page import Page

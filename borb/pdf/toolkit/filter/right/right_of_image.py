@@ -8,6 +8,7 @@ given image on the page. This can be useful for filtering or manipulating conten
 appears next to or after a specific image, such as extracting text or objects located
 to the right of the image.
 """
+
 from borb.pdf.toolkit.event import Event
 from borb.pdf.toolkit.pipe import Pipe
 

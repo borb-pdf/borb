@@ -7,6 +7,7 @@ The Barcode class is designed to handle barcode images that can be embedded into
 It inherits from the Image class, thus gaining all methods and attributes related to image handling in the PDF,
 while adding specific functionality for encoding and displaying barcode data.
 """
+
 import enum
 import math
 import typing

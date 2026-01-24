@@ -12,6 +12,7 @@ The visitor follows the visitor pattern to traverse and modify the document,
 ensuring that the /MarkInfo dictionary is injected if it is missing. If an entry
 already exists, it is left unchanged unless an update is required.
 """
+
 import typing
 
 from borb.pdf.conformance import Conformance

@@ -14,6 +14,7 @@ where the pattern starts along the path.
 Note:
     For more details on line dash patterns, refer to PDF specification section 8.4.3.6, "Line Dash Pattern."
 """
+
 import typing
 
 from borb.pdf.page import Page

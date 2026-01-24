@@ -8,6 +8,7 @@ which may have any number of vertices connected by straight lines.
 Unlike polygon annotations, the first and last vertices of a polyline
 are not implicitly connected.
 """
+
 import math
 import typing
 

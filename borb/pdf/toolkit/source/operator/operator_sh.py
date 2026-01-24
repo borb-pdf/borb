@@ -22,6 +22,7 @@ Note:
 See also:
     - Shading dictionary (7.8.3, "Resource Dictionaries")
 """
+
 import typing
 
 from borb.pdf.page import Page

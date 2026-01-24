@@ -13,6 +13,7 @@ coordinates (x, y), linking them to human-visible colors.
 
 RGB stands for red, green, and blue.
 """
+
 from borb.pdf.color.color import Color
 
 

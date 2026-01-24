@@ -9,6 +9,7 @@ forms by enabling dynamic behaviors, such as form validation, calculations, or
 displaying alerts. This class allows for a more interactive user experience within
 PDF documents.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -8,6 +8,7 @@ necessary data to describe the shape, its fill color, and whether the even-odd r
 is used for determining which areas to fill. The event encapsulates information that
 can be used by other components to process or render the filled shape on the page.
 """
+
 from borb.pdf.color.color import Color
 from borb.pdf.page import Page
 from borb.pdf.toolkit.event import Event

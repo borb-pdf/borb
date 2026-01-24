@@ -20,6 +20,7 @@ value (brightness) simulates shining a bright white light on a colored object. F
 bright white light on a red object makes it appear brighter and more intense, whereas shining a dim
 light on the same object results in a darker appearance.
 """
+
 import math
 
 from borb.pdf.color.color import Color

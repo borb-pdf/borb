@@ -7,6 +7,7 @@ This class extends the `Pipe` class and filters events based on the page number.
 If the page associated with the event is even-numbered, the event is forwarded to the next pipe in the processing chain.
 Otherwise, the event is discarded.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

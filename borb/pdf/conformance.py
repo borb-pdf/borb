@@ -6,6 +6,7 @@ Enum representing various PDF conformance levels.
 These levels correspond to different standards of compliance for PDF documents,
 ensuring accessibility, long-term preservation, and other requirements.
 """
+
 import enum
 
 

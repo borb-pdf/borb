@@ -17,6 +17,7 @@ Note:
       by another 'Ts' operator.
     - This operator does not affect the position of other graphic objects or the text baseline.
 """
+
 import typing
 
 from borb.pdf.page import Page

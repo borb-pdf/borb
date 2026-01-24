@@ -8,6 +8,7 @@ contains various chunks of text with different styles, such as different
 fonts, sizes, colors, etc. The user can pass `Chunk` objects to form the
 paragraph, where each `Chunk` can have its own styling properties.
 """
+
 import functools
 import math
 import typing

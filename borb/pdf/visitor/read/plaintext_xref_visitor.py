@@ -19,6 +19,7 @@ This class:
 PDFs that use uncompressed XRef tables, supporting document reconstruction and
 efficient navigation within the PDF byte stream.
 """
+
 import logging
 import typing
 

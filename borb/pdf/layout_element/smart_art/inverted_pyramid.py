@@ -10,6 +10,7 @@ and alignment to enhance the visual appeal and readability. The inverted pyramid
 is ideal for illustrating concepts such as diminishing priorities, funnel processes,
 or narrowing stages in workflows or data presentations.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

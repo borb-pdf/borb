@@ -11,6 +11,7 @@ The decoding process involves reversing the LZW encoding algorithm to restore th
 data from the encoded byte sequence. This class can be used for handling compressed data streams
 within a PDF document, including but not limited to image streams, object data, and other binary content.
 """
+
 import typing
 
 

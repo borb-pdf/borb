@@ -8,6 +8,7 @@ according to the size and dimensions of the `LayoutElement` objects inside the t
 This allows for flexible and adaptive layouts where the column widths expand or shrink
 depending on the content they contain, ensuring that the table remains visually balanced.
 """
+
 import functools
 import math
 import typing

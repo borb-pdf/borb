@@ -7,6 +7,7 @@ The `Tags` class is designed to visually format and arrange tags, such as skills
 in a coherent and appealing layout. Each tag is styled with customizable colors, font sizes, and padding,
 making it suitable for use in documents like resumes, portfolios, or brochures.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -8,6 +8,7 @@ A link annotation can represent either a hypertext link to a destination elsewhe
 
 Table 173 shows the annotation dictionary entries specific to this type of annotation.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

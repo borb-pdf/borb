@@ -6,6 +6,7 @@ Base class for various types of layout elements.
 This class serves as a foundation for layout elements such as text, images, tables, and lists.
 A layout element can calculate its size based on available space and render itself on a page.
 """
+
 import enum
 import typing
 

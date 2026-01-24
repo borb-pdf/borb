@@ -8,6 +8,7 @@ rendered on each page. It stores the text events, grouped by page number, and al
 for easy retrieval of the extracted text content on a per-page basis. This class is
 useful for applications that need to analyze or extract text from specific pages of a PDF.
 """
+
 import typing
 
 from borb.pdf.page_size import PageSize

@@ -9,6 +9,7 @@ into non-overlapping lanes within their respective time ranges, allowing
 clear visualization of concurrent activities throughout the week. The
 WeekView handles grid calculation, event placement, and layout rendering.
 """
+
 import datetime
 import typing
 

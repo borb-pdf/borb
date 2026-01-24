@@ -12,6 +12,7 @@ The list of web colors is derived from the X11 color names but may differ
 in certain entries, reflecting variations in naming conventions across
 different platforms.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

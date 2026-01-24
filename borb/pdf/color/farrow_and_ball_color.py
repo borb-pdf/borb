@@ -7,6 +7,7 @@ Farrow & Ball specializes in historic color palettes and archives, offering a wi
 of unique colors and finishes. The company is particularly renowned for the distinctive
 names of its products, which often reflect their heritage and artistic inspiration.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

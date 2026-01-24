@@ -14,6 +14,7 @@ such as a group of related graphical elements or annotations.
 It is important to note that 'EMC' does not affect the graphics state or the flow of content in the document;
 it simply marks the end of the tagged content sequence.
 """
+
 import typing
 
 from borb.pdf.page import Page

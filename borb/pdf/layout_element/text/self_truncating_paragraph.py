@@ -11,6 +11,7 @@ public API across the homogeneous and heterogeneous paragraph types.
 The class itself introduces no new behavior; it exists purely for naming
 and structural consistency within the layout system.
 """
+
 from borb.pdf.layout_element.text.self_truncating_homogeneous_paragraph import (
     SelfTruncatingHomogeneousParagraph,
 )

@@ -12,6 +12,7 @@ The `Pipe` can be extended to implement custom behavior by overriding the `proce
 method. It also supports chaining through the `set_next` method, enabling seamless
 linking of multiple processing steps.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

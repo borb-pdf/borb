@@ -10,6 +10,7 @@ are correctly set in the PDF outline data structure. This functionality
 is crucial for enabling PDF reading software to display the headings
 in a structured and navigable manner, improving document accessibility.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

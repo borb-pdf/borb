@@ -9,6 +9,7 @@ This class is typically used to render text in PDF documents where Helvetica
 is required. It provides access to font-specific properties such as width,
 height, and character mapping.
 """
+
 import typing
 
 from borb.pdf.font.adobe_glyph_list import AdobeGlyphList

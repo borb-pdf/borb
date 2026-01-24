@@ -11,6 +11,7 @@ By utilizing the Visitor pattern, this design promotes separation of concerns,
 allowing for operations such as reading, writing, or manipulating the PDF content
 without modifying the node classes themselves.
 """
+
 import typing
 
 

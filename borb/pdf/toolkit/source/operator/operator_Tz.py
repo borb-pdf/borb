@@ -8,6 +8,7 @@ glyphs. The scaling factor is specified as a percentage, where 100 means no scal
 values greater than 100 expand the text horizontally, and values less than 100
 compress it.
 """
+
 import typing
 
 from borb.pdf.page import Page

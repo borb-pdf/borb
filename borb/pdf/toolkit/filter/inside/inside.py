@@ -8,6 +8,7 @@ for selective extraction or manipulation of text, images, or graphics within tha
 filter is useful for isolating content within specific boundaries, such as tables, headers,
 footers, or highlighted sections.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

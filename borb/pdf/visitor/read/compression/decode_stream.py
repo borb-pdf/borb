@@ -28,7 +28,6 @@ from borb.pdf.visitor.read.compression.flate_decode import FlateDecode
 from borb.pdf.visitor.read.compression.lzw_decode import LZWDecode
 from borb.pdf.visitor.read.compression.run_length_decode import RunLengthDecode
 
-
 #
 # CONSTRUCTOR
 #

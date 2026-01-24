@@ -13,6 +13,7 @@ the content stream resumes.
 Note:
     This operator is available starting from PDF 1.1.
 """
+
 import typing
 
 from borb.pdf.page import Page

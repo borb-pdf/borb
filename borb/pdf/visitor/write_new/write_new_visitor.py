@@ -11,6 +11,7 @@ traversing the nodes of a PDF document tree.
 The separation of writing operations from the PDF components allows for easy extension
 or modification through subclasses tailored to specific node types.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

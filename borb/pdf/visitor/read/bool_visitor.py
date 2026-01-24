@@ -16,6 +16,7 @@ This class contributes to PDF parsing by enabling the extraction of boolean data
 which are fundamental in defining conditions, attributes, and flags within PDF dictionaries
 and objects.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

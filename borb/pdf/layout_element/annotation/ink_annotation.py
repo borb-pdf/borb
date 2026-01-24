@@ -10,7 +10,6 @@ associated note.
 Table 182 shows the annotation dictionary entries specific to this type of annotation.
 """
 
-
 import math
 import typing
 

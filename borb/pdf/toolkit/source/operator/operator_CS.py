@@ -22,6 +22,7 @@ Note:
     For more details on colour spaces and the initial colour values, refer to PDF specification section 7.8.3,
     "Resource Dictionaries," and section 8.6.3, "Colour Space Families."
 """
+
 import typing
 
 from borb.pdf.color.x11_color import X11Color

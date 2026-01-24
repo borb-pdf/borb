@@ -16,6 +16,7 @@ financial, or analytical presentations. Customization options are available
 for background color, font colors, and font sizes for each component,
 allowing for visual adaptation to fit specific themes or presentation needs.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

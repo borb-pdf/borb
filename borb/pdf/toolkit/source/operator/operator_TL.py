@@ -13,6 +13,7 @@ Note:
       text rendering.
     - The value set by this operator persists in the text state until explicitly changed.
 """
+
 import typing
 
 from borb.pdf.page import Page

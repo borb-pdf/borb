@@ -16,6 +16,7 @@ The 'q' operator is useful for temporarily altering the graphics state during dr
 operations, with the ability to revert back to the saved state when needed, allowing for
 more flexible drawing control.
 """
+
 import typing
 
 from borb.pdf.page import Page

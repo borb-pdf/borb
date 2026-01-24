@@ -7,6 +7,7 @@ The `HorizontalBreak` class is used to improve the structure and readability of 
 by clearly demarcating different sections of content. It can be inserted at any point in
 the layout to serve as a divider, enhancing the visual organization of the content.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

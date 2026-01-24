@@ -16,6 +16,7 @@ This operator is part of the graphics state stack mechanism, allowing for the te
 modification of the graphics state during drawing operations, with the ability to revert to
 a prior state when necessary.
 """
+
 import typing
 
 from borb.pdf.page import Page

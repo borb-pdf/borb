@@ -26,6 +26,7 @@ Note:
     - The operands in the array are processed sequentially, applying any positional
       adjustments between the glyphs.
 """
+
 import typing
 
 from borb.pdf.page import Page

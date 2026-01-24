@@ -16,6 +16,7 @@ closed shapes or paths with sharp corners.
 
 See PDF specification section 8.4.3.3, "Line Cap Style" for more details.
 """
+
 import typing
 
 from borb.pdf.page import Page

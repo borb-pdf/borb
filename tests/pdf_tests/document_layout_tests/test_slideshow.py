@@ -65,15 +65,13 @@ class TestSlideshow(unittest.TestCase):
             .append_blank()
             # code snippet
             .append_section_title(subtitle="Code Snippet", title="5.")
-            .append_code_snippet(
-                code="""
+            .append_code_snippet(code="""
             def fib(n: int) -> int:
                 if n == 0 or n == 1:
                     return 1
                 else:
                     return fib(n-1) + fib(n-2)
-            """
-            )
+            """)
             .append_code_snippet_and_text(
                 text=Lipsum.generate_lorem_ipsum(500),
                 title=Lipsum.generate_lorem_ipsum(50),

@@ -7,6 +7,7 @@ The Chart class allows users to embed Matplotlib plots as LayoutElement objects 
 documents. It inherits from the Image class, enabling the conversion of Matplotlib figures
 into images that can be placed within the layout of the PDF.
 """
+
 import io
 import typing
 

@@ -8,6 +8,7 @@ PDF document structure. It extends the functionality of `WriteNewVisitor` by pro
 specific methods to handle the writing of boolean values, ensuring proper formatting
 and storage within the PDF.
 """
+
 import typing
 
 from borb.pdf.visitor.write_new.write_new_visitor import WriteNewVisitor

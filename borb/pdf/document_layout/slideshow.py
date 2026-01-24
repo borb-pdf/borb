@@ -11,6 +11,7 @@ presentation.
 It includes methods for easily creating slides tailored to specific content
 types, such as slides featuring charts, text, tables, and more.
 """
+
 import pathlib
 import typing
 

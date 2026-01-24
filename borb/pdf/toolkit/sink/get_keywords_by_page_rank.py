@@ -8,6 +8,7 @@ their importance using the PageRank algorithm. A co-occurrence graph is built wh
 based on their proximity within a given window. The highest-ranked words are selected as keywords,
 with common stopwords being excluded to improve relevance.
 """
+
 import typing
 
 from borb.pdf.toolkit.sink.get_text import GetText

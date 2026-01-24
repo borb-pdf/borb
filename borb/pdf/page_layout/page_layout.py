@@ -13,6 +13,7 @@ Subclasses of `PageLayout` can implement different layout strategies, ensuring
 flexibility in how content is arranged on the page. This class supports method chaining
 for appending elements and adjusting layouts dynamically.
 """
+
 from borb.pdf.layout_element.layout_element import LayoutElement
 
 

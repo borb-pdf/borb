@@ -14,6 +14,7 @@ Note:
     This operator is used in cases where the image data is included directly within
     the content stream, as opposed to being referenced externally.
 """
+
 import typing
 
 from borb.pdf.page import Page

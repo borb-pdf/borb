@@ -9,6 +9,7 @@ Python `int` objects. This class extends `ReadVisitor` to support traversing nod
 in a PDF document tree using the visitor pattern, isolating integer-specific
 handling logic.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

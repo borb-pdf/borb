@@ -13,6 +13,7 @@ This layout is ideal for presenting structured information in a visually
 appealing manner, improving readability and allowing for an even distribution
 of content on the page.
 """
+
 import typing
 
 from borb.pdf.document import Document

@@ -17,6 +17,7 @@ Note:
     name object referring to it in the current resource dictionary. For more details, refer to
     section 14.6.2, "Property Lists" of the PDF specification.
 """
+
 import typing
 
 from borb.pdf.page import Page

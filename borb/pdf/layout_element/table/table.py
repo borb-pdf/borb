@@ -9,6 +9,7 @@ managing tabular data within PDF documents. This class enables the
 organization and presentation of data in a structured format, allowing
 for the rendering of complex layouts.
 """
+
 import functools
 import typing
 

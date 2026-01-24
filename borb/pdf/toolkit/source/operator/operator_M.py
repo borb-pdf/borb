@@ -13,6 +13,7 @@ The operand specifies the miter limit value, which is a positive number.
 The miter limit is used when the line join style is set to "miter" (using the `j` operator) and affects how sharp
 the corners are when two lines meet at an angle.
 """
+
 import typing
 
 from borb.pdf.page import Page

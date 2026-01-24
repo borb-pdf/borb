@@ -13,6 +13,7 @@ The class uses the visitor pattern to traverse and modify the PDF document, addi
 the required OutputIntent information if it's not already present. It performs the
 injection only once per session to avoid redundant operations.
 """
+
 import typing
 
 from borb.pdf.conformance import Conformance

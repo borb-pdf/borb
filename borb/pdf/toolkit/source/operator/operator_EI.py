@@ -13,6 +13,7 @@ This operator is critical for ensuring the proper structure and integrity of inl
 Inline image objects are used to embed image data directly into the content stream,
 and the 'EI' operator indicates the completion of the image's content definition.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -14,6 +14,7 @@ and mapping object locations for later retrieval during document parsing. It
 traverses the PDF structure to locate and interpret object information, aiding
 in building the PDF object tree for decoding and rendering purposes.
 """
+
 import typing
 
 from borb.pdf.primitives import stream, name, reference

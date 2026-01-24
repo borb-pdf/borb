@@ -8,6 +8,7 @@ a widely used monospaced font. This class is typically used for rendering italic
 where the Courier Italic font is required. It provides access to font-specific properties, including
 width, height, and character mapping, ensuring accurate text layout and rendering.
 """
+
 import typing
 
 from borb.pdf.font.adobe_glyph_list import AdobeGlyphList

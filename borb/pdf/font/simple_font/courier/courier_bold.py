@@ -8,6 +8,7 @@ a widely used monospaced font. This class is primarily used for rendering bold t
 where the Courier Bold font is required. It provides access to font-specific properties, including
 width, height, and character mapping, ensuring accurate text layout and rendering.
 """
+
 import typing
 
 from borb.pdf.font.adobe_glyph_list import AdobeGlyphList

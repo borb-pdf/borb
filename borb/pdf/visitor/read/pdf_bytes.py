@@ -15,6 +15,7 @@ location of PDF-specific keywords, such as locating the end-of-file marker or
 header indicator, which are important for tasks like validation, content extraction,
 and structural analysis.
 """
+
 import typing
 
 

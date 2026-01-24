@@ -8,6 +8,7 @@ a cartoon avatar by selecting various attributes such as skin color, hair color,
 clothing, and accessories. The avatar can be easily rendered as an image and inserted into PDF documents,
 providing a fun and personalized touch to reports, profiles, or any PDF content.
 """
+
 import enum
 import typing
 

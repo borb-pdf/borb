@@ -14,6 +14,7 @@ commonly used for vector-based graphics in PDF documents.
 It inherits from `LayoutElement`, allowing it to be integrated into a larger
 document structure.
 """
+
 import functools
 import math
 import typing

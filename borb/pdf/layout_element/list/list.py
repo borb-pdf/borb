@@ -8,6 +8,7 @@ allowing for the addition and manipulation of layout elements such as text, imag
 and other content types. This class provides methods to append new elements and
 supports method chaining for convenience in building complex document structures.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

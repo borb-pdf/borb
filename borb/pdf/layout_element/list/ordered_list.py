@@ -8,6 +8,7 @@ The index numbers follow a sequential pattern (e.g., 1, 2, 3) and are updated wh
 items are appended. This class is useful for managing structured content such as
 numbered lists in documents.
 """
+
 import functools
 import typing
 

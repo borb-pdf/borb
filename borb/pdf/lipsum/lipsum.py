@@ -9,6 +9,7 @@ class allows users to generate text in different formats and styles,
 making it versatile for various applications, including web design,
 document formatting, and graphic design.
 """
+
 import typing
 
 

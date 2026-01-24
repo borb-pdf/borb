@@ -7,6 +7,7 @@ This module defines classes and types for managing fundamental components of
 PDF documents. It includes representations for name objects and stream objects,
 which are essential for handling data and metadata within the PDF structure.
 """
+
 import datetime
 import typing
 

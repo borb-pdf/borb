@@ -12,6 +12,7 @@ This class is typically used in contexts where content segregation based on imag
 is required, such as in PDF content analysis, layered content extraction, or visual structure
 modifications in a PDF.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

@@ -18,6 +18,7 @@ Note:
     This operator applies only to stroking operations and will not affect non-stroking
     color or other graphics state parameters.
 """
+
 import typing
 
 from borb.pdf.page import Page

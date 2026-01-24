@@ -14,6 +14,7 @@ Note:
     Refer to PDF specification section 8.5.2.2, "Cubic Bézier Curves", for more details on how
     Bézier curves are calculated and rendered.
 """
+
 import typing
 
 from borb.pdf.page import Page

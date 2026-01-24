@@ -9,6 +9,7 @@ associated note.
 
 Table 181 shows the annotation dictionary entries specific to this type of annotation.
 """
+
 import enum
 import typing
 

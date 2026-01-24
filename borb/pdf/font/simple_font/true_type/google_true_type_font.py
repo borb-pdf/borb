@@ -7,6 +7,7 @@ This class provides functionality to download and manage TrueType fonts by
 specifying their names. It facilitates interaction with the Google Font API
 to access font resources.
 """
+
 import pathlib
 import typing
 

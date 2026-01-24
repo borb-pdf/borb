@@ -12,6 +12,7 @@ processed by the inline image operator 'EI', which ends the image data sequence.
 
 Refer to the PDF specification for more details on inline images.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -10,6 +10,7 @@ handling the necessary formatting, encoding, and any specific PDF string-related
 This class inherits from the `WriteNewVisitor` class and focuses on processing string nodes in a
 manner consistent with the PDF standard.
 """
+
 import typing
 
 from borb.pdf.primitives import name

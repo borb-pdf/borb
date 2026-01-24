@@ -9,6 +9,7 @@ Using the visitor pattern, `DateStrVisitor` traverses PDF nodes, extracts date v
 according to the PDF specification, and enables precise handling of temporal metadata
 embedded in the document.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, datestr

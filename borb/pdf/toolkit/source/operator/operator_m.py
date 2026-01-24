@@ -12,6 +12,7 @@ effectively resetting the path without any continuation of the prior subpath.
 This operator is used to define the starting point of a new subpath, which is an isolated sequence of path segments.
 Any further path construction operators (like `l` for line) will then create the path from this new point.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -8,6 +8,7 @@ users to select a single option from a predefined set of choices. This element
 is ideal for scenarios where space is limited or where a list of options is
 extensive, providing a cleaner interface for user selection.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

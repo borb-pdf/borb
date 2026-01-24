@@ -50,9 +50,7 @@ class TestMarkdownParagraph(unittest.TestCase):
         Ex rebus humanis ut tibi _serviremus aliud negotii_ nihil habemus.
         Itaque eos quos eduxerat **Sparta** cum esset ~proposita aut inminuta~ sint occultent homines? 
         Ex rebus enim illam ~~non tam haesitaret~~.
-        """.replace(
-                " ", " " * 3
-            ),
+        """.replace(" ", " " * 3),
         ).paint(
             available_space=(x, y, w, h),
             page=p,
@@ -80,9 +78,7 @@ class TestMarkdownParagraph(unittest.TestCase):
         Ex rebus humanis ut tibi _serviremus aliud negotii_ nihil habemus.
         Itaque eos quos eduxerat **Sparta** cum esset ~proposita aut inminuta~ sint occultent homines? 
         Ex rebus enim illam ~~non tam haesitaret~~.
-        """.replace(
-                " ", " " * 3
-            ),
+        """.replace(" ", " " * 3),
         ).paint(
             available_space=(x, y, w, h),
             page=p,

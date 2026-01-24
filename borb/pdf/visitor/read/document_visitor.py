@@ -14,6 +14,7 @@ maintainability. The `DocumentVisitor` class defines methods to visit various ty
 of nodes (such as pages, objects, or metadata) in the PDF tree, extracting relevant
 information and assembling it into the `Document` object.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

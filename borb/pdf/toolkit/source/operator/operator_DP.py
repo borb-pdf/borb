@@ -14,6 +14,7 @@ The `DP` operator is commonly used to label specific points in a PDF document wi
 
 For more details on property lists and their use in marked-content sequences, refer to section 14.6.2, "Property Lists."
 """
+
 import typing
 
 from borb.pdf.page import Page

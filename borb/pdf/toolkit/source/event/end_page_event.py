@@ -9,6 +9,7 @@ page that was rendered, such as the page number and any other relevant details. 
 triggered once all content for a page has been processed, allowing other components in the PDF
 generation pipeline to handle post-processing or cleanup tasks associated with the page.
 """
+
 from borb.pdf.page import Page
 from borb.pdf.toolkit.event import Event
 

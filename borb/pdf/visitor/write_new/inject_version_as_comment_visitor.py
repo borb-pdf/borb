@@ -15,6 +15,7 @@ employed at the root level of a visitor hierarchy, this visitor ensures version
 tracking and attribution in generated PDF files, which is useful for diagnostics,
 auditing, and support.
 """
+
 import typing
 
 from borb.pdf import License

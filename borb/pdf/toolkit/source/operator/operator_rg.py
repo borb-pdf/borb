@@ -17,6 +17,7 @@ Note:
     A color with values [0.0, 0.0, 0.0] corresponds to black, and [1.0, 1.0, 1.0]
     corresponds to white.
 """
+
 import typing
 
 from borb.pdf.color.rgb_color import RGBColor

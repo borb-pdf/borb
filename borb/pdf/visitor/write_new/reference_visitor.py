@@ -12,6 +12,7 @@ This class inherits from the `WriteNewVisitor` class, providing a consistent
 approach to processing reference nodes while maintaining the integrity of the
 document structure.
 """
+
 import typing
 
 from borb.pdf.primitives import reference

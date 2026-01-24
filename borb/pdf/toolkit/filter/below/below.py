@@ -8,6 +8,7 @@ of a PDF content stream based on their vertical position. Using `Below`, only
 content located beneath the given y-coordinate threshold is targeted, allowing for
 selective manipulation or extraction of content positioned lower on the page.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

@@ -10,6 +10,7 @@ such as Europe or the entire globe.
 
 Use this class to generate maps, customize region appearances, and integrate geographic shapes into a PDF.
 """
+
 import functools
 import math
 import typing

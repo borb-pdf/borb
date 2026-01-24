@@ -15,6 +15,7 @@ that handle compressed xref streams or particular cross-reference formats. It ca
 extended to implement specific reading strategies or custom xref processing behaviors,
 supporting robust and optimized PDF parsing.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

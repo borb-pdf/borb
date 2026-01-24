@@ -11,6 +11,7 @@ extraction of image content from the PDF document.
 This class does not alter the content stream but rather listens for image-related events
 and stores them for future use or analysis.
 """
+
 import io
 import typing
 

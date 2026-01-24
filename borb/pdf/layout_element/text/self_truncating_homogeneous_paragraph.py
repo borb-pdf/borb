@@ -17,6 +17,7 @@ for common use cases where mixed styling is not required.
 This makes the component ideal for static text fields, UI labels, or table cells
 where space is limited but text should remain stylistically consistent.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

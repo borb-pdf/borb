@@ -8,6 +8,7 @@ allowing selective extraction, manipulation, or analysis based on font style, fa
 or name. `ByFont` is especially useful in cases where different fonts in a document
 denote different types of information, such as headings, footnotes, or emphasized text.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

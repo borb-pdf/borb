@@ -8,6 +8,7 @@ encapsulating properties and behaviors common to all fonts used in PDF documents
 This class provides a foundation for defining font attributes such as name, size,
 style, and encoding, which are essential for rendering text correctly in a PDF.
 """
+
 import typing
 
 from borb.pdf.primitives import name, PDFType

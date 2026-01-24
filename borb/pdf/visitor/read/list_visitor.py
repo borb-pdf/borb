@@ -9,6 +9,7 @@ specification. Using the visitor pattern, `ListVisitor` traverses nodes in
 the PDF document tree, converting recognized list structures into corresponding
 Python lists, with each element processed and converted based on its type.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

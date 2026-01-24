@@ -16,6 +16,7 @@ Where:
 This operator is typically used in text streams to simplify commands that involve moving to a new line
 and displaying text in a single step.
 """
+
 import typing
 
 from borb.pdf.page import Page

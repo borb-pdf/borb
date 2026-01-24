@@ -24,6 +24,7 @@ This design enables a multi-pass reference resolution pipeline in which differen
 visitors cooperate to resolve references safely, deterministically, and without
 introducing cyclic dependencies.
 """
+
 import typing
 
 from borb.pdf.primitives import reference, PDFType

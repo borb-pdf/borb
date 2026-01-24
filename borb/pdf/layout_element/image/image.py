@@ -7,6 +7,7 @@ The `Image` class provides flexible options for specifying an image source. The 
 can be supplied through a URL, image bytes, a `pathlib.Path`, or a `PIL.Image`
 object. This class allows for seamless integration of images into PDF layouts.
 """
+
 import io
 import pathlib
 import typing

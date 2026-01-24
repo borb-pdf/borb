@@ -7,6 +7,7 @@ The `LeftOfImage` filter identifies and processes content located to the left of
 on the PDF page. This can be particularly useful when you want to extract or manipulate text or
 objects that are positioned to the left of a particular image, enabling precise content targeting.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

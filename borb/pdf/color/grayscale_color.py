@@ -8,6 +8,7 @@ is a single sample representing an amount of light, carrying only intensity info
 known as black-and-white or gray monochrome images, are composed exclusively of shades of gray. The contrast
 ranges from black (weakest intensity) to white (strongest intensity).
 """
+
 from borb.pdf.color.color import Color
 from borb.pdf.color.rgb_color import RGBColor
 

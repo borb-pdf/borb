@@ -14,6 +14,7 @@ PDF stream data, while adding specific methods and attributes for interpreting
 CMap data. It supports parsing and interpreting character-to-glyph and
 character-to-Unicode mappings.
 """
+
 import typing
 
 from borb.pdf.primitives import stream, name

@@ -12,6 +12,7 @@ Note:
       to infinity from a given point. If the count is odd, the point is inside the path.
     - The current path is cleared after the clipping path is modified.
 """
+
 import typing
 
 from borb.pdf.page import Page

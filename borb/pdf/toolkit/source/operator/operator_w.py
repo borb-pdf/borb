@@ -7,6 +7,7 @@ This operator sets the line width for stroking operations in the current graphic
 The line width is measured in user space units and affects the thickness of lines drawn
 for subsequent stroking operations.
 """
+
 import typing
 
 from borb.pdf.page import Page

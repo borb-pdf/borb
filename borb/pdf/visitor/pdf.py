@@ -7,6 +7,7 @@ The `PDF` class simplifies PDF handling by offering an interface for reading,
 writing, and managing content within PDF documents. It abstracts the complexities
 of PDF structure, allowing users to easily manipulate documents.
 """
+
 import io
 import pathlib
 import typing

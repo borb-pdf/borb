@@ -10,6 +10,7 @@ creating organized lists of information, such as feature highlights, bullet poin
 This layout can be customized with various styles to control text, background colors, and spacing between blocks,
 allowing it to adapt to diverse document layouts and visual themes.
 """
+
 import math
 import typing
 

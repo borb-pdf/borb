@@ -5,6 +5,7 @@ A class to represent and manage software licenses.
 
 This class provides functionality to verify, retrieve, and manage the state of a software license.
 """
+
 import datetime
 import pathlib
 import typing
@@ -17,8 +18,7 @@ class License:
     This class provides functionality to verify, retrieve, and manage the state of a software license.
     """
 
-    __BORB_PUBLIC_KEYS: typing.List[bytes] = [
-        b"""-----BEGIN PUBLIC KEY-----
+    __BORB_PUBLIC_KEYS: typing.List[bytes] = [b"""-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvC5Daxt1u0DdxjvHrcpr
 HPWcmy48umRPwwVTqJEokPkC0UZK+6riD4ZZSHIgCL0IqnqbNqqytcDScF9lZOvq
 y/5j8sVHFSpGlgHRLZBnCyFrlFH7XUAs/97Is9/SG8ucKgyFnAmjxCNo6IrKaUIW
@@ -26,8 +26,7 @@ OcCO2UjRD+3m56w5vf4XSGoDeG1Ghd0bfk4nApUpZaYfghbRMQydCRukXC3fzEpO
 uoFWP16g7SQzIiFbwMrlZOp+CG51wZNmIzi3/fRZxoLkPAtpbVBUDiEZiwWE4xkX
 eBo3E56kBwFIk0PNyJ5yaqiInwZlYAe2xet3pQgDk7OS7hirAh2NklXSJIP2pPII
 TQIDAQAB
------END PUBLIC KEY-----"""
-    ]
+-----END PUBLIC KEY-----"""]
 
     __COMPANY: typing.Optional[str] = None
     __NAME: typing.Optional[str] = None

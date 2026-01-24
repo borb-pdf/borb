@@ -9,6 +9,7 @@ ordering scheme, starting from 'a', 'b', 'c', and continuing through
 ordered lists in documents where items need to be presented in a sequential,
 lettered format.
 """
+
 import typing
 
 from borb.pdf.layout_element.layout_element import LayoutElement

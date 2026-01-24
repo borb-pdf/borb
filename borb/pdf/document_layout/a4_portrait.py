@@ -12,6 +12,7 @@ With methods for adding tables, text, images, and other elements,
 the class ensures that all content is seamlessly integrated into the A4 portrait format,
 making it ideal for users who prioritize content over design complexities.
 """
+
 import pathlib
 import typing
 

@@ -12,6 +12,7 @@ extracting images or text, and other content manipulations.
 The class can be extended to implement specific processing behaviors, enabling the
 ability to perform complex transformations on the page's content.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

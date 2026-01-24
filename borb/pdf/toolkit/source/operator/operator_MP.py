@@ -11,6 +11,7 @@ filtering, or manipulating specific portions of the document. The 'MP' operator 
 in conjunction with other marked-content operators like 'BMC' (Begin Marked-Content) and 'EMC' (End Marked-Content)
 to delineate content within the document.
 """
+
 import typing
 
 from borb.pdf.page import Page

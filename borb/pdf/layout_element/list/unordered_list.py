@@ -8,6 +8,7 @@ providing a simple way to present non-sequential information clearly. This class
 particularly useful for managing structured content where the order does not matter,
 making it ideal for creating bulleted lists in documents.
 """
+
 import functools
 import typing
 

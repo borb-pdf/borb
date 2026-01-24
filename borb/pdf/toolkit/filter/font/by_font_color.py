@@ -8,6 +8,7 @@ extraction or manipulation of text segments that match a particular color code (
 `ByFontColor` is useful for distinguishing different types of information or emphasis in documents
 where color is used to signify importance, categorization, or grouping of text.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -12,6 +12,7 @@ The audio is stored as a stream in a format suitable for embedding, such as raw 
 audio formats. The annotation's appearance can be customized, and the audio content can be played using
 PDF viewers that support this feature.
 """
+
 import pathlib
 import typing
 

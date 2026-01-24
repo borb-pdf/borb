@@ -14,6 +14,7 @@ The 'n' operator is typically used in conjunction with other path construction o
 to define complex clipping regions, and its primary role is in the context of clipping
 path operations.
 """
+
 import typing
 
 from borb.pdf.page import Page

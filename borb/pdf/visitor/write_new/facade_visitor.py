@@ -12,6 +12,7 @@ section is handled properly, streamlining the PDF writing process.
 This class serves as a central access point, facilitating easier extension or
 modification of document writing behavior by coordinating multiple visitors.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, reference

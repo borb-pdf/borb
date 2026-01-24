@@ -17,6 +17,7 @@ Note:
     The 'tag' is typically used to identify the nature of the content, and the sequence
     can be used to apply properties or metadata to the content within the sequence.
 """
+
 import typing
 
 from borb.pdf.page import Page

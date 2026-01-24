@@ -15,6 +15,7 @@ opened with graph editing tools for further inspection and manipulation.
 This class does not modify the PDF content but simply extracts its structural relationships
 for GraphML representation.
 """
+
 import collections
 import pathlib
 import typing

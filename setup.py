@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """This module contains the build information for this project."""
+
 import setuptools  # type: ignore[import-untyped]
 
 # open readme

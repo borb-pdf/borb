@@ -7,6 +7,7 @@ This class represents a collection of `LayoutElement` objects, each positioned a
 a circular path with predefined sizes. It extends `LayoutElement` and supports rendering
 onto a `Page` while respecting layout properties such as alignment, margins, padding, and borders.
 """
+
 import math
 import typing
 

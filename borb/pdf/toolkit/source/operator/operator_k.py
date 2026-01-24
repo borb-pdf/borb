@@ -19,6 +19,7 @@ affecting how paths are painted with the given CMYK color.
 
 See PDF specification section 8.6.5.6, "Default Color Spaces" for more details.
 """
+
 import typing
 
 from borb.pdf.color.cmyk_color import CMYKColor

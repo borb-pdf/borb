@@ -7,6 +7,7 @@ This class is designed to create and manage a horizontal list of items,
 each preceded by a bullet symbol. It allows customization of bullet styles,
 spacing, and colors to enhance the visual presentation of the list.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

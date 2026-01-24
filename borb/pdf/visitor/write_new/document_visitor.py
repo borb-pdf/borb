@@ -7,6 +7,7 @@ This class is responsible for traversing and processing the top-level components
 document, such as metadata, pages, and overall structure. It ensures that all essential
 elements of the document are correctly written and formatted in accordance with PDF standards.
 """
+
 import collections
 import typing
 

@@ -9,6 +9,7 @@ content stream. This can be useful in document processing tasks where context-sp
 content separation is needed, such as extracting headers, annotations, or images
 that are positioned above specific keywords or phrases.
 """
+
 from borb.pdf.toolkit.event import Event
 from borb.pdf.toolkit.pipe import Pipe
 

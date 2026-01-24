@@ -11,6 +11,7 @@ management from design to production in both physical and digital formats,
 accommodating a range of materials such as coated and uncoated papers,
 cotton, polyester, nylon, and plastics.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

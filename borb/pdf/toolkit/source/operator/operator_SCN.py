@@ -22,6 +22,7 @@ Note:
     The behavior of this operator is influenced by the specifics of the stroking
     color space, which can vary significantly in terms of operands and their meanings.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -19,6 +19,7 @@ NoOpReferenceVisitor does not modify the document, return resolved objects, or o
 perform any action on the references it encounters. Its role is purely structural and
 protective within the reference resolution framework.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, reference

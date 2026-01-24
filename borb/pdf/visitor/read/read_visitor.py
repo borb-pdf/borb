@@ -12,6 +12,7 @@ This class serves as a generic visitor that can be used to handle reading
 operations on PDF nodes, delegating the actual logic to the root visitor
 and simplifying the management of PDF traversal.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

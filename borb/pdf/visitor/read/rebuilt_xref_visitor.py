@@ -7,6 +7,7 @@ This class scans the PDF byte stream for object declarations (e.g., "12 0 obj")
 and builds `reference` entries with their byte offsets. It is useful for
 recovering XREF tables in corrupted or linearized PDFs.
 """
+
 import re
 import typing
 

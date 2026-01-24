@@ -7,6 +7,7 @@ The DallE class inherits from the Image class in the PDF library, allowing users
 AI-generated images directly into PDF documents. Users provide a prompt, which is sent to
 the DALL·E API, and the generated image is retrieved and embedded in the PDF.
 """
+
 import os
 import typing
 

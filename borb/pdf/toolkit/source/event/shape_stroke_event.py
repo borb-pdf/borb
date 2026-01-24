@@ -8,6 +8,7 @@ PDF document. It encapsulates details such as the document and page context, the
 being stroked, the stroke's line width, and its color. This allows the event to be
 processed, analyzed, or modified by components in the PDF processing pipeline.
 """
+
 from borb.pdf.color.color import Color
 from borb.pdf.page import Page
 from borb.pdf.toolkit.event import Event

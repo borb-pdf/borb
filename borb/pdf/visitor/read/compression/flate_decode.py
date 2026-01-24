@@ -16,6 +16,7 @@ which is a form of adaptive prediction applied to neighboring pixels or samples.
 The `FlateDecode` class handles the decompression of data compressed using the Flate algorithm,
 including support for handling different prediction methods that may have been applied to the data.
 """
+
 import typing
 
 

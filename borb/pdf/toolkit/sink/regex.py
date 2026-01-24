@@ -12,6 +12,7 @@ This class does not alter the content stream but rather listens for text-related
 aggregates matches across the page, and exposes their positional information for
 downstream processing, analysis, or extraction workflows.
 """
+
 import re
 import typing
 

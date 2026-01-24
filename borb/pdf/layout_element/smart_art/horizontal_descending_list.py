@@ -10,6 +10,7 @@ where each item builds on or improves upon the previous one. It is ideal
 for representing steps, rankings, achievements, or any process that benefits
 from a sense of upward progression.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

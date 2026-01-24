@@ -17,6 +17,7 @@ Notes:
 Refer to the PDF specification for further details on path construction and the
 role of subpaths.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -11,6 +11,7 @@ annotation flags (see Table 165) are always set.
 
 Table 172 shows the annotation dictionary entries specific to this type of annotation.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

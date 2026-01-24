@@ -8,6 +8,7 @@ Checkboxes allow users to make binary choices, typically represented as checked 
 unchecked. This class facilitates the configuration and rendering of checkbox elements
 in interactive PDF forms.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

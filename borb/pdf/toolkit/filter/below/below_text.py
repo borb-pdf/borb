@@ -9,6 +9,7 @@ By setting a reference text, `BelowText` allows selective extraction, manipulati
 or analysis of content appearing below that text. This is particularly useful in
 document workflows where spatial relationships relative to text references are significant.
 """
+
 from borb.pdf.toolkit.event import Event
 from borb.pdf.toolkit.pipe import Pipe
 

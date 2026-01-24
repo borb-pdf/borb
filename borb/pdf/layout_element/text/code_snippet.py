@@ -8,6 +8,7 @@ or layout. It preserves the original formatting, including indentation, line
 breaks, and spacing, making it suitable for presenting code snippets or other
 preformatted text.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

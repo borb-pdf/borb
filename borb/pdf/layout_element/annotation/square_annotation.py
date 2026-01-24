@@ -10,6 +10,7 @@ inscribed within the annotation rectangle defined by the annotation dictionaryâ€
 
 Circle annotations display an ellipse, following similar behavior as square annotations.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

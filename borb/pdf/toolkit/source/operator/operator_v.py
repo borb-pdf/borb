@@ -8,6 +8,7 @@ from the current point and ends at the point (x3, y3). The current point and the
 (x2, y2) are used as the Bézier control points to define the shape of the curve. After the
 operation, the new current point is set to (x3, y3).
 """
+
 import typing
 
 from borb.pdf.page import Page

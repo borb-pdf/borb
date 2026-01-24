@@ -15,6 +15,7 @@ Note:
     See the section on "Path-Painting Operators" for more details on how the path
     is stroked.
 """
+
 import typing
 
 from borb.pdf.page import Page

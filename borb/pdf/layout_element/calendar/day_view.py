@@ -8,6 +8,7 @@ divided into 30-minute slots. Events can be pushed into the view and will
 be displayed at their scheduled times. The DayView supports styling via
 background color, borders, padding, and font size.
 """
+
 import collections
 import datetime
 import typing

@@ -9,6 +9,7 @@ within a PDF, converting them into Python strings. Using the visitor pattern,
 according to the PDF specification, allowing for structured handling of
 text content in the document.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType

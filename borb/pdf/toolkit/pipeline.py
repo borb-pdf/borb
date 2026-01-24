@@ -15,6 +15,7 @@ The first `Pipe` in the pipeline may be a `Source` object, which acts as the ent
 point for processing content streams. Subsequent pipes can perform filtering,
 transformation, or extraction tasks.
 """
+
 import typing
 
 from borb.pdf.document import Document

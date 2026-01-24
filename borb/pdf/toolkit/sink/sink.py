@@ -12,6 +12,7 @@ This class is intended to be extended to provide specific implementations
 of data aggregation, such as extracting text, images, bounding boxes, or
 other processed content from the pipeline.
 """
+
 import typing
 
 from borb.pdf.toolkit.pipe import Pipe

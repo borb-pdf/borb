@@ -12,6 +12,7 @@ Note:
     Character spacing affects the positioning of individual characters when text is shown,
     allowing for fine control over the spacing between characters in a text string.
 """
+
 import typing
 
 from borb.pdf.page import Page

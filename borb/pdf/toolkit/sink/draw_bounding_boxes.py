@@ -7,6 +7,7 @@ This class processes text rendering events and overlays a red rectangle around
 selected instances of (text) event(s). The user can specify which (text) events to highlight
 by providing a list of indices.
 """
+
 import typing
 
 from borb.pdf.color.x11_color import X11Color

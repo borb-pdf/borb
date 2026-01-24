@@ -7,6 +7,7 @@ The `Unsplash` class allows users to provide search keywords to find a relevant 
 Unsplash image database. This class interacts with the Unsplash API, retrieves the image, and
 embeds it into a PDF document, inheriting functionality from the `Image` class.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -17,6 +17,7 @@ Note:
     subject to the current text scaling factors in effect. The text position is
     then updated accordingly.
 """
+
 import typing
 
 from borb.pdf.page import Page

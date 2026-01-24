@@ -5,6 +5,7 @@ A class representing an empty space in a PDF layout.
 
 This element does not render any content but occupies a defined space.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

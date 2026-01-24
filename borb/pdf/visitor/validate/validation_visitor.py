@@ -14,6 +14,7 @@ This visitor is intended to be applied once per document and tracks its usage to
 It integrates with the `NodeVisitor` hierarchy and is designed to be composable with other visitors,
 using delegation to a `root` visitor when necessary.
 """
+
 import typing
 
 from borb.pdf import Document

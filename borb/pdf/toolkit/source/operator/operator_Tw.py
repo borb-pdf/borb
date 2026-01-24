@@ -7,6 +7,7 @@ This operator sets the word spacing parameter in the text state. Word spacing is
 to the advance width of the space character (defined in the font) during text layout.
 This allows precise control over the spacing between words in a text string.
 """
+
 import typing
 
 from borb.pdf.page import Page

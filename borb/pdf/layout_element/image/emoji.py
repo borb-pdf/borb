@@ -11,6 +11,7 @@ Unlike emoticons, which are typographic representations of emotions, emojis are 
 The term "emoji" strictly refers to pictures that can be represented as encoded characters,
 though it is sometimes extended to include messaging stickers.
 """
+
 from borb.pdf.layout_element.image.emoji_a_k import EmojiAK
 from borb.pdf.layout_element.image.emoji_l_z import EmojiLZ
 

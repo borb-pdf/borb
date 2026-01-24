@@ -7,6 +7,7 @@ The `A4PortraitResume` class enables users to create and customize a professiona
 It provides methods for adding personal information, work experience, education, skills, and other relevant sections
 to the resume.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

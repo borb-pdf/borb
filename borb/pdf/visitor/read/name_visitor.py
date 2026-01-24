@@ -8,6 +8,7 @@ a PDF, converting these into corresponding Python strings. Using the visitor pat
 `NameVisitor` traverses PDF nodes and extracts name objects according to the PDF
 specification, facilitating structured parsing of named resources and keys.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, name

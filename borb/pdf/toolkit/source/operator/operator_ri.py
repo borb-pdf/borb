@@ -17,6 +17,7 @@ Note:
     printing or displaying content across devices with varying color gamuts. This operator
     should be used in conjunction with color management settings for consistent color output.
 """
+
 import typing
 
 from borb.pdf.page import Page

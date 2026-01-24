@@ -11,6 +11,7 @@ The operands (x, y) specify the coordinates of the endpoint of the line segment 
 This operator is commonly used to build paths incrementally by adding straight line segments, helping to create
 more complex shapes when multiple line segments are connected.
 """
+
 import typing
 
 from borb.pdf.page import Page

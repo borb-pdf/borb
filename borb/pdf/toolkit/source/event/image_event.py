@@ -7,6 +7,7 @@ This event encapsulates the details of an image being placed on a page, includin
 dimensions, position, the PDF image object, and other related information. It allows
 the event to be processed or handled by other components in the PDF generation pipeline.
 """
+
 from borb.pdf.page import Page
 from borb.pdf.primitives import name, PDFType
 from borb.pdf.toolkit.event import Event

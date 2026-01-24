@@ -15,6 +15,7 @@ Note:
     several graphics state parameters, such as the current color. Refer to PDF specification
     section 11.7.4.4, "Special Path-Painting Considerations," for more details on these interactions.
 """
+
 import typing
 
 from borb.pdf.page import Page

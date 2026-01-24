@@ -8,6 +8,7 @@ given text string on the page. This can be useful for filtering or manipulating 
 that appears next to or after a specific text, such as extracting text or objects located
 to the right of a particular word or phrase.
 """
+
 from borb.pdf.toolkit.event import Event
 from borb.pdf.toolkit.pipe import Pipe
 

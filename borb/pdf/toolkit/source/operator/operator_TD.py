@@ -16,6 +16,7 @@ Note:
     The horizontal movement (tx) and vertical movement (ty) specify the displacement
     from the current text position, allowing for precise control over text placement.
 """
+
 import typing
 
 from borb.pdf.page import Page

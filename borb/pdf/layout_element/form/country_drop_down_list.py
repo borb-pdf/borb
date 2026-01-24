@@ -8,6 +8,7 @@ form element that allows users to select their country from a predefined list of
 country options. This dropdown simplifies data entry by providing a controlled
 set of choices, ensuring consistency and accuracy in country selection within PDF forms.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

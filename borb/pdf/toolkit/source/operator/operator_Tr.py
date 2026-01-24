@@ -20,6 +20,7 @@ Note:
     - The `Tr` operator is typically used to create effects such as outlining, filling, or clipping text
       based on its path.
 """
+
 import typing
 
 from borb.pdf.page import Page

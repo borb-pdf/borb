@@ -10,6 +10,7 @@ library. It includes access to font metrics, glyph mappings, and other propertie
 for accurate text rendering in PDF documents. Type1 fonts are known for their use in PostScript
 printing and are commonly used for high-quality document layouts.
 """
+
 from borb.pdf.font.simple_font.type_1_font import Type1Font
 
 

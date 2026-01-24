@@ -11,6 +11,7 @@ Table 174 shows the annotation dictionary entries specific to this type of annot
 Section 12.7.3.3, “Variable Text,” describes the process of using these entries to generate
 the appearance of the text in these annotations.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

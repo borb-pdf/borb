@@ -7,6 +7,7 @@ The `Equation` class extends the `Image` class and provides functionality to
 generate a high-quality image of a mathematical equation. It utilizes LaTeX for
 typesetting the equation and matplotlib for rendering the LaTeX code as an image.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

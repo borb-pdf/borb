@@ -16,6 +16,7 @@ This visitor is a critical component of the multi-pass reference resolution stra
 ensuring that structurally addressable references are resolved early while maintaining
 correctness and avoiding infinite recursion.
 """
+
 import logging
 import typing
 

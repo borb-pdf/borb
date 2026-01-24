@@ -10,6 +10,7 @@ enhance the visual appeal and readability. The pyramid format is ideal
 for illustrating concepts such as hierarchy, priorities, or layered
 structures in workflows, processes, or data presentations.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

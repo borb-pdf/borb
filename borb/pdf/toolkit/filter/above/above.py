@@ -12,6 +12,7 @@ of the page content based on layout requirements. For example, extracting header
 content above a certain y-coordinate, or portions of text/images that appear in the
 upper part of a page.
 """
+
 import typing
 
 from borb.pdf.toolkit.event import Event

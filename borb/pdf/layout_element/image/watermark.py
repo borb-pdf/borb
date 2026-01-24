@@ -7,6 +7,7 @@ This class is designed to handle the addition of watermarks (typically semi-tran
 It extends the functionality of the `Image` class, allowing for customization of watermark properties such as opacity,
 size, and position.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

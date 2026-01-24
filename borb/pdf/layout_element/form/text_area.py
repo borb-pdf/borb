@@ -8,6 +8,7 @@ within PDF forms. Text areas allow users to enter larger blocks of text, making
 them suitable for comments, descriptions, or any input requiring more space than
 a single-line text field can provide.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -9,6 +9,7 @@ render text in PDF documents where Times Italic is required.
 
 It provides access to font-specific properties such as width, height, and character mapping.
 """
+
 import typing
 
 from borb.pdf.font.adobe_glyph_list import AdobeGlyphList

@@ -21,6 +21,7 @@ Key responsibilities:
   classes, which process each part of the document as defined by the PDF
   specification.
 """
+
 import logging
 import typing
 

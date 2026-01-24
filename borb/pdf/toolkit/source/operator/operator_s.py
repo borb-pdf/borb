@@ -15,6 +15,7 @@ Note:
     The behavior of this operator depends on the current graphics state parameters,
     such as the current line width, color, and dash pattern.
 """
+
 import typing
 
 from borb.pdf.page import Page

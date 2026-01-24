@@ -14,6 +14,7 @@ infinite loops or errors.
 This visitor is typically used to finalize a PDF document, ensuring that all indirect references
 are replaced with their corresponding objects for accurate rendering or processing.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, reference

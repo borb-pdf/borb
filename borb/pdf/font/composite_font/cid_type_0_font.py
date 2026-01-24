@@ -17,6 +17,7 @@ This class extends the `Font` base class with additional mechanisms for handling
 mappings, font descriptors, and system-specific attributes essential for rendering
 multi-byte encoded text.
 """
+
 import typing
 
 from borb.pdf.font.font import Font

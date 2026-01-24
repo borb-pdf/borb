@@ -9,6 +9,7 @@ correspond to the annotation dictionary's Subtype entry. Additionally, the third
 whether the annotation is a markup annotation, as detailed in Section 12.5.6.2, “Markup Annotations.”
 This class also provides information about the value of the Contents entry for different annotation types.
 """
+
 import functools
 import typing
 

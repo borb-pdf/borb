@@ -11,6 +11,7 @@ The nonzero winding number rule considers the direction in which the path
 is drawn to determine the regions to fill. See section 8.5.3.3.2, "Nonzero Winding
 Number Rule," in the PDF specification for further details.
 """
+
 import typing
 
 from borb.pdf.page import Page

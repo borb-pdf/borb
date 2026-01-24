@@ -10,6 +10,7 @@ the visual appeal by deviating from a traditional straight-line approach.
 This format is ideal for workflows, timelines, or processes that benefit
 from a dynamic, flowing presentation.
 """
+
 import math
 import typing
 

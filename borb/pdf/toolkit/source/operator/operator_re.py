@@ -22,6 +22,7 @@ Note:
     needs to be filled, stroked, or clipped, additional operators such as 'f', 'S', or 'n'
     should follow.
 """
+
 import typing
 
 from borb.pdf.page import Page

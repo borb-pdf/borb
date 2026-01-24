@@ -6,6 +6,7 @@ Extracts keywords from a PDF document on a per-page basis using Term Frequency-I
 This class extends `GetText` to process text data extracted from a PDF file and compute keywords for each page
 based on their importance using the TF-IDF algorithm. It excludes common stopwords to improve relevance.
 """
+
 import typing
 
 from borb.pdf.toolkit.sink.get_text import GetText

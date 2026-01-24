@@ -20,6 +20,7 @@ Note:
     color space, 'rg' for fill color, etc.). For more information on the graphics state and color
     management in PDF, refer to section 4.5 of the PDF specification.
 """
+
 import typing
 
 from borb.pdf.page import Page

@@ -10,6 +10,7 @@ of times.
 
 See section 8.5.3.3.3, "Even-Odd Rule," in the PDF specification for more details.
 """
+
 import typing
 
 from borb.pdf.page import Page

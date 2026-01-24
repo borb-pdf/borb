@@ -16,6 +16,7 @@ This representation follows the 24-bit RGB color scheme, where:
 
 Hex triplets are commonly used in web design to specify colors.
 """
+
 from borb.pdf.color.rgb_color import RGBColor
 
 

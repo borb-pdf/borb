@@ -8,6 +8,7 @@ essential details about the text, including its position, font, font size, font 
 and the content itself. This allows the event to be processed, analyzed, or modified by
 components in the PDF processing pipeline.
 """
+
 from borb.pdf.color.color import Color
 from borb.pdf.font.font import Font
 from borb.pdf.page import Page

@@ -6,6 +6,7 @@ Represents a single conformance check against a specific clause in a PDF specifi
 This class encapsulates all necessary metadata and logic required to verify whether
 a given object conforms to a specific requirement in the PDF standard.
 """
+
 import typing
 
 from borb.pdf.conformance import Conformance

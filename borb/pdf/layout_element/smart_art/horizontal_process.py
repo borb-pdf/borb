@@ -9,6 +9,7 @@ these blocks, indicating the sequence and direction of the process flow.
 This layout is particularly useful for visualizing workflows, project
 steps, or any sequential operations.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

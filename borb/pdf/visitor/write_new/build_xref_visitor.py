@@ -15,6 +15,7 @@ itself; it only prepares the objects for later serialization. Actual
 persistence of the XRef data is handled by other components in the
 serialization process, following the completion of this visitor's work.
 """
+
 import typing
 
 from borb.pdf.document import Document

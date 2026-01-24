@@ -8,6 +8,7 @@ then be used by another class to generate text. The Markov model is built
 by analyzing the sequence of words or characters in the input, allowing
 for the prediction of the next item in the sequence based on prior data.
 """
+
 import typing
 
 

@@ -8,6 +8,7 @@ The regions inside the new clipping path are determined based on the nonzero win
 number rule. This rule calculates whether a point is inside a path by counting the
 number of times the path winds around the point.
 """
+
 import typing
 
 from borb.pdf.page import Page

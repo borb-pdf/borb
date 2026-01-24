@@ -8,6 +8,7 @@ These polygons can have any number of vertices connected by straight lines.
 Unlike polyline annotations, which are similar but do not implicitly connect
 the first and last vertices, polygon annotations form a closed shape.
 """
+
 import math
 import typing
 

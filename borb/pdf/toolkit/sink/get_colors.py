@@ -6,6 +6,7 @@ A Sink that processes PDF rendering events to extract and track colors used in a
 This class listens to events in the PDF processing pipeline and extracts a limited number
 of unique colors based on the specified maximum threshold.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -6,6 +6,7 @@ A class responsible for sending anonymous usage statistics back to borb HQ.
 This class gathers, formats, and transmits data about how borb is being used,
 ensuring the statistics remain anonymous.
 """
+
 import collections
 import typing
 

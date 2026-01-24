@@ -10,6 +10,7 @@ indicating directionality—typically clockwise. This layout is ideal for system
 that repeat, evolve in stages, or emphasize closed-loop structures such as life
 cycles, iterative processes, or circular economies.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

@@ -11,6 +11,7 @@ progress, such as 50% for the second step and 100% for the final step.
 This intuitive layout aids in understanding the flow and status of the
 overall process at a glance.
 """
+
 import typing
 
 from borb.pdf.color.color import Color

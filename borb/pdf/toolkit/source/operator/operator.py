@@ -14,6 +14,7 @@ expected operands, and applying the operator's logic.
 Subclasses should override the `apply` method to implement the specific behavior of
 each operator.
 """
+
 import typing
 
 from borb.pdf.page import Page

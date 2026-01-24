@@ -8,6 +8,7 @@ in the PDF document tree. It ensures that key-value pairs in the dictionaries ar
 written or exported, handling the necessary formatting and encoding required for PDF
 dictionaries.
 """
+
 import typing
 
 from borb.pdf.primitives import PDFType, stream

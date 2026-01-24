@@ -18,6 +18,7 @@ Note:
     - This operator does not automatically add any additional spacing between characters
       beyond what is defined by the current text state.
 """
+
 import typing
 
 from borb.pdf.font.composite_font.composite_font import CompositeFont

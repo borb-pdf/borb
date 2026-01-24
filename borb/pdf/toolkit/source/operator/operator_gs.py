@@ -14,6 +14,7 @@ Introduced in PDF 1.2.
 
 Refer to the PDF specification for more details on the ExtGState subdictionary and its usage.
 """
+
 import typing
 
 from borb.pdf.page import Page

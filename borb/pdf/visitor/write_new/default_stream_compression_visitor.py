@@ -7,6 +7,7 @@ This visitor is designed to compress streams that are decoded but have
 no existing compressed byte data. It only works on streams that contain
 the appropriate 'DecodedBytes' and 'Filter' attributes for the stream objects.
 """
+
 import typing
 
 from borb.pdf import Document

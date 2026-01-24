@@ -15,6 +15,7 @@ The line join style impacts how the appearance of corners or angles between path
 
 See PDF specification section 8.4.3.4, "Line Join Style" for more details.
 """
+
 import typing
 
 from borb.pdf.page import Page
