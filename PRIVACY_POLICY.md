@@ -9,7 +9,7 @@ This **Privacy Policy** is designed to help you understand what information we c
 
 ## 1. Information We Collect
 
-By default, when you use `borb`, anonymous usage statistics are sent to a secure endpoint managed by us.  
+By default, when you use `borb`, usage statistics are sent to a secure endpoint managed by us.  
 These events are triggered when you **read** or **write** a PDF document using `borb`.
 
 ### 1.1 What is collected
@@ -23,12 +23,11 @@ Each time a read/write operation is performed, the following data may be sent:
 - **operating_system**: the OS/platform used (e.g., `linux`, `win32`, `darwin`)
 - **license_valid_from_in_ms / license_valid_until_in_ms**: if a license is present, the validity period (in milliseconds since epoch)
 - **company**: if specified in the license metadata
+- A pseudonymous identifier derived from the source **IP address of the connection**., which allows us to distinguish unique users
 
 ### 1.2 What is **not** collected
 
-- No personally identifiable information (PII) is collected
 - No document content, metadata, or filenames are transmitted
-- No user IDs or persistent tracking identifiers are involved
 
 ### 1.3 When data is sent
 
@@ -40,7 +39,7 @@ Each time a read/write operation is performed, the following data may be sent:
 
 ## 2. Why We Collect This Data
 
-The purpose of collecting anonymous usage data is to improve the overall quality and focus of `borb`'s development.
+The purpose of collecting usage data is to improve the overall quality and focus of `borb`'s development.
 
 ### 2.1 Improve Existing Features
 
@@ -52,7 +51,7 @@ By tracking version usage, we can make data-driven decisions on which versions t
 
 ### 2.3 License Insights (If Applicable)
 
-If a license is present, we use its metadata to understand enterprise usage patterns—again, anonymously.
+If a license is present, we use its metadata to understand enterprise usage patterns
 
 ### 2.4 Safeguard Developer Resources
 
@@ -70,7 +69,7 @@ You can opt out of telemetry collection at any time by calling:
 UsageStatistics.opt_out()
 ```
 
-This prevents any further anonymous events from being sent.
+This prevents any further events from being sent.
 
 ### 3.2 Re-enabling Usage Statistics
 
@@ -87,6 +86,6 @@ If no license is found, `borb` tracks the number of documents processed (locally
 ## 4. Summary
 
 We strive to ensure transparency and respect for your privacy.
-The telemetry system in borb is intentionally lightweight, anonymous, and fully opt-in/opt-out.
+The telemetry system in borb is intentionally lightweight, pseudonymous, and fully opt-in/opt-out.
 
 For any questions or concerns, reach out to us at: `borbpdf@gmail.com`
