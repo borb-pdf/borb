@@ -23,7 +23,7 @@ Each time a read/write operation is performed, the following data may be sent:
 - **operating_system**: the OS/platform used (e.g., `linux`, `win32`, `darwin`)
 - **license_valid_from_in_ms / license_valid_until_in_ms**: if a license is present, the validity period (in milliseconds since epoch)
 - **company**: if specified in the license metadata
-- A pseudonymous identifier derived from the source **IP address of the connection**., which allows us to distinguish unique users
+- A pseudonymous identifier derived from the source **IP address of the connection**, which allows us to distinguish unique users
 
 ### 1.2 What is **not** collected
 
