@@ -15,6 +15,7 @@ downstream processing, analysis, or extraction workflows.
 
 import re
 import typing
+from typing import AnyStr
 
 from borb.pdf.toolkit.event import Event
 from borb.pdf.page_size import PageSize
@@ -23,6 +24,137 @@ from borb.pdf.toolkit.source.event.text_event import TextEvent
 
 # define a Rectangle
 RectangleType = typing.Tuple[float, float, float, float]
+
+
+class Match:
+
+    #
+    # CONSTRUCTOR
+    #
+
+    def __init__(self, inner_match: re.Match, rectangles: typing.List[RectangleType]):
+        self.__inner_match: re.Match = inner_match
+        self.__rectangles: typing.List[RectangleType] = rectangles
+
+    #
+    # PRIVATE
+    #
+
+    def __getitem__(
+        self, key: typing.Union[int, slice]
+    ) -> typing.Union[AnyStr, typing.Tuple[AnyStr, ...]]:
+        """
+        Support `match[i]` and `match[i:j]` indexing, mirroring `re.Match`.
+        """
+        return self.__inner_match[key]
+
+    #
+    # PUBLIC
+    #
+
+    def end(self, group: typing.Union[int, str] = 0) -> int:
+        """
+        Return the ending position of the match or subgroup.
+        """
+        return self.__inner_match.end(group)
+
+    @property
+    def endpos(self) -> int:
+        """
+        The index in the string where the search ended.
+        """
+        return self.__inner_match.endpos
+
+    def expand(self, template: str) -> str:
+        """
+        Return the string obtained by doing backslash substitution on
+        `template`, as done by `re.Match.expand`.
+
+        Escapes such as ``\\n`` are converted to the appropriate characters.
+        Numeric (``\\1``) and named (``\\g<name>``) backreferences are replaced
+        by the contents of the corresponding group. ``\\g<0>`` refers to the
+        entire match.
+        """
+        return self.__inner_match.expand(template)
+
+    def group(self, *groups: typing.Union[int, str]) -> AnyStr:
+        """
+        Return one or more subgroups of the match.
+
+        With a single argument, return the corresponding group.
+        With multiple arguments, return a tuple of groups.
+        """
+        return self.__inner_match.group(*groups)
+
+    def groupdict(
+        self, default: typing.Optional[AnyStr] = None
+    ) -> typing.Dict[str, AnyStr]:
+        """
+        Return a dictionary containing all the named subgroups of the match.
+        """
+        return self.__inner_match.groupdict(default)
+
+    def groups(
+        self, default: typing.Optional[AnyStr] = None
+    ) -> typing.Tuple[AnyStr, ...]:
+        """
+        Return a tuple containing all the subgroups of the match.
+        """
+        return self.__inner_match.groups(default)
+
+    @property
+    def lastgroup(self) -> typing.Optional[str]:
+        """
+        The name of the last matched capturing group, or None.
+        """
+        return self.__inner_match.lastgroup
+
+    @property
+    def lastindex(self) -> typing.Optional[int]:
+        """
+        The index of the last matched capturing group, or None.
+        """
+        return self.__inner_match.lastindex
+
+    @property
+    def pos(self) -> int:
+        """
+        The index in the string where the search started.
+        """
+        return self.__inner_match.pos
+
+    @property
+    def re(self) -> re.Pattern[str]:
+        """
+        The compiled regular expression object.
+        """
+        return self.__inner_match.re
+
+    @property
+    def rectangles(self) -> typing.List[RectangleType]:
+        """
+        Rectangle metadata associated with this match.
+        """
+        return self.__rectangles
+
+    def span(self, group: typing.Union[int, str] = 0) -> typing.Tuple[int, int]:
+        """
+        Return a `(start, end)` tuple for the match or subgroup.
+        """
+        return self.__inner_match.span(group)
+
+    def start(self, group: typing.Union[int, str] = 0) -> int:
+        """
+        Return the starting position of the match or subgroup.
+        """
+        return self.__inner_match.start(group)
+
+    @property
+    def string(self) -> str:
+        """
+        The string passed to `re.Pattern.search` or `match`.
+        """
+        return self.__inner_match.string
 
 
 class Regex(Sink):
@@ -181,11 +313,11 @@ class Regex(Sink):
 
         # now apply the regex
         self.__rectangles_per_page[page_nr] = []
-        for match in self.__pattern.finditer(text):
+        for re_match in self.__pattern.finditer(text):
 
             # find its matching rectangles
             match_rectangles: typing.List[RectangleType] = []
-            for r in char_rectangles[match.start() : match.end()]:
+            for r in char_rectangles[re_match.start() : re_match.end()]:
 
                 # IF the rectangle is None
                 # THEN skip
@@ -217,4 +349,6 @@ class Regex(Sink):
                 )
 
             # append
-            self.__rectangles_per_page[page_nr] += match_rectangles
+            self.__rectangles_per_page[page_nr] += [
+                Match(inner_match=re_match, rectangles=match_rectangles)
+            ]

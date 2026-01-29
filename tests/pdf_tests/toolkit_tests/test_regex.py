@@ -59,11 +59,12 @@ class TestRegex(unittest.TestCase):
         assert len(rectangles) == 1
 
         # step 4: mark
-        for i, r in enumerate(rectangles[0]):
-            x, y, w, h = r
-            SquareAnnotation(stroke_color=X11Color.RED, size=(w, h)).paint(
-                available_space=(x, y, w, h), page=d.get_page(0)
-            )
+        for i, m in enumerate(rectangles[0]):
+            for (x,y,w,h) in m.rectangles:
+                SquareAnnotation(stroke_color=X11Color.RED,
+                                 size=(w, h)).paint(
+                    available_space=(x, y, w, h), page=d.get_page(0)
+                )
 
         # store
         PDF.write(what=d, where_to="assets/test_regex_marked.pdf")
