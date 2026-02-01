@@ -53,22 +53,17 @@ class Match:
     #
 
     def end(self, group: typing.Union[int, str] = 0) -> int:
-        """
-        Return the ending position of the match or subgroup.
-        """
+        """Return the ending position of the match or subgroup."""
         return self.__inner_match.end(group)
 
     @property
     def endpos(self) -> int:
-        """
-        The index in the string where the search ended.
-        """
+        """The index in the string where the search ended."""
         return self.__inner_match.endpos
 
     def expand(self, template: str) -> str:
         """
-        Return the string obtained by doing backslash substitution on
-        `template`, as done by `re.Match.expand`.
+        Return the string obtained by doing backslash substitution on `template`, as done by `re.Match.expand`.
 
         Escapes such as ``\\n`` are converted to the appropriate characters.
         Numeric (``\\1``) and named (``\\g<name>``) backreferences are replaced
@@ -89,71 +84,51 @@ class Match:
     def groupdict(
         self, default: typing.Optional[AnyStr] = None
     ) -> typing.Dict[str, AnyStr]:
-        """
-        Return a dictionary containing all the named subgroups of the match.
-        """
+        """Return a dictionary containing all the named subgroups of the match."""
         return self.__inner_match.groupdict(default)  # type: ignore[arg-type]
 
     def groups(
         self, default: typing.Optional[AnyStr] = None
     ) -> typing.Tuple[AnyStr, ...]:
-        """
-        Return a tuple containing all the subgroups of the match.
-        """
+        """Return a tuple containing all the subgroups of the match."""
         return self.__inner_match.groups(default)  # type: ignore[arg-type]
 
     @property
     def lastgroup(self) -> typing.Optional[str]:
-        """
-        The name of the last matched capturing group, or None.
-        """
+        """The name of the last matched capturing group, or None."""
         return self.__inner_match.lastgroup
 
     @property
     def lastindex(self) -> typing.Optional[int]:
-        """
-        The index of the last matched capturing group, or None.
-        """
+        """The index of the last matched capturing group, or None."""
         return self.__inner_match.lastindex
 
     @property
     def pos(self) -> int:
-        """
-        The index in the string where the search started.
-        """
+        """The index in the string where the search started."""
         return self.__inner_match.pos
 
     @property
     def re(self) -> re.Pattern[str]:
-        """
-        The compiled regular expression object.
-        """
+        """The compiled regular expression object."""
         return self.__inner_match.re
 
     @property
     def rectangles(self) -> typing.List[RectangleType]:
-        """
-        Rectangle metadata associated with this match.
-        """
+        """Rectangle metadata associated with this match."""
         return self.__rectangles
 
     def span(self, group: typing.Union[int, str] = 0) -> typing.Tuple[int, int]:
-        """
-        Return a `(start, end)` tuple for the match or subgroup.
-        """
+        """Return a `(start, end)` tuple for the match or subgroup."""
         return self.__inner_match.span(group)
 
     def start(self, group: typing.Union[int, str] = 0) -> int:
-        """
-        Return the starting position of the match or subgroup.
-        """
+        """Return the starting position of the match or subgroup."""
         return self.__inner_match.start(group)
 
     @property
     def string(self) -> str:
-        """
-        The string passed to `re.Pattern.search` or `match`.
-        """
+        """The string passed to `re.Pattern.search` or `match`."""
         return self.__inner_match.string
 
 
