@@ -27,12 +27,19 @@ RectangleType = typing.Tuple[float, float, float, float]
 
 
 class Match:
+    """
+    Wrapper around ``re.Match`` with attached rectangle metadata.
+
+    This class mirrors the public interface of :class:`re.Match` while
+    carrying additional rectangle information associated with the match.
+    """
 
     #
     # CONSTRUCTOR
     #
 
     def __init__(self, inner_match: re.Match, rectangles: typing.List[RectangleType]):
+        """Initialize a Match from an existing ``re.Match`` and rectangles."""
         self.__inner_match: re.Match = inner_match
         self.__rectangles: typing.List[RectangleType] = rectangles
 
@@ -43,9 +50,7 @@ class Match:
     def __getitem__(
         self, key: typing.Union[int, slice]
     ) -> typing.Union[AnyStr, typing.Tuple[AnyStr, ...]]:
-        """
-        Support `match[i]` and `match[i:j]` indexing, mirroring `re.Match`.
-        """
+        """Support `match[i]` and `match[i:j]` indexing, mirroring `re.Match`."""
         return self.__inner_match[key]  # type: ignore[index]
 
     #
