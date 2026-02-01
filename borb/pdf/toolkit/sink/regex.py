@@ -67,7 +67,7 @@ class Match:
         return self.__inner_match.endpos
 
     def expand(self, template: str) -> str:
-        """
+        r"""
         Return the string obtained by doing backslash substitution on `template`, as done by `re.Match.expand`.
 
         Escapes such as ``\\n`` are converted to the appropriate characters.
