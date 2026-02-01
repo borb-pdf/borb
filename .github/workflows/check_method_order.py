@@ -138,6 +138,7 @@ if __name__ == "__main__":
             "get_text.py",
             "lzw_decode.py",
             "primitives.py",
+            "regex.py",
             "table.py",
         ],
     )
