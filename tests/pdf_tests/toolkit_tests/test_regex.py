@@ -60,9 +60,8 @@ class TestRegex(unittest.TestCase):
 
         # step 4: mark
         for i, m in enumerate(rectangles[0]):
-            for (x,y,w,h) in m.rectangles:
-                SquareAnnotation(stroke_color=X11Color.RED,
-                                 size=(w, h)).paint(
+            for x, y, w, h in m.rectangles:
+                SquareAnnotation(stroke_color=X11Color.RED, size=(w, h)).paint(
                     available_space=(x, y, w, h), page=d.get_page(0)
                 )
 

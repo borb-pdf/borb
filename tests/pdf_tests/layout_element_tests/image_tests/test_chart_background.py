@@ -1,4 +1,5 @@
 import math
+import typing
 import unittest
 
 import matplotlib  # type: ignore[import-not-found]
@@ -14,7 +15,7 @@ from borb.pdf.visitor.pdf import PDF
 class TestChartBackground(unittest.TestCase):
 
     @staticmethod
-    def _create_matplotlib_pyplot() -> matplotlib.pyplot:
+    def _create_matplotlib_pyplot() -> typing.Any:
 
         # Data for the plot
         x = [i for i in range(0, 360, 5)]

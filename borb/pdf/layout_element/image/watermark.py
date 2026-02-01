@@ -124,7 +124,7 @@ class Watermark(LayoutElement):
         try:
             font = ImageFont.truetype("DejaVuSans.ttf", size=font_size)
         except IOError:
-            font = ImageFont.load_default()
+            font = ImageFont.load_default()  # type: ignore[assignment]
 
         # Measure text size
         text_bbox = draw.textbbox((0, 0), text, font=font)
@@ -153,7 +153,7 @@ class Watermark(LayoutElement):
         if angle_in_degrees != 0:
             img = img.rotate(
                 angle=angle_in_degrees,
-                resample=Image.BICUBIC,
+                resample=Image.BICUBIC,  # type: ignore[attr-defined]
                 expand=False,
                 center=(width // 2, height // 2),
             )

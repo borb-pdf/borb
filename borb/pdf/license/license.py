@@ -131,8 +131,8 @@ TQIDAQAB
             from cryptography.hazmat.primitives.asymmetric import padding  # type: ignore[import-not-found]
             from cryptography.hazmat.primitives import hashes  # type: ignore[import-not-found]
 
-            license_bytes_signed_hash = private_key.sign(
-                unsigned_license_hash, padding.PKCS1v15(), hashes.SHA256()
+            license_bytes_signed_hash = private_key.sign(  # type: ignore[call-arg,union-attr]
+                unsigned_license_hash, padding.PKCS1v15(), hashes.SHA256()  # type: ignore[arg-type]
             )
         except:
             pass
@@ -278,10 +278,10 @@ TQIDAQAB
             try:
                 import base64
 
-                public_key.verify(
+                public_key.verify(  # type: ignore[call-arg,union-attr]
                     base64.b64decode(signed_license_hash),
                     unsigned_license_hash,
-                    padding.PKCS1v15(),
+                    padding.PKCS1v15(),  # type: ignore[arg-type]
                     hashes.SHA256(),
                 )
 

@@ -46,7 +46,7 @@ class Match:
         """
         Support `match[i]` and `match[i:j]` indexing, mirroring `re.Match`.
         """
-        return self.__inner_match[key]
+        return self.__inner_match[key]  # type: ignore[index]
 
     #
     # PUBLIC
@@ -77,14 +77,14 @@ class Match:
         """
         return self.__inner_match.expand(template)
 
-    def group(self, *groups: typing.Union[int, str]) -> AnyStr:
+    def group(self, *groups: typing.Union[int, str]) -> AnyStr:  # type: ignore[type-var]
         """
         Return one or more subgroups of the match.
 
         With a single argument, return the corresponding group.
         With multiple arguments, return a tuple of groups.
         """
-        return self.__inner_match.group(*groups)
+        return self.__inner_match.group(*groups)  # type: ignore[return-value]
 
     def groupdict(
         self, default: typing.Optional[AnyStr] = None
@@ -92,7 +92,7 @@ class Match:
         """
         Return a dictionary containing all the named subgroups of the match.
         """
-        return self.__inner_match.groupdict(default)
+        return self.__inner_match.groupdict(default)  # type: ignore[arg-type]
 
     def groups(
         self, default: typing.Optional[AnyStr] = None
@@ -100,7 +100,7 @@ class Match:
         """
         Return a tuple containing all the subgroups of the match.
         """
-        return self.__inner_match.groups(default)
+        return self.__inner_match.groups(default)  # type: ignore[arg-type]
 
     @property
     def lastgroup(self) -> typing.Optional[str]:
@@ -188,7 +188,7 @@ class Regex(Sink):
         self.__events_per_page: typing.Dict[int, typing.List[TextEvent]] = {}  # type: ignore[annotation-unchecked]
         self.__pattern = re.compile(pattern) if isinstance(pattern, str) else pattern
         self.__text_per_page: typing.Dict[int, str] = {}  # type: ignore[annotation-unchecked]
-        self.__rectangles_per_page: typing.Dict[int, typing.List[RectangleType]] = {}
+        self.__rectangles_per_page: typing.Dict[int, typing.List[Match]] = {}
 
     #
     # PRIVATE
