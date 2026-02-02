@@ -163,8 +163,14 @@ if __name__ == "__main__":
             "avatar.py",
             "barcode.py",
             "code_snippet.py",
-            "sound_annotation.py",
+            "license.py",
             "qr_code.py",
+            "slideshow.py",
+            "sound_annotation.py",
+            "unsplash.py",
+            "usage_statistics.py",
+            "version.py",
+            "watermark.py",
         ],
     )
     checker.perform_check_on_directory()
