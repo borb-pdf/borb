@@ -28,6 +28,7 @@ eBo3E56kBwFIk0PNyJ5yaqiInwZlYAe2xet3pQgDk7OS7hirAh2NklXSJIP2pPII
 TQIDAQAB
 -----END PUBLIC KEY-----"""]
 
+    __ADD_ONS: typing.List[str] = []
     __COMPANY: typing.Optional[str] = None
     __NAME: typing.Optional[str] = None
     __MAX_VERSION: typing.Optional["Version"] = None
@@ -68,6 +69,7 @@ TQIDAQAB
 
     @staticmethod
     def create_license(
+        add_ons: typing.List[str],
         company: str,
         license_path: typing.Union[str, pathlib.Path],
         max_date: datetime.datetime,
@@ -79,6 +81,7 @@ TQIDAQAB
         """
         Create a new software license with the provided parameters.
 
+        :param add_ons: str - The names of the add-ons registered on this license.
         :param company: str - The name of the company for which the license is being created.
         :param license_path: typing.Union[str, pathlib.Path] - The file path where the license file will be saved.
         :param max_date: datetime.datetime - The maximum expiration date for the license.
@@ -91,6 +94,7 @@ TQIDAQAB
         # create license dictionary
         # fmt: off
         license_as_json: typing.Dict[str, str] = {
+            "add_ons": sorted(add_ons),
             "company": company,
             "name": name,
             "max_version": str(max_version),
@@ -155,6 +159,15 @@ TQIDAQAB
                 license_file_handle.write(json.dumps(license_as_json, indent=3))
         except:
             pass
+
+    @staticmethod
+    def get_add_ons() -> typing.List[str]:
+        """
+        Retrieve the add-ons associated with the registered license.
+
+        :return: The names of the add-ons, or empty typing.List[str] if the license is not registered.
+        """
+        return License.__ADD_ONS
 
     @staticmethod
     def get_company() -> typing.Optional[str]:
@@ -288,6 +301,7 @@ TQIDAQAB
                 # IF we got there, verification did not fail (throw an error/assert)
                 # THEN we can set the static fields to the information in the license (json)
                 # fmt: off
+                License.__ADD_ONS = license_as_json.get("add_ons", [])
                 License.__COMPANY = license_as_json.get("company", "")
                 License.__NAME = license_as_json.get("name", None) or license_as_json.get("anonymous_user_id", None) or ""
                 License.__MAX_VERSION = License.__parse_version_str(license_as_json.get("max_version", None))
@@ -302,6 +316,7 @@ TQIDAQAB
                     or License.__MAX_DATE is None
                     or License.__MAX_VERSION is None
                 ):
+                    License.__ADD_ONS = []
                     License.__COMPANY = None
                     License.__NAME = None
                     License.__MAX_VERSION = None
@@ -314,6 +329,7 @@ TQIDAQAB
                 from borb.pdf.license.version import Version
 
                 if License.__MAX_VERSION < Version.get_current_version():
+                    License.__ADD_ONS = []
                     License.__COMPANY = None
                     License.__NAME = None
                     License.__MAX_VERSION = None
@@ -324,6 +340,7 @@ TQIDAQAB
                 # IF the validity of the license has expired
                 # THEN delete all set information AND throw assert
                 if License.__MAX_DATE < datetime.datetime.now():
+                    License.__ADD_ONS = []
                     License.__COMPANY = None
                     License.__NAME = None
                     License.__MAX_VERSION = None
@@ -334,6 +351,7 @@ TQIDAQAB
                 # IF the license is not valid YET
                 # THEN delete all set information and throw assert
                 if License.__MIN_DATE > datetime.datetime.now():
+                    License.__ADD_ONS = []
                     License.__COMPANY = None
                     License.__NAME = None
                     License.__MAX_VERSION = None
@@ -355,13 +373,22 @@ TQIDAQAB
 if __name__ == "__main__":
     from borb.pdf.license.version import Version
 
+    key_dir: pathlib.Path = pathlib.Path(
+        "/home/joris-schellekens/Code/borb-license-key/"
+    )
     License.create_license(
+        add_ons=[
+            "borb_find_replace",
+            "borb_markdown_to_pdf",
+            "borb_ocr",
+            "borb_redact",
+        ],
         company="borb EZ",
-        license_path="license_for_borb_ez.json",
+        license_path=key_dir / "license_for_borb_ez.json",
         max_date=datetime.datetime.now() + datetime.timedelta(days=365),
-        max_version=Version("3.0.0"),
+        max_version=Version("99.99.99"),
         min_date=datetime.datetime.now(),
         name="Joris Schellekens",
-        private_key_path="/home/joris-schellekens/Code/borb-license-key/borb-license-key-private-001.pem",
+        private_key_path=key_dir / "borb-license-key-private-001.pem",
     )
-    License.register("license_for_borb_ez.json")
+    License.register(key_dir / "license_for_borb_ez.json")
