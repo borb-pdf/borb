@@ -93,7 +93,7 @@ TQIDAQAB
         """
         # create license dictionary
         # fmt: off
-        license_as_json: typing.Dict[str, str] = {
+        license_as_json: typing.Dict[str, typing.Any] = {
             "add_ons": sorted(add_ons),
             "company": company,
             "name": name,

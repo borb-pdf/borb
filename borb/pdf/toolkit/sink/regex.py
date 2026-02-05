@@ -76,7 +76,7 @@ class Match:
         """
         return self.__inner_match.expand(template)
 
-    def group(self, *groups: typing.Union[int, str]) -> AnyStr:  # type: ignore[type-var]
+    def group(self, *groups: typing.Union[int, str]) -> typing.AnyStr:  # type: ignore[type-var]
         """
         Return one or more subgroups of the match.
 
