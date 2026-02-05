@@ -15,7 +15,6 @@ downstream processing, analysis, or extraction workflows.
 
 import re
 import typing
-from typing import AnyStr
 
 from borb.pdf.toolkit.event import Event
 from borb.pdf.page_size import PageSize
@@ -49,7 +48,7 @@ class Match:
 
     def __getitem__(
         self, key: typing.Union[int, slice]
-    ) -> typing.Union[AnyStr, typing.Tuple[AnyStr, ...]]:
+    ) -> typing.Union[typing.AnyStr, typing.Tuple[typing.AnyStr, ...]]:
         """Support `match[i]` and `match[i:j]` indexing, mirroring `re.Match`."""
         return self.__inner_match[key]  # type: ignore[index]
 
@@ -87,14 +86,14 @@ class Match:
         return self.__inner_match.group(*groups)  # type: ignore[return-value]
 
     def groupdict(
-        self, default: typing.Optional[AnyStr] = None
-    ) -> typing.Dict[str, AnyStr]:
+        self, default: typing.Optional[typing.AnyStr] = None
+    ) -> typing.Dict[str, typing.AnyStr]:
         """Return a dictionary containing all the named subgroups of the match."""
         return self.__inner_match.groupdict(default)  # type: ignore[arg-type]
 
     def groups(
-        self, default: typing.Optional[AnyStr] = None
-    ) -> typing.Tuple[AnyStr, ...]:
+        self, default: typing.Optional[typing.AnyStr] = None
+    ) -> typing.Tuple[typing.AnyStr, ...]:
         """Return a tuple containing all the subgroups of the match."""
         return self.__inner_match.groups(default)  # type: ignore[arg-type]
 

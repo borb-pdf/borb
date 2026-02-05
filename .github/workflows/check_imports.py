@@ -178,6 +178,7 @@ if __name__ == "__main__":
             "true_type_font.py",
             "unsplash.py",
             "usage_statistics.py",
+            "validation_visitor.py",
             "version.py",
             "watermark.py",
         ],

@@ -126,16 +126,14 @@ class RootVisitor(ReadVisitor):
 
     @staticmethod
     def __get_stack_size(size=2):
-        """Get stack size for caller's frame."""
         import sys
-        from itertools import count
 
         frame = sys._getframe(size)
-        for size in count(size):
+        count: int = size
+        while frame.f_back is not None:
             frame = frame.f_back
-            if not frame:
-                return size
-        return 0
+            count += 1
+        return count
 
     #
     # PUBLIC
