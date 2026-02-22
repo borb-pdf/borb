@@ -54,6 +54,29 @@ class OperatorSC(Operator):
     #
 
     def __init__(self, source: Source):
+        """
+        Initialize the 'SC' operator.
+
+        This operator requires access to the active rendering Source because
+        the number and interpretation of operands depend on the currently
+        selected stroking color space in the graphics state.
+
+        The Source instance provides access to:
+        - The current graphics state
+        - The active stroking color space
+        - Validation context for operand count and color component semantics
+
+        Since the 'SC' operator does not explicitly specify a color space
+        (it uses the one already set in the graphics state), it must query
+        the Source at execution time to determine how many operands are
+        expected (e.g., 1 for DeviceGray, 3 for DeviceRGB, 4 for DeviceCMYK,
+        or a color-space-defined component count for other spaces).
+
+        :param source: The Source representing the page/content stream
+                       currently being rendered. It provides access to
+                       the graphics state, including the active
+                       stroking color space.
+        """
         self.__source = source
 
     #
