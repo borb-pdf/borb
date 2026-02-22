@@ -89,7 +89,7 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
 
         # loop over its xref(s) in reverse order
         refs = []
-        for xref_table_entry in root_visitor._RootVisitor__xref[::-1]:  # type: ignore[attr-defined]
+        for xref_table_entry in root_visitor._FacadeVisitor__xref[::-1]:  # type: ignore[attr-defined]
             if xref_table_entry.get_parent_stream_object_nr() == object_nr:
                 refs += [xref_table_entry]
 
@@ -98,19 +98,19 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
 
     def __root_generic_visit_bytes(self, b: bytes) -> typing.Tuple[PDFType, int]:
 
-        # build a copy of the RootVisitor
-        from borb.pdf.visitor.read.root_visitor import RootVisitor
+        # build a copy of the FacadeVisitor
+        from borb.pdf.visitor.read.facade_visitor import FacadeVisitor
 
-        obj_stm_root_visitor: RootVisitor = RootVisitor()
+        obj_stm_root_visitor: FacadeVisitor = FacadeVisitor()
 
         # remove the ByteOffsetReferenceVisitor
         from borb.pdf.visitor.read.reference_visitor.byte_offset_reference_visitor import (
             ByteOffsetReferenceVisitor,
         )
 
-        obj_stm_root_visitor._RootVisitor__visitors = [  # type: ignore[attr-defined]
+        obj_stm_root_visitor._FacadeVisitor__visitors = [  # type: ignore[attr-defined]
             x
-            for x in obj_stm_root_visitor._RootVisitor__visitors  # type: ignore[attr-defined]
+            for x in obj_stm_root_visitor._FacadeVisitor__visitors  # type: ignore[attr-defined]
             if not isinstance(x, ByteOffsetReferenceVisitor)
         ]
 
@@ -119,13 +119,13 @@ class ObjStmReferenceVisitor(GenericReferenceVisitor):
             NoOpReferenceVisitor,
         )
 
-        obj_stm_root_visitor._RootVisitor__visitors = [  # type: ignore[attr-defined]
+        obj_stm_root_visitor._FacadeVisitor__visitors = [  # type: ignore[attr-defined]
             (
                 x
                 if not isinstance(x, ObjStmReferenceVisitor)
                 else NoOpReferenceVisitor(root=obj_stm_root_visitor)
             )
-            for x in obj_stm_root_visitor._RootVisitor__visitors  # type: ignore[attr-defined]
+            for x in obj_stm_root_visitor._FacadeVisitor__visitors  # type: ignore[attr-defined]
         ]
 
         # chain it in the hierarchy

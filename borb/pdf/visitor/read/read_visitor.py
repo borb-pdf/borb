@@ -76,17 +76,17 @@ class ReadVisitor(NodeVisitor):
         # this is to ensure that when we are working with an object stream
         # we process the bytes from the stream, rather than the bytes from the
         # underlying PDF document
-        from borb.pdf.visitor.read.root_visitor import RootVisitor
+        from borb.pdf.visitor.read.facade_visitor import FacadeVisitor
 
         root_visitor: ReadVisitor = self
         while root_visitor._ReadVisitor__parent is not None:  # type: ignore[attr-defined]
             root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
-            if isinstance(root_visitor, RootVisitor):
+            if isinstance(root_visitor, FacadeVisitor):
                 break
 
         # return its source
-        assert isinstance(root_visitor, RootVisitor)
-        return root_visitor._RootVisitor__source  # type: ignore[attr-defined]
+        assert isinstance(root_visitor, FacadeVisitor)
+        return root_visitor._FacadeVisitor__source  # type: ignore[attr-defined]
 
     def root_generic_visit(
         self, node: typing.Union[bytes, int]
@@ -104,8 +104,8 @@ class ReadVisitor(NodeVisitor):
         :return:        True if the node was processed by the root visitor, False otherwise.
         """
         r: typing.Optional[NodeVisitor] = self.__parent
-        from borb.pdf.visitor.read.root_visitor import RootVisitor
+        from borb.pdf.visitor.read.facade_visitor import FacadeVisitor
 
-        if r is not None and isinstance(r, RootVisitor):
+        if r is not None and isinstance(r, FacadeVisitor):
             return r.visit(node=node)
         return None

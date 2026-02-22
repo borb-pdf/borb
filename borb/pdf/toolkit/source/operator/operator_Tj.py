@@ -243,28 +243,32 @@ class OperatorTj(Operator):
         # fmt: on
 
         # determine x,y, width, height
+        # (assumes horizontal, non-rotated writing)
         # fmt: off
         x = round(min([bottom_left_corner[0], bottom_right_corner[0]]))
         y = round(min([bottom_left_corner[1], bottom_right_corner[1]]))
-        absolute_width: int = round(abs(bottom_left_corner[0] - bottom_right_corner[0]))
-        absolute_height = round(abs(top_left_corner[1] - bottom_right_corner[1]))
+        user_space_width: int = round(abs(bottom_left_corner[0] - bottom_right_corner[0]))
+        user_space_height = round(abs(top_left_corner[1] - bottom_right_corner[1]))
         # fmt: on
+
+        # calculate effective font size
+        effective_font_size: float = (mtx[0][1] ** 2 + mtx[1][1] ** 2) ** 0.5
 
         # Trigger event
         source.text(
             s=text_being_rendered,
             x=x,
             y=y,
-            width=absolute_width,
-            height=absolute_height,
+            width=user_space_width,
+            height=user_space_height,
             font=source.font,
             font_color=source.stroke_color,
-            font_size=source.font_size,
+            font_size=effective_font_size,
         )
 
         # Update text rendering location
         # This code only takes into account the text-matrix
-        source.text_matrix[2][0] += absolute_width
+        source.text_matrix[2][0] += user_space_width
 
     def get_name(self) -> str:
         """

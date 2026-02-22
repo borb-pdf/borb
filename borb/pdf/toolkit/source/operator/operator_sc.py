@@ -1,24 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-The 'sc' operator: Set the stroke color using the current color space.
+The 'sc' operator: Set the non-stroking color using the current color space.
 
-The 'sc' operator is used in a PDF content stream to set the stroke color for subsequent
-path operations. The color is specified using the current color space, which could be
-either a device-dependent color space (e.g., RGB or CMYK) or a device-independent color
-space (e.g., CIE-based color spaces). The 'sc' operator applies to the stroke color,
-which is used when paths are stroked with the 'S' operator or similar.
+The 'sc' operator is used in a PDF content stream to set the non-stroking color for subsequent
+painting operations. The color is specified using the current color space, which may be
+either a device-dependent color space (e.g., DeviceRGB or DeviceCMYK) or a device-independent
+color space (e.g., CIE-based color spaces).
 
-The color values provided are based on the current color space in effect, and the operator
-expects the correct number of parameters based on the type of color space (e.g., 1 for grayscale,
-3 for RGB, or 4 for CMYK).
+The 'sc' operator applies to non-stroking operations, meaning it affects how areas are
+filled (for example, with the 'f', 'F', or 'B' operators), but not how paths are stroked.
+
+The color values provided must match the currently selected non-stroking color space,
+and the operator requires the appropriate number of operands for that space (e.g., 1 for
+grayscale, 3 for RGB, or 4 for CMYK).
 
 Note:
-    The 'sc' operator only affects the stroke color and does not impact fill operations.
-    The color set by this operator is stored in the graphics state and remains in effect
-    until it is changed by another color operator (e.g., 'scn' for stroke color with a specified
-    color space, 'rg' for fill color, etc.). For more information on the graphics state and color
-    management in PDF, refer to section 4.5 of the PDF specification.
+    The 'sc' operator only affects the non-stroking color and does not impact stroking
+    operations. The color set by this operator is stored in the graphics state and remains
+    in effect until changed by another non-stroking color operator (e.g., 'scn' for
+    non-stroking color with a specified color space). For more information on the
+    graphics state and color management in PDF, refer to section 4.5 of the PDF specification.
 """
 
 import typing
@@ -33,29 +35,34 @@ from borb.pdf.toolkit.source.operator.source import (
 
 class Operatorsc(Operator):
     """
-    The 'sc' operator: Set the stroke color using the current color space.
+    The 'sc' operator: Set the non-stroking color using the current color space.
 
-    The 'sc' operator is used in a PDF content stream to set the stroke color for subsequent
-    path operations. The color is specified using the current color space, which could be
-    either a device-dependent color space (e.g., RGB or CMYK) or a device-independent color
-    space (e.g., CIE-based color spaces). The 'sc' operator applies to the stroke color,
-    which is used when paths are stroked with the 'S' operator or similar.
+    The 'sc' operator is used in a PDF content stream to set the non-stroking color for subsequent
+    painting operations. The color is specified using the current color space, which may be
+    either a device-dependent color space (e.g., DeviceRGB or DeviceCMYK) or a device-independent
+    color space (e.g., CIE-based color spaces).
 
-    The color values provided are based on the current color space in effect, and the operator
-    expects the correct number of parameters based on the type of color space (e.g., 1 for grayscale,
-    3 for RGB, or 4 for CMYK).
+    The 'sc' operator applies to non-stroking operations, meaning it affects how areas are
+    filled (for example, with the 'f', 'F', or 'B' operators), but not how paths are stroked.
+
+    The color values provided must match the currently selected non-stroking color space,
+    and the operator requires the appropriate number of operands for that space (e.g., 1 for
+    grayscale, 3 for RGB, or 4 for CMYK).
 
     Note:
-        The 'sc' operator only affects the stroke color and does not impact fill operations.
-        The color set by this operator is stored in the graphics state and remains in effect
-        until it is changed by another color operator (e.g., 'scn' for stroke color with a specified
-        color space, 'rg' for fill color, etc.). For more information on the graphics state and color
-        management in PDF, refer to section 4.5 of the PDF specification.
+        The 'sc' operator only affects the non-stroking color and does not impact stroking
+        operations. The color set by this operator is stored in the graphics state and remains
+        in effect until changed by another non-stroking color operator (e.g., 'scn' for
+        non-stroking color with a specified color space). For more information on the
+        graphics state and color management in PDF, refer to section 4.5 of the PDF specification.
     """
 
     #
     # CONSTRUCTOR
     #
+
+    def __init__(self, source: Source):
+        self.__source = source
 
     #
     # PRIVATE
@@ -82,21 +89,30 @@ class Operatorsc(Operator):
         :param source: The `Source` object managing the content stream.
         :param operands: A list of `PDFType` objects representing the operator's operands.
         """
+        from borb.pdf.color.grayscale_color import GrayscaleColor
+        from borb.pdf.color.rgb_color import RGBColor
+        from borb.pdf.color.cmyk_color import CMYKColor
+
+        if self.__source.non_stroke_color_space == "CalGray":
+            self.__source.non_stroke_color = GrayscaleColor(level=operands[0])
+        if self.__source.non_stroke_color_space == "CalRGB":
+            self.__source.non_stroke_color = RGBColor(
+                red=operands[0], green=operands[1], blue=operands[2]
+            )
+        if self.__source.non_stroke_color_space == "DeviceCMYK":
+            self.__source.non_stroke_color = CMYKColor(
+                cyan=operands[0],
+                magenta=operands[1],
+                yellow=operands[2],
+                key=operands[3],
+            )
+        if self.__source.non_stroke_color_space == "DeviceGray":
+            self.__source.non_stroke_color = GrayscaleColor(level=operands[0])
+        if self.__source.non_stroke_color_space == "DeviceRGB":
+            self.__source.non_stroke_color = RGBColor(
+                red=operands[0], green=operands[1], blue=operands[2]
+            )
         # TODO
-        if source.stroke_color_space in [
-            "DeviceGray",
-            "CalRGB",
-            "Indexed",
-        ]:
-            pass
-        if source.stroke_color_space in [
-            "DeviceRGB",
-            "CalRGB",
-            "Lab",
-        ]:
-            pass
-        if source.stroke_color_space in ["DeviceCMYK"]:
-            pass
         pass
 
     def get_name(self) -> str:
@@ -119,5 +135,15 @@ class Operatorsc(Operator):
 
         :return: The number of operands expected by this operator as an integer.
         """
+        if self.__source.non_stroke_color_space == "CalGray":
+            return 1
+        if self.__source.non_stroke_color_space == "CalRGB":
+            return 3
+        if self.__source.non_stroke_color_space == "DeviceCMYK":
+            return 4
+        if self.__source.non_stroke_color_space == "DeviceGray":
+            return 1
+        if self.__source.non_stroke_color_space == "DeviceRGB":
+            return 3
         # TODO
         return 0

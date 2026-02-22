@@ -191,10 +191,10 @@ class Source(Pipe):
             Operatorrg(),
             Operatorri(),
             OperatorS(),
-            OperatorSC(),
-            Operatorsc(),
-            OperatorSCN(),
-            Operatorscn(),
+            OperatorSC(self),
+            Operatorsc(self),
+            OperatorSCN(self),
+            Operatorscn(self),
             Operatorsh(),
             OperatorTStar(),
             OperatorTc(),
@@ -400,11 +400,11 @@ class Source(Pipe):
         from borb.pdf.visitor.read.int_visitor import IntVisitor
         from borb.pdf.visitor.read.list_visitor import ListVisitor
         from borb.pdf.visitor.read.name_visitor import NameVisitor
-        from borb.pdf.visitor.read.root_visitor import RootVisitor
+        from borb.pdf.visitor.read.facade_visitor import FacadeVisitor
         from borb.pdf.visitor.read.str_visitor import StrVisitor
 
-        operand_visitor: RootVisitor = RootVisitor()
-        operand_visitor._RootVisitor__visitors = [  # type: ignore [attr-defined]
+        operand_visitor: FacadeVisitor = FacadeVisitor()
+        operand_visitor._FacadeVisitor__visitors = [  # type: ignore [attr-defined]
             # aggregation types
             DictVisitor(root=operand_visitor),
             ListVisitor(root=operand_visitor),
@@ -423,8 +423,8 @@ class Source(Pipe):
         i: int = 0
         while i < len(content_stream_bytes):
 
-            # process things using RootVisitor
-            operand_visitor._RootVisitor__source = b""  # type: ignore [attr-defined]
+            # process things using FacadeVisitor
+            operand_visitor._FacadeVisitor__source = b""  # type: ignore [attr-defined]
             operand_and_pos = operand_visitor.visit(content_stream_bytes[i:])
             if operand_and_pos is not None:
                 operands += [operand_and_pos[0]]

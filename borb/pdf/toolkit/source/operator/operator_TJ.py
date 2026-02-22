@@ -87,6 +87,28 @@ class OperatorTJ(Operator):
         )
         pass
 
+    @staticmethod
+    def __mul(
+        m0: typing.List[typing.List[float]], m1: typing.List[typing.List[float]]
+    ) -> typing.List[typing.List[float]]:
+        return [
+            [
+                m0[0][0] * m1[0][0] + m0[0][1] * m1[1][0] + m0[0][2] * m1[2][0],
+                m0[0][0] * m1[0][1] + m0[0][1] * m1[1][1] + m0[0][2] * m1[2][1],
+                m0[0][0] * m1[0][2] + m0[0][1] * m1[1][2] + m0[0][2] * m1[2][2],
+            ],
+            [
+                m0[1][0] * m1[0][0] + m0[1][1] * m1[1][0] + m0[1][2] * m1[2][0],
+                m0[1][0] * m1[0][1] + m0[1][1] * m1[1][1] + m0[1][2] * m1[2][1],
+                m0[1][0] * m1[0][2] + m0[1][1] * m1[1][2] + m0[1][2] * m1[2][2],
+            ],
+            [
+                m0[2][0] * m1[0][0] + m0[2][1] * m1[1][0] + m0[2][2] * m1[2][0],
+                m0[2][0] * m1[0][1] + m0[2][1] * m1[1][1] + m0[2][2] * m1[2][1],
+                m0[2][0] * m1[0][2] + m0[2][1] * m1[1][2] + m0[2][2] * m1[2][2],
+            ],
+        ]
+
     #
     # PUBLIC
     #
@@ -114,11 +136,20 @@ class OperatorTJ(Operator):
             if isinstance(operand, str):
                 self.__apply_Tj(page=page, source=source, text_to_render=operand)
             if isinstance(operand, float) or isinstance(operand, int):
-                source.text_matrix[2][0] += (
+                tx: float = (
                     operand
                     * 0.001
                     * source.font_size
                     * (source.horizontal_scaling * 0.01)
+                )
+                ty: float = 0.0
+                source.text_matrix = OperatorTJ.__mul(
+                    source.text_matrix,
+                    [
+                        [1.0, 0.0, 0.0],
+                        [0.0, 1.0, 0.0],
+                        [tx, ty, 1.0],
+                    ],
                 )
         pass
 

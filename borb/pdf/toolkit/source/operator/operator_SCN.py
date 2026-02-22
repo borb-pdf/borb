@@ -61,6 +61,9 @@ class OperatorSCN(Operator):
     # CONSTRUCTOR
     #
 
+    def __init__(self, source: Source):
+        self.__source = source
+
     #
     # PRIVATE
     #
@@ -86,6 +89,29 @@ class OperatorSCN(Operator):
         :param source: The `Source` object managing the content stream.
         :param operands: A list of `PDFType` objects representing the operator's operands.
         """
+        from borb.pdf.color.grayscale_color import GrayscaleColor
+        from borb.pdf.color.rgb_color import RGBColor
+        from borb.pdf.color.cmyk_color import CMYKColor
+
+        if self.__source.stroke_color_space == "CalGray":
+            self.__source.stroke_color = GrayscaleColor(level=operands[0])
+        if self.__source.stroke_color_space == "CalRGB":
+            self.__source.stroke_color = RGBColor(
+                red=operands[0], green=operands[1], blue=operands[2]
+            )
+        if self.__source.stroke_color_space == "DeviceCMYK":
+            self.__source.stroke_color = CMYKColor(
+                cyan=operands[0],
+                magenta=operands[1],
+                yellow=operands[2],
+                key=operands[3],
+            )
+        if self.__source.stroke_color_space == "DeviceGray":
+            self.__source.stroke_color = GrayscaleColor(level=operands[0])
+        if self.__source.stroke_color_space == "DeviceRGB":
+            self.__source.stroke_color = RGBColor(
+                red=operands[0], green=operands[1], blue=operands[2]
+            )
         # TODO
         pass
 
@@ -109,5 +135,15 @@ class OperatorSCN(Operator):
 
         :return: The number of operands expected by this operator as an integer.
         """
+        if self.__source.stroke_color_space == "CalGray":
+            return 1
+        if self.__source.stroke_color_space == "CalRGB":
+            return 3
+        if self.__source.stroke_color_space == "DeviceCMYK":
+            return 4
+        if self.__source.stroke_color_space == "DeviceGray":
+            return 1
+        if self.__source.stroke_color_space == "DeviceRGB":
+            return 3
         # TODO
         return 0

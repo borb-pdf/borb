@@ -35,7 +35,7 @@ from borb.pdf.visitor.read.reference_visitor.obj_stm_reference_visitor import (
 )
 
 
-class RootVisitor(ReadVisitor):
+class FacadeVisitor(ReadVisitor):
     """
     Visitor class for traversing and processing a PDF document tree.
 
@@ -155,7 +155,7 @@ class RootVisitor(ReadVisitor):
         :return:        True if the visitor processed the node False otherwise
         """
         if (
-            isinstance(self, RootVisitor)
+            isinstance(self, FacadeVisitor)
             and isinstance(node, bytes)
             and self.__source == b""
         ):
@@ -163,7 +163,7 @@ class RootVisitor(ReadVisitor):
             node = 0
         if isinstance(node, int) and node in self.__cache:
             return self.__cache[node]
-        # print(f'stack depth: {RootVisitor.__get_stack_size()}, byte pos: {node}')
+        # print(f'stack depth: {FacadeVisitor.__get_stack_size()}, byte pos: {node}')
         for v in self.__visitors:
             if v is self:
                 continue

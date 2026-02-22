@@ -17,7 +17,7 @@ class TestDrawBoundingBoxes(unittest.TestCase):
     # Ensure that the directory specified by this path exists and contains the necessary
     # PDF files before running the tests.
     CORPUS_DIRECTORY: pathlib.Path = pathlib.Path(
-        "/home/joris-schellekens/Code/borb-pdf-corpus"
+        "/home/joris-schellekens/Code/borb-pdf-corpus/pdf"
     )
 
     def test_draw_bounding_boxes(self):

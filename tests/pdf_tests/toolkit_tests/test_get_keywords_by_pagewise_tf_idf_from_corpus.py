@@ -8,7 +8,7 @@ from borb.pdf import Pipeline, PDF, Source, GetKeywordsByPagewiseTFIDF
 class TestGetKeywordsByPagewiseTFIDFFromCorpus(unittest.TestCase):
 
     CORPUS_DIRECTORY: pathlib.Path = pathlib.Path(
-        "/home/joris-schellekens/Code/borb-pdf-corpus"
+        "/home/joris-schellekens/Code/borb-pdf-corpus/pdf"
     )
 
     @staticmethod

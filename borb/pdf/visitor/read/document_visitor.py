@@ -82,7 +82,7 @@ class DocumentVisitor(ReadVisitor):
         # IF the first bytes of the file do not start with '%PDF-'
         # THEN (left) trim the source until it starts as such
         if pdf_start_byte_pos != 0:
-            self._ReadVisitor__parent._RootVisitor__source = self._ReadVisitor__parent._RootVisitor__source[pdf_start_byte_pos:]    # type: ignore[attr-defined]
+            self._ReadVisitor__parent._FacadeVisitor__source = self._ReadVisitor__parent._FacadeVisitor__source[pdf_start_byte_pos:]    # type: ignore[attr-defined]
         # fmt: on
 
         # go to end of file to find 'EOF'
@@ -131,7 +131,7 @@ class DocumentVisitor(ReadVisitor):
                 iter(
                     [
                         x
-                        for x in self._ReadVisitor__parent._RootVisitor__visitors  # type: ignore[attr-defined]
+                        for x in self._ReadVisitor__parent._FacadeVisitor__visitors  # type: ignore[attr-defined]
                         if isinstance(x, DictVisitor)
                     ]
                 )
@@ -156,7 +156,7 @@ class DocumentVisitor(ReadVisitor):
         from borb.pdf.document import Document
 
         retval: Document = Document()
-        retval["XRef"] = self._ReadVisitor__parent._RootVisitor__xref  # type: ignore[attr-defined]
+        retval["XRef"] = self._ReadVisitor__parent._FacadeVisitor__xref  # type: ignore[attr-defined]
         retval["Trailer"] = trailer_dictionary
 
         # handle recursive references

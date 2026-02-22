@@ -14,10 +14,11 @@ class TestLicense(unittest.TestCase):
 
     def test_create_license(self):
         License.create_license(
+            add_ons=[],
             company="borb EZ",
             license_path="license.json",
             max_date=datetime.datetime.now() + datetime.timedelta(days=365),
-            max_version=Version("3.0.0"),
+            max_version=Version("99.99.99"),
             min_date=datetime.datetime.now(),
             name="Joris Schellekens",
             private_key_path=TestLicense.PRIVATE_KEY_PATH,
@@ -26,10 +27,11 @@ class TestLicense(unittest.TestCase):
 
     def test_register_license(self):
         License.create_license(
+            add_ons=[],
             company="borb EZ",
             license_path="license.json",
             max_date=datetime.datetime.now() + datetime.timedelta(days=365),
-            max_version=Version("3.0.1"),
+            max_version=Version("99.99.99"),
             min_date=datetime.datetime.now(),
             name="Joris Schellekens",
             private_key_path=TestLicense.PRIVATE_KEY_PATH,
@@ -39,16 +41,17 @@ class TestLicense(unittest.TestCase):
 
     def test_get_license_information(self):
         License.create_license(
+            add_ons=[],
             company="borb EZ",
             license_path="license.json",
             max_date=datetime.datetime.now() + datetime.timedelta(days=365),
-            max_version=Version("3.0.1"),
+            max_version=Version("99.99.99"),
             min_date=datetime.datetime.now(),
             name="Joris Schellekens",
             private_key_path=TestLicense.PRIVATE_KEY_PATH,
         )
         assert License.register("license.json")
         assert License.get_company() == "borb EZ"
-        assert License.get_max_version() == Version("3.0.1")
+        assert License.get_max_version() == Version("99.99.99")
         assert License.get_name() == "Joris Schellekens"
         pathlib.Path("license.json").unlink()

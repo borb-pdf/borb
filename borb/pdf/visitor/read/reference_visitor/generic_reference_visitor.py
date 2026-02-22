@@ -72,7 +72,7 @@ class GenericReferenceVisitor(ReadVisitor):
             root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # loop over its xref(s) in reverse order
-        for xref_table_entry in root_visitor._RootVisitor__xref[::-1]:  # type: ignore[attr-defined]
+        for xref_table_entry in root_visitor._FacadeVisitor__xref[::-1]:  # type: ignore[attr-defined]
             if (
                 xref_table_entry.get_object_nr() == r.get_object_nr()
                 and xref_table_entry.get_generation_nr() == r.get_generation_nr()
@@ -89,7 +89,7 @@ class GenericReferenceVisitor(ReadVisitor):
             root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # lookup
-        return id(r) in root_visitor._RootVisitor__references_being_resolved  # type: ignore[attr-defined]
+        return id(r) in root_visitor._FacadeVisitor__references_being_resolved  # type: ignore[attr-defined]
 
     def _mark_as_being_resolved(self, r: reference) -> None:
         # go to root visitor
@@ -98,7 +98,7 @@ class GenericReferenceVisitor(ReadVisitor):
             root_visitor = root_visitor._ReadVisitor__parent  # type: ignore[attr-defined]
 
         # add
-        root_visitor._RootVisitor__references_being_resolved.add(id(r))  # type: ignore[attr-defined]
+        root_visitor._FacadeVisitor__references_being_resolved.add(id(r))  # type: ignore[attr-defined]
 
     def _visit_from_bytes(
         self, node: typing.Union[int, PDFType]

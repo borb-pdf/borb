@@ -61,9 +61,9 @@ class PDF:
             bts = pdf_file_handle.read()
 
         # instantiate FacadeVisitor
-        from borb.pdf.visitor.read.root_visitor import RootVisitor
+        from borb.pdf.visitor.read.facade_visitor import FacadeVisitor
 
-        rv = RootVisitor()
+        rv = FacadeVisitor()
         document_and_index = rv.visit(bts)
         if document_and_index is None:
             return None
