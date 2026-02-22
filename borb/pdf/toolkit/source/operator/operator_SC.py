@@ -109,12 +109,22 @@ class OperatorSC(Operator):
         from borb.pdf.color.cmyk_color import CMYKColor
 
         if self.__source.stroke_color_space == "CalGray":
+            assert isinstance(operands[0], int) or isinstance(operands[0], float)
             self.__source.stroke_color = GrayscaleColor(level=operands[0])
         if self.__source.stroke_color_space == "CalRGB":
+            assert isinstance(operands[0], int) or isinstance(operands[0], float)
+            assert isinstance(operands[1], int) or isinstance(operands[1], float)
+            assert isinstance(operands[2], int) or isinstance(operands[2], float)
             self.__source.stroke_color = RGBColor(
-                red=operands[0], green=operands[1], blue=operands[2]
+                red=int(operands[0] * 255),
+                green=int(operands[1] * 255),
+                blue=int(operands[2] * 255),
             )
         if self.__source.stroke_color_space == "DeviceCMYK":
+            assert isinstance(operands[0], int) or isinstance(operands[0], float)
+            assert isinstance(operands[1], int) or isinstance(operands[1], float)
+            assert isinstance(operands[2], int) or isinstance(operands[2], float)
+            assert isinstance(operands[3], int) or isinstance(operands[3], float)
             self.__source.stroke_color = CMYKColor(
                 cyan=operands[0],
                 magenta=operands[1],
@@ -122,10 +132,16 @@ class OperatorSC(Operator):
                 key=operands[3],
             )
         if self.__source.stroke_color_space == "DeviceGray":
+            assert isinstance(operands[0], int) or isinstance(operands[0], float)
             self.__source.stroke_color = GrayscaleColor(level=operands[0])
         if self.__source.stroke_color_space == "DeviceRGB":
+            assert isinstance(operands[0], int) or isinstance(operands[0], float)
+            assert isinstance(operands[1], int) or isinstance(operands[1], float)
+            assert isinstance(operands[2], int) or isinstance(operands[2], float)
             self.__source.stroke_color = RGBColor(
-                red=operands[0], green=operands[1], blue=operands[2]
+                red=int(operands[0] * 255),
+                green=int(operands[1] * 255),
+                blue=int(operands[2] * 255),
             )
         # TODO
         pass
