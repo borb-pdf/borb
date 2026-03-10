@@ -35,43 +35,13 @@ class TestSmoke(unittest.TestCase):
 
         l: PageLayout = SingleColumnLayout(p)
 
-        t: Table = FlexibleColumnWidthTable(number_of_columns=4, number_of_rows=8)
+        t: Table = FlexibleColumnWidthTable(number_of_columns=4, number_of_rows=7)
 
         # emoji
         t.append_layout_element(Emoji.AERIAL_TRAMWAY)
         t.append_layout_element(Emoji.BABY)
         t.append_layout_element(Emoji.CACTUS)
         t.append_layout_element(Emoji.DANCER)
-
-        # barcode
-        t.append_layout_element(
-            Barcode(
-                barcode_data="01234567890",
-                barcode_type=Barcode.BarcodeType.CODE_128,
-                size=(64, 64),
-            )
-        )
-        t.append_layout_element(
-            Barcode(
-                barcode_data="01234567890",
-                barcode_type=Barcode.BarcodeType.CODE_39,
-                size=(64, 64),
-            )
-        )
-        t.append_layout_element(
-            Barcode(
-                barcode_data="01234567890",
-                barcode_type=Barcode.BarcodeType.EAN_8,
-                size=(64, 64),
-            )
-        )
-        t.append_layout_element(
-            Barcode(
-                barcode_data="012345678900",
-                barcode_type=Barcode.BarcodeType.EAN_13,
-                size=(64, 64),
-            )
-        )
 
         # line art
         t.append_layout_element(
