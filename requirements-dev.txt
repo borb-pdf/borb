@@ -1,5 +1,0 @@
-black
-mypy
-pydocstyle
-setuptools
-sphinx
