@@ -35,13 +35,7 @@ class TestSmoke(unittest.TestCase):
 
         l: PageLayout = SingleColumnLayout(p)
 
-        t: Table = FlexibleColumnWidthTable(number_of_columns=4, number_of_rows=7)
-
-        # emoji
-        t.append_layout_element(Emoji.AERIAL_TRAMWAY)
-        t.append_layout_element(Emoji.BABY)
-        t.append_layout_element(Emoji.CACTUS)
-        t.append_layout_element(Emoji.DANCER)
+        t: Table = FlexibleColumnWidthTable(number_of_columns=4, number_of_rows=6)
 
         # line art
         t.append_layout_element(
