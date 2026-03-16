@@ -9,6 +9,44 @@ import setuptools  # type: ignore[import-untyped]
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+
+# determine extras
+extras_require = {
+    "dev": [
+        "black",  # code formatting
+        "mypy",  # typing
+        "pydocstyle",  # docstrings
+    ],
+    "docs": [
+        "sphinx",
+        "sphinx-rtd-theme",
+    ],
+    "genai": [
+        "openai",  # used for generating images
+    ],
+    "image": [
+        "matplotlib",  # charts
+        "Pillow",  # images
+        "python-barcode",  # barcodes
+        "py_avataaars",  # avatars
+        "requests",  # downloading images from urls
+        "segno",  # qr codes
+    ],
+    "text": [
+        "fonttools",  # truetype fonts
+        "requests",  # downloading fonts
+    ],
+}
+extras_require["full"] = sorted(
+    {
+        dep
+        for group, deps in extras_require.items()
+        if group not in {"dev", "docs"}
+        for dep in deps
+    }
+)
+
+# setup
 setuptools.setup(
     author="Joris Schellekens",
     author_email="joris.schellekens.1989@gmail.com",
@@ -27,31 +65,11 @@ setuptools.setup(
         "Programming Language :: Python :: 3.12",
     ],
     description="borb is a library for reading, creating and manipulating PDF files in python.",
-    extras_require={
-        "dev": [
-            "black",
-            "mypy",
-            "pydocstyle",
-        ],
-        "docs": [
-            "sphinx",
-            "sphinx-rtd-theme",
-        ],
-        "full": [
-            "cryptography",
-            "ffmpeg-python",
-            "fonttools",
-            "matplotlib",
-            "Pillow",
-            "python-barcode",
-            "py_avataaars",
-            "requests",
-            "segno",
-        ],
-    },
+    extras_require=extras_require,
     include_package_data=True,
     install_requires=[],
     keywords=["pdf", "pdf-generation", "pdf-processing", "borb"],
+    license="AGPL-3.0-or-later",
     long_description=long_description,
     long_description_content_type="text/markdown",
     name="borb",
