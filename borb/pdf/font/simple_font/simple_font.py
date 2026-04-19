@@ -54,38 +54,6 @@ class SimpleFont(Font):
     # PUBLIC
     #
 
-    def get_encoding_or_base_encoding(self) -> name:
-        """
-        Retrieve the encoding or base encoding of the Simple Font.
-
-        This method determines the encoding used by the font, prioritizing the following cases:
-        1. If `/Encoding` is a dictionary and contains a `/BaseEncoding` key, the value of `/BaseEncoding`
-           (a `name` object) is returned.
-        2. If `/Encoding` is directly a `name` object, it is returned as the font's encoding.
-        3. If neither of the above is present, the method defaults to `StandardEncoding`, which is the
-           common default for simple fonts.
-
-        This logic ensures that the correct encoding is used, whether explicitly defined or falling back
-        to a standard default.
-
-        :return: The encoding or base encoding of the font as a `name` object.
-        """
-        # /Encoding /BaseEncoding
-        if (
-            "Encoding" in self
-            and isinstance(self["Encoding"], dict)
-            and "BaseEncoding" in self["Encoding"]
-            and isinstance(self["Encoding"]["BaseEncoding"], name)
-        ):
-            return self["Encoding"]["BaseEncoding"]
-
-        # /Encoding
-        if "Encoding" in self and isinstance(self["Encoding"], name):
-            return self["Encoding"]
-
-        # return
-        return name("StandardEncoding")
-
     def get_width(
         self,
         text: str,

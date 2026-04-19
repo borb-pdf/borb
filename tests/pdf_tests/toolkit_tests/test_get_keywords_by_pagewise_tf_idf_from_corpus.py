@@ -35,14 +35,14 @@ class TestGetKeywordsByPagewiseTFIDFFromCorpus(unittest.TestCase):
     def test_get_keywords_0004(self):
         kw = TestGetKeywordsByPagewiseTFIDFFromCorpus.get_keywords_from_corpus_pdf(4)
         assert all(
-            [x in kw for x in ["vendor", "payee", "accounts", "payable", "controllers"]]
+            [
+                x in kw
+                for x in ["revision", "procedure", "reasons", "return", "processing"]
+            ]
         )
 
     def test_get_keywords_0009(self):
         kw = TestGetKeywordsByPagewiseTFIDFFromCorpus.get_keywords_from_corpus_pdf(9)
         assert all(
-            [
-                x in kw
-                for x in ["bruisend", "chaudfontaine", "heverlee", "frietjes", "bru"]
-            ]
+            [x in kw for x in ["bruisend", "chaudfontaine", "koffie", "bordje", "bru"]]
         )

@@ -124,7 +124,7 @@ class Image(LayoutElement):
         if self.__image is not None:
             return
 
-        # PILImageModule.Image
+        # PIL.Image
         try:
             import PIL.Image  # type: ignore[import-untyped, import-not-found]
         except ImportError:

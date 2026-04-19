@@ -67,7 +67,7 @@ class GetImages(Sink):
 
         :return: The aggregated output from the pipeline, or `None` if not implemented.
         """
-        # PILImageModule.Image
+        # PIL.Image
         try:
             import PIL.Image  # type: ignore[import-untyped, import-not-found]
         except ImportError:

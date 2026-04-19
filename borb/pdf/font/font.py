@@ -87,7 +87,7 @@ class Font(dict):
         # in the Symbol font (see Annex D):
         from borb.pdf.font.simple_font.simple_font import SimpleFont
 
-        if isinstance(self, SimpleFont) and self.get_encoding_or_base_encoding() in [
+        if isinstance(self, SimpleFont) and self.__get_encoding_or_base_encoding() in [
             "MacRomanEncoding",
             "MacExpertEncoding",
             "StandardEncoding",
@@ -98,7 +98,7 @@ class Font(dict):
 
             # fmt: off
             from borb.pdf.font.common_font_encondings import CommonFontEncodings
-            encoding_name: str = self.get_encoding_or_base_encoding()
+            encoding_name: str = self.__get_encoding_or_base_encoding()
             encoding_character_code_to_name: typing.Dict[int, str] = {}
             if encoding_name == "MacRomanEncoding":
                 encoding_character_code_to_name = CommonFontEncodings.MACROMAN_CHARACTER_CODE_TO_CHARACTER_NAME
@@ -174,6 +174,38 @@ class Font(dict):
         # represents in which case a conforming reader may choose a character code of their choosing.
         # TODO
 
+    def __get_encoding_or_base_encoding(self) -> name:
+        """
+        Retrieve the encoding or base encoding of the Simple Font.
+
+        This method determines the encoding used by the font, prioritizing the following cases:
+        1. If `/Encoding` is a dictionary and contains a `/BaseEncoding` key, the value of `/BaseEncoding`
+           (a `name` object) is returned.
+        2. If `/Encoding` is directly a `name` object, it is returned as the font's encoding.
+        3. If neither of the above is present, the method defaults to `StandardEncoding`, which is the
+           common default for simple fonts.
+
+        This logic ensures that the correct encoding is used, whether explicitly defined or falling back
+        to a standard default.
+
+        :return: The encoding or base encoding of the font as a `name` object.
+        """
+        # /Encoding /BaseEncoding
+        if (
+            "Encoding" in self
+            and isinstance(self["Encoding"], dict)
+            and "BaseEncoding" in self["Encoding"]
+            and isinstance(self["Encoding"]["BaseEncoding"], name)
+        ):
+            return self["Encoding"]["BaseEncoding"]
+
+        # /Encoding
+        if "Encoding" in self and isinstance(self["Encoding"], name):
+            return self["Encoding"]
+
+        # return
+        return name("StandardEncoding")
+
     #
     # PUBLIC
     #
@@ -218,40 +250,6 @@ class Font(dict):
         """
         self.__build_character_encoding_dictionaries()
         return self.__character_to_character_code.get(character, -1)
-
-    def get_unicode(self, character_id: int) -> str:
-        """
-        Retrieve the Unicode representation of a character based on its character ID.
-
-        This method should be implemented in subclasses to provide the mapping from a
-        character ID (specific to the font encoding) to its corresponding Unicode character.
-        By default, this method raises an `AssertionError`, indicating it is not implemented.
-
-        :param character_id:    The character ID to map to a Unicode character.
-        :return:                The Unicode character as a string.
-        """
-        # Courier, Helvetica, Times
-        if self.get("Encoding", None) == "WinAnsiEncoding":
-            return bytes([character_id]).decode("cp1252")
-
-        # Symbol
-        if self.get("Encoding", None) == "Symbol":
-            if character_id in self.__cid_to_unicode:  # type: ignore[attr-defined]
-                return self.__cid_to_unicode[character_id]  # type: ignore[attr-defined]
-
-        # ZapfDingbats
-        if self.get("Encoding", None) == "ZapfDingbats":
-            if character_id in self.__cid_to_unicode:  # type: ignore[attr-defined]
-                return self.__cid_to_unicode[character_id]  # type: ignore[attr-defined]
-
-        # Differences
-        encoding: name = self.get("Encoding", {}).get(
-            "BaseEncoding", name("StandardEncoding")
-        )
-        differences = self.get("Encoding", {}).get("Differences", [])
-
-        # default
-        assert False
 
     def get_width(
         self,

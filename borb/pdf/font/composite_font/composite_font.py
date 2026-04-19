@@ -68,14 +68,11 @@ class CompositeFont(Font):
         """
         descendant_font: CIDType0Font = self["DescendantFonts"][0]
 
-        # CMap
-        cmap: CMap = self["ToUnicode"]
-
         # delegate to DescendantFonts
         return descendant_font.get_width(
             text=[
                 (
-                    cmap.get_character_code(c),
+                    self.get_character_code(c),
                     AdobeGlyphList.ADOBE_CHARACTER_TO_CHARACTER_NAME.get(c, ".notdef"),
                 )
                 for c in text
