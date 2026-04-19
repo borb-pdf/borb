@@ -125,8 +125,8 @@ class Screenshot(Image):
         bbox: typing.Optional[typing.Tuple[int, int, int, int]] = None,
         include_layered_windows: bool = False,
         all_screens: bool = False,
-        xdisplay: str = None,
-    ) -> Image:
+        xdisplay: typing.Optional[str] = None,
+    ) -> "PIL.Image.Image":  # type: ignore[name-defined]
         try:
             from PIL import ImageGrab  # type: ignore[import-untyped, import-not-found]
 
