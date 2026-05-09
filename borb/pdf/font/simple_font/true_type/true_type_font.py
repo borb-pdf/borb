@@ -161,7 +161,7 @@ class TrueTypeFont(SimpleFont):
             name("Descent"): ttf_font_file["hhea"].descent / units_per_em * 1000,
             name("Flags"): 4,
             name("FontBBox"): [min_x, min_y, max_x, max_y],
-            name("FontName"): TrueTypeFont.__get_font_name(ttf_font_file),
+            name("FontName"): name(TrueTypeFont.__get_font_name(ttf_font_file)),
             name("FontStretch"): name("Normal"),
             name("FontWeight"): 400,
             name("ItalicAngle"): ttf_font_file["post"].italicAngle,
@@ -282,8 +282,19 @@ class TrueTypeFont(SimpleFont):
         true_type_font[name("FirstChar")] = min(character_code_to_character_name.keys())
         true_type_font[name("LastChar")] = max(character_code_to_character_name.keys())
         true_type_font[name("Name")] = true_type_font[name("BaseFont")]
+        true_type_font[name("Subtype")] = name('TrueType')
         true_type_font[name("Widths")] = [ttf_font_file.getGlyphSet()[k].width for k in character_name_to_character_code.keys()]
         # fmt: on
+
+        # small fix
+        # IF some of the entries in /Encoding /Differences are str rather than name
+        # THEN we fix those
+        differences: typing.List[typing.Any] = true_type_font[name("Encoding")][
+            name("Differences")
+        ]
+        for i in range(0, len(differences)):
+            if isinstance(differences[i], str):
+                differences[i] = name(differences[i])
 
         # return
         return true_type_font
