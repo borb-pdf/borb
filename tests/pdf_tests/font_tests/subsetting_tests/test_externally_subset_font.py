@@ -1,7 +1,7 @@
 import pathlib
 import unittest
 
-from fontTools import subset  # type: ignore[import-not-found]
+from fontTools import subset  # type: ignore[import-not-found,import-untyped]
 
 from borb.pdf import (
     Document,
