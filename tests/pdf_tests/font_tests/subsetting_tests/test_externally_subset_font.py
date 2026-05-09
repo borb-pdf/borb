@@ -1,7 +1,7 @@
 import pathlib
 import unittest
 
-from fontTools import subset
+from fontTools import subset  # type: ignore[import-not-found]
 
 from borb.pdf import (
     Document,
@@ -118,8 +118,8 @@ class TestExternallySubsetFonts(unittest.TestCase):
         # fmt: on
 
         # temporary workaround
-        #subset_font["Widths"] = [600 for _ in range(32, 114 + 1)]
-        #subset_font["ToUnicode"] = self._cmap()
+        # subset_font["Widths"] = [600 for _ in range(32, 114 + 1)]
+        # subset_font["ToUnicode"] = self._cmap()
 
         # new Paragraph
         layout: PageLayout = SingleColumnLayout(page)
