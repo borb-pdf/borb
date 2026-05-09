@@ -121,7 +121,7 @@ class LZWDecode:
     # PRIVATE
     #
 
-    def __add_to_lookup_table(self, new_bytes: bytes, prev_bytes: bytearray):
+    def __add_to_lookup_table(self, new_bytes: bytearray, prev_bytes: bytearray):
         self._lookup_table[self._table_index] = prev_bytes + new_bytes
         self._table_index += 1
         if self._table_index == 511:
