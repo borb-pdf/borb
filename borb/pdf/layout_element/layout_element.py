@@ -406,9 +406,9 @@ class LayoutElement:
                 page=page,
                 bytes_or_string=f"{round(path[0][0], 7)} {round(path[0][1], 7)} m\n",
             )
-            for x, y, _ in path[1:]:
+            for px, py, _ in path[1:]:
                 LayoutElement._append_to_content_stream(
-                    page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} l\n"
+                    page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n"
                 )
             LayoutElement._append_to_content_stream(page=page, bytes_or_string="f\n")
 
@@ -428,11 +428,11 @@ class LayoutElement:
             )
 
             # move to next points
-            for x, y, width in path[1:]:
-                if width != prev_width:
+            for px, py, pwidth in path[1:]:
+                if pwidth != prev_width:
                     # close path
                     LayoutElement._append_to_content_stream(
-                        page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} l\n"
+                        page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n"
                     )
                     LayoutElement._append_to_content_stream(
                         page=page, bytes_or_string="S\n"
@@ -440,18 +440,18 @@ class LayoutElement:
 
                     # set the new width
                     LayoutElement._append_to_content_stream(
-                        page=page, bytes_or_string=f"{width} w\n"
+                        page=page, bytes_or_string=f"{pwidth} w\n"
                     )
-                    prev_width = width
+                    prev_width = pwidth
 
                     # begin the new path
                     LayoutElement._append_to_content_stream(
-                        page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} m\n"
+                        page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} m\n"
                     )
 
                 # default: append to path
                 LayoutElement._append_to_content_stream(
-                    page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} l\n"
+                    page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n"
                 )
 
             # stroke

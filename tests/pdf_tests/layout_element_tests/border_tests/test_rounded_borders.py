@@ -39,24 +39,24 @@ class TestRoundedBorders(unittest.TestCase):
         h: int = p.get_size()[1] - 2 * (p.get_size()[1] // 10)
 
         # set layout properties
-        e._LayoutElement__border_color = X11Color.DARK_GRAY
-        e._LayoutElement__background_color = X11Color.LIGHT_GRAY.lighter().lighter()
+        e._LayoutElement__border_color = X11Color.DARK_GRAY  # type: ignore[attr-defined]
+        e._LayoutElement__background_color = X11Color.LIGHT_GRAY.lighter().lighter()  # type: ignore[attr-defined]
         try:
-            e._LayoutElement__font_color = X11Color.DARK_GRAY
+            e._LayoutElement__font_color = X11Color.DARK_GRAY  # type: ignore[attr-defined]
         except:
             pass
-        e._LayoutElement__border_radius_top_left = 15
-        e._LayoutElement__border_radius_top_right = 15
-        e._LayoutElement__border_radius_bottom_right = 0
-        e._LayoutElement__border_radius_bottom_left = 15
-        e._LayoutElement__border_width_top = 1
-        e._LayoutElement__border_width_right = 1
-        e._LayoutElement__border_width_bottom = 1
-        e._LayoutElement__border_width_left = 1
-        e._LayoutElement__padding_top = 5
-        e._LayoutElement__padding_right = 5
-        e._LayoutElement__padding_bottom = 5
-        e._LayoutElement__padding_left = 5
+        e._LayoutElement__border_radius_top_left = 15  # type: ignore[attr-defined]
+        e._LayoutElement__border_radius_top_right = 15  # type: ignore[attr-defined]
+        e._LayoutElement__border_radius_bottom_right = 0  # type: ignore[attr-defined]
+        e._LayoutElement__border_radius_bottom_left = 15  # type: ignore[attr-defined]
+        e._LayoutElement__border_width_top = 1  # type: ignore[attr-defined]
+        e._LayoutElement__border_width_right = 1  # type: ignore[attr-defined]
+        e._LayoutElement__border_width_bottom = 1  # type: ignore[attr-defined]
+        e._LayoutElement__border_width_left = 1  # type: ignore[attr-defined]
+        e._LayoutElement__padding_top = 5  # type: ignore[attr-defined]
+        e._LayoutElement__padding_right = 5  # type: ignore[attr-defined]
+        e._LayoutElement__padding_bottom = 5  # type: ignore[attr-defined]
+        e._LayoutElement__padding_left = 5  # type: ignore[attr-defined]
 
         # paint
         e.paint(available_space=(x, y, w, h), page=p)
