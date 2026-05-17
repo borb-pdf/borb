@@ -7,7 +7,6 @@ from borb.pdf import (
     Document,
     PDF,
     LayoutElement,
-    document,
     Chunk,
     Standard14Fonts,
     HeterogeneousParagraph,
@@ -20,6 +19,7 @@ from borb.pdf import (
     GenderDropDownList,
     Button,
     JavascriptButton,
+    OrderedList,
 )
 
 
@@ -157,6 +157,15 @@ class TestRoundedBorders(unittest.TestCase):
         PDF.write(
             what=doc, where_to="assets/test_javascript_button_rounded_corners.pdf"
         )
+
+    def test_ordered_list_rounded_corners(self):
+        doc = TestRoundedBorders.__create_pdf_with_single_element(
+            OrderedList()
+            .append_layout_element(Chunk(text="Lorem"))
+            .append_layout_element(Chunk(text="Ipsum"))
+            .append_layout_element(Chunk(text="Dolor"))
+        )
+        PDF.write(what=doc, where_to="assets/test_ordered_list_rounded_corners.pdf")
 
     def test_paragraph_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
