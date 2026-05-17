@@ -117,10 +117,6 @@ class TestExternallySubsetFonts(unittest.TestCase):
         subset_font: Font = TrueTypeFont._TrueTypeFont__type_0_font_from_file(font_file_in)
         # fmt: on
 
-        # temporary workaround
-        # subset_font["Widths"] = [600 for _ in range(32, 114 + 1)]
-        # subset_font["ToUnicode"] = self._cmap()
-
         # new Paragraph
         layout: PageLayout = SingleColumnLayout(page)
         layout.append_layout_element(Paragraph(text="Hello World!", font=subset_font))

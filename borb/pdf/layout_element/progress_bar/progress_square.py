@@ -36,6 +36,10 @@ class ProgressSquare(ProgressBar):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -72,6 +76,10 @@ class ProgressSquare(ProgressBar):
         :param border_color:        Optional border color for the progress bar, defaults to None.
         :param border_dash_pattern: A list specifying dash patterns for the border, default is an empty list (no dashes).
         :param border_dash_phase:   An integer representing the phase of the border dash pattern, default is 0.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom: The bottom border width, default is 0.
         :param border_width_left:   The left border width, default is 0.
         :param border_width_right:  The right border width, default is 0.
@@ -97,6 +105,10 @@ class ProgressSquare(ProgressBar):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,

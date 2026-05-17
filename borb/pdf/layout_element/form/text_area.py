@@ -41,6 +41,10 @@ class TextArea(FormField):
         border_color: typing.Optional[Color] = X11Color.LIGHT_GRAY,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 1,
         border_width_left: int = 1,
         border_width_right: int = 1,
@@ -69,6 +73,10 @@ class TextArea(FormField):
         :param border_color:            Optional; The color of the border around the text area. If None, no border will be drawn.
         :param border_dash_pattern:     A list of integers defining the dash pattern for the border. For example, [5, 3] creates a dashed border.
         :param border_dash_phase:       The phase at which the dash pattern should start. Defaults to 0.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom:     The width of the bottom border in pixels. Defaults to 0 (no bottom border).
         :param border_width_left:       The width of the left border in pixels. Defaults to 0 (no left border).
         :param border_width_right:      The width of the right border in pixels. Defaults to 0 (no right border).
@@ -100,6 +108,10 @@ class TextArea(FormField):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,

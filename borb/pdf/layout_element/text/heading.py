@@ -44,6 +44,10 @@ class Heading(Paragraph):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -87,6 +91,10 @@ class Heading(Paragraph):
         :param border_color:           The color of the heading's border (optional).
         :param border_dash_pattern:    The dash pattern for the heading's border (default is solid).
         :param border_dash_phase:      The phase of the dash pattern for the border (default is 0).
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom:    The width of the bottom border (default is 0).
         :param border_width_left:      The width of the left border (default is 0).
         :param border_width_right:     The width of the right border (default is 0).
@@ -117,6 +125,10 @@ class Heading(Paragraph):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,

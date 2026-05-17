@@ -8,6 +8,7 @@ A layout element can calculate its size based on available space and render itse
 """
 
 import enum
+import math
 import typing
 
 from borb.pdf.color.color import Color
@@ -57,6 +58,10 @@ class LayoutElement:
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -80,24 +85,28 @@ class LayoutElement:
         These properties dictate the visual appearance and positioning of layout elements within
         the PDF, allowing for a flexible and structured layout.
 
-        :param background_color:        Optional background color for the layout element.
-        :param border_color:            Optional border color for the layout element.
-        :param border_dash_pattern:     Dash pattern used for the border lines of the element.
-        :param border_dash_phase:       Phase offset for the dash pattern in the borders.
-        :param border_width_bottom:     Width of the bottom border of the element.
-        :param border_width_left:       Width of the left border of the element.
-        :param border_width_right:      Width of the right border of the element.
-        :param border_width_top:        Width of the top border of the element.
-        :param horizontal_alignment:     Horizontal alignment of the element (default is LEFT).
-        :param margin_bottom:           Space between the element and the element below it.
-        :param margin_left:             Space between the element and the left page margin.
-        :param margin_right:            Space between the element and the right page margin.
-        :param margin_top:              Space between the element and the element above it.
-        :param padding_bottom:          Padding inside the element at the bottom.
-        :param padding_left:            Padding inside the element on the left side.
-        :param padding_right:           Padding inside the element on the right side.
-        :param padding_top:             Padding inside the element at the top.
-        :param vertical_alignment:       Vertical alignment of the element (default is TOP).
+        :param background_color:            Optional background color for the layout element.
+        :param border_color:                Optional border color for the layout element.
+        :param border_dash_pattern:         Dash pattern used for the borderlines of the element.
+        :param border_dash_phase:           Phase offset for the dash pattern in the borders.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
+        :param border_width_bottom:         Width of the bottom border of the element.
+        :param border_width_left:           Width of the left border of the element.
+        :param border_width_right:          Width of the right border of the element.
+        :param border_width_top:            Width of the top border of the element.
+        :param horizontal_alignment:        Horizontal alignment of the element (default is LEFT).
+        :param margin_bottom:               Space between the element and the element below it.
+        :param margin_left:                 Space between the element and the left page margin.
+        :param margin_right:                Space between the element and the right page margin.
+        :param margin_top:                  Space between the element and the element above it.
+        :param padding_bottom:              Padding inside the element at the bottom.
+        :param padding_left:                Padding inside the element on the left side.
+        :param padding_right:               Padding inside the element on the right side.
+        :param padding_top:                 Padding inside the element at the top.
+        :param vertical_alignment:          Vertical alignment of the element (default is TOP).
         """
         # fmt: off
         assert margin_bottom >= 0, "Margin bottom must be non-negative"
@@ -108,6 +117,10 @@ class LayoutElement:
         assert padding_left >= 0, "Padding left must be non-negative"
         assert padding_right >= 0, "Padding right must be non-negative"
         assert padding_top >= 0, "Padding top must be non-negative"
+        assert border_radius_bottom_left >= 0, "Border radius bottom-left must be non-negative"
+        assert border_radius_bottom_right >= 0, "Border radius bottom-right must be non-negative"
+        assert border_radius_top_left >= 0, "Border radius top-left must be non-negative"
+        assert border_radius_top_right >= 0, "Border radius top-right must be non-negative"
         assert border_width_bottom >= 0, "Border width bottom must be non-negative"
         assert border_width_left >= 0, "Border width left must be non-negative"
         assert border_width_right >= 0, "Border width right must be non-negative"
@@ -117,6 +130,10 @@ class LayoutElement:
         self.__border_color: typing.Optional[Color] = border_color
         self.__border_dash_pattern: typing.List[int] = border_dash_pattern or []
         self.__border_dash_phase: int = border_dash_phase
+        self.__border_radius_bottom_left: int = border_radius_bottom_left
+        self.__border_radius_bottom_right: int = border_radius_bottom_right
+        self.__border_radius_top_left: int = border_radius_top_left
+        self.__border_radius_top_right: int = border_radius_top_right
         self.__border_width_bottom: int = border_width_bottom
         self.__border_width_left: int = border_width_left
         self.__border_width_right: int = border_width_right
@@ -140,6 +157,41 @@ class LayoutElement:
     #
     # PRIVATE
     #
+
+    def _arc_points(
+        self,
+        x: int,
+        y: int,
+        w: int,
+        h: int,
+        start_angle: int,
+        end_angle: int,
+        line_width: int,
+    ) -> typing.List[typing.Tuple[float, float, int]]:
+        if 0 <= start_angle < 90:
+            radius: int = self.__border_radius_top_right
+            cx: int = x + w - radius
+            cy: int = y + h - radius
+        elif 90 <= start_angle < 180:
+            radius = self.__border_radius_top_left
+            cx = x + radius
+            cy = y + h - radius
+        elif 180 <= start_angle < 270:
+            radius = self.__border_radius_bottom_left
+            cx = x + radius
+            cy = y + radius
+        else:
+            radius = self.__border_radius_bottom_right
+            cx = x + w - radius
+            cy = y + radius
+        return [
+            (
+                round(cx + math.cos(math.radians(a)) * radius, 7),
+                round(cy + math.sin(math.radians(a)) * radius, 7),
+                line_width,
+            )
+            for a in range(start_angle, end_angle)
+        ]
 
     @staticmethod
     def _append_newline_to_content_stream(page: Page) -> None:
@@ -330,67 +382,80 @@ class LayoutElement:
         LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_dash_pattern} {self.__border_dash_phase} d\n")
         # fmt: on
 
-        # IF all the border widths are the same
-        # THEN draw a rectangle
-        if (
-            self.__border_width_bottom
-            == self.__border_width_left
-            == self.__border_width_right
-            == self.__border_width_top
-        ):
+        # construct a path (tuples of x, y, line width)
+        # fmt: off
+        path: typing.List[typing.Tuple[float, float, int]] = []
+        path += [(x, y + self.__border_radius_bottom_left, self.__border_width_left)]
+        path += [(x, y + h - self.__border_radius_top_left, self.__border_width_left)]
+        path += self._arc_points(x, y, w, h, 90, 180, self.__border_width_left)[::-1]
+        path += [(x + self.__border_radius_top_left, y + h, self.__border_width_top)]
+        path += [(x + w - self.__border_radius_top_right, y + h, self.__border_width_top)]
+        path += self._arc_points(x, y, w, h, 0, 90, self.__border_width_top)[::-1]
+        path += [(x + w, y + h - self.__border_radius_top_right, self.__border_width_right)]
+        path += [(x + w, y + self.__border_radius_bottom_right, self.__border_width_right)]
+        path += self._arc_points(x, y, w, h, 270, 360, self.__border_width_right)[::-1]
+        path += [(x + w - self.__border_radius_bottom_right, y, self.__border_width_bottom)]
+        path += [(x + self.__border_radius_bottom_left, y, self.__border_width_bottom)]
+        path += self._arc_points(x, y, w, h, 180, 270, self.__border_width_bottom)[::-1]
+        path += [path[0]]
+        # fmt: on
+
+        # fill
+        if self.__background_color is not None:
             LayoutElement._append_to_content_stream(
-                page=page, bytes_or_string=f"{self.__border_width_bottom} w\n"
+                page=page,
+                bytes_or_string=f"{round(path[0][0], 7)} {round(path[0][1], 7)} m\n",
             )
+            for x, y, _ in path[1:]:
+                LayoutElement._append_to_content_stream(
+                    page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} l\n"
+                )
+            LayoutElement._append_to_content_stream(page=page, bytes_or_string="f\n")
+
+        # stroke
+        if any([w > 0 for _, _, w in path]):
+
+            # set width
             LayoutElement._append_to_content_stream(
-                page=page, bytes_or_string=f"{x} {y} {w} {h} re\n"
+                page=page, bytes_or_string=f"{path[0][2]} w\n"
             )
-            if self.__background_color is not None and self.__border_color is not None:
+            prev_width: float = path[0][2]
+
+            # start path
+            LayoutElement._append_to_content_stream(
+                page=page,
+                bytes_or_string=f"{round(path[0][0], 7)} {round(path[0][1], 7)} m\n",
+            )
+
+            # move to next points
+            for x, y, width in path[1:]:
+                if width != prev_width:
+                    # close path
+                    LayoutElement._append_to_content_stream(
+                        page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} l\n"
+                    )
+                    LayoutElement._append_to_content_stream(
+                        page=page, bytes_or_string="S\n"
+                    )
+
+                    # set the new width
+                    LayoutElement._append_to_content_stream(
+                        page=page, bytes_or_string=f"{width} w\n"
+                    )
+                    prev_width = width
+
+                    # begin the new path
+                    LayoutElement._append_to_content_stream(
+                        page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} m\n"
+                    )
+
+                # default: append to path
                 LayoutElement._append_to_content_stream(
-                    page=page, bytes_or_string="B\n"
-                )
-            elif self.__background_color is not None:
-                LayoutElement._append_to_content_stream(
-                    page=page, bytes_or_string="f\n"
-                )
-            elif self.__border_color is not None:
-                LayoutElement._append_to_content_stream(
-                    page=page, bytes_or_string="S\n"
+                    page=page, bytes_or_string=f"{round(x, 7)} {round(y, 7)} l\n"
                 )
 
-        # IF the border widths are different
-        # THEN we need to construct a path
-        else:
-            # background
-            if self.__background_color is not None:
-                # fmt: off
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string="0 w\n")
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y} {w} {h} re\n")
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string="f\n")
-                # fmt: on
-            # bottom
-            if self.__border_color is not None and self.__border_width_bottom > 0:
-                # fmt: off
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_bottom} w\n")
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y} m {x+w} {y} l S\n")
-                # fmt: on
-            # left
-            if self.__border_color is not None and self.__border_width_left > 0:
-                # fmt: off
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_left} w\n")
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y} m {x} {y+h} l S\n")
-                # fmt: on
-            # right
-            if self.__border_color is not None and self.__border_width_right > 0:
-                # fmt: off
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_right} w\n")
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x+w} {y} m {x+w} {y+h} l S\n")
-                # fmt: on
-            # top
-            if self.__border_color is not None and self.__border_width_top > 0:
-                # fmt: off
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{self.__border_width_top} w\n")
-                LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"{x} {y+h} m {x+w} {y+h} l S\n")
-                # fmt: on
+            # stroke
+            LayoutElement._append_to_content_stream(page=page, bytes_or_string="S\n")
 
         # restore the graphics state
         LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")
