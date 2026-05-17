@@ -38,6 +38,10 @@ class Watermark(LayoutElement):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -69,8 +73,12 @@ class Watermark(LayoutElement):
         :param angle_in_degrees:      The angle at which the watermark text is displayed (default is 45).
         :param background_color:       Optional background color for the watermark.
         :param border_color:           Optional border color for the watermark.
-        :param border_dash_pattern:    Dash pattern used for the border lines of the watermark.
+        :param border_dash_pattern:    Dash pattern used for the borderlines of the watermark.
         :param border_dash_phase:      Phase offset for the dash pattern in the borders.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom:    Width of the bottom border of the watermark.
         :param border_width_left:      Width of the left border of the watermark.
         :param border_width_right:     Width of the right border of the watermark.
