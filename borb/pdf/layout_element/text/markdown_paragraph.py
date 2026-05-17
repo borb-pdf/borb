@@ -55,6 +55,10 @@ class MarkdownParagraph(HeterogeneousParagraph):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -81,33 +85,33 @@ class MarkdownParagraph(HeterogeneousParagraph):
         to simplify the creation of richly formatted text blocks using markdown-like syntax.
         Each text segment is styled based on markdown-like markers such as `*`, `_`, `~`, and `~~`.
 
-        :arg text: The text content to display, formatted using markdown-like syntax.
-        :arg background_color: (Optional[Color]) Background color of the paragraph. Defaults to None.
-        :arg border_color: (Optional[Color]) Border color of the paragraph. Defaults to None.
-        :arg border_dash_pattern: (List[int]) Dash pattern for the border. Defaults to [].
-        :arg border_dash_phase: (int) Starting phase for the border dash pattern. Defaults to 0.
-        :arg border_width_bottom: (int) Width of the bottom border. Defaults to 0.
-        :arg border_width_left: (int) Width of the left border. Defaults to 0.
-        :arg border_width_right: (int) Width of the right border. Defaults to 0.
-        :arg border_width_top: (int) Width of the top border. Defaults to 0.
-        :arg default_chunk_background_color: (Optional[Color]) Default background color for text chunks. Defaults to None.
-        :arg default_font: (Union[str, Font]) Default font for text chunks. Defaults to "Helvetica".
-        :arg default_font_color: (Color) Default font color for text chunks. Defaults to `X11Color.BLACK`.
-        :arg default_font_size: (int) Default font size for text chunks. Defaults to 12.
-        :arg fixed_leading: (Optional[int]) Fixed line spacing in user space units. Defaults to None.
-        :arg horizontal_alignment: (LayoutElement.HorizontalAlignment) Horizontal alignment of the paragraph. Defaults to `HorizontalAlignment.LEFT`.
-        :arg margin_bottom: (int) Bottom margin of the paragraph. Defaults to 0.
-        :arg margin_left: (int) Left margin of the paragraph. Defaults to 0.
-        :arg margin_right: (int) Right margin of the paragraph. Defaults to 0.
-        :arg margin_top: (int) Top margin of the paragraph. Defaults to 0.
-        :arg multiplied_leading: (Optional[float]) Line spacing multiplier. Defaults to 1.2.
-        :arg padding_bottom: (int) Bottom padding of the paragraph. Defaults to 0.
-        :arg padding_left: (int) Left padding of the paragraph. Defaults to 0.
-        :arg padding_right: (int) Right padding of the paragraph. Defaults to 0.
-        :arg padding_top: (int) Top padding of the paragraph. Defaults to 0.
-        :arg preserve_whitespaces: (bool) Whether to preserve whitespaces in the text. Defaults to False.
-        :arg text_alignment: (LayoutElement.TextAlignment) Text alignment within the paragraph. Defaults to `TextAlignment.LEFT`.
-        :arg vertical_alignment: (LayoutElement.VerticalAlignment) Vertical alignment of the paragraph. Defaults to `VerticalAlignment.TOP`.
+        :param text: The text content to display, formatted using markdown-like syntax.
+        :param background_color: (Optional[Color]) Background color of the paragraph. Defaults to None.
+        :param border_color: (Optional[Color]) Border color of the paragraph. Defaults to None.
+        :param border_dash_pattern: (List[int]) Dash pattern for the border. Defaults to [].
+        :param border_dash_phase: (int) Starting phase for the border dash pattern. Defaults to 0.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
+        :param border_width_bottom: (int) Width of the bottom border. Defaults to 0.
+        :param border_width_left: (int) Width of the left border. Defaults to 0.
+        :param border_width_right: (int) Width of the right border. Defaults to 0.
+        :param border_width_top: (int) Width of the top border. Defaults to 0.
+        :param fixed_leading: (Optional[int]) Fixed line spacing in user space units. Defaults to None.
+        :param horizontal_alignment: (LayoutElement.HorizontalAlignment) Horizontal alignment of the paragraph. Defaults to `HorizontalAlignment.LEFT`.
+        :param margin_bottom: (int) Bottom margin of the paragraph. Defaults to 0.
+        :param margin_left: (int) Left margin of the paragraph. Defaults to 0.
+        :param margin_right: (int) Right margin of the paragraph. Defaults to 0.
+        :param margin_top: (int) Top margin of the paragraph. Defaults to 0.
+        :param multiplied_leading: (Optional[float]) Line spacing multiplier. Defaults to 1.2.
+        :param padding_bottom: (int) Bottom padding of the paragraph. Defaults to 0.
+        :param padding_left: (int) Left padding of the paragraph. Defaults to 0.
+        :param padding_right: (int) Right padding of the paragraph. Defaults to 0.
+        :param padding_top: (int) Top padding of the paragraph. Defaults to 0.
+        :param preserve_whitespaces: (bool) Whether to preserve whitespaces in the text. Defaults to False.
+        :param text_alignment: (LayoutElement.TextAlignment) Text alignment within the paragraph. Defaults to `TextAlignment.LEFT`.
+        :param vertical_alignment: (LayoutElement.VerticalAlignment) Vertical alignment of the paragraph. Defaults to `VerticalAlignment.TOP`.
         """
         super().__init__(
             MarkdownParagraph.__split_text_and_apply_formatting(text=text),
@@ -115,6 +119,10 @@ class MarkdownParagraph(HeterogeneousParagraph):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,

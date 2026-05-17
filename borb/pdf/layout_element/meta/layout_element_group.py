@@ -38,6 +38,10 @@ class LayoutElementGroup(LayoutElement):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -65,13 +69,17 @@ class LayoutElementGroup(LayoutElement):
         :param sizes:                   The (absolute) sizes of the LayoutElements in this group
         :param background_color:        Optional background color for the list container.
         :param border_color:            Optional border color for the list container.
-        :param border_dash_pattern:     Dash pattern used for the list border lines.
+        :param border_dash_pattern:     Dash pattern used for the list borderlines.
         :param border_dash_phase:       Phase offset for the dash pattern in the list borders.
-        :param border_width_bottom:     Width of the bottom border of the list.
-        :param border_width_left:       Width of the left border of the list.
-        :param border_width_right:      Width of the right border of the list.
-        :param border_width_top:        Width of the top border of the list.
-        :param horizontal_alignment:    Horizontal alignment of the list (default is LEFT).
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
+        :param border_width_bottom:     Width of the bottom border of the element.
+        :param border_width_left:       Width of the left border of the element.
+        :param border_width_right:      Width of the right border of the element.
+        :param border_width_top:        Width of the top border of the element.
+        :param horizontal_alignment:    Horizontal alignment of the element (default is LEFT).
         :param margin_bottom:           Space between the list and the element below it.
         :param margin_left:             Space between the list and the left page margin.
         :param margin_right:            Space between the list and the right page margin.
@@ -80,13 +88,17 @@ class LayoutElementGroup(LayoutElement):
         :param padding_left:            Padding inside the list container on the left side.
         :param padding_right:           Padding inside the list container on the right side.
         :param padding_top:             Padding inside the list container at the top.
-        :param vertical_alignment:      Vertical alignment of the list (default is TOP).
+        :param vertical_alignment:      Vertical alignment of the element (default is TOP).
         """
         super().__init__(
             background_color=background_color,
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,
