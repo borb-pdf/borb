@@ -52,6 +52,10 @@ class QRCode(Image):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -84,6 +88,10 @@ class QRCode(Image):
         :param border_color:            The color of the border around the QR code, if any.
         :param border_dash_pattern:     A list of integers defining the dash pattern of the border.
         :param border_dash_phase:       The phase offset for the dash pattern of the border.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom:     The width of the bottom border.
         :param border_width_left:       The width of the left border.
         :param border_width_right:      The width of the right border.
@@ -112,6 +120,10 @@ class QRCode(Image):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_top=border_width_top,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
