@@ -158,41 +158,6 @@ class LayoutElement:
     # PRIVATE
     #
 
-    def _arc_points(
-        self,
-        x: int,
-        y: int,
-        w: int,
-        h: int,
-        start_angle: int,
-        end_angle: int,
-        line_width: int,
-    ) -> typing.List[typing.Tuple[float, float, int]]:
-        if 0 <= start_angle < 90:
-            radius: int = self.__border_radius_top_right
-            cx: int = x + w - radius
-            cy: int = y + h - radius
-        elif 90 <= start_angle < 180:
-            radius = self.__border_radius_top_left
-            cx = x + radius
-            cy = y + h - radius
-        elif 180 <= start_angle < 270:
-            radius = self.__border_radius_bottom_left
-            cx = x + radius
-            cy = y + radius
-        else:
-            radius = self.__border_radius_bottom_right
-            cx = x + w - radius
-            cy = y + radius
-        return [
-            (
-                round(cx + math.cos(math.radians(a)) * radius, 7),
-                round(cy + math.sin(math.radians(a)) * radius, 7),
-                line_width,
-            )
-            for a in range(start_angle, end_angle)
-        ]
-
     @staticmethod
     def _append_newline_to_content_stream(page: Page) -> None:
         if "Contents" not in page:
@@ -266,6 +231,41 @@ class LayoutElement:
                 return
             last_stream["DecodedBytes"] += bytes_to_append
             return
+
+    def _arc_points(
+        self,
+        x: int,
+        y: int,
+        w: int,
+        h: int,
+        start_angle: int,
+        end_angle: int,
+        line_width: int,
+    ) -> typing.List[typing.Tuple[float, float, int]]:
+        if 0 <= start_angle < 90:
+            radius: int = self.__border_radius_top_right
+            cx: int = x + w - radius
+            cy: int = y + h - radius
+        elif 90 <= start_angle < 180:
+            radius = self.__border_radius_top_left
+            cx = x + radius
+            cy = y + h - radius
+        elif 180 <= start_angle < 270:
+            radius = self.__border_radius_bottom_left
+            cx = x + radius
+            cy = y + radius
+        else:
+            radius = self.__border_radius_bottom_right
+            cx = x + w - radius
+            cy = y + radius
+        return [
+            (
+                round(cx + math.cos(math.radians(a)) * radius, 7),
+                round(cy + math.sin(math.radians(a)) * radius, 7),
+                line_width,
+            )
+            for a in range(start_angle, end_angle)
+        ]
 
     @staticmethod
     def _begin_marked_content_with_dictionary(
