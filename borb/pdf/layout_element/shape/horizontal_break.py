@@ -36,6 +36,10 @@ class HorizontalBreak(LayoutElement):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -64,8 +68,12 @@ class HorizontalBreak(LayoutElement):
 
         :param background_color:        Optional background color for the horizontal break container.
         :param border_color:            Optional border color for the horizontal break container.
-        :param border_dash_pattern:     Dash pattern used for the container border lines.
+        :param border_dash_pattern:     Dash pattern used for the container borderlines.
         :param border_dash_phase:       Phase offset for the dash pattern in the container borders.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom:     Width of the bottom border of the container.
         :param border_width_left:       Width of the left border of the container.
         :param border_width_right:      Width of the right border of the container.
@@ -90,6 +98,10 @@ class HorizontalBreak(LayoutElement):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,

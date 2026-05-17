@@ -50,6 +50,10 @@ class Table(LayoutElement):
             border_color: typing.Optional[Color] = X11Color.BLACK,
             border_dash_pattern: typing.Optional[typing.List[int]] = None,
             border_dash_phase: int = 0,
+            border_radius_bottom_left: int = 0,
+            border_radius_bottom_right: int = 0,
+            border_radius_top_left: int = 0,
+            border_radius_top_right: int = 0,
             border_width_bottom: int = 1,
             border_width_left: int = 1,
             border_width_right: int = 1,
@@ -83,6 +87,10 @@ class Table(LayoutElement):
             :param border_color:            Optional border color for the cell. Default is X11Color.BLACK.
             :param border_dash_pattern:     A list defining the dash pattern for the cell's border. Default is an empty list.
             :param border_dash_phase:       The phase offset for the dash pattern of the cell's border. Default is 0.
+            :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+            :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+            :param border_radius_top_left:      Radius of the top left border of the element.
+            :param border_radius_top_right:     Radius of the top right border of the element.
             :param border_width_bottom:     Width of the bottom border of the cell. Default is 1.
             :param border_width_left:       Width of the left border of the cell. Default is 1.
             :param border_width_right:      Width of the right border of the cell. Default is 1.
@@ -103,6 +111,10 @@ class Table(LayoutElement):
                 border_color=border_color,
                 border_dash_pattern=border_dash_pattern,
                 border_dash_phase=border_dash_phase,
+                border_radius_bottom_left=border_radius_bottom_left,
+                border_radius_bottom_right=border_radius_bottom_right,
+                border_radius_top_left=border_radius_top_left,
+                border_radius_top_right=border_radius_top_right,
                 border_width_bottom=border_width_bottom,
                 border_width_left=border_width_left,
                 border_width_right=border_width_right,
@@ -236,6 +248,10 @@ class Table(LayoutElement):
         border_color: typing.Optional[Color] = None,
         border_dash_pattern: typing.Optional[typing.List[int]] = None,
         border_dash_phase: int = 0,
+        border_radius_bottom_left: int = 0,
+        border_radius_bottom_right: int = 0,
+        border_radius_top_left: int = 0,
+        border_radius_top_right: int = 0,
         border_width_bottom: int = 0,
         border_width_left: int = 0,
         border_width_right: int = 0,
@@ -263,8 +279,12 @@ class Table(LayoutElement):
         :param number_of_columns:        The number of columns in the table.
         :param background_color:         Optional background color for the table.
         :param border_color:             Optional border color for the table.
-        :param border_dash_pattern:      Dash pattern used for the table's border lines.
+        :param border_dash_pattern:      Dash pattern used for the table's borderlines.
         :param border_dash_phase:        Phase offset for the dash pattern in the table borders.
+        :param border_radius_bottom_left:   Radius of the bottom left border of the element.
+        :param border_radius_bottom_right:  Radius of the bottom right border of the element.
+        :param border_radius_top_left:      Radius of the top left border of the element.
+        :param border_radius_top_right:     Radius of the top right border of the element.
         :param border_width_bottom:      Width of the bottom border of the table.
         :param border_width_left:        Width of the left border of the table.
         :param border_width_right:       Width of the right border of the table.
@@ -298,6 +318,10 @@ class Table(LayoutElement):
             border_color=border_color,
             border_dash_pattern=border_dash_pattern,
             border_dash_phase=border_dash_phase,
+            border_radius_bottom_left=border_radius_bottom_left,
+            border_radius_bottom_right=border_radius_bottom_right,
+            border_radius_top_left=border_radius_top_left,
+            border_radius_top_right=border_radius_top_right,
             border_width_bottom=border_width_bottom,
             border_width_left=border_width_left,
             border_width_right=border_width_right,
