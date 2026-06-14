@@ -20,6 +20,7 @@ from borb.pdf import (
     Button,
     JavascriptButton,
     OrderedList,
+    Image,
 )
 
 
@@ -146,6 +147,15 @@ class TestRoundedBorders(unittest.TestCase):
         PDF.write(
             what=doc, where_to="assets/test_homogeneous_paragraph_rounded_borders.pdf"
         )
+
+    def test_image_rounded_corners(self):
+        doc = TestRoundedBorders.__create_pdf_with_single_element(
+            Image(
+                bytes_path_pil_image_or_url="https://images.unsplash.com/photo-1614963366795-973eb8748ebb",
+                size=(300, 300),
+            )
+        )
+        PDF.write(what=doc, where_to="assets/test_image_rounded_corners.pdf")
 
     def test_javascript_button_rounded_corners(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
