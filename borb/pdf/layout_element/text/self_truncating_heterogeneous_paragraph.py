@@ -176,9 +176,7 @@ class SelfTruncatingHeterogeneousParagraph(HeterogeneousParagraph):
         if self.__truncation_index != len(self._HeterogeneousParagraph__chunks) - 1:  # type: ignore[attr-defined]
             chunks_to_render = self._HeterogeneousParagraph__chunks[  # type: ignore[attr-defined]
                 : self.__truncation_index
-            ] + [
-                self.__truncation_chunk
-            ]
+            ] + [self.__truncation_chunk]
 
         # convert these chunks to lines
         for c in chunks_to_render:
