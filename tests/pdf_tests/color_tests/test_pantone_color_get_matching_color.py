@@ -1,9 +1,10 @@
 import unittest
 
 from borb.pdf.color.pantone_color import PantoneColor
+from tests.test_case import TestCase
 
 
-class TestPantoneColorGetMatchingColor(unittest.TestCase):
+class TestPantoneColorGetMatchingColor(TestCase):
 
     def test_pantone_color_get_matching_color_000(self):
         assert (

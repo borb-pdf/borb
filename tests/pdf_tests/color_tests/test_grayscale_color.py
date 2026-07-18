@@ -9,9 +9,11 @@ from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
 from borb.pdf.visitor.pdf import PDF
+from tests.pdf_tests.visual_assert import VisualAssert
+from tests.test_case import TestCase
 
 
-class TestGrayscaleColor(unittest.TestCase):
+class TestGrayscaleColor(TestCase):
 
     def test_grayscale_color(self):
 
@@ -40,4 +42,10 @@ class TestGrayscaleColor(unittest.TestCase):
                 )
                 k += 1
 
-        PDF.write(what=d, where_to="assets/test_grayscale_color.pdf")
+        PDF.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_grayscale_color.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_grayscale_color.png",
+            TestCase.get_assets_dir() / "test_grayscale_color.pdf",
+        )

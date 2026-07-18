@@ -1,9 +1,10 @@
 import unittest
 
 from borb.pdf.color.farrow_and_ball_color import FarrowAndBallColor
+from tests.test_case import TestCase
 
 
-class TestFarrowAndBallColorGetMatchingColor(unittest.TestCase):
+class TestFarrowAndBallColorGetMatchingColor(TestCase):
 
     def test_farrow_and_ball_color_get_matching_color_000(self):
         assert (

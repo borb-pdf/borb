@@ -1,9 +1,10 @@
 import unittest
 
 from borb.pdf.color.x11_color import X11Color
+from tests.test_case import TestCase
 
 
-class TestX11ColorGetMatchingColor(unittest.TestCase):
+class TestX11ColorGetMatchingColor(TestCase):
 
     def test_x11_color_get_matching_color_000(self):
         assert X11Color.get_matching_color(X11Color.ALICE_BLUE)[0] == "ALICE_BLUE"

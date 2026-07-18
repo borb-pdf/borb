@@ -2,9 +2,10 @@ import unittest
 
 from borb.pdf.color.color import Color
 from borb.pdf.color.x11_color import X11Color
+from tests.test_case import TestCase
 
 
-class TestColorConversion(unittest.TestCase):
+class TestColorConversion(TestCase):
 
     def test_color_conversion(self):
         c0: Color = X11Color.YELLOW_MUNSELL
