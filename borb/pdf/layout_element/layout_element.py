@@ -387,16 +387,20 @@ class LayoutElement:
         path: typing.List[typing.Tuple[float, float, int]] = []
         path += [(x, y + self.__border_radius_bottom_left, self.__border_width_left)]
         path += [(x, y + h - self.__border_radius_top_left, self.__border_width_left)]
-        path += self._arc_points(x, y, w, h, 90, 180, self.__border_width_left)[::-1]
+        if self.__border_radius_top_left != 0:
+            path += self._arc_points(x, y, w, h, 90, 180, self.__border_width_left)[::-1]
         path += [(x + self.__border_radius_top_left, y + h, self.__border_width_top)]
         path += [(x + w - self.__border_radius_top_right, y + h, self.__border_width_top)]
-        path += self._arc_points(x, y, w, h, 0, 90, self.__border_width_top)[::-1]
+        if self.__border_radius_top_right != 0:
+            path += self._arc_points(x, y, w, h, 0, 90, self.__border_width_top)[::-1]
         path += [(x + w, y + h - self.__border_radius_top_right, self.__border_width_right)]
         path += [(x + w, y + self.__border_radius_bottom_right, self.__border_width_right)]
-        path += self._arc_points(x, y, w, h, 270, 360, self.__border_width_right)[::-1]
+        if self.__border_radius_bottom_right != 0:
+            path += self._arc_points(x, y, w, h, 270, 360, self.__border_width_right)[::-1]
         path += [(x + w - self.__border_radius_bottom_right, y, self.__border_width_bottom)]
         path += [(x + self.__border_radius_bottom_left, y, self.__border_width_bottom)]
-        path += self._arc_points(x, y, w, h, 180, 270, self.__border_width_bottom)[::-1]
+        if self.__border_radius_bottom_left != 0:
+            path += self._arc_points(x, y, w, h, 180, 270, self.__border_width_bottom)[::-1]
         path += [path[0]]
         # fmt: on
 
@@ -429,14 +433,19 @@ class LayoutElement:
 
             # move to next points
             for px, py, pwidth in path[1:]:
+
+                # IF the width changes
+                # THEN close the previous path and begin a new one
                 if pwidth != prev_width:
                     # close path
-                    LayoutElement._append_to_content_stream(
-                        page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n"
-                    )
-                    LayoutElement._append_to_content_stream(
-                        page=page, bytes_or_string="S\n"
-                    )
+                    if prev_width != 0:
+                        LayoutElement._append_to_content_stream(
+                            page=page,
+                            bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n",
+                        )
+                        LayoutElement._append_to_content_stream(
+                            page=page, bytes_or_string="S\n"
+                        )
 
                     # set the new width
                     LayoutElement._append_to_content_stream(
@@ -450,16 +459,16 @@ class LayoutElement:
                     )
 
                 # default: append to path
-                LayoutElement._append_to_content_stream(
-                    page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n"
-                )
+                if pwidth > 0:
+                    LayoutElement._append_to_content_stream(
+                        page=page, bytes_or_string=f"{round(px, 7)} {round(py, 7)} l\n"
+                    )
 
             # stroke
             LayoutElement._append_to_content_stream(page=page, bytes_or_string="S\n")
 
         # restore the graphics state
         LayoutElement._append_to_content_stream(page=page, bytes_or_string="Q\n")
-
         return
 
     #

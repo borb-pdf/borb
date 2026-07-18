@@ -52,3 +52,62 @@ class TestChart(unittest.TestCase):
         )
 
         PDF.write(what=d, where_to="assets/test_chart.pdf")
+
+    def test_chart_002(self):
+        import numpy as np
+        import pandas as pd
+
+        day_order = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+        ]
+        time_order = ["Night", "Morning", "Midday", "Evening"]
+        matrix = np.array(
+            [
+                [0, 1, 2, 3],
+                [4, 5, 6, 7],
+                [8, 9, 8, 9],
+                [9, 6, 4, 3],
+                [2, 3, 2, 3],
+                [1, 0, 0, 4],
+                [5, 4, 3, 4],
+            ]
+        )
+
+        # convert to heatmap dataframe
+        df_heat = pd.DataFrame(matrix, index=day_order, columns=time_order)
+
+        import matplotlib.pyplot as plt
+
+        print(matplotlib.__version__)
+        plt.figure(figsize=(8, 4))
+        plt.imshow(df_heat.values, aspect="auto")
+        plt.xticks(range(len(df_heat.columns)), df_heat.columns)
+        plt.yticks(range(len(df_heat.index)), df_heat.index)
+        plt.colorbar(label="Number of incidents")
+        plt.title("Incidents by Day and Time Block")
+        plt.xlabel("Time of day")
+        plt.ylabel("Day of week")
+        plt.show()
+
+        from borb.pdf import Document
+        from borb.pdf import Page
+        from borb.pdf import PageLayout
+        from borb.pdf import SingleColumnLayout
+        from borb.pdf import Chart
+        from borb.pdf import PDF
+
+        pdf_document: Document = Document()
+
+        page: Page = Page()
+        pdf_document.append_page(page)
+
+        page_layout: PageLayout = SingleColumnLayout(page)
+        page_layout.append_layout_element(Chart(plt.gcf(), size=(100, 100)))
+
+        PDF.write(what=pdf_document, where_to="test_chart_002.pdf")

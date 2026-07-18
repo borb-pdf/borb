@@ -227,11 +227,11 @@ class Image(LayoutElement):
         out[name("Bytes")] = smask_compressed_bytes
         out[name("ColorSpace")] = name("DeviceGray")
         out[name("Filter")] = name("FlateDecode")
-        out[name("Height")] = self.__image.width
+        out[name("Height")] = self.__image.height
         out[name("Length")] = len(smask_compressed_bytes)
         out[name("Subtype")] = name("Image")
         out[name("Type")] = name("XObject")
-        out[name("Width")] = self.__image.height
+        out[name("Width")] = self.__image.width
 
         # return
         return out
