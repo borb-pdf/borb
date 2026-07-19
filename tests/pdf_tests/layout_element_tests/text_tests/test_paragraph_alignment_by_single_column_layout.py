@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
@@ -7,12 +5,12 @@ from borb.pdf import (
     PageLayout,
     Paragraph,
     LayoutElement,
-    PDF,
     X11Color,
 )
+from tests.test_case import TestCase
 
 
-class TestParagraphAlignmentBySingleColumnLayout(unittest.TestCase):
+class TestParagraphAlignmentBySingleColumnLayout(TestCase):
 
     def test_paragraph_vertical_alignment_middle(self):
         # Create an empty Document
@@ -36,9 +34,7 @@ class TestParagraphAlignmentBySingleColumnLayout(unittest.TestCase):
             )
 
         # Write the PDF
-        PDF.write(
-            what=d, where_to="assets/test_paragraph_vertical_alignment_middle.pdf"
-        )
+        TestCase.write(what=d, where_to="test_paragraph_vertical_alignment_middle.pdf")
 
     def test_paragraph_horizontal_alignment_middle(self):
         # Create an empty Document
@@ -62,6 +58,6 @@ class TestParagraphAlignmentBySingleColumnLayout(unittest.TestCase):
             )
 
         # Write the PDF
-        PDF.write(
-            what=d, where_to="assets/test_paragraph_horizontal_alignment_middle.pdf"
+        TestCase.write(
+            what=d, where_to="test_paragraph_horizontal_alignment_middle.pdf"
         )

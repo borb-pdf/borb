@@ -4,10 +4,10 @@ from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.dall_e import DallE
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDallEBackground(unittest.TestCase):
+class TestDallEBackground(TestCase):
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_background(self):
@@ -41,4 +41,4 @@ class TestDallEBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_dall_e_background.pdf")
+        TestCase.write(what=d, where_to="test_dall_e_background.pdf")

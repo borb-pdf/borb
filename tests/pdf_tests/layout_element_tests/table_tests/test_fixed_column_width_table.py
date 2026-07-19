@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf.color.hex_color import HexColor
 from borb.pdf.document import Document
@@ -11,10 +10,10 @@ from borb.pdf.layout_element.table.fixed_column_width_table import FixedColumnWi
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFixedColumnWidthTable(unittest.TestCase):
+class TestFixedColumnWidthTable(TestCase):
 
     def test_fixed_column_width_table_of_shape(self):
         d: Document = Document()
@@ -74,7 +73,7 @@ class TestFixedColumnWidthTable(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_fixed_column_width_table_of_shape.pdf")
+        TestCase.write(what=d, where_to="test_fixed_column_width_table_of_shape.pdf")
 
     def test_fixed_column_width_table_of_chunk(self):
         d: Document = Document()
@@ -103,7 +102,7 @@ class TestFixedColumnWidthTable(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_fixed_column_width_table_of_chunk.pdf")
+        TestCase.write(what=d, where_to="test_fixed_column_width_table_of_chunk.pdf")
 
     def test_fixed_column_width_table_of_paragraph(self):
         d: Document = Document()
@@ -146,8 +145,8 @@ class TestFixedColumnWidthTable(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_fixed_column_width_table_of_paragraph.pdf"
+        TestCase.write(
+            what=d, where_to="test_fixed_column_width_table_of_paragraph.pdf"
         )
 
     def test_fixed_column_width_table_of_images(self):
@@ -213,7 +212,7 @@ class TestFixedColumnWidthTable(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_fixed_column_width_table_of_images.pdf")
+        TestCase.write(what=d, where_to="test_fixed_column_width_table_of_images.pdf")
 
     def test_fixed_column_width_table_of_lists(self):
         d: Document = Document()
@@ -271,4 +270,4 @@ class TestFixedColumnWidthTable(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_fixed_column_width_table_of_list.pdf")
+        TestCase.write(what=d, where_to="test_fixed_column_width_table_of_list.pdf")

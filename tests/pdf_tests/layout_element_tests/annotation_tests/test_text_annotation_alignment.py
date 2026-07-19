@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.text_annotation import TextAnnotation
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestTextAnnotationAlignment(unittest.TestCase):
+class TestTextAnnotationAlignment(TestCase):
 
     def test_text_annotation_left_top(self):
         d: Document = Document()
@@ -37,7 +35,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_left_top.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_left_top.pdf")
 
     def test_text_annotation_left_middle(self):
         d: Document = Document()
@@ -66,7 +64,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_left_middle.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_left_middle.pdf")
 
     def test_text_annotation_left_bottom(self):
         d: Document = Document()
@@ -95,7 +93,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_left_bottom.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_left_bottom.pdf")
 
     def test_text_annotation_middle_top(self):
         d: Document = Document()
@@ -124,7 +122,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_middle_top.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_middle_top.pdf")
 
     def test_text_annotation_middle_middle(self):
         d: Document = Document()
@@ -153,7 +151,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_middle_middle.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_middle_middle.pdf")
 
     def test_text_annotation_middle_bottom(self):
         d: Document = Document()
@@ -182,7 +180,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_middle_bottom.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_middle_bottom.pdf")
 
     def test_text_annotation_right_top(self):
         d: Document = Document()
@@ -211,7 +209,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_right_top.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_right_top.pdf")
 
     def test_text_annotation_right_middle(self):
         d: Document = Document()
@@ -240,7 +238,7 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_right_middle.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_right_middle.pdf")
 
     def test_text_annotation_right_bottom(self):
         d: Document = Document()
@@ -269,4 +267,4 @@ class TestTextAnnotationAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation_right_bottom.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation_right_bottom.pdf")

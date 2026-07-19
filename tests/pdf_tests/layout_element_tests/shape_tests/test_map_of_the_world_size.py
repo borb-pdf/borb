@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.map_of_the_world import MapOfTheWorld
+from tests.test_case import TestCase
 
 
-class TestMapOfTheWorldSize(unittest.TestCase):
+class TestMapOfTheWorldSize(TestCase):
 
     def test_map_of_the_world_size(self):
         w, h = MapOfTheWorld().get_size(available_space=(2**64, 2**64))

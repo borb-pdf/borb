@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.equation import Equation
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestEquationFontSize(unittest.TestCase):
+class TestEquationFontSize(TestCase):
 
     def test_equation_font_size_small(self):
         d: Document = Document()
@@ -27,7 +25,7 @@ class TestEquationFontSize(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_equation_font_size_small.pdf")
+        TestCase.write(what=d, where_to="test_equation_font_size_small.pdf")
 
     def test_equation_font_size_medium(self):
         d: Document = Document()
@@ -48,7 +46,7 @@ class TestEquationFontSize(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_equation_font_size_medium.pdf")
+        TestCase.write(what=d, where_to="test_equation_font_size_medium.pdf")
 
     def test_equation_font_size_large(self):
         d: Document = Document()
@@ -69,4 +67,4 @@ class TestEquationFontSize(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_equation_font_size_large.pdf")
+        TestCase.write(what=d, where_to="test_equation_font_size_large.pdf")

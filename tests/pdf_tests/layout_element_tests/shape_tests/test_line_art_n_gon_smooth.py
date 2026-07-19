@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestLineArtNGonSmooth(unittest.TestCase):
@@ -25,7 +25,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_003_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_003_smooth.pdf")
 
     def test_line_art_n_gon_004_smooth(self):
         d: Document = Document()
@@ -44,7 +44,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_004_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_004_smooth.pdf")
 
     def test_line_art_n_gon_005_smooth(self):
         d: Document = Document()
@@ -63,7 +63,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_005_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_005_smooth.pdf")
 
     def test_line_art_n_gon_006_smooth(self):
         d: Document = Document()
@@ -82,7 +82,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_006_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_006_smooth.pdf")
 
     def test_line_art_n_gon_007_smooth(self):
         d: Document = Document()
@@ -101,7 +101,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_007_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_007_smooth.pdf")
 
     def test_line_art_n_gon_008_smooth(self):
         d: Document = Document()
@@ -120,7 +120,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_008_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_008_smooth.pdf")
 
     def test_line_art_n_gon_009_smooth(self):
         d: Document = Document()
@@ -139,7 +139,7 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_009_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_009_smooth.pdf")
 
     def test_line_art_n_gon_010_smooth(self):
         d: Document = Document()
@@ -158,4 +158,4 @@ class TestLineArtNGonSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_gon_010_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_gon_010_smooth.pdf")

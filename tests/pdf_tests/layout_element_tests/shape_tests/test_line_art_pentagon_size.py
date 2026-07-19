@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtPentagonSize(unittest.TestCase):
+class TestLineArtPentagonSize(TestCase):
 
     def test_line_pentagon_size(self):
         w, h = LineArt.pentagon().get_size(available_space=(2**64, 2**64))

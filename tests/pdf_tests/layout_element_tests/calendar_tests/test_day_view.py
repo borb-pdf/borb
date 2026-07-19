@@ -1,14 +1,13 @@
 import datetime
-import unittest
 
 from borb.pdf import HexColor
 from borb.pdf.document import Document
 from borb.pdf.layout_element.calendar.day_view import DayView
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDayView(unittest.TestCase):
+class TestDayView(TestCase):
 
     def test_day_view(self):
         d: Document = Document()
@@ -55,4 +54,4 @@ class TestDayView(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_day_view.pdf")
+        TestCase.write(what=d, where_to="test_day_view.pdf")

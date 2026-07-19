@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt
+from borb.pdf import SmartArt
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestHorizontalEquation(unittest.TestCase):
+class TestHorizontalEquation(TestCase):
 
     def test_horizontal_equation_3_items(self):
         d: Document = Document()
@@ -26,7 +25,7 @@ class TestHorizontalEquation(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_horizontal_equation_3_items.pdf")
+        TestCase.write(what=d, where_to="test_horizontal_equation_3_items.pdf")
 
     def test_horizontal_equation_4_items(self):
         d: Document = Document()
@@ -46,4 +45,4 @@ class TestHorizontalEquation(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_horizontal_equation_4_items.pdf")
+        TestCase.write(what=d, where_to="test_horizontal_equation_4_items.pdf")

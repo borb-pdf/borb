@@ -1,12 +1,10 @@
-import unittest
-
-from borb.pdf import Button, Paragraph, X11Color
+from borb.pdf import Paragraph, X11Color
 from borb.pdf.document import Document
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestBordersOfDifferentWidths(unittest.TestCase):
+class TestBordersOfDifferentWidths(TestCase):
 
     def test_borders_of_different_widths_no_background(self):
 
@@ -34,8 +32,8 @@ class TestBordersOfDifferentWidths(unittest.TestCase):
             padding_left=5,
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(
-            what=d, where_to="assets/test_borders_of_different_widths_no_background.pdf"
+        TestCase.write(
+            what=d, where_to="test_borders_of_different_widths_no_background.pdf"
         )
 
     def test_borders_of_different_widths_with_background(self):
@@ -66,7 +64,7 @@ class TestBordersOfDifferentWidths(unittest.TestCase):
             padding_left=5,
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_borders_of_different_widths_with_background.pdf",
+            where_to="test_borders_of_different_widths_with_background.pdf",
         )

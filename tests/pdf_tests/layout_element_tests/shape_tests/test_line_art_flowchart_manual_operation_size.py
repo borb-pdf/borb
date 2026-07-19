@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartManualOperationSize(unittest.TestCase):
+class TestLineArtFlowchartManualOperationSize(TestCase):
 
     def test_line_art_flowchart_manual_operation_size(self):
         w, h = LineArt.flowchart_manual_operation().get_size(

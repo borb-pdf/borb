@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf import JavascriptButton, X11Color
 from borb.pdf.document import Document
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestJavascriptButtonBackground(unittest.TestCase):
+class TestJavascriptButtonBackground(TestCase):
 
     def test_javascript_button_background(self):
 
@@ -27,4 +25,4 @@ class TestJavascriptButtonBackground(unittest.TestCase):
             background_color=X11Color.YELLOW_MUNSELL,
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_background.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_background.pdf")

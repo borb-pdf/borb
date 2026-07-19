@@ -1,12 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.progress_bar.progress_bar import ProgressBar
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.pdf_tests.visual_assert import VisualAssert
+from tests.test_case import TestCase
 
 
-class TestProgressBar(unittest.TestCase):
+class TestProgressBar(TestCase):
 
     def test_progress_bar_000(self):
         d: Document = Document()
@@ -25,7 +24,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_000.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_000.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_000.png",
+            TestCase.get_assets_dir() / "test_progress_bar_000.pdf",
+        )
 
     def test_progress_bar_010(self):
         d: Document = Document()
@@ -44,7 +49,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_010.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_010.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_010.png",
+            TestCase.get_assets_dir() / "test_progress_bar_010.pdf",
+        )
 
     def test_progress_bar_020(self):
         d: Document = Document()
@@ -63,7 +74,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_020.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_020.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_020.png",
+            TestCase.get_assets_dir() / "test_progress_bar_020.pdf",
+        )
 
     def test_progress_bar_030(self):
         d: Document = Document()
@@ -82,7 +99,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_030.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_030.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_030.png",
+            TestCase.get_assets_dir() / "test_progress_bar_030.pdf",
+        )
 
     def test_progress_bar_040(self):
         d: Document = Document()
@@ -101,7 +124,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_040.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_040.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_040.png",
+            TestCase.get_assets_dir() / "test_progress_bar_040.pdf",
+        )
 
     def test_progress_bar_050(self):
         d: Document = Document()
@@ -120,7 +149,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_050.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_050.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_050.png",
+            TestCase.get_assets_dir() / "test_progress_bar_050.pdf",
+        )
 
     def test_progress_bar_060(self):
         d: Document = Document()
@@ -139,7 +174,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_060.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_060.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_060.png",
+            TestCase.get_assets_dir() / "test_progress_bar_060.pdf",
+        )
 
     def test_progress_bar_070(self):
         d: Document = Document()
@@ -158,7 +199,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_070.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_070.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_070.png",
+            TestCase.get_assets_dir() / "test_progress_bar_070.pdf",
+        )
 
     def test_progress_bar_080(self):
         d: Document = Document()
@@ -177,7 +224,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_080.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_080.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_080.png",
+            TestCase.get_assets_dir() / "test_progress_bar_080.pdf",
+        )
 
     def test_progress_bar_090(self):
         d: Document = Document()
@@ -196,7 +249,13 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_090.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_090.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_090.png",
+            TestCase.get_assets_dir() / "test_progress_bar_090.pdf",
+        )
 
     def test_progress_bar_100(self):
         d: Document = Document()
@@ -215,4 +274,10 @@ class TestProgressBar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_bar_100.pdf")
+        TestCase.write(
+            what=d, where_to=TestCase.get_assets_dir() / "test_progress_bar_100.pdf"
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_bar_100.png",
+            TestCase.get_assets_dir() / "test_progress_bar_100.pdf",
+        )

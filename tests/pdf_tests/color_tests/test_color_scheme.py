@@ -1,6 +1,5 @@
 import math
 import typing
-import unittest
 
 from borb.pdf.color.color import Color
 from borb.pdf.color.color_scheme import ColorScheme
@@ -8,8 +7,6 @@ from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
-from tests.pdf_tests.visual_assert import VisualAssert
 from tests.test_case import TestCase
 
 
@@ -44,15 +41,9 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=TestCase.get_assets_dir()
-            / "test_color_scheme_complimentary_colors.pdf",
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir()
-            / "test_color_scheme_complimentary_colors.png",
-            TestCase.get_assets_dir() / "test_color_scheme_complimentary_colors.pdf",
+            where_to="test_color_scheme_complimentary_colors.pdf",
         )
 
     def test_color_scheme_analogous_colors(self):
@@ -84,14 +75,9 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=TestCase.get_assets_dir()
-            / "test_color_scheme_analogous_colors.pdf",
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_color_scheme_analogous_colors.png",
-            TestCase.get_assets_dir() / "test_color_scheme_analogous_colors.pdf",
+            where_to="test_color_scheme_analogous_colors.pdf",
         )
 
     def test_color_scheme_triadic_colors(self):
@@ -123,13 +109,9 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=TestCase.get_assets_dir() / "test_color_scheme_triadic_colors.pdf",
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_color_scheme_triadic_colors.png",
-            TestCase.get_assets_dir() / "test_color_scheme_triadic_colors.pdf",
+            where_to="test_color_scheme_triadic_colors.pdf",
         )
 
     def test_color_scheme_tetradic_colors(self):
@@ -161,14 +143,9 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=TestCase.get_assets_dir()
-            / "test_color_scheme_tetradic_colors.pdf",
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_color_scheme_tetradic_colors.png",
-            TestCase.get_assets_dir() / "test_color_scheme_tetradic_colors.pdf",
+            where_to="test_color_scheme_tetradic_colors.pdf",
         )
 
     def test_color_scheme_split_complementary_colors(self):
@@ -200,16 +177,9 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=TestCase.get_assets_dir()
-            / "test_color_scheme_split_complementary_colors.pdf",
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir()
-            / "test_color_scheme_split_complementary_colors.png",
-            TestCase.get_assets_dir()
-            / "test_color_scheme_split_complementary_colors.pdf",
+            where_to="test_color_scheme_split_complementary_colors.pdf",
         )
 
     def test_color_scheme_shades(self):
@@ -241,13 +211,7 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
-            what=d, where_to=TestCase.get_assets_dir() / "test_color_scheme_shades.pdf"
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_color_scheme_shades.png",
-            TestCase.get_assets_dir() / "test_color_scheme_shades.pdf",
-        )
+        TestCase.write(what=d, where_to="test_color_scheme_shades.pdf")
 
     def test_color_scheme_tints(self):
 
@@ -278,13 +242,7 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
-            what=d, where_to=TestCase.get_assets_dir() / "test_color_scheme_tints.pdf"
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_color_scheme_tints.png",
-            TestCase.get_assets_dir() / "test_color_scheme_tints.pdf",
-        )
+        TestCase.write(what=d, where_to="test_color_scheme_tints.pdf")
 
     def test_color_scheme_monochromatic(self):
 
@@ -315,11 +273,7 @@ class TestColorScheme(TestCase):
                 )
                 k += 1
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=TestCase.get_assets_dir() / "test_color_scheme_monochromatic.pdf",
-        )
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_color_scheme_monochromatic.png",
-            TestCase.get_assets_dir() / "test_color_scheme_monochromatic.pdf",
+            where_to="test_color_scheme_monochromatic.pdf",
         )

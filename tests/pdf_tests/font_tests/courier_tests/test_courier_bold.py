@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.font.font import Font
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCourierBold(unittest.TestCase):
+class TestCourierBold(TestCase):
 
     def test_courier_bold(self):
         d: Document = Document()
@@ -48,4 +46,4 @@ class TestCourierBold(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_courier_bold.pdf")
+        TestCase.write(what=d, where_to="test_courier_bold.pdf")

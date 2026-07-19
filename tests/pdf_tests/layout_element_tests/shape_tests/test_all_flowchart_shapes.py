@@ -1,6 +1,5 @@
 import math
 import typing
-import unittest
 
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
@@ -12,10 +11,10 @@ from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestAllFlowchartShapes(unittest.TestCase):
+class TestAllFlowchartShapes(TestCase):
 
     def test_all_flowchart_shapes(self):
 
@@ -88,4 +87,4 @@ class TestAllFlowchartShapes(unittest.TestCase):
         layout: PageLayout = SingleColumnLayout(p)
         layout.append_layout_element(table)
 
-        PDF.write(what=d, where_to="assets/test_all_flowchart_shapes.pdf")
+        TestCase.write(what=d, where_to="test_all_flowchart_shapes.pdf")

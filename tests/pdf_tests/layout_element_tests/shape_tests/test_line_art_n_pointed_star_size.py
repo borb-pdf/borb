@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtNPointedStarSize(unittest.TestCase):
+class TestLineArtNPointedStarSize(TestCase):
 
     def test_line_art_n_pointed_star_size_003(self):
         w, h = LineArt.n_pointed_star(number_of_points=3).get_size(

@@ -1,9 +1,8 @@
-import unittest
+from borb.pdf import RemoteGoToAnnotation, Document, Page
+from tests.test_case import TestCase
 
-from borb.pdf import RemoteGoToAnnotation, Document, Page, PDF
 
-
-class TestRemoteGoToAnnotationHeight(unittest.TestCase):
+class TestRemoteGoToAnnotationHeight(TestCase):
 
     def test_remote_go_to_annotation_height_12(self):
         d: Document = Document()
@@ -31,4 +30,4 @@ class TestRemoteGoToAnnotationHeight(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_remote_go_to_annotation_height_12.pdf")
+        TestCase.write(what=d, where_to="test_remote_go_to_annotation_height_12.pdf")

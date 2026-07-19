@@ -1,24 +1,18 @@
-import pathlib
-import unittest
-
 from borb.pdf import (
     SingleColumnLayout,
     PageLayout,
     Paragraph,
     Lipsum,
     LayoutElement,
-    Image,
     X11Color,
-    Color,
-    RGBColor,
 )
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.watermark import Watermark
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestWatermark(unittest.TestCase):
+class TestWatermark(TestCase):
 
     def test_watermark(self):
         d: Document = Document()
@@ -39,4 +33,4 @@ class TestWatermark(unittest.TestCase):
             Watermark(text="CONFIDENTIAL", font_size=40, font_color=X11Color.DARK_RED)
         )
 
-        PDF.write(what=d, where_to="assets/test_watermark.pdf")
+        TestCase.write(what=d, where_to="test_watermark.pdf")

@@ -6,7 +6,7 @@ from borb.pdf.layout_element.shape.map_of_the_united_states_of_america import (
     MapOfTheUnitedStatesOfAmerica,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestMapOfTheUnitedStatesOfAmerica(unittest.TestCase):
@@ -30,6 +30,4 @@ class TestMapOfTheUnitedStatesOfAmerica(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_map_of_the_united_states_of_america.pdf"
-        )
+        TestCase.write(what=d, where_to="test_map_of_the_united_states_of_america.pdf")

@@ -6,7 +6,7 @@ from borb.pdf.layout_element.shape.map_of_the_contiguous_united_states_of_americ
     MapOfTheContiguousUnitedStatesOfAmerica,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestMapOfTheContiguousUnitedStatesOfAmerica(unittest.TestCase):
@@ -30,7 +30,7 @@ class TestMapOfTheContiguousUnitedStatesOfAmerica(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_map_of_the_contiguous_united_states_of_america.pdf",
+            where_to="test_map_of_the_contiguous_united_states_of_america.pdf",
         )

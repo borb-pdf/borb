@@ -1,13 +1,13 @@
 import random
-import unittest
 
-from borb.pdf import Document, Page, LayoutElement, Lipsum, Paragraph, PDF, X11Color
+from borb.pdf import Document, Page, LayoutElement, Lipsum, Paragraph, X11Color
 from borb.pdf.layout_element.meta.circular_layout_element_group import (
     CircularLayoutElementGroup,
 )
+from tests.test_case import TestCase
 
 
-class TestCircularLayoutElementGroup(unittest.TestCase):
+class TestCircularLayoutElementGroup(TestCase):
 
     def test_circular_layout_element_group(self):
         d: Document = Document()
@@ -37,4 +37,4 @@ class TestCircularLayoutElementGroup(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_circular_layout_element_group.pdf")
+        TestCase.write(what=d, where_to="test_circular_layout_element_group.pdf")

@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     UsageStatistics,
     Document,
@@ -7,11 +5,11 @@ from borb.pdf import (
     PageLayout,
     Page,
     Paragraph,
-    PDF,
 )
+from tests.test_case import TestCase
 
 
-class TestUsageStatistics(unittest.TestCase):
+class TestUsageStatistics(TestCase):
 
     def test_usage_statistics(self):
         UsageStatistics.event(
@@ -30,4 +28,4 @@ class TestUsageStatistics(unittest.TestCase):
 
         layout.append_layout_element(Paragraph("Lorem Ipsum Dolor Sit Amet"))
 
-        PDF.write(what=doc, where_to="assets/test_usage_statistics_implicitly.pdf")
+        TestCase.write(what=doc, where_to="test_usage_statistics_implicitly.pdf")

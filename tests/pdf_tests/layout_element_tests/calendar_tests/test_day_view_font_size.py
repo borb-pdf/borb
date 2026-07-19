@@ -1,14 +1,13 @@
 import datetime
-import unittest
 
 from borb.pdf.color.hex_color import HexColor
 from borb.pdf.document import Document
 from borb.pdf.layout_element.calendar.day_view import DayView
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDayViewFontSize(unittest.TestCase):
+class TestDayViewFontSize(TestCase):
 
     def test_day_view_font_size_small(self):
         d: Document = Document()
@@ -55,7 +54,7 @@ class TestDayViewFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_day_view_font_size_small.pdf")
+        TestCase.write(what=d, where_to="test_day_view_font_size_small.pdf")
 
     def test_day_view_font_size_medium(self):
         d: Document = Document()
@@ -102,7 +101,7 @@ class TestDayViewFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_day_view_font_size_medium.pdf")
+        TestCase.write(what=d, where_to="test_day_view_font_size_medium.pdf")
 
     def test_day_view_font_size_large(self):
         d: Document = Document()
@@ -150,4 +149,4 @@ class TestDayViewFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_day_view_font_size_large.pdf")
+        TestCase.write(what=d, where_to="test_day_view_font_size_large.pdf")

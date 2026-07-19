@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtThreeQuartersOfCircleSize(unittest.TestCase):
+class TestLineArtThreeQuartersOfCircleSize(TestCase):
 
     def test_line_three_quarters_of_circle_size(self):
         w, h = LineArt.three_quarters_of_circle().get_size(

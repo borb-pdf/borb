@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.barcode import Barcode
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestBarcodeAlignment(unittest.TestCase):
+class TestBarcodeAlignment(TestCase):
 
     def test_barcode_alignment_left_top(self):
 
@@ -33,7 +31,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_barcode_alignment_left_top.pdf")
+        TestCase.write(what=d, where_to=f"test_barcode_alignment_left_top.pdf")
 
     def test_barcode_alignment_left_middle(self):
         d: Document = Document()
@@ -58,7 +56,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_barcode_alignment_left_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_barcode_alignment_left_middle.pdf")
 
     def test_barcode_alignment_left_bottom(self):
         d: Document = Document()
@@ -83,7 +81,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(where_to=f"assets/test_barcode_alignment_left_bottom.pdf", what=d)
+        TestCase.write(where_to=f"test_barcode_alignment_left_bottom.pdf", what=d)
 
     def test_barcode_alignment_middle_top(self):
         d: Document = Document()
@@ -108,7 +106,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(where_to=f"assets/test_barcode_alignment_middle_top.pdf", what=d)
+        TestCase.write(where_to=f"test_barcode_alignment_middle_top.pdf", what=d)
 
     def test_barcode_alignment_middle_middle(self):
         d: Document = Document()
@@ -133,7 +131,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(where_to=f"assets/test_barcode_alignment_middle_middle.pdf", what=d)
+        TestCase.write(where_to=f"test_barcode_alignment_middle_middle.pdf", what=d)
 
     def test_barcode_alignment_middle_bottom(self):
         d: Document = Document()
@@ -158,7 +156,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_barcode_alignment_middle_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_barcode_alignment_middle_bottom.pdf")
 
     def test_barcode_alignment_right_top(self):
         d: Document = Document()
@@ -183,7 +181,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_barcode_alignment_right_top.pdf")
+        TestCase.write(what=d, where_to=f"test_barcode_alignment_right_top.pdf")
 
     def test_barcode_alignment_right_middle(self):
         d: Document = Document()
@@ -208,7 +206,7 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_barcode_alignment_right_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_barcode_alignment_right_middle.pdf")
 
     def test_barcode_alignment_right_bottom(self):
         d: Document = Document()
@@ -233,4 +231,4 @@ class TestBarcodeAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_barcode_alignment_right_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_barcode_alignment_right_bottom.pdf")

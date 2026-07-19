@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.free_text_annotation import FreeTextAnnotation
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFreeTextAnnotation(unittest.TestCase):
+class TestFreeTextAnnotation(TestCase):
 
     def test_free_text_annotation_text_alignment_left(self):
         d: Document = Document()
@@ -36,8 +34,8 @@ class TestFreeTextAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_free_text_annotation_text_alignment_left.pdf"
+        TestCase.write(
+            what=d, where_to="test_free_text_annotation_text_alignment_left.pdf"
         )
 
     def test_free_text_annotation_text_alignment_centered(self):
@@ -66,9 +64,9 @@ class TestFreeTextAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_free_text_annotation_text_alignment_centered.pdf",
+            where_to="test_free_text_annotation_text_alignment_centered.pdf",
         )
 
     def test_free_text_annotation_text_alignment_right(self):
@@ -97,6 +95,6 @@ class TestFreeTextAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_free_text_annotation_text_alignment_right.pdf"
+        TestCase.write(
+            what=d, where_to="test_free_text_annotation_text_alignment_right.pdf"
         )

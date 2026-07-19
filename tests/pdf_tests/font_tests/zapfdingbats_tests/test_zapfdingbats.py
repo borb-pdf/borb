@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.font.font import Font
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestZapfDingbats(unittest.TestCase):
+class TestZapfDingbats(TestCase):
 
     def test_zapfdingbats(self):
 
@@ -28,4 +26,4 @@ class TestZapfDingbats(unittest.TestCase):
 
         Chunk("●", font=font).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_zapfdingbats.pdf")
+        TestCase.write(what=d, where_to="test_zapfdingbats.pdf")

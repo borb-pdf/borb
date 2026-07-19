@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.form.check_box import CheckBox
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCheckBoxAlignment(unittest.TestCase):
+class TestCheckBoxAlignment(TestCase):
 
     def test_check_box_left_top(self):
         d: Document = Document()
@@ -29,7 +27,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_left_top.pdf")
+        TestCase.write(what=d, where_to="test_check_box_left_top.pdf")
 
     def test_check_box_left_middle(self):
         d: Document = Document()
@@ -51,7 +49,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_left_middle.pdf")
+        TestCase.write(what=d, where_to="test_check_box_left_middle.pdf")
 
     def test_check_box_left_bottom(self):
         d: Document = Document()
@@ -73,7 +71,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_left_bottom.pdf")
+        TestCase.write(what=d, where_to="test_check_box_left_bottom.pdf")
 
     def test_check_box_middle_top(self):
         d: Document = Document()
@@ -95,7 +93,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_middle_top.pdf")
+        TestCase.write(what=d, where_to="test_check_box_middle_top.pdf")
 
     def test_check_box_middle_middle(self):
         d: Document = Document()
@@ -117,7 +115,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_middle_middle.pdf")
+        TestCase.write(what=d, where_to="test_check_box_middle_middle.pdf")
 
     def test_check_box_middle_bottom(self):
         d: Document = Document()
@@ -139,7 +137,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_middle_bottom.pdf")
+        TestCase.write(what=d, where_to="test_check_box_middle_bottom.pdf")
 
     def test_check_box_right_top(self):
         d: Document = Document()
@@ -161,7 +159,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_right_top.pdf")
+        TestCase.write(what=d, where_to="test_check_box_right_top.pdf")
 
     def test_check_box_right_middle(self):
         d: Document = Document()
@@ -188,7 +186,7 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_right_middle.pdf")
+        TestCase.write(what=d, where_to="test_check_box_right_middle.pdf")
 
     def test_check_box_right_bottom(self):
         d: Document = Document()
@@ -210,4 +208,4 @@ class TestCheckBoxAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_check_box_right_bottom.pdf")
+        TestCase.write(what=d, where_to="test_check_box_right_bottom.pdf")

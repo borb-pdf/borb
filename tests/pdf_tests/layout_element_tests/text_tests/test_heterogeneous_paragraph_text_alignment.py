@@ -1,15 +1,13 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestHeterogeneousParagraphTextAlignment(unittest.TestCase):
+class TestHeterogeneousParagraphTextAlignment(TestCase):
 
     def test_heterogeneous_paragraph_text_alignment_left(self):
         d: Document = Document()
@@ -42,9 +40,9 @@ class TestHeterogeneousParagraphTextAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_heterogeneous_paragraph_text_alignment_left.pdf",
+            where_to="test_heterogeneous_paragraph_text_alignment_left.pdf",
         )
 
     def test_heterogeneous_paragraph_text_alignment_centered(self):
@@ -78,9 +76,9 @@ class TestHeterogeneousParagraphTextAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_heterogeneous_paragraph_text_alignment_centered.pdf",
+            where_to="test_heterogeneous_paragraph_text_alignment_centered.pdf",
         )
 
     def test_heterogeneous_paragraph_text_alignment_right(self):
@@ -114,9 +112,9 @@ class TestHeterogeneousParagraphTextAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_heterogeneous_paragraph_text_alignment_right.pdf",
+            where_to="test_heterogeneous_paragraph_text_alignment_right.pdf",
         )
 
     def test_heterogeneous_paragraph_text_alignment_justified(self):
@@ -150,7 +148,7 @@ class TestHeterogeneousParagraphTextAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_heterogeneous_paragraph_text_alignment_justified.pdf",
+            where_to="test_heterogeneous_paragraph_text_alignment_justified.pdf",
         )

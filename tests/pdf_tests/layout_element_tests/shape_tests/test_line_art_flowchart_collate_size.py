@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartCollate(unittest.TestCase):
+class TestLineArtFlowchartCollate(TestCase):
 
     def test_line_art_flowchart_collate(self):
         w, h = LineArt.flowchart_collate().get_size(available_space=(2**64, 2**64))

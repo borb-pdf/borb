@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
@@ -7,12 +5,12 @@ from borb.pdf import (
     X11Color,
     HeterogeneousParagraph,
     Chunk,
-    PDF,
     SingleColumnLayout,
 )
+from tests.test_case import TestCase
 
 
-class TestDoNotRespectWhitespace(unittest.TestCase):
+class TestDoNotRespectWhitespace(TestCase):
 
     def test_do_not_respect_infix_whitespace(self):
 
@@ -53,7 +51,7 @@ class TestDoNotRespectWhitespace(unittest.TestCase):
             )
 
         # store
-        PDF.write(what=doc, where_to="assets/test_do_not_respect_infix_whitespace.pdf")
+        TestCase.write(what=doc, where_to="test_do_not_respect_infix_whitespace.pdf")
 
     def test_do_not_respect_leading_whitespace(self):
 
@@ -90,9 +88,7 @@ class TestDoNotRespectWhitespace(unittest.TestCase):
             )
 
         # store
-        PDF.write(
-            what=doc, where_to="assets/test_do_not_respect_leading_whitespace.pdf"
-        )
+        TestCase.write(what=doc, where_to="test_do_not_respect_leading_whitespace.pdf")
 
     def test_do_not_respect_trailing_whitespace(self):
 
@@ -129,6 +125,4 @@ class TestDoNotRespectWhitespace(unittest.TestCase):
             )
 
         # store
-        PDF.write(
-            what=doc, where_to="assets/test_do_not_respect_trailing_whitespace.pdf"
-        )
+        TestCase.write(what=doc, where_to="test_do_not_respect_trailing_whitespace.pdf")

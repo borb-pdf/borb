@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
@@ -13,10 +12,10 @@ from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSingleColumnLayout(unittest.TestCase):
+class TestSingleColumnLayout(TestCase):
 
     def test_single_column_layout_of_paragraphs(self):
         d: Document = Document()
@@ -41,7 +40,7 @@ class TestSingleColumnLayout(unittest.TestCase):
                     Paragraph(text=Lipsum.generate_lorem_ipsum(1024))
                 )
 
-        PDF.write(what=d, where_to="assets/test_single_column_layout_of_paragraphs.pdf")
+        TestCase.write(what=d, where_to="test_single_column_layout_of_paragraphs.pdf")
 
     def test_single_column_layout_of_images(self):
         d: Document = Document()
@@ -69,7 +68,7 @@ class TestSingleColumnLayout(unittest.TestCase):
                     )
                 )
 
-        PDF.write(what=d, where_to="assets/test_single_column_layout_of_images.pdf")
+        TestCase.write(what=d, where_to="test_single_column_layout_of_images.pdf")
 
     def test_single_column_layout_of_tables(self):
         d: Document = Document()
@@ -100,7 +99,7 @@ class TestSingleColumnLayout(unittest.TestCase):
                     .append_layout_element(Chunk("Consectetur"))
                 )
 
-        PDF.write(what=d, where_to="assets/test_single_column_layout_of_tables.pdf")
+        TestCase.write(what=d, where_to="test_single_column_layout_of_tables.pdf")
 
     def test_single_column_layout_of_lists(self):
         d: Document = Document()
@@ -128,7 +127,7 @@ class TestSingleColumnLayout(unittest.TestCase):
                     .append_layout_element(Chunk(text="Dolor"))
                 )
 
-        PDF.write(what=d, where_to="assets/test_single_column_layout_of_lists.pdf")
+        TestCase.write(what=d, where_to="test_single_column_layout_of_lists.pdf")
 
     def test_single_column_layout_of_shapes(self):
         d: Document = Document()
@@ -156,4 +155,4 @@ class TestSingleColumnLayout(unittest.TestCase):
                     )
                 )
 
-        PDF.write(what=d, where_to="assets/test_single_column_layout_of_shapes.pdf")
+        TestCase.write(what=d, where_to="test_single_column_layout_of_shapes.pdf")

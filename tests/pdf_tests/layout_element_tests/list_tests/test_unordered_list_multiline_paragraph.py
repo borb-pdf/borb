@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     PageLayout,
@@ -7,11 +5,11 @@ from borb.pdf import (
     UnorderedList,
     Paragraph,
     Page,
-    PDF,
 )
+from tests.test_case import TestCase
 
 
-class TestOrderedListMultilineParagraph(unittest.TestCase):
+class TestOrderedListMultilineParagraph(TestCase):
 
     def test_ordered_list_multiline_paragraph(self):
 
@@ -39,4 +37,4 @@ class TestOrderedListMultilineParagraph(unittest.TestCase):
             )
         )
 
-        PDF.write(what=doc, where_to="assets/test_ordered_list_multiline_paragraph.pdf")
+        TestCase.write(what=doc, where_to="test_ordered_list_multiline_paragraph.pdf")

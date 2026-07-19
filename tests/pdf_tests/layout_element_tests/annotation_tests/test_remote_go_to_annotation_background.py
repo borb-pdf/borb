@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
@@ -10,10 +9,10 @@ from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestRemoteGoToAnnotationBackground(unittest.TestCase):
+class TestRemoteGoToAnnotationBackground(TestCase):
 
     def test_remote_go_to_annotation_background(self):
         d: Document = Document()
@@ -49,4 +48,4 @@ class TestRemoteGoToAnnotationBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_remote_go_to_annotation_background.pdf")
+        TestCase.write(what=d, where_to="test_remote_go_to_annotation_background.pdf")

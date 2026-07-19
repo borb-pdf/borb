@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.form.text_area import TextArea
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestTextAreaValue(unittest.TestCase):
+class TestTextAreaValue(TestCase):
 
     def test_text_area_value(self):
         d: Document = Document()
@@ -28,4 +26,4 @@ class TestTextAreaValue(unittest.TestCase):
             value="Lorem Ipsum",
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_text_area_value.pdf")
+        TestCase.write(what=d, where_to="test_text_area_value.pdf")

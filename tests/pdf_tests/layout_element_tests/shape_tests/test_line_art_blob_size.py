@@ -1,10 +1,10 @@
 import random
-import unittest
 
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtBlobSize(unittest.TestCase):
+class TestLineArtBlobSize(TestCase):
 
     def test_line_art_blob_size(self):
         random.seed(0)

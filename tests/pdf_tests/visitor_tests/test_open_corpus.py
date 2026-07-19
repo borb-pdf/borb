@@ -1,5 +1,4 @@
 import pathlib
-import sys
 import time
 import typing
 import unittest

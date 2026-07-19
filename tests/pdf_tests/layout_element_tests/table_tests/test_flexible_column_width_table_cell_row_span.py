@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.table.flexible_column_width_table import (
     FlexibleColumnWidthTable,
@@ -7,10 +5,10 @@ from borb.pdf.layout_element.table.flexible_column_width_table import (
 from borb.pdf.layout_element.table.table import Table
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFlexibleColumnWidthTableCellRowSpan(unittest.TestCase):
+class TestFlexibleColumnWidthTableCellRowSpan(TestCase):
 
     def test_flexible_column_width_table_cell_row_span(self):
         d: Document = Document()
@@ -51,6 +49,6 @@ class TestFlexibleColumnWidthTableCellRowSpan(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_flexible_column_width_table_cell_row_span.pdf"
+        TestCase.write(
+            what=d, where_to="test_flexible_column_width_table_cell_row_span.pdf"
         )

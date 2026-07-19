@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
@@ -25,8 +25,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_060_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_060_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_090_smooth(self):
@@ -46,8 +46,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_090_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_090_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_120_smooth(self):
@@ -67,8 +67,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_120_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_120_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_150_smooth(self):
@@ -88,8 +88,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_150_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_150_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_180_smooth(self):
@@ -109,8 +109,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_180_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_180_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_210_smooth(self):
@@ -130,8 +130,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_210_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_210_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_240_smooth(self):
@@ -151,8 +151,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_240_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_240_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_270_smooth(self):
@@ -172,8 +172,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_270_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_270_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_300_smooth(self):
@@ -193,8 +193,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_300_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_300_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_330_smooth(self):
@@ -214,8 +214,8 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_330_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_330_smooth.pdf"
         )
 
     def test_line_art_fraction_of_circle_360_smooth(self):
@@ -235,6 +235,6 @@ class TestLineArtFractionOfCircleSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_line_art_fraction_of_circle_360_smooth.pdf"
+        TestCase.write(
+            what=d, where_to="test_line_art_fraction_of_circle_360_smooth.pdf"
         )

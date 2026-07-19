@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.map_of_oceania import MapOfOceania
+from tests.test_case import TestCase
 
 
-class TestMapOfOceaniaSize(unittest.TestCase):
+class TestMapOfOceaniaSize(TestCase):
 
     def test_map_of_oceania_size(self):
         w, h = MapOfOceania().get_size(available_space=(2**64, 2**64))

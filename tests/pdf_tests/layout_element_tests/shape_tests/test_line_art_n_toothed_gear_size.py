@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtNToothedGearSize(unittest.TestCase):
+class TestLineArtNToothedGearSize(TestCase):
 
     def test_line_art_n_toothed_gear_003_size(self):
         w, h = LineArt.n_toothed_gear(number_of_teeth=3).get_size(

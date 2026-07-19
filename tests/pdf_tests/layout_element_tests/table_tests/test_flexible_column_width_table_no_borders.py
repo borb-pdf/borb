@@ -1,15 +1,13 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.table.flexible_column_width_table import (
     FlexibleColumnWidthTable,
 )
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFlexibleColumnWidthTableNoBorders(unittest.TestCase):
+class TestFlexibleColumnWidthTableNoBorders(TestCase):
 
     def test_flexible_column_width_table_no_borders(self):
         d: Document = Document()
@@ -52,6 +50,6 @@ class TestFlexibleColumnWidthTableNoBorders(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_flexible_column_width_table_no_borders.pdf"
+        TestCase.write(
+            what=d, where_to="test_flexible_column_width_table_no_borders.pdf"
         )

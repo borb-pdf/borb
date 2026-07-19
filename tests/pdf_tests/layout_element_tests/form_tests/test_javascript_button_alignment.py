@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.form.javascript_button import JavascriptButton
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestJavascriptButtonAlignment(unittest.TestCase):
+class TestJavascriptButtonAlignment(TestCase):
 
     def test_javascript_button_left_top(self):
         d: Document = Document()
@@ -31,7 +29,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_left_top.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_left_top.pdf")
 
     def test_javascript_button_left_middle(self):
         d: Document = Document()
@@ -55,7 +53,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_left_middle.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_left_middle.pdf")
 
     def test_javascript_button_left_bottom(self):
         d: Document = Document()
@@ -79,7 +77,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_left_bottom.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_left_bottom.pdf")
 
     def test_javascript_button_middle_top(self):
         d: Document = Document()
@@ -103,7 +101,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_middle_top.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_middle_top.pdf")
 
     def test_javascript_button_middle_middle(self):
         d: Document = Document()
@@ -127,7 +125,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_middle_middle.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_middle_middle.pdf")
 
     def test_javascript_button_middle_bottom(self):
         d: Document = Document()
@@ -151,7 +149,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_middle_bottom.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_middle_bottom.pdf")
 
     def test_javascript_button_right_top(self):
         d: Document = Document()
@@ -175,7 +173,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_right_top.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_right_top.pdf")
 
     def test_javascript_button_right_middle(self):
         d: Document = Document()
@@ -204,7 +202,7 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_right_middle.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_right_middle.pdf")
 
     def test_javascript_button_right_bottom(self):
         d: Document = Document()
@@ -228,4 +226,4 @@ class TestJavascriptButtonAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_javascript_button_right_bottom.pdf")
+        TestCase.write(what=d, where_to="test_javascript_button_right_bottom.pdf")

@@ -1,9 +1,8 @@
-import unittest
+from borb.pdf import Document, Page, Screenshot
+from tests.test_case import TestCase
 
-from borb.pdf import Document, Page, Screenshot, LayoutElement, PDF
 
-
-class TestScreenshot(unittest.TestCase):
+class TestScreenshot(TestCase):
 
     def test_screenshot(self):
         d: Document = Document()
@@ -24,4 +23,4 @@ class TestScreenshot(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot.pdf")

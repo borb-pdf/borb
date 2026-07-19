@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf.color.farrow_and_ball_color import FarrowAndBallColor
 from tests.test_case import TestCase
 

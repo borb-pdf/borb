@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartPredefinedDocumentSize(unittest.TestCase):
+class TestLineArtFlowchartPredefinedDocumentSize(TestCase):
 
     def test_line_art_flowchart_predefined_document_size(self):
         w, h = LineArt.flowchart_predefined_document().get_size(

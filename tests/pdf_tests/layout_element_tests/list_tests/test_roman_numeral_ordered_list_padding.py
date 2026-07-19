@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.list.roman_numeral_ordered_list import (
@@ -7,10 +5,10 @@ from borb.pdf.layout_element.list.roman_numeral_ordered_list import (
 )
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestOrderedList(unittest.TestCase):
+class TestOrderedList(TestCase):
 
     def test_roman_numeral_ordered_list_padding_left(self):
         d: Document = Document()
@@ -39,8 +37,8 @@ class TestOrderedList(unittest.TestCase):
             )
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_roman_numeral_ordered_list_padding_left.pdf"
+        TestCase.write(
+            what=d, where_to="test_roman_numeral_ordered_list_padding_left.pdf"
         )
 
     def test_roman_numeral_ordered_list_padding_top(self):
@@ -70,8 +68,8 @@ class TestOrderedList(unittest.TestCase):
             )
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_roman_numeral_ordered_list_padding_top.pdf"
+        TestCase.write(
+            what=d, where_to="test_roman_numeral_ordered_list_padding_top.pdf"
         )
 
     def test_roman_numeral_ordered_list_padding_right(self):
@@ -101,8 +99,8 @@ class TestOrderedList(unittest.TestCase):
             )
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_roman_numeral_ordered_list_padding_right.pdf"
+        TestCase.write(
+            what=d, where_to="test_roman_numeral_ordered_list_padding_right.pdf"
         )
 
     def test_roman_numeral_ordered_list_padding_bottom(self):
@@ -132,7 +130,7 @@ class TestOrderedList(unittest.TestCase):
             )
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_roman_numeral_ordered_list_padding_bottom.pdf",
+            where_to=f"test_roman_numeral_ordered_list_padding_bottom.pdf",
         )

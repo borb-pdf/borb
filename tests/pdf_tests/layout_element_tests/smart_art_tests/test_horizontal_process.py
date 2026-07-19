@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt, PageSize
+from borb.pdf import SmartArt, PageSize
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestHorizontalProcess(unittest.TestCase):
+class TestHorizontalProcess(TestCase):
 
     def test_horizontal_process(self):
         d: Document = Document()
@@ -31,4 +30,4 @@ class TestHorizontalProcess(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_horizontal_process.pdf")
+        TestCase.write(what=d, where_to="test_horizontal_process.pdf")

@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.equation import Equation
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestEquation(unittest.TestCase):
+class TestEquation(TestCase):
 
     def test_equation(self):
         d: Document = Document()
@@ -30,4 +28,4 @@ class TestEquation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_equation.pdf")
+        TestCase.write(what=d, where_to="test_equation.pdf")

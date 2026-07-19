@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.barcode import Barcode
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestBarcodeBackground(unittest.TestCase):
+class TestBarcodeBackground(TestCase):
 
     def test_barcode_code_39_background(self):
         d: Document = Document()
@@ -35,7 +33,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_code_39_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_code_39_background.pdf")
 
     def test_barcode_code_128_background(self):
         d: Document = Document()
@@ -63,7 +61,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_code_128_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_code_128_background.pdf")
 
     def test_barcode_ean_8_background(self):
         d: Document = Document()
@@ -91,7 +89,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_ean_8_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_ean_8_background.pdf")
 
     def test_barcode_ean_13_background(self):
         d: Document = Document()
@@ -119,7 +117,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_ean_13_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_ean_13_background.pdf")
 
     def test_barcode_ean_14_background(self):
         d: Document = Document()
@@ -147,7 +145,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_ean_14_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_ean_14_background.pdf")
 
     def test_barcode_issn_background(self):
         d: Document = Document()
@@ -175,7 +173,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_issn_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_issn_background.pdf")
 
     def test_barcode_jan_background(self):
         d: Document = Document()
@@ -208,7 +206,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_jan_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_jan_background.pdf")
 
     def test_barcode_pzn_background(self):
         d: Document = Document()
@@ -236,7 +234,7 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_pzn_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_pzn_background.pdf")
 
     def test_barcode_upca_background(self):
         d: Document = Document()
@@ -264,4 +262,4 @@ class TestBarcodeBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_upca_background.pdf")
+        TestCase.write(what=d, where_to="test_barcode_upca_background.pdf")

@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf import Button
 from borb.pdf.document import Document
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestButtonPadding(unittest.TestCase):
+class TestButtonPadding(TestCase):
 
     def test_button_padding_left(self):
 
@@ -32,7 +30,7 @@ class TestButtonPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_button_padding_left.pdf")
+        TestCase.write(what=d, where_to=f"test_button_padding_left.pdf")
 
     def test_button_padding_top(self):
         d: Document = Document()
@@ -56,7 +54,7 @@ class TestButtonPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_button_padding_top.pdf")
+        TestCase.write(what=d, where_to=f"test_button_padding_top.pdf")
 
     def test_button_padding_right(self):
         d: Document = Document()
@@ -80,7 +78,7 @@ class TestButtonPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_button_padding_right.pdf")
+        TestCase.write(what=d, where_to=f"test_button_padding_right.pdf")
 
     def test_button_padding_bottom(self):
         d: Document = Document()
@@ -104,4 +102,4 @@ class TestButtonPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_button_padding_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_button_padding_bottom.pdf")

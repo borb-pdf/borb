@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf import CheckBox
 from borb.pdf.document import Document
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCheckBoxPadding(unittest.TestCase):
+class TestCheckBoxPadding(TestCase):
 
     def test_check_box_padding_left(self):
 
@@ -31,7 +29,7 @@ class TestCheckBoxPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_check_box_padding_left.pdf")
+        TestCase.write(what=d, where_to=f"test_check_box_padding_left.pdf")
 
     def test_check_box_padding_top(self):
         d: Document = Document()
@@ -54,7 +52,7 @@ class TestCheckBoxPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_check_box_padding_top.pdf")
+        TestCase.write(what=d, where_to=f"test_check_box_padding_top.pdf")
 
     def test_check_box_padding_right(self):
         d: Document = Document()
@@ -77,7 +75,7 @@ class TestCheckBoxPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_check_box_padding_right.pdf")
+        TestCase.write(what=d, where_to=f"test_check_box_padding_right.pdf")
 
     def test_check_box_padding_bottom(self):
         d: Document = Document()
@@ -100,4 +98,4 @@ class TestCheckBoxPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_check_box_padding_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_check_box_padding_bottom.pdf")

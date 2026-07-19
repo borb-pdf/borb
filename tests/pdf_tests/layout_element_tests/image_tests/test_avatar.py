@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.avatar import Avatar
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestAvatar(unittest.TestCase):
+class TestAvatar(TestCase):
 
     def test_avatar(self):
         d: Document = Document()
@@ -34,4 +32,4 @@ class TestAvatar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_avatar.pdf")
+        TestCase.write(what=d, where_to="test_avatar.pdf")

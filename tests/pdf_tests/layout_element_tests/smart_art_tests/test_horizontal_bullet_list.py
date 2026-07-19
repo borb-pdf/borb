@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt
+from borb.pdf import SmartArt
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestHorizontalBulletList(unittest.TestCase):
+class TestHorizontalBulletList(TestCase):
 
     def test_horizontal_bullets_list(self):
         d: Document = Document()
@@ -27,4 +26,4 @@ class TestHorizontalBulletList(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_horizontal_bullets_list.pdf")
+        TestCase.write(what=d, where_to="test_horizontal_bullets_list.pdf")

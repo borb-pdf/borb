@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtArrowRightSize(unittest.TestCase):
+class TestLineArtArrowRightSize(TestCase):
 
     def test_line_art_arrow_right_size(self):
         w, h = LineArt.arrow_right().get_size(available_space=(2**64, 2**64))

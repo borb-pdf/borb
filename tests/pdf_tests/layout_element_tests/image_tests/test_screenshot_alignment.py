@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.screenshot import Screenshot
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestScreenshotAlignment(unittest.TestCase):
+class TestScreenshotAlignment(TestCase):
 
     def test_screenshot_alignment_left_top(self):
 
@@ -31,7 +29,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_left_top.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_left_top.pdf")
 
     def test_screenshot_alignment_left_middle(self):
         d: Document = Document()
@@ -54,7 +52,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_left_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_left_middle.pdf")
 
     def test_screenshot_alignment_left_bottom(self):
         d: Document = Document()
@@ -77,7 +75,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_left_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_left_bottom.pdf")
 
     def test_screenshot_alignment_middle_top(self):
         d: Document = Document()
@@ -100,7 +98,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_middle_top.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_middle_top.pdf")
 
     def test_screenshot_alignment_middle_middle(self):
         d: Document = Document()
@@ -123,9 +121,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_screenshot_alignment_middle_middle.pdf"
-        )
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_middle_middle.pdf")
 
     def test_screenshot_alignment_middle_bottom(self):
         d: Document = Document()
@@ -148,9 +144,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_screenshot_alignment_middle_bottom.pdf"
-        )
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_middle_bottom.pdf")
 
     def test_screenshot_alignment_right_top(self):
         d: Document = Document()
@@ -173,7 +167,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_right_top.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_right_top.pdf")
 
     def test_screenshot_alignment_right_middle(self):
         d: Document = Document()
@@ -196,7 +190,7 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_right_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_right_middle.pdf")
 
     def test_screenshot_alignment_right_bottom(self):
         d: Document = Document()
@@ -219,4 +213,4 @@ class TestScreenshotAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_screenshot_alignment_right_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_screenshot_alignment_right_bottom.pdf")

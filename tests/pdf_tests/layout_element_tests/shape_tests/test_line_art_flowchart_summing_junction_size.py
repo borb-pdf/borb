@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartSummingJunctionSize(unittest.TestCase):
+class TestLineArtFlowchartSummingJunctionSize(TestCase):
 
     def test_line_art_flowchart_summing_junction_size(self):
         w, h = LineArt.flowchart_summing_junction().get_size(

@@ -1,6 +1,5 @@
 import math
 import typing
-import unittest
 
 import matplotlib  # type: ignore[import-not-found]
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
@@ -9,10 +8,10 @@ from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.chart import Chart
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestChartBackground(unittest.TestCase):
+class TestChartBackground(TestCase):
 
     @staticmethod
     def _create_matplotlib_pyplot() -> typing.Any:
@@ -57,4 +56,4 @@ class TestChartBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_chart_background.pdf")
+        TestCase.write(what=d, where_to="test_chart_background.pdf")

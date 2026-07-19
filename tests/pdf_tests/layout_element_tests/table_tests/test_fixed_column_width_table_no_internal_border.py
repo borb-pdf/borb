@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.table.fixed_column_width_table import FixedColumnWidthTable
 from borb.pdf.layout_element.text.paragraph import Paragraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFixedColumnWidthTableNoInternalBorders(unittest.TestCase):
+class TestFixedColumnWidthTableNoInternalBorders(TestCase):
 
     def test_fixed_column_width_table_no_internal_borders(self):
         d: Document = Document()
@@ -50,7 +48,7 @@ class TestFixedColumnWidthTableNoInternalBorders(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_fixed_column_width_table_no_internal_borders.pdf",
+            where_to="test_fixed_column_width_table_no_internal_borders.pdf",
         )

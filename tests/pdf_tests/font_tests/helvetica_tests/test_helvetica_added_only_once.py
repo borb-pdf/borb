@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
@@ -8,15 +6,15 @@ from borb.pdf import (
     SingleColumnLayout,
     PageLayout,
     Paragraph,
-    PDF,
     FlexibleColumnWidthTable,
     Table,
     LineArt,
     HSVColor,
 )
+from tests.test_case import TestCase
 
 
-class TestHelveticaAddedOnlyOnce(unittest.TestCase):
+class TestHelveticaAddedOnlyOnce(TestCase):
 
     def test_helvetica_added_only_once(self):
         d: Document = Document()
@@ -50,4 +48,4 @@ class TestHelveticaAddedOnlyOnce(unittest.TestCase):
         layout.append_layout_element(t)
 
         # store
-        PDF.write(what=d, where_to="assets/test_helvetica_added_only_once.pdf")
+        TestCase.write(what=d, where_to="test_helvetica_added_only_once.pdf")

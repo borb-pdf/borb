@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.image import Image
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestImage(unittest.TestCase):
+class TestImage(TestCase):
 
     def test_image_001(self):
         d: Document = Document()
@@ -28,7 +26,7 @@ class TestImage(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_image_001.pdf")
+        TestCase.write(what=d, where_to="test_image_001.pdf")
 
     def test_image_002(self):
         d: Document = Document()
@@ -50,4 +48,4 @@ class TestImage(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_image_002.pdf")
+        TestCase.write(what=d, where_to="test_image_002.pdf")

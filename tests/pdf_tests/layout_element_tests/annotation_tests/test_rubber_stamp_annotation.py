@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.rubber_stamp_annotation import (
     RubberStampAnnotation,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestRubberStampAnnotation(unittest.TestCase):
+class TestRubberStampAnnotation(TestCase):
 
     def test_rubber_stamp_annotation_approved(self):
         d: Document = Document()
@@ -30,7 +28,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_approved.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_approved.pdf")
 
     def test_rubber_stamp_annotation_as_is(self):
         d: Document = Document()
@@ -52,7 +50,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_as_is.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_as_is.pdf")
 
     def test_rubber_stamp_annotation_confidential(self):
         d: Document = Document()
@@ -74,9 +72,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_rubber_stamp_annotation_confidential.pdf"
-        )
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_confidential.pdf")
 
     def test_rubber_stamp_annotation_departmental(self):
         d: Document = Document()
@@ -98,9 +94,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_rubber_stamp_annotation_departmental.pdf"
-        )
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_departmental.pdf")
 
     def test_rubber_stamp_annotation_draft(self):
         d: Document = Document()
@@ -122,7 +116,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_draft.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_draft.pdf")
 
     def test_rubber_stamp_annotation_experimental(self):
         d: Document = Document()
@@ -144,9 +138,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_rubber_stamp_annotation_experimental.pdf"
-        )
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_experimental.pdf")
 
     def test_rubber_stamp_annotation_expired(self):
         d: Document = Document()
@@ -168,7 +160,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_expired.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_expired.pdf")
 
     def test_rubber_stamp_annotation_final(self):
         d: Document = Document()
@@ -190,7 +182,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_final.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_final.pdf")
 
     def test_rubber_stamp_annotation_for_comment(self):
         d: Document = Document()
@@ -212,9 +204,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_rubber_stamp_annotation_for_comment.pdf"
-        )
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_for_comment.pdf")
 
     def test_rubber_stamp_annotation_for_public_release(self):
         d: Document = Document()
@@ -236,9 +226,9 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_rubber_stamp_annotation_for_public_release.pdf",
+            where_to="test_rubber_stamp_annotation_for_public_release.pdf",
         )
 
     def test_rubber_stamp_annotation_not_approved(self):
@@ -261,9 +251,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_rubber_stamp_annotation_not_approved.pdf"
-        )
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_not_approved.pdf")
 
     def test_rubber_stamp_annotation_not_for_public_release(self):
         d: Document = Document()
@@ -285,9 +273,9 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_rubber_stamp_annotation_not_for_public_release.pdf",
+            where_to="test_rubber_stamp_annotation_not_for_public_release.pdf",
         )
 
     def test_rubber_stamp_annotation_sold(self):
@@ -310,7 +298,7 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_sold.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_sold.pdf")
 
     def test_rubber_stamp_annotation_top_secret(self):
         d: Document = Document()
@@ -332,4 +320,4 @@ class TestRubberStampAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_rubber_stamp_annotation_top_secret.pdf")
+        TestCase.write(what=d, where_to="test_rubber_stamp_annotation_top_secret.pdf")

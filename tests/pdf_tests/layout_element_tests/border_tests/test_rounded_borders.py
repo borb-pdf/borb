@@ -1,11 +1,8 @@
-import unittest
-
 from borb.pdf import (
     Paragraph,
     X11Color,
     Page,
     Document,
-    PDF,
     LayoutElement,
     Chunk,
     Standard14Fonts,
@@ -22,9 +19,10 @@ from borb.pdf import (
     OrderedList,
     Image,
 )
+from tests.test_case import TestCase
 
 
-class TestRoundedBorders(unittest.TestCase):
+class TestRoundedBorders(TestCase):
 
     @staticmethod
     def __create_pdf_with_single_element(e: LayoutElement) -> Document:
@@ -71,7 +69,7 @@ class TestRoundedBorders(unittest.TestCase):
                 text="Lorem",
             )
         )
-        PDF.write(what=doc, where_to="assets/test_button_rounded_corners.pdf")
+        TestCase.write(what=doc, where_to="test_button_rounded_corners.pdf")
 
     def test_country_dropdown_list_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
@@ -82,8 +80,8 @@ class TestRoundedBorders(unittest.TestCase):
                 padding_left=5,
             )
         )
-        PDF.write(
-            what=doc, where_to="assets/test_country_dropdown_list_rounded_borders.pdf"
+        TestCase.write(
+            what=doc, where_to="test_country_dropdown_list_rounded_borders.pdf"
         )
 
     def test_dropdown_list_rounded_borders(self):
@@ -96,7 +94,7 @@ class TestRoundedBorders(unittest.TestCase):
                 padding_left=5,
             )
         )
-        PDF.write(what=doc, where_to="assets/test_dropdown_list_rounded_borders.pdf")
+        TestCase.write(what=doc, where_to="test_dropdown_list_rounded_borders.pdf")
 
     def test_gender_dropdown_list_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
@@ -107,8 +105,8 @@ class TestRoundedBorders(unittest.TestCase):
                 padding_left=5,
             )
         )
-        PDF.write(
-            what=doc, where_to="assets/test_gender_dropdown_list_rounded_borders.pdf"
+        TestCase.write(
+            what=doc, where_to="test_gender_dropdown_list_rounded_borders.pdf"
         )
 
     def test_heterogeneous_paragraph_rounded_borders(self):
@@ -129,8 +127,8 @@ class TestRoundedBorders(unittest.TestCase):
                 text_alignment=LayoutElement.TextAlignment.JUSTIFIED,
             )
         )
-        PDF.write(
-            what=doc, where_to="assets/test_heterogeneous_paragraph_rounded_borders.pdf"
+        TestCase.write(
+            what=doc, where_to="test_heterogeneous_paragraph_rounded_borders.pdf"
         )
 
     def test_homogeneous_paragraph_rounded_borders(self):
@@ -144,8 +142,8 @@ class TestRoundedBorders(unittest.TestCase):
                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             )
         )
-        PDF.write(
-            what=doc, where_to="assets/test_homogeneous_paragraph_rounded_borders.pdf"
+        TestCase.write(
+            what=doc, where_to="test_homogeneous_paragraph_rounded_borders.pdf"
         )
 
     def test_image_rounded_corners(self):
@@ -155,7 +153,7 @@ class TestRoundedBorders(unittest.TestCase):
                 size=(300, 300),
             )
         )
-        PDF.write(what=doc, where_to="assets/test_image_rounded_corners.pdf")
+        TestCase.write(what=doc, where_to="test_image_rounded_corners.pdf")
 
     def test_javascript_button_rounded_corners(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
@@ -164,9 +162,7 @@ class TestRoundedBorders(unittest.TestCase):
                 javascript="alert('Hello World!')",
             )
         )
-        PDF.write(
-            what=doc, where_to="assets/test_javascript_button_rounded_corners.pdf"
-        )
+        TestCase.write(what=doc, where_to="test_javascript_button_rounded_corners.pdf")
 
     def test_ordered_list_rounded_corners(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
@@ -175,7 +171,7 @@ class TestRoundedBorders(unittest.TestCase):
             .append_layout_element(Chunk(text="Ipsum"))
             .append_layout_element(Chunk(text="Dolor"))
         )
-        PDF.write(what=doc, where_to="assets/test_ordered_list_rounded_corners.pdf")
+        TestCase.write(what=doc, where_to="test_ordered_list_rounded_corners.pdf")
 
     def test_paragraph_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
@@ -183,19 +179,19 @@ class TestRoundedBorders(unittest.TestCase):
                 text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             )
         )
-        PDF.write(what=doc, where_to="assets/test_paragraph_rounded_borders.pdf")
+        TestCase.write(what=doc, where_to="test_paragraph_rounded_borders.pdf")
 
     def test_progress_bar_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
             ProgressBar(value=65, max_value=100, size=(100, 15))
         )
-        PDF.write(what=doc, where_to="assets/test_progress_bar_rounded_borders.pdf")
+        TestCase.write(what=doc, where_to="test_progress_bar_rounded_borders.pdf")
 
     def test_progress_square_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
             ProgressSquare(value=65, max_value=100, width=100)
         )
-        PDF.write(what=doc, where_to="assets/test_progress_square_rounded_borders.pdf")
+        TestCase.write(what=doc, where_to="test_progress_square_rounded_borders.pdf")
 
     def test_text_area_rounded_borders(self):
         doc = TestRoundedBorders.__create_pdf_with_single_element(
@@ -206,4 +202,4 @@ class TestRoundedBorders(unittest.TestCase):
                 padding_left=5,
             )
         )
-        PDF.write(what=doc, where_to="assets/test_text_area_rounded_borders.pdf")
+        TestCase.write(what=doc, where_to="test_text_area_rounded_borders.pdf")

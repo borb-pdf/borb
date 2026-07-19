@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestLineArtFlowchartOffPageReferenceSmooth(unittest.TestCase):
@@ -25,7 +25,7 @@ class TestLineArtFlowchartOffPageReferenceSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_line_art_flowchart_off_page_reference_smooth.pdf",
+            where_to="test_line_art_flowchart_off_page_reference_smooth.pdf",
         )

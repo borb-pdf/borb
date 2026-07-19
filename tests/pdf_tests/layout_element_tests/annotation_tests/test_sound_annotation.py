@@ -5,10 +5,11 @@ from borb.pdf import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.sound_annotation import SoundAnnotation
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSoundAnnotation(unittest.TestCase):
+@unittest.skipIf(True, "ffmpeg is not installed")
+class TestSoundAnnotation(TestCase):
 
     def test_sound_annotation(self):
         d: Document = Document()
@@ -33,4 +34,4 @@ class TestSoundAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_sound_annotation.pdf")
+        TestCase.write(what=d, where_to="test_sound_annotation.pdf")

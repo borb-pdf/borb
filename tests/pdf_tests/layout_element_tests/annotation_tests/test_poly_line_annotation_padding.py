@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.poly_line_annotation import PolyLineAnnotation
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestPolyLineAnnotationPadding(unittest.TestCase):
+class TestPolyLineAnnotationPadding(TestCase):
 
     def test_poly_line_annotation_padding_left(self):
         d: Document = Document()
@@ -33,7 +31,7 @@ class TestPolyLineAnnotationPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_poly_line_annotation_padding_left.pdf")
+        TestCase.write(what=d, where_to="test_poly_line_annotation_padding_left.pdf")
 
     def test_poly_line_annotation_padding_top(self):
         d: Document = Document()
@@ -58,7 +56,7 @@ class TestPolyLineAnnotationPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_poly_line_annotation_padding_top.pdf")
+        TestCase.write(what=d, where_to="test_poly_line_annotation_padding_top.pdf")
 
     def test_poly_line_annotation_padding_right(self):
         d: Document = Document()
@@ -83,7 +81,7 @@ class TestPolyLineAnnotationPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_poly_line_annotation_padding_right.pdf")
+        TestCase.write(what=d, where_to="test_poly_line_annotation_padding_right.pdf")
 
     def test_poly_line_annotation_padding_bottom(self):
         d: Document = Document()
@@ -108,6 +106,4 @@ class TestPolyLineAnnotationPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_poly_line_annotation_padding_bottom.pdf"
-        )
+        TestCase.write(what=d, where_to="test_poly_line_annotation_padding_bottom.pdf")

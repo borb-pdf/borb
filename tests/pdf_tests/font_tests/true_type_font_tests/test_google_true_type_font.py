@@ -1,11 +1,10 @@
-import unittest
-
-from borb.pdf import Font, Page, Document, Chunk, PDF
+from borb.pdf import Font, Page, Document, Chunk
 from borb.pdf.font.simple_font.true_type.google_true_type_font import GoogleTrueTypeFont
 from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
+from tests.test_case import TestCase
 
 
-class TestGoogleTrueTypeFont(unittest.TestCase):
+class TestGoogleTrueTypeFont(TestCase):
 
     def test_google_true_type_font_001(self):
         d: Document = Document()
@@ -48,7 +47,7 @@ class TestGoogleTrueTypeFont(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_google_true_type_font_001.pdf")
+        TestCase.write(what=d, where_to="test_google_true_type_font_001.pdf")
 
     def test_google_true_type_font_002(self):
         d: Document = Document()
@@ -91,7 +90,7 @@ class TestGoogleTrueTypeFont(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_google_true_type_font_002.pdf")
+        TestCase.write(what=d, where_to="test_google_true_type_font_002.pdf")
 
     def test_google_true_type_font_003(self):
         d: Document = Document()
@@ -133,7 +132,7 @@ class TestGoogleTrueTypeFont(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_google_true_type_font_003.pdf")
+        TestCase.write(what=d, where_to="test_google_true_type_font_003.pdf")
 
     def test_google_true_type_font_004(self):
         d: Document = Document()
@@ -178,7 +177,7 @@ class TestGoogleTrueTypeFont(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_google_true_type_font_004.pdf")
+        TestCase.write(what=d, where_to="test_google_true_type_font_004.pdf")
 
     def test_google_true_type_font_005(self):
         d: Document = Document()
@@ -221,7 +220,7 @@ class TestGoogleTrueTypeFont(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_google_true_type_font_005.pdf")
+        TestCase.write(what=d, where_to="test_google_true_type_font_005.pdf")
 
     def test_google_true_type_font_006(self):
         d: Document = Document()
@@ -264,4 +263,4 @@ class TestGoogleTrueTypeFont(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_google_true_type_font_006.pdf")
+        TestCase.write(what=d, where_to="test_google_true_type_font_006.pdf")

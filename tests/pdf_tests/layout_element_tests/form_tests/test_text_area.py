@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.form.text_area import TextArea
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestTextArea(unittest.TestCase):
+class TestTextArea(TestCase):
 
     def test_text_area(self):
         d: Document = Document()
@@ -27,4 +25,4 @@ class TestTextArea(unittest.TestCase):
             padding_left=5,
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_text_area.pdf")
+        TestCase.write(what=d, where_to="test_text_area.pdf")

@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.qr_code import QRCode
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestQRCode(unittest.TestCase):
+class TestQRCode(TestCase):
 
     def test_qr_code_micro(self):
         d: Document = Document()
@@ -29,7 +27,7 @@ class TestQRCode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_qr_code_micro.pdf")
+        TestCase.write(what=d, where_to="test_qr_code_micro.pdf")
 
     def test_qr_code_regular(self):
         d: Document = Document()
@@ -52,4 +50,4 @@ class TestQRCode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_qr_code_regular.pdf")
+        TestCase.write(what=d, where_to="test_qr_code_regular.pdf")

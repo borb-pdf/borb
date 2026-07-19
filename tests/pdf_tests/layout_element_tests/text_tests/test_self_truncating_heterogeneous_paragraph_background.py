@@ -1,18 +1,15 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.text.chunk import Chunk
-from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
 from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
     SelfTruncatingHeterogeneousParagraph,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSelfTruncatingHeterogeneousParagraphBackground(unittest.TestCase):
+class TestSelfTruncatingHeterogeneousParagraphBackground(TestCase):
 
     def test_self_truncating_heterogeneous_paragraph_background(self):
         d: Document = Document()
@@ -46,7 +43,7 @@ class TestSelfTruncatingHeterogeneousParagraphBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_self_truncating_heterogeneous_paragraph_background.pdf",
+            where_to="test_self_truncating_heterogeneous_paragraph_background.pdf",
         )

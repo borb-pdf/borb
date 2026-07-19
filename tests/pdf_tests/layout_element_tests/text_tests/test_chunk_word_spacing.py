@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     PageLayout,
@@ -7,11 +5,11 @@ from borb.pdf import (
     Page,
     Chunk,
     X11Color,
-    PDF,
 )
+from tests.test_case import TestCase
 
 
-class TestChunkWordSpacing(unittest.TestCase):
+class TestChunkWordSpacing(TestCase):
 
     def test_chunk_word_spacing_00(self):
         d: Document = Document()
@@ -32,7 +30,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_00.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_00.pdf")
 
     def test_chunk_word_spacing_01(self):
         d: Document = Document()
@@ -73,7 +71,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_02.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_02.pdf")
 
     def test_chunk_word_spacing_03(self):
 
@@ -95,7 +93,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_03.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_03.pdf")
 
     def test_chunk_word_spacing_04(self):
 
@@ -117,7 +115,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_04.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_04.pdf")
 
     def test_chunk_word_spacing_05(self):
 
@@ -139,7 +137,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_05.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_05.pdf")
 
     def test_chunk_word_spacing_06(self):
 
@@ -161,7 +159,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_06.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_06.pdf")
 
     def test_chunk_word_spacing_07(self):
 
@@ -183,7 +181,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_07.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_07.pdf")
 
     def test_chunk_word_spacing_08(self):
 
@@ -205,7 +203,7 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_08.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_08.pdf")
 
     def test_chunk_word_spacing_09(self):
 
@@ -227,4 +225,4 @@ class TestChunkWordSpacing(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_chunk_word_spacing_09.pdf")
+        TestCase.write(what=d, where_to="test_chunk_word_spacing_09.pdf")

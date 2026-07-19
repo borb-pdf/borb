@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.link_annotation import LinkAnnotation
@@ -9,10 +8,10 @@ from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestLinkAnnotation(unittest.TestCase):
+class TestLinkAnnotation(TestCase):
 
     def test_link_annotation_left_top(self):
         d: Document = Document()
@@ -53,7 +52,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_left_top.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_left_top.pdf")
 
     def test_link_annotation_left_middle(self):
         d: Document = Document()
@@ -94,7 +93,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_left_middle.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_left_middle.pdf")
 
     def test_link_annotation_left_bottom(self):
         d: Document = Document()
@@ -135,7 +134,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_left_bottom.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_left_bottom.pdf")
 
     def test_link_annotation_middle_top(self):
         d: Document = Document()
@@ -176,7 +175,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_middle_top.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_middle_top.pdf")
 
     def test_link_annotation_middle_middle(self):
         d: Document = Document()
@@ -217,7 +216,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_middle_middle.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_middle_middle.pdf")
 
     def test_link_annotation_middle_bottom(self):
         d: Document = Document()
@@ -258,7 +257,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_middle_bottom.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_middle_bottom.pdf")
 
     def test_link_annotation_right_top(self):
         d: Document = Document()
@@ -299,7 +298,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_right_top.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_right_top.pdf")
 
     def test_link_annotation_right_middle(self):
         d: Document = Document()
@@ -340,7 +339,7 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_right_middle.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_right_middle.pdf")
 
     def test_link_annotation_right_bottom(self):
         d: Document = Document()
@@ -381,4 +380,4 @@ class TestLinkAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_link_annotation_right_bottom.pdf")
+        TestCase.write(what=d, where_to="test_link_annotation_right_bottom.pdf")

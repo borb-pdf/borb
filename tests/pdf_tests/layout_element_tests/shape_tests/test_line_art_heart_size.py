@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtHeartSize(unittest.TestCase):
+class TestLineArtHeartSize(TestCase):
 
     def test_line_heart_size(self):
         w, h = LineArt.heart().get_size(available_space=(2**64, 2**64))

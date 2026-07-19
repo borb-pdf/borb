@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import Shape, X11Color
 from borb.pdf.document import Document
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
@@ -7,10 +5,10 @@ from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestHeterogeneousParagraphChunkPreviousPaintBox(unittest.TestCase):
+class TestHeterogeneousParagraphChunkPreviousPaintBox(TestCase):
 
     def test_heterogeneous_paragraph_chunk_previous_paint_box_001(self):
         d: Document = Document()
@@ -55,7 +53,7 @@ class TestHeterogeneousParagraphChunkPreviousPaintBox(unittest.TestCase):
             stroke_color=X11Color.RED,
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_heterogeneous_paragraph_chunk_previous_paint_box_001.pdf",
+            where_to="test_heterogeneous_paragraph_chunk_previous_paint_box_001.pdf",
         )

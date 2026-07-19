@@ -1,16 +1,15 @@
 import math
 import typing
-import unittest
 
 from borb.pdf import PageLayout, SingleColumnLayout
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.emoji import Emoji
 from borb.pdf.layout_element.image.image import Image
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestEmoji(unittest.TestCase):
+class TestEmoji(TestCase):
 
     def test_single_emoji(self):
 
@@ -24,7 +23,7 @@ class TestEmoji(unittest.TestCase):
         layout: PageLayout = SingleColumnLayout(p)
         layout.append_layout_element(Emoji.BORB_STICKER)
 
-        PDF.write(what=d, where_to="assets/test_single_emoji.pdf")
+        TestCase.write(what=d, where_to="test_single_emoji.pdf")
 
     def test_emoji(self):
 
@@ -51,4 +50,4 @@ class TestEmoji(unittest.TestCase):
                     available_space=(x + 32 * i, y - 32 * j, w, h), page=p
                 )
 
-        PDF.write(what=d, where_to="assets/test_emoji.pdf")
+        TestCase.write(what=d, where_to="test_emoji.pdf")

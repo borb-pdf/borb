@@ -1,5 +1,4 @@
 import pathlib
-import unittest
 
 from fontTools import subset  # type: ignore[import-not-found,import-untyped]
 
@@ -11,12 +10,12 @@ from borb.pdf import (
     SingleColumnLayout,
     PageLayout,
     Paragraph,
-    PDF,
 )
 from borb.pdf.primitives import name, stream
+from tests.test_case import TestCase
 
 
-class TestExternallySubsetFonts(unittest.TestCase):
+class TestExternallySubsetFonts(TestCase):
 
     def _create_subset_font(self):
 
@@ -122,4 +121,4 @@ class TestExternallySubsetFonts(unittest.TestCase):
         layout.append_layout_element(Paragraph(text="Hello World!", font=subset_font))
 
         # store
-        PDF.write(what=doc, where_to="assets/test_externally_subset_fonts.pdf")
+        TestCase.write(what=doc, where_to="test_externally_subset_fonts.pdf")

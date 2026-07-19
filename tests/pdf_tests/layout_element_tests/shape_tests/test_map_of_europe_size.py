@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.map_of_europe import MapOfEurope
+from tests.test_case import TestCase
 
 
-class TestMapOfEuropeSize(unittest.TestCase):
+class TestMapOfEuropeSize(TestCase):
 
     def test_map_of_europe_size(self):
         w, h = MapOfEurope().get_size(available_space=(2**64, 2**64))

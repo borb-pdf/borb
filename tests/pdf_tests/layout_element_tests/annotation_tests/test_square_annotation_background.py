@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.square_annotation import SquareAnnotation
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSquareAnnotationBackground(unittest.TestCase):
+class TestSquareAnnotationBackground(TestCase):
 
     def test_square_annotation_background(self):
         d: Document = Document()
@@ -30,4 +28,4 @@ class TestSquareAnnotationBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_square_annotation_background.pdf")
+        TestCase.write(what=d, where_to="test_square_annotation_background.pdf")

@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
@@ -7,13 +5,13 @@ from borb.pdf import (
     PageLayout,
     LineArt,
     Paragraph,
-    PDF,
     Shape,
     X11Color,
 )
+from tests.test_case import TestCase
 
 
-class TestShapeAndText(unittest.TestCase):
+class TestShapeAndText(TestCase):
 
     def test_shape_and_text(self):
         d: Document = Document()
@@ -26,7 +24,7 @@ class TestShapeAndText(unittest.TestCase):
         layout.append_layout_element(LineArt.n_gon(3))
         layout.append_layout_element(Paragraph("Lorem Ipsum"))
 
-        PDF.write(what=d, where_to="assets/test_shape_and_text.pdf")
+        TestCase.write(what=d, where_to="test_shape_and_text.pdf")
 
     def test_shape_and_shape(self):
         d: Document = Document()
@@ -48,4 +46,4 @@ class TestShapeAndText(unittest.TestCase):
         )
 
         print(p["Contents"]["DecodedBytes"].decode("latin1"))
-        PDF.write(what=d, where_to="assets/test_shape_and_shape.pdf")
+        TestCase.write(what=d, where_to="test_shape_and_shape.pdf")

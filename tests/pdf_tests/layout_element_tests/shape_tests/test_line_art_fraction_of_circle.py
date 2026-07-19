@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestLineArtFractionOfCircle(unittest.TestCase):
@@ -25,7 +25,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_060.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_060.pdf")
 
     def test_line_art_fraction_of_circle_090(self):
         d: Document = Document()
@@ -44,7 +44,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_090.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_090.pdf")
 
     def test_line_art_fraction_of_circle_120(self):
         d: Document = Document()
@@ -63,7 +63,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_120.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_120.pdf")
 
     def test_line_art_fraction_of_circle_150(self):
         d: Document = Document()
@@ -82,7 +82,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_150.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_150.pdf")
 
     def test_line_art_fraction_of_circle_180(self):
         d: Document = Document()
@@ -101,7 +101,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_180.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_180.pdf")
 
     def test_line_art_fraction_of_circle_210(self):
         d: Document = Document()
@@ -120,7 +120,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_210.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_210.pdf")
 
     def test_line_art_fraction_of_circle_240(self):
         d: Document = Document()
@@ -139,7 +139,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_240.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_240.pdf")
 
     def test_line_art_fraction_of_circle_270(self):
         d: Document = Document()
@@ -158,7 +158,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_270.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_270.pdf")
 
     def test_line_art_fraction_of_circle_300(self):
         d: Document = Document()
@@ -177,7 +177,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_300.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_300.pdf")
 
     def test_line_art_fraction_of_circle_330(self):
         d: Document = Document()
@@ -196,7 +196,7 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_330.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_330.pdf")
 
     def test_line_art_fraction_of_circle_360(self):
         d: Document = Document()
@@ -215,4 +215,4 @@ class TestLineArtFractionOfCircle(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_fraction_of_circle_360.pdf")
+        TestCase.write(what=d, where_to="test_line_art_fraction_of_circle_360.pdf")

@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.text.homogeneous_paragraph import HomogeneousParagraph
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestHeterogeneousParagraphBackground(unittest.TestCase):
+class TestHeterogeneousParagraphBackground(TestCase):
 
     def test_homogeneous_paragraph_background(self):
         d: Document = Document()
@@ -34,4 +32,4 @@ class TestHeterogeneousParagraphBackground(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_homogeneous_paragraph_background.pdf")
+        TestCase.write(what=d, where_to="test_homogeneous_paragraph_background.pdf")

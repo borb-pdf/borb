@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.watermark import Watermark
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestWatermarkPadding(unittest.TestCase):
+class TestWatermarkPadding(TestCase):
 
     def test_watermark_padding_top(self):
         d: Document = Document()
@@ -18,7 +16,7 @@ class TestWatermarkPadding(unittest.TestCase):
             available_space=(0, 0, 100, 100), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_watermark_padding_top.pdf")
+        TestCase.write(what=d, where_to="test_watermark_padding_top.pdf")
 
     def test_watermark_padding_right(self):
         d: Document = Document()
@@ -30,7 +28,7 @@ class TestWatermarkPadding(unittest.TestCase):
             available_space=(0, 0, 100, 100), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_watermark_padding_right.pdf")
+        TestCase.write(what=d, where_to="test_watermark_padding_right.pdf")
 
     def test_watermark_padding_bottom(self):
         d: Document = Document()
@@ -42,7 +40,7 @@ class TestWatermarkPadding(unittest.TestCase):
             available_space=(0, 0, 100, 100), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_watermark_padding_bottom.pdf")
+        TestCase.write(what=d, where_to="test_watermark_padding_bottom.pdf")
 
     def test_watermark_padding_left(self):
         d: Document = Document()
@@ -54,4 +52,4 @@ class TestWatermarkPadding(unittest.TestCase):
             available_space=(0, 0, 100, 100), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_watermark_padding_left.pdf")
+        TestCase.write(what=d, where_to="test_watermark_padding_left.pdf")

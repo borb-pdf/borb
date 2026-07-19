@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestLineArtFlowchartSortSmooth(unittest.TestCase):
@@ -25,4 +25,4 @@ class TestLineArtFlowchartSortSmooth(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_flowchart_sort_smooth.pdf")
+        TestCase.write(what=d, where_to="test_line_art_flowchart_sort_smooth.pdf")

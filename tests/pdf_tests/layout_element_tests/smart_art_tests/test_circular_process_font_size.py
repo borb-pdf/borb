@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt
+from borb.pdf import SmartArt
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestCircularProcessFontSize(unittest.TestCase):
+class TestCircularProcessFontSize(TestCase):
 
     def test_circular_process_font_size_small(self):
         d: Document = Document()
@@ -29,7 +28,7 @@ class TestCircularProcessFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_circular_process_font_size_small.pdf")
+        TestCase.write(what=d, where_to="test_circular_process_font_size_small.pdf")
 
     def test_circular_process_font_size_regular(self):
         d: Document = Document()
@@ -51,7 +50,7 @@ class TestCircularProcessFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_circular_process_font_size_regular.pdf")
+        TestCase.write(what=d, where_to="test_circular_process_font_size_regular.pdf")
 
     def test_circular_process_font_size_large(self):
         d: Document = Document()
@@ -73,4 +72,4 @@ class TestCircularProcessFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_circular_process_font_size_large.pdf")
+        TestCase.write(what=d, where_to="test_circular_process_font_size_large.pdf")

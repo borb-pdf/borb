@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.layout_element import LayoutElement
@@ -9,10 +7,10 @@ from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import
     SelfTruncatingHeterogeneousParagraph,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
+class TestSelfTruncatingHeterogeneousParagraphAlignment(TestCase):
 
     @staticmethod
     def get_paragraph(
@@ -57,9 +55,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_left_top.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_left_top.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_left_middle(self):
@@ -82,9 +80,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_left_middle.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_left_middle.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_left_bottom(self):
@@ -107,9 +105,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_left_bottom.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_left_bottom.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_middle_top(self):
@@ -132,9 +130,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_middle_top.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_middle_top.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_middle_middle(self):
@@ -157,9 +155,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_middle_middle.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_middle_middle.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_middle_bottom(self):
@@ -182,9 +180,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_middle_bottom.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_middle_bottom.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_right_top(self):
@@ -207,9 +205,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_right_top.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_right_top.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_right_middle(self):
@@ -232,9 +230,9 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_right_middle.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_right_middle.pdf",
         )
 
     def test_self_truncating_heterogeneous_paragraph_alignment_right_bottom(self):
@@ -257,7 +255,7 @@ class TestSelfTruncatingHeterogeneousParagraphAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_self_truncating_heterogeneous_paragraph_alignment_right_bottom.pdf",
+            where_to=f"test_self_truncating_heterogeneous_paragraph_alignment_right_bottom.pdf",
         )

@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.circle_annotation import CircleAnnotation
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCircleAnnotationStrokeColor(unittest.TestCase):
+class TestCircleAnnotationStrokeColor(TestCase):
 
     def test_circle_annotation_stroke_color(self):
         d: Document = Document()
@@ -30,4 +28,4 @@ class TestCircleAnnotationStrokeColor(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_circle_annotation_stroke_color.pdf")
+        TestCase.write(what=d, where_to="test_circle_annotation_stroke_color.pdf")

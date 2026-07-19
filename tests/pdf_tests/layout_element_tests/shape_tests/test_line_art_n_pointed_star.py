@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestLineArtNPointedStar(unittest.TestCase):
@@ -25,7 +25,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_003.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_003.pdf")
 
     def test_line_art_n_pointed_star_004(self):
         d: Document = Document()
@@ -44,7 +44,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_004.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_004.pdf")
 
     def test_line_art_n_pointed_star_005(self):
         d: Document = Document()
@@ -63,7 +63,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_005.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_005.pdf")
 
     def test_line_art_n_pointed_star_006(self):
         d: Document = Document()
@@ -82,7 +82,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_006.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_006.pdf")
 
     def test_line_art_n_pointed_star_007(self):
         d: Document = Document()
@@ -101,7 +101,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_007.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_007.pdf")
 
     def test_line_art_n_pointed_star_008(self):
         d: Document = Document()
@@ -120,7 +120,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_008.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_008.pdf")
 
     def test_line_art_n_pointed_star_009(self):
         d: Document = Document()
@@ -139,7 +139,7 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_009.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_009.pdf")
 
     def test_line_art_n_pointed_star_010(self):
         d: Document = Document()
@@ -158,4 +158,4 @@ class TestLineArtNPointedStar(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_line_art_n_pointed_star_010.pdf")
+        TestCase.write(what=d, where_to="test_line_art_n_pointed_star_010.pdf")

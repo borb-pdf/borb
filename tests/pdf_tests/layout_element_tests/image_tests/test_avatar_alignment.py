@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.avatar import Avatar
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestAvatarAlignment(unittest.TestCase):
+class TestAvatarAlignment(TestCase):
 
     @staticmethod
     def _create_avatar(
@@ -46,7 +44,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_left_top.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_left_top.pdf")
 
     def test_avatar_alignment_left_middle(self):
         d: Document = Document()
@@ -68,7 +66,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_left_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_left_middle.pdf")
 
     def test_avatar_alignment_left_bottom(self):
         d: Document = Document()
@@ -90,7 +88,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_left_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_left_bottom.pdf")
 
     def test_avatar_alignment_middle_top(self):
         d: Document = Document()
@@ -112,7 +110,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_middle_top.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_middle_top.pdf")
 
     def test_avatar_alignment_middle_middle(self):
         d: Document = Document()
@@ -134,7 +132,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_middle_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_middle_middle.pdf")
 
     def test_avatar_alignment_middle_bottom(self):
         d: Document = Document()
@@ -156,7 +154,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_middle_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_middle_bottom.pdf")
 
     def test_avatar_alignment_right_top(self):
         d: Document = Document()
@@ -178,7 +176,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_right_top.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_right_top.pdf")
 
     def test_avatar_alignment_right_middle(self):
         d: Document = Document()
@@ -200,7 +198,7 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_right_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_right_middle.pdf")
 
     def test_avatar_alignment_right_bottom(self):
         d: Document = Document()
@@ -222,4 +220,4 @@ class TestAvatarAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_avatar_alignment_right_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_avatar_alignment_right_bottom.pdf")

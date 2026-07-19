@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartOnPageReferenceSize(unittest.TestCase):
+class TestLineArtFlowchartOnPageReferenceSize(TestCase):
 
     def test_line_art_flowchart_on_page_reference_size(self):
         w, h = LineArt.flowchart_off_page_reference().get_size(

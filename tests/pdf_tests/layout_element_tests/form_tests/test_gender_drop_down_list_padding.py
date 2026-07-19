@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.form.gender_drop_down_list import GenderDropDownList
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestGenderDropDownListPadding(unittest.TestCase):
+class TestGenderDropDownListPadding(TestCase):
 
     def test_gender_drop_down_list_padding_left(self):
 
@@ -31,9 +29,7 @@ class TestGenderDropDownListPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_gender_drop_down_list_padding_left.pdf"
-        )
+        TestCase.write(what=d, where_to=f"test_gender_drop_down_list_padding_left.pdf")
 
     def test_gender_drop_down_list_padding_top(self):
         d: Document = Document()
@@ -56,7 +52,7 @@ class TestGenderDropDownListPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_gender_drop_down_list_padding_top.pdf")
+        TestCase.write(what=d, where_to=f"test_gender_drop_down_list_padding_top.pdf")
 
     def test_gender_drop_down_list_padding_right(self):
         d: Document = Document()
@@ -79,9 +75,7 @@ class TestGenderDropDownListPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_gender_drop_down_list_padding_right.pdf"
-        )
+        TestCase.write(what=d, where_to=f"test_gender_drop_down_list_padding_right.pdf")
 
     def test_gender_drop_down_list_padding_bottom(self):
         d: Document = Document()
@@ -104,6 +98,6 @@ class TestGenderDropDownListPadding(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to=f"assets/test_gender_drop_down_list_padding_bottom.pdf"
+        TestCase.write(
+            what=d, where_to=f"test_gender_drop_down_list_padding_bottom.pdf"
         )

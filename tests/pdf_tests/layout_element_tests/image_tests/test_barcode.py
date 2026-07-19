@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.barcode import Barcode
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestBarcode(unittest.TestCase):
+class TestBarcode(TestCase):
 
     def test_barcode_code_39(self):
         d: Document = Document()
@@ -29,7 +27,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_code_39.pdf")
+        TestCase.write(what=d, where_to="test_barcode_code_39.pdf")
 
     def test_barcode_code_128(self):
         d: Document = Document()
@@ -52,7 +50,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_code_128.pdf")
+        TestCase.write(what=d, where_to="test_barcode_code_128.pdf")
 
     def test_barcode_ean_8(self):
         d: Document = Document()
@@ -75,7 +73,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_ean_8.pdf")
+        TestCase.write(what=d, where_to="test_barcode_ean_8.pdf")
 
     def test_barcode_ean_13(self):
         d: Document = Document()
@@ -98,7 +96,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_ean_13.pdf")
+        TestCase.write(what=d, where_to="test_barcode_ean_13.pdf")
 
     def test_barcode_ean_14(self):
         d: Document = Document()
@@ -121,7 +119,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_ean_14.pdf")
+        TestCase.write(what=d, where_to="test_barcode_ean_14.pdf")
 
     def test_barcode_issn(self):
         d: Document = Document()
@@ -144,7 +142,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_issn.pdf")
+        TestCase.write(what=d, where_to="test_barcode_issn.pdf")
 
     def test_barcode_jan(self):
         d: Document = Document()
@@ -167,7 +165,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_jan.pdf")
+        TestCase.write(what=d, where_to="test_barcode_jan.pdf")
 
     def test_barcode_pzn(self):
         d: Document = Document()
@@ -190,7 +188,7 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_pzn.pdf")
+        TestCase.write(what=d, where_to="test_barcode_pzn.pdf")
 
     def test_barcode_upca(self):
         d: Document = Document()
@@ -213,4 +211,4 @@ class TestBarcode(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_barcode_upca.pdf")
+        TestCase.write(what=d, where_to="test_barcode_upca.pdf")

@@ -1,17 +1,15 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
     MultiColumnLayout,
     SmartArt,
     X11Color,
-    PDF,
     Paragraph,
 )
+from tests.test_case import TestCase
 
 
-class TestSmartArtOverview(unittest.TestCase):
+class TestSmartArtOverview(TestCase):
 
     def test_smart_art_overview(self):
 
@@ -343,4 +341,4 @@ class TestSmartArtOverview(unittest.TestCase):
             )
         )
 
-        PDF.write(what=doc, where_to="assets/test_smart_art_overview.pdf")
+        TestCase.write(what=doc, where_to="test_smart_art_overview.pdf")

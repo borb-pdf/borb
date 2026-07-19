@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.free_text_annotation import FreeTextAnnotation
 from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFreeTextAnnotationFontSize(unittest.TestCase):
+class TestFreeTextAnnotationFontSize(TestCase):
 
     def test_free_text_annotation_font_size(self):
         d: Document = Document()
@@ -35,4 +33,4 @@ class TestFreeTextAnnotationFontSize(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_free_text_annotation_font_size.pdf")
+        TestCase.write(what=d, where_to="test_free_text_annotation_font_size.pdf")

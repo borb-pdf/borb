@@ -1,6 +1,6 @@
-import unittest
+from tests.test_case import TestCase
 
 
-class TestCodeSnippet(unittest.TestCase):
+class TestCodeSnippet(TestCase):
 
     pass

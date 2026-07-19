@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.form.drop_down_list import DropDownList
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDropDownListBackground(unittest.TestCase):
+class TestDropDownListBackground(TestCase):
 
     def test_drop_down_list_background(self):
 
@@ -31,4 +29,4 @@ class TestDropDownListBackground(unittest.TestCase):
             background_color=X11Color.YELLOW_MUNSELL,
         ).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_drop_down_list_background.pdf")
+        TestCase.write(what=d, where_to="test_drop_down_list_background.pdf")

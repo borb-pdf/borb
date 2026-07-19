@@ -1,6 +1,5 @@
 import math
 import typing
-import unittest
 
 from borb.pdf import (
     Document,
@@ -10,11 +9,11 @@ from borb.pdf import (
     FixedColumnWidthTable,
     Paragraph,
     Table,
-    PDF,
 )
+from tests.test_case import TestCase
 
 
-class TestFullASCIITable(unittest.TestCase):
+class TestFullASCIITable(TestCase):
 
     def __add_table_to_document(
         self, layout: PageLayout, characters: str, character_names: typing.List[str]
@@ -412,4 +411,4 @@ class TestFullASCIITable(unittest.TestCase):
         )
 
         # store
-        PDF.write(what=doc, where_to="assets/test_full_ascii_table_001.pdf")
+        TestCase.write(what=doc, where_to="assets/test_full_ascii_table_001.pdf")

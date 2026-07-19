@@ -4,10 +4,10 @@ from borb.pdf.document import Document
 from borb.pdf.layout_element.image.dall_e import DallE
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDallEAlignment(unittest.TestCase):
+class TestDallEAlignment(TestCase):
 
     def setUp(self):
         try:
@@ -40,7 +40,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_left_top.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_left_top.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_left_middle(self):
@@ -65,7 +65,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_left_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_left_middle.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_left_bottom(self):
@@ -90,7 +90,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_left_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_left_bottom.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_middle_top(self):
@@ -115,7 +115,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_middle_top.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_middle_top.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_middle_middle(self):
@@ -140,7 +140,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_middle_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_middle_middle.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_middle_bottom(self):
@@ -165,7 +165,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_middle_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_middle_bottom.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_right_top(self):
@@ -190,7 +190,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_right_top.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_right_top.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_right_middle(self):
@@ -215,7 +215,7 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_right_middle.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_right_middle.pdf")
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e_alignment_right_bottom(self):
@@ -240,4 +240,4 @@ class TestDallEAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to=f"assets/test_dall_e_alignment_right_bottom.pdf")
+        TestCase.write(what=d, where_to=f"test_dall_e_alignment_right_bottom.pdf")

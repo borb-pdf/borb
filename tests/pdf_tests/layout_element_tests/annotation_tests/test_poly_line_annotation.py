@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.poly_line_annotation import PolyLineAnnotation
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestPolyLineAnnotation(unittest.TestCase):
+class TestPolyLineAnnotation(TestCase):
 
     def test_poly_line_annotation(self):
         d: Document = Document()
@@ -29,4 +27,4 @@ class TestPolyLineAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_poly_line_annotation.pdf")
+        TestCase.write(what=d, where_to="test_poly_line_annotation.pdf")

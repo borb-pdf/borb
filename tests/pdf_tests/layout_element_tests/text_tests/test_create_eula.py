@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
@@ -7,15 +5,15 @@ from borb.pdf import (
     PageLayout,
     Paragraph,
     X11Color,
-    PDF,
     MarkdownParagraph,
     LayoutElement,
     Shape,
     Emoji,
 )
+from tests.test_case import TestCase
 
 
-class TestCreateEULA(unittest.TestCase):
+class TestCreateEULA(TestCase):
 
     def test_create_eula(self):
 
@@ -138,4 +136,4 @@ class TestCreateEULA(unittest.TestCase):
             ).paint(available_space=(w - s, 0, s, s), page=eula.get_page(i))
 
         # save
-        PDF.write(what=eula, where_to="assets/test_create_eula.pdf")
+        TestCase.write(what=eula, where_to="test_create_eula.pdf")

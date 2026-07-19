@@ -1,13 +1,12 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.progress_bar.progress_square import ProgressSquare
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.pdf_tests.visual_assert import VisualAssert
+from tests.test_case import TestCase
 
 
-class TestProgressSquareFillColor(unittest.TestCase):
+class TestProgressSquareFillColor(TestCase):
 
     def test_progress_square_fill_color(self):
         d: Document = Document()
@@ -28,4 +27,11 @@ class TestProgressSquareFillColor(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_progress_square_fill_color.pdf")
+        TestCase.write(
+            what=d,
+            where_to=TestCase.get_assets_dir() / "test_progress_square_fill_color.pdf",
+        )
+        VisualAssert.assert_equals(
+            TestCase.get_ground_truth_dir() / "test_progress_square_fill_color.png",
+            TestCase.get_assets_dir() / "test_progress_square_fill_color.pdf",
+        )

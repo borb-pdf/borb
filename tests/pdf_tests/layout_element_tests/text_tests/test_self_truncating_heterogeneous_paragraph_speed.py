@@ -1,20 +1,18 @@
 import time
 import typing
-import unittest
 
 from borb.pdf.document import Document
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.text.chunk import Chunk
-from borb.pdf.layout_element.text.heterogeneous_paragraph import HeterogeneousParagraph
 from borb.pdf.layout_element.text.self_truncating_heterogeneous_paragraph import (
     SelfTruncatingHeterogeneousParagraph,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSelfTruncatingHeterogeneousParagraph(unittest.TestCase):
+class TestSelfTruncatingHeterogeneousParagraph(TestCase):
 
     def build_temporary_document(self) -> float:
         d: Document = Document()
@@ -51,7 +49,7 @@ class TestSelfTruncatingHeterogeneousParagraph(unittest.TestCase):
         delta = time.time() - delta
 
         # persist
-        PDF.write(what=d, where_to="assets/build_temporary_document.pdf")
+        TestCase.write(what=d, where_to="build_temporary_document.pdf")
 
         # return
         return delta

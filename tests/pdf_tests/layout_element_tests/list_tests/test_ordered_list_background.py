@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.list.ordered_list import OrderedList
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestOrderedListBackground(unittest.TestCase):
+class TestOrderedListBackground(TestCase):
 
     def test_ordered_list_background(self):
         d: Document = Document()
@@ -35,4 +33,4 @@ class TestOrderedListBackground(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to=f"assets/test_ordered_list_background.pdf")
+        TestCase.write(what=d, where_to="test_ordered_list_background.pdf")

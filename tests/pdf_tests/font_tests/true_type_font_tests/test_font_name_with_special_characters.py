@@ -1,11 +1,10 @@
-import unittest
-
-from borb.pdf import Font, Page, Document, Chunk, PDF
+from borb.pdf import Font, Page, Document, Chunk
 from borb.pdf.font.simple_font.true_type.google_true_type_font import GoogleTrueTypeFont
 from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
+from tests.test_case import TestCase
 
 
-class TestFontNameWithSpecialCharacters(unittest.TestCase):
+class TestFontNameWithSpecialCharacters(TestCase):
 
     def test_font_name_with_special_characters(self):
         d: Document = Document()
@@ -48,4 +47,4 @@ class TestFontNameWithSpecialCharacters(unittest.TestCase):
             available_space=(x, y, w, h - 5 * line_height), page=p
         )
 
-        PDF.write(what=d, where_to="assets/test_font_name_with_special_characters.pdf")
+        TestCase.write(what=d, where_to="test_font_name_with_special_characters.pdf")

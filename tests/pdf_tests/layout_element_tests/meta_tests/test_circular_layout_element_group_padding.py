@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf import Paragraph, Lipsum, X11Color
 from borb.pdf.document import Document
@@ -8,10 +7,10 @@ from borb.pdf.layout_element.meta.circular_layout_element_group import (
     CircularLayoutElementGroup,
 )
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCircularLayoutElementGroupPadding(unittest.TestCase):
+class TestCircularLayoutElementGroupPadding(TestCase):
 
     @staticmethod
     def __get_layout_element_group(
@@ -64,9 +63,9 @@ class TestCircularLayoutElementGroupPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_circular_layout_element_group_padding_left.pdf",
+            where_to=f"test_circular_layout_element_group_padding_left.pdf",
         )
 
     def test_circular_layout_element_group_padding_top(self):
@@ -92,9 +91,9 @@ class TestCircularLayoutElementGroupPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_circular_layout_element_group_padding_top.pdf",
+            where_to=f"test_circular_layout_element_group_padding_top.pdf",
         )
 
     def test_circular_layout_element_group_padding_right(self):
@@ -120,9 +119,9 @@ class TestCircularLayoutElementGroupPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_circular_layout_element_group_padding_right.pdf",
+            where_to=f"test_circular_layout_element_group_padding_right.pdf",
         )
 
     def test_circular_layout_element_group_padding_bottom(self):
@@ -148,7 +147,7 @@ class TestCircularLayoutElementGroupPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_circular_layout_element_group_padding_bottom.pdf",
+            where_to=f"test_circular_layout_element_group_padding_bottom.pdf",
         )

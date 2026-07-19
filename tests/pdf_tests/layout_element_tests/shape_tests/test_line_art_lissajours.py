@@ -3,7 +3,7 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 @unittest.skipIf(True, "Takes a long time to execute")
@@ -26,7 +26,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_001_001.pdf", d)
+        TestCase.write("test_line_art_lissajours_001_001.pdf", d)
 
     def test_line_art_lissajours_001_002(self):
         d: Document = Document()
@@ -45,7 +45,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_001_002.pdf", d)
+        TestCase.write("test_line_art_lissajours_001_002.pdf", d)
 
     def test_line_art_lissajours_001_003(self):
         d: Document = Document()
@@ -64,7 +64,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_001_003.pdf", d)
+        TestCase.write("test_line_art_lissajours_001_003.pdf", d)
 
     def test_line_art_lissajours_002_001(self):
         d: Document = Document()
@@ -83,7 +83,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_002_001.pdf", d)
+        TestCase.write("test_line_art_lissajours_002_001.pdf", d)
 
     def test_line_art_lissajours_002_002(self):
         d: Document = Document()
@@ -102,7 +102,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_002_002.pdf", d)
+        TestCase.write("test_line_art_lissajours_002_002.pdf", d)
 
     def test_line_art_lissajours_002_003(self):
         d: Document = Document()
@@ -121,7 +121,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_002_003.pdf", d)
+        TestCase.write("test_line_art_lissajours_002_003.pdf", d)
 
     def test_line_art_lissajours_003_001(self):
         d: Document = Document()
@@ -140,7 +140,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_003_001.pdf", d)
+        TestCase.write("test_line_art_lissajours_003_001.pdf", d)
 
     def test_line_art_lissajours_003_002(self):
         d: Document = Document()
@@ -159,7 +159,7 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_003_002.pdf", d)
+        TestCase.write("test_line_art_lissajours_003_002.pdf", d)
 
     def test_line_art_lissajours_003_003(self):
         d: Document = Document()
@@ -178,4 +178,4 @@ class TestLineArtLissajours(unittest.TestCase):
             page=p,
         )
 
-        PDF.write("assets/test_line_art_lissajours_003_003.pdf", d)
+        TestCase.write("test_line_art_lissajours_003_003.pdf", d)

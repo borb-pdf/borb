@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt, X11Color
+from borb.pdf import SmartArt, X11Color
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestVerticalEquationColor(unittest.TestCase):
+class TestVerticalEquationColor(TestCase):
 
     def test_vertical_equation_color_red(self):
         d: Document = Document()
@@ -28,7 +27,7 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_red.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_red.pdf")
 
     def test_vertical_equation_color_orange(self):
         d: Document = Document()
@@ -49,7 +48,7 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_orange.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_orange.pdf")
 
     def test_vertical_equation_color_yellow(self):
         d: Document = Document()
@@ -70,7 +69,7 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_yellow.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_yellow.pdf")
 
     def test_vertical_equation_color_green(self):
         d: Document = Document()
@@ -91,7 +90,7 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_green.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_green.pdf")
 
     def test_vertical_equation_color_blue(self):
         d: Document = Document()
@@ -112,7 +111,7 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_blue.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_blue.pdf")
 
     def test_vertical_equation_color_indigo(self):
         d: Document = Document()
@@ -133,7 +132,7 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_indigo.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_indigo.pdf")
 
     def test_vertical_equation_color_violet(self):
         d: Document = Document()
@@ -154,4 +153,4 @@ class TestVerticalEquationColor(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_equation_color_violet.pdf")
+        TestCase.write(what=d, where_to="test_vertical_equation_color_violet.pdf")

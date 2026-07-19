@@ -4,7 +4,7 @@ from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.map_of_asia import MapOfAsia
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
 class TestMapOfAsia(unittest.TestCase):
@@ -28,4 +28,4 @@ class TestMapOfAsia(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_map_of_asia.pdf")
+        TestCase.write(what=d, where_to="test_map_of_asia.pdf")

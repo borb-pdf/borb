@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartSequentialDataSize(unittest.TestCase):
+class TestLineArtFlowchartSequentialDataSize(TestCase):
 
     def test_line_art_flowchart_sequential_data_size(self):
         w, h = LineArt.flowchart_sequential_data().get_size(

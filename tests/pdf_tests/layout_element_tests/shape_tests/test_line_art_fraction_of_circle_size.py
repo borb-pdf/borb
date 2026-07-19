@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFractionOfCircleSize(unittest.TestCase):
+class TestLineArtFractionOfCircleSize(TestCase):
 
     def test_line_art_fraction_of_circle_060(self):
         w, h = LineArt.fraction_of_circle(angle_in_degrees=60).get_size(

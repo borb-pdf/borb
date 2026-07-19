@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.line_art import LineArt
+from tests.test_case import TestCase
 
 
-class TestLineArtFlowchartInternalStorageSize(unittest.TestCase):
+class TestLineArtFlowchartInternalStorageSize(TestCase):
 
     def test_line_art_flowchart_internal_storage_size(self):
         w, h = LineArt.flowchart_internal_storage().get_size(

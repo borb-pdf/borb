@@ -3,10 +3,10 @@ import unittest
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.dall_e import DallE
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDallE(unittest.TestCase):
+class TestDallE(TestCase):
 
     @unittest.skipIf(True, "Takes credits to execute")
     def test_dall_e(self):
@@ -35,4 +35,4 @@ class TestDallE(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_dall_e.pdf")
+        TestCase.write(what=d, where_to="test_dall_e.pdf")

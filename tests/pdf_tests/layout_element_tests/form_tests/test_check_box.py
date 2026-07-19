@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf import CheckBox
 from borb.pdf.document import Document
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCheckBox(unittest.TestCase):
+class TestCheckBox(TestCase):
 
     def test_check_box(self):
 
@@ -23,4 +21,4 @@ class TestCheckBox(unittest.TestCase):
 
         CheckBox().paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_check_box.pdf")
+        TestCase.write(what=d, where_to="test_check_box.pdf")

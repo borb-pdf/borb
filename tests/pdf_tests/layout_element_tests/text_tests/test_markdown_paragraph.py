@@ -1,10 +1,9 @@
-import unittest
-
-from borb.pdf import Document, Page, PDF
+from borb.pdf import Document, Page
 from borb.pdf.layout_element.text.markdown_paragraph import MarkdownParagraph
+from tests.test_case import TestCase
 
 
-class TestMarkdownParagraph(unittest.TestCase):
+class TestMarkdownParagraph(TestCase):
 
     def test_markdown_paragraph(self):
         d: Document = Document()
@@ -30,7 +29,7 @@ class TestMarkdownParagraph(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_markdown_paragraph.pdf")
+        TestCase.write(what=d, where_to="test_markdown_paragraph.pdf")
 
     def test_markdown_paragraph_eliminates_space(self):
         d: Document = Document()
@@ -56,9 +55,7 @@ class TestMarkdownParagraph(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_markdown_paragraph_eliminates_space.pdf"
-        )
+        TestCase.write(what=d, where_to="test_markdown_paragraph_eliminates_space.pdf")
 
     def test_markdown_paragraph_respects_escaped_chars(self):
         d: Document = Document()
@@ -84,6 +81,6 @@ class TestMarkdownParagraph(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
-            what=d, where_to="assets/test_markdown_paragraph_respects_escaped_chars.pdf"
+        TestCase.write(
+            what=d, where_to="test_markdown_paragraph_respects_escaped_chars.pdf"
         )

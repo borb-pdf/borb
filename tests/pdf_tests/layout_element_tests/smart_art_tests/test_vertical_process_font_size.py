@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt, PageSize
+from borb.pdf import SmartArt, PageSize
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestVerticalProcessFontSize(unittest.TestCase):
+class TestVerticalProcessFontSize(TestCase):
 
     def test_vertical_process_font_size_small(self):
         d: Document = Document()
@@ -31,7 +30,7 @@ class TestVerticalProcessFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_process_font_size_small.pdf")
+        TestCase.write(what=d, where_to="test_vertical_process_font_size_small.pdf")
 
     def test_vertical_process_font_size_regular(self):
         d: Document = Document()
@@ -55,7 +54,7 @@ class TestVerticalProcessFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_process_font_size_regular.pdf")
+        TestCase.write(what=d, where_to="test_vertical_process_font_size_regular.pdf")
 
     def test_vertical_process_font_size_large(self):
         d: Document = Document()
@@ -79,4 +78,4 @@ class TestVerticalProcessFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_vertical_process_font_size_large.pdf")
+        TestCase.write(what=d, where_to="test_vertical_process_font_size_large.pdf")

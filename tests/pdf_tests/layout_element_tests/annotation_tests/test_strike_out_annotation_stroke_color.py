@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.strike_out_annotation import StrikeOutAnnotation
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestStrikeOutAnnotationStrokeColor(unittest.TestCase):
+class TestStrikeOutAnnotationStrokeColor(TestCase):
 
     def test_strike_out_annotation_stroke_color(self):
         d: Document = Document()
@@ -35,4 +33,4 @@ class TestStrikeOutAnnotationStrokeColor(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_strike_out_annotation_stroke_color.pdf")
+        TestCase.write(what=d, where_to="test_strike_out_annotation_stroke_color.pdf")

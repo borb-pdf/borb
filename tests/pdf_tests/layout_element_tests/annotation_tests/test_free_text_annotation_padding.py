@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.circle_annotation import CircleAnnotation
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCircleAnnotation(unittest.TestCase):
+class TestCircleAnnotation(TestCase):
 
     def test_circle_annotation_padding_left(self):
         d: Document = Document()
@@ -31,7 +29,7 @@ class TestCircleAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_circle_annotation_padding_left.pdf")
+        TestCase.write(what=d, where_to="test_circle_annotation_padding_left.pdf")
 
     def test_circle_annotation_padding_top(self):
         d: Document = Document()
@@ -55,7 +53,7 @@ class TestCircleAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_circle_annotation_padding_top.pdf")
+        TestCase.write(what=d, where_to="test_circle_annotation_padding_top.pdf")
 
     def test_circle_annotation_padding_right(self):
         d: Document = Document()
@@ -79,7 +77,7 @@ class TestCircleAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_circle_annotation_padding_right.pdf")
+        TestCase.write(what=d, where_to="test_circle_annotation_padding_right.pdf")
 
     def test_circle_annotation_padding_bottom(self):
         d: Document = Document()
@@ -103,4 +101,4 @@ class TestCircleAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_circle_annotation_padding_bottom.pdf")
+        TestCase.write(what=d, where_to="test_circle_annotation_padding_bottom.pdf")

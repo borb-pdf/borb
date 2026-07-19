@@ -1,9 +1,8 @@
-import unittest
+from borb.pdf import Document, PageLayout, SingleColumnLayout, Paragraph, Page
+from tests.test_case import TestCase
 
-from borb.pdf import Document, PageLayout, SingleColumnLayout, Paragraph, Page, PDF
 
-
-class TestWriteChineseUsingHelvetica(unittest.TestCase):
+class TestWriteChineseUsingHelvetica(TestCase):
 
     def test_write_chinese_using_helvetica(self):
 
@@ -26,4 +25,4 @@ class TestWriteChineseUsingHelvetica(unittest.TestCase):
         assert isinstance(context.exception, UnicodeEncodeError)
 
         # write
-        PDF.write(what=d, where_to="assets/test_write_chinese_using_helvetica.pdf")
+        TestCase.write(what=d, where_to="test_write_chinese_using_helvetica.pdf")

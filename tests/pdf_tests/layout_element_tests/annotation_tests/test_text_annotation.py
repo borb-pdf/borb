@@ -1,13 +1,11 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.annotation.text_annotation import TextAnnotation
 from borb.pdf.lipsum.lipsum import Lipsum
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestTextAnnotation(unittest.TestCase):
+class TestTextAnnotation(TestCase):
 
     def test_text_annotation(self):
         d: Document = Document()
@@ -35,4 +33,4 @@ class TestTextAnnotation(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_text_annotation.pdf")
+        TestCase.write(what=d, where_to="test_text_annotation.pdf")

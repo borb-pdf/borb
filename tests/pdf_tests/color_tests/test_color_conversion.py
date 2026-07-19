@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf.color.color import Color
 from borb.pdf.color.x11_color import X11Color
 from tests.test_case import TestCase

@@ -1,15 +1,13 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.table.fixed_column_width_table import FixedColumnWidthTable
 from borb.pdf.layout_element.table.table import Table
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestFixedColumnWidthTableAlignment(unittest.TestCase):
+class TestFixedColumnWidthTableAlignment(TestCase):
 
     @staticmethod
     def get_table(
@@ -53,9 +51,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_left_top.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_left_top.pdf",
         )
 
     def test_fixed_column_width_table_alignment_left_middle(self):
@@ -78,9 +76,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_left_middle.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_left_middle.pdf",
         )
 
     def test_fixed_column_width_table_alignment_left_bottom(self):
@@ -103,9 +101,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_left_bottom.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_left_bottom.pdf",
         )
 
     def test_fixed_column_width_table_alignment_middle_top(self):
@@ -128,9 +126,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_middle_top.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_middle_top.pdf",
         )
 
     def test_fixed_column_width_table_alignment_middle_middle(self):
@@ -153,9 +151,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_middle_middle.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_middle_middle.pdf",
         )
 
     def test_fixed_column_width_table_alignment_middle_bottom(self):
@@ -178,9 +176,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_middle_bottom.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_middle_bottom.pdf",
         )
 
     def test_fixed_column_width_table_alignment_right_top(self):
@@ -203,9 +201,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_right_top.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_right_top.pdf",
         )
 
     def test_fixed_column_width_table_alignment_right_middle(self):
@@ -228,9 +226,9 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_right_middle.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_right_middle.pdf",
         )
 
     def test_fixed_column_width_table_alignment_right_bottom(self):
@@ -253,7 +251,7 @@ class TestFixedColumnWidthTableAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_fixed_column_width_table_alignment_right_bottom.pdf",
+            where_to=f"test_fixed_column_width_table_alignment_right_bottom.pdf",
         )

@@ -1,9 +1,8 @@
-import unittest
-
 from borb.pdf.layout_element.shape.map_of_north_america import MapOfNorthAmerica
+from tests.test_case import TestCase
 
 
-class TestMapOfNorthAmericaSize(unittest.TestCase):
+class TestMapOfNorthAmericaSize(TestCase):
 
     def test_map_of_north_america_size(self):
         w, h = MapOfNorthAmerica().get_size(available_space=(2**64, 2**64))

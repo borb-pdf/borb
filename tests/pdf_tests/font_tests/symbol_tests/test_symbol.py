@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.font.font import Font
 from borb.pdf.font.simple_font.standard_14_fonts import Standard14Fonts
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestSymbol(unittest.TestCase):
+class TestSymbol(TestCase):
 
     def test_symbol(self):
 
@@ -28,4 +26,4 @@ class TestSymbol(unittest.TestCase):
 
         Chunk("Σ", font=font).paint(available_space=(x, y, w, h), page=p)
 
-        PDF.write(what=d, where_to="assets/test_symbol.pdf")
+        TestCase.write(what=d, where_to="test_symbol.pdf")

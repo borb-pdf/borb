@@ -1,15 +1,14 @@
 import datetime
-import unittest
 
 from borb.pdf import HexColor
 from borb.pdf.document import Document
-from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.calendar.day_view import DayView
+from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestDayViewAlignment(unittest.TestCase):
+class TestDayViewAlignment(TestCase):
 
     @staticmethod
     def get_day_view(
@@ -66,9 +65,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_left_top.pdf",
+            where_to=f"test_day_view_alignment_left_top.pdf",
         )
 
     def test_day_view_alignment_left_middle(self):
@@ -91,9 +90,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_left_middle.pdf",
+            where_to=f"test_day_view_alignment_left_middle.pdf",
         )
 
     def test_day_view_alignment_left_bottom(self):
@@ -116,9 +115,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_left_bottom.pdf",
+            where_to=f"test_day_view_alignment_left_bottom.pdf",
         )
 
     def test_day_view_alignment_middle_top(self):
@@ -141,9 +140,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_middle_top.pdf",
+            where_to=f"test_day_view_alignment_middle_top.pdf",
         )
 
     def test_day_view_alignment_middle_middle(self):
@@ -166,9 +165,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_middle_middle.pdf",
+            where_to=f"test_day_view_alignment_middle_middle.pdf",
         )
 
     def test_day_view_alignment_middle_bottom(self):
@@ -191,9 +190,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_middle_bottom.pdf",
+            where_to=f"test_day_view_alignment_middle_bottom.pdf",
         )
 
     def test_day_view_alignment_right_top(self):
@@ -216,9 +215,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_right_top.pdf",
+            where_to=f"test_day_view_alignment_right_top.pdf",
         )
 
     def test_day_view_alignment_right_middle(self):
@@ -241,9 +240,9 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_right_middle.pdf",
+            where_to=f"test_day_view_alignment_right_middle.pdf",
         )
 
     def test_day_view_alignment_right_bottom(self):
@@ -266,7 +265,7 @@ class TestDayViewAlignment(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to=f"assets/test_day_view_alignment_right_bottom.pdf",
+            where_to=f"test_day_view_alignment_right_bottom.pdf",
         )

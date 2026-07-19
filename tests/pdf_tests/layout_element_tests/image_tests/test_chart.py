@@ -1,6 +1,5 @@
 import math
 import typing
-import unittest
 
 import matplotlib  # type: ignore[import-not-found]
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
@@ -8,10 +7,10 @@ import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 from borb.pdf.document import Document
 from borb.pdf.layout_element.image.chart import Chart
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestChart(unittest.TestCase):
+class TestChart(TestCase):
 
     @staticmethod
     def _create_matplotlib_pyplot() -> typing.Any:
@@ -51,7 +50,7 @@ class TestChart(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_chart.pdf")
+        TestCase.write(what=d, where_to="test_chart.pdf")
 
     def test_chart_002(self):
         import numpy as np
@@ -100,7 +99,6 @@ class TestChart(unittest.TestCase):
         from borb.pdf import PageLayout
         from borb.pdf import SingleColumnLayout
         from borb.pdf import Chart
-        from borb.pdf import PDF
 
         pdf_document: Document = Document()
 
@@ -110,4 +108,4 @@ class TestChart(unittest.TestCase):
         page_layout: PageLayout = SingleColumnLayout(page)
         page_layout.append_layout_element(Chart(plt.gcf(), size=(100, 100)))
 
-        PDF.write(what=pdf_document, where_to="test_chart_002.pdf")
+        TestCase.write(what=pdf_document, where_to="test_chart_002.pdf")

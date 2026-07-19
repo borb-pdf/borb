@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf.color.pantone_color import PantoneColor
 from tests.test_case import TestCase
 

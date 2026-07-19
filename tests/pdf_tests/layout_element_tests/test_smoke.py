@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf import (
     Page,
@@ -9,10 +8,7 @@ from borb.pdf import (
     FlexibleColumnWidthTable,
     Table,
     Lipsum,
-    Barcode,
-    Emoji,
     LineArt,
-    PDF,
     Paragraph,
     UnorderedList,
     OrderedList,
@@ -22,9 +18,10 @@ from borb.pdf import (
     X11Color,
     Standard14Fonts,
 )
+from tests.test_case import TestCase
 
 
-class TestSmoke(unittest.TestCase):
+class TestSmoke(TestCase):
 
     def test_smoke(self):
 
@@ -152,4 +149,4 @@ class TestSmoke(unittest.TestCase):
         )
         l.append_layout_element(t)
 
-        PDF.write(what=d, where_to="assets/test_smoke.pdf")
+        TestCase.write(what=d, where_to="test_smoke.pdf")

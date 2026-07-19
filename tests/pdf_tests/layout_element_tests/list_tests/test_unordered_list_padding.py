@@ -1,14 +1,12 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.layout_element import LayoutElement
 from borb.pdf.layout_element.list.unordered_list import UnorderedList
 from borb.pdf.layout_element.text.chunk import Chunk
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestOrderedUnorderedListPadding(unittest.TestCase):
+class TestOrderedUnorderedListPadding(TestCase):
 
     def test_unordered_list_padding_left(self):
         d: Document = Document()
@@ -36,8 +34,7 @@ class TestOrderedUnorderedListPadding(unittest.TestCase):
                 page=p,
             )
         )
-
-        PDF.write(what=d, where_to=f"assets/test_unordered_list_padding_left.pdf")
+        TestCase.write(what=d, where_to="test_unordered_list_padding_left.pdf")
 
     def test_unordered_list_padding_top(self):
         d: Document = Document()
@@ -66,7 +63,7 @@ class TestOrderedUnorderedListPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to=f"assets/test_unordered_list_padding_top.pdf")
+        TestCase.write(what=d, where_to="test_unordered_list_padding_top.pdf")
 
     def test_unordered_list_padding_right(self):
         d: Document = Document()
@@ -95,7 +92,7 @@ class TestOrderedUnorderedListPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to=f"assets/test_unordered_list_padding_right.pdf")
+        TestCase.write(what=d, where_to="test_unordered_list_padding_right.pdf")
 
     def test_unordered_list_padding_bottom(self):
         d: Document = Document()
@@ -124,4 +121,4 @@ class TestOrderedUnorderedListPadding(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to=f"assets/test_unordered_list_padding_bottom.pdf")
+        TestCase.write(what=d, where_to="test_unordered_list_padding_bottom.pdf")

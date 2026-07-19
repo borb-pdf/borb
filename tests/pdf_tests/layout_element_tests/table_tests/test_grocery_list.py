@@ -1,6 +1,4 @@
-import io
 import typing
-import unittest
 
 from borb.pdf import (
     Document,
@@ -8,7 +6,6 @@ from borb.pdf import (
     MultiColumnLayout,
     Table,
     Paragraph,
-    PDF,
     Space,
     X11Color,
     GoogleTrueTypeFont,
@@ -16,9 +13,10 @@ from borb.pdf import (
     FixedColumnWidthTable,
 )
 from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
+from tests.test_case import TestCase
 
 
-class TestGroceryList(unittest.TestCase):
+class TestGroceryList(TestCase):
 
     @staticmethod
     def __create_table_from_str_list(s: typing.List[str]) -> Table:
@@ -297,6 +295,4 @@ class TestGroceryList(unittest.TestCase):
             )
         )
 
-        bts: typing.BinaryIO = io.BytesIO()
-        PDF.write(what=doc, where_to=bts)
-        print(len(bts.getvalue()))
+        TestCase.write(what=doc, where_to="test_grocery_list.pdf")

@@ -1,13 +1,12 @@
-import unittest
-
-from borb.pdf import PDF, SmartArt
+from borb.pdf import SmartArt
 from borb.pdf.document import Document
 from borb.pdf.page import Page
 from borb.pdf.page_layout.page_layout import PageLayout
 from borb.pdf.page_layout.single_column_layout import SingleColumnLayout
+from tests.test_case import TestCase
 
 
-class TestInvertedPyramidFontSize(unittest.TestCase):
+class TestInvertedPyramidFontSize(TestCase):
 
     def test_inverted_pyramid_font_size_small(self):
         d: Document = Document()
@@ -31,7 +30,7 @@ class TestInvertedPyramidFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_inverted_pyramid_font_size_small.pdf")
+        TestCase.write(what=d, where_to="test_inverted_pyramid_font_size_small.pdf")
 
     def test_inverted_pyramid_font_size_regular(self):
         d: Document = Document()
@@ -55,9 +54,9 @@ class TestInvertedPyramidFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(
+        TestCase.write(
             what=d,
-            where_to="assets/test_inverted_pyramid_font_size_regular.pdf",
+            where_to="test_inverted_pyramid_font_size_regular.pdf",
         )
 
     def test_inverted_pyramid_font_size_large(self):
@@ -82,4 +81,4 @@ class TestInvertedPyramidFontSize(unittest.TestCase):
             )
         )
 
-        PDF.write(what=d, where_to="assets/test_inverted_pyramid_font_size_large.pdf")
+        TestCase.write(what=d, where_to="test_inverted_pyramid_font_size_large.pdf")

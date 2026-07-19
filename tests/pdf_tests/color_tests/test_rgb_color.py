@@ -1,6 +1,5 @@
 import math
 import typing
-import unittest
 
 from borb.pdf.color.color import Color
 from borb.pdf.color.rgb_color import RGBColor
@@ -8,8 +7,6 @@ from borb.pdf.color.x11_color import X11Color
 from borb.pdf.document import Document
 from borb.pdf.layout_element.shape.line_art import LineArt
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
-from tests.pdf_tests.visual_assert import VisualAssert
 from tests.test_case import TestCase
 
 
@@ -47,8 +44,4 @@ class TestRGBColor(TestCase):
                 )
                 k += 1
 
-        PDF.write(what=d, where_to=TestCase.get_assets_dir() / "test_rgb_color.pdf")
-        VisualAssert.assert_equals(
-            TestCase.get_ground_truth_dir() / "test_rgb_color.png",
-            TestCase.get_assets_dir() / "test_rgb_color.pdf",
-        )
+        TestCase.write(what=d, where_to="test_rgb_color.pdf")

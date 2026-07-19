@@ -1,12 +1,10 @@
-import unittest
-
 from borb.pdf.document import Document
 from borb.pdf.layout_element.text.code_snippet import CodeSnippet
 from borb.pdf.page import Page
-from borb.pdf.visitor.pdf import PDF
+from tests.test_case import TestCase
 
 
-class TestCodeSnippet(unittest.TestCase):
+class TestCodeSnippet(TestCase):
 
     def test_code_snippet(self):
 
@@ -34,4 +32,4 @@ class TestCodeSnippet(unittest.TestCase):
             page=p,
         )
 
-        PDF.write(what=d, where_to="assets/test_code_snippet.pdf")
+        TestCase.write(what=d, where_to="test_code_snippet.pdf")
