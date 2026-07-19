@@ -46,6 +46,16 @@ class TestCase(unittest.TestCase):
         return TestCase.get_project_dir() / "tests"
 
     @staticmethod
+    def read(where_from: typing.Union[str, pathlib.Path]) -> typing.Optional[Document]:
+
+        # canonize
+        if isinstance(where_from, str):
+            where_from = pathlib.Path(where_from)
+        where_from = TestCase.get_assets_dir() / where_from.name
+
+        return PDF.read(where_from)
+
+    @staticmethod
     def write(
         what: Document,
         where_to: typing.Union[pathlib.Path, str, typing.BinaryIO],

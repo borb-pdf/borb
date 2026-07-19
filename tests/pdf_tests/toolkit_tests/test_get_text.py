@@ -1,7 +1,4 @@
-import unittest
-
 from borb.pdf import (
-    PDF,
     Document,
     Page,
     PageLayout,
@@ -15,9 +12,10 @@ from borb.pdf.toolkit.filter.font.by_font_color import ByFontColor
 from borb.pdf.toolkit.pipeline import Pipeline
 from borb.pdf.toolkit.sink.get_text import GetText
 from borb.pdf.toolkit.source.operator.source import Source
+from tests.test_case import TestCase
 
 
-class TestGetText(unittest.TestCase):
+class TestGetText(TestCase):
 
     def test_get_text(self):
 
@@ -40,10 +38,10 @@ class TestGetText(unittest.TestCase):
             )
         )
         l.append_layout_element(Paragraph(Lipsum.generate_lorem_ipsum(512)))
-        PDF.write(what=d, where_to="assets/output.pdf")
+        TestCase.write(what=d, where_to="output.pdf")
 
         # step 2: read PDF
-        d: Document = PDF.read("assets/output.pdf")
+        d: Document = TestCase.read("output.pdf")
 
         # step 3: process
         text = Pipeline(
@@ -67,10 +65,10 @@ class TestGetText(unittest.TestCase):
         d.append_page(p)
         l: PageLayout = SingleColumnLayout(p)
         l.append_layout_element(Paragraph("Hello world!"))
-        PDF.write(what=d, where_to="assets/test_get_text_from_small_document.pdf")
+        TestCase.write(what=d, where_to="test_get_text_from_small_document.pdf")
 
         # read
-        d = PDF.read("assets/test_get_text_from_small_document.pdf")
+        d = TestCase.read("test_get_text_from_small_document.pdf")
 
         # get text
         Pipeline([Source(), GetText()]).process(d)

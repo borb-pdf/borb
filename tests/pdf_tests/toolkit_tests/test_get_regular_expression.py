@@ -3,7 +3,6 @@ import typing
 import unittest
 
 from borb.pdf import (
-    PDF,
     Document,
     Page,
     PageLayout,
@@ -15,6 +14,7 @@ from borb.pdf import (
 from borb.pdf.toolkit.pipeline import Pipeline
 from borb.pdf.toolkit.sink.get_regular_expression import GetRegularExpression, MatchType
 from borb.pdf.toolkit.source.operator.source import Source
+from tests.test_case import TestCase
 
 
 class TestGetRegularExpression(unittest.TestCase):
@@ -39,10 +39,10 @@ class TestGetRegularExpression(unittest.TestCase):
 
         # generate text
         l.append_layout_element(Paragraph(Lipsum.generate_lorem_ipsum(512)))
-        PDF.write(what=d, where_to="assets/output.pdf")
+        TestCase.write(what=d, where_to="output.pdf")
 
         # step 2: read PDF
-        d: Document = PDF.read("assets/output.pdf")
+        d: Document = TestCase.read("output.pdf")
 
         # step 3: process
         matches: typing.List[MatchType] = Pipeline(

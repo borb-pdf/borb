@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf import (
     Document,
@@ -7,7 +6,6 @@ from borb.pdf import (
     SingleColumnLayout,
     Paragraph,
     Lipsum,
-    PDF,
     PageLayout,
     GoogleTrueTypeFont,
     X11Color,
@@ -15,9 +13,10 @@ from borb.pdf import (
 )
 from borb.pdf.conformance import Conformance
 from tests.secrets import populate_os_environ  # type: ignore[import-not-found]
+from tests.test_case import TestCase
 
 
-class TestConformance(unittest.TestCase):
+class TestConformance(TestCase):
 
     @staticmethod
     def __build_pdf_document(conformance: Conformance, output_path: str):
@@ -62,14 +61,14 @@ class TestConformance(unittest.TestCase):
         )
 
         # output
-        PDF.write(what=d, where_to=output_path)
+        TestCase.write(what=d, where_to=output_path)
 
     def test_pdf_a_1_a(self):
         TestConformance.__build_pdf_document(
-            conformance=Conformance.PDF_A_1A, output_path="assets/test_pdf_a_1_a.pdf"
+            conformance=Conformance.PDF_A_1A, output_path="test_pdf_a_1_a.pdf"
         )
 
     def test_pdf_a_1_b(self):
         TestConformance.__build_pdf_document(
-            conformance=Conformance.PDF_A_1B, output_path="assets/test_pdf_a_1_b.pdf"
+            conformance=Conformance.PDF_A_1B, output_path="test_pdf_a_1_b.pdf"
         )

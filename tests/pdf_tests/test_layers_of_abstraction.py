@@ -1,10 +1,8 @@
-import unittest
 import zlib
 
 from borb.pdf import (
     Document,
     Page,
-    PDF,
     SingleColumnLayout,
     PageLayout,
     Paragraph,
@@ -13,7 +11,7 @@ from borb.pdf import (
 from borb.pdf.primitives import name, hexstr, stream
 
 
-class TestLayersOfAbstraction(unittest.TestCase):
+class TestLayersOfAbstraction(TestCase):
 
     def test_build_pdf_using_low_level_api(self):
 
@@ -68,9 +66,7 @@ class TestLayersOfAbstraction(unittest.TestCase):
         # fmt: on
 
         # write
-        PDF.write(
-            what=document, where_to="assets/test_build_pdf_using_low_level_api.pdf"
-        )
+        TestCase.write(what=document, where_to="test_build_pdf_using_low_level_api.pdf")
 
     def test_build_pdf_using_layout_element_paint(self):
         document: Document = Document()
@@ -87,9 +83,9 @@ class TestLayersOfAbstraction(unittest.TestCase):
         )
 
         # write
-        PDF.write(
+        TestCase.write(
             what=document,
-            where_to="assets/test_build_pdf_using_layout_element_paint.pdf",
+            where_to="test_build_pdf_using_layout_element_paint.pdf",
         )
 
     def test_build_pdf_using_page_layout(self):
@@ -108,9 +104,9 @@ class TestLayersOfAbstraction(unittest.TestCase):
         layout.append_layout_element(Paragraph("Hello World!"))
 
         # write
-        PDF.write(what=document, where_to="assets/test_build_pdf_using_page_layout.pdf")
+        TestCase.write(what=document, where_to="test_build_pdf_using_page_layout.pdf")
 
     def test_build_pdf_using_template(self):
         A4Portrait().append_single_column_of_text("Hello World!").save(
-            "assets/test_build_pdf_using_template.pdf"
+            "test_build_pdf_using_template.pdf"
         )

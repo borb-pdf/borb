@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     Page,
@@ -7,12 +5,12 @@ from borb.pdf import (
     SingleColumnLayout,
     Paragraph,
     Lipsum,
-    PDF,
     X11Color,
 )
+from tests.test_case import TestCase
 
 
-class TestReadWrite(unittest.TestCase):
+class TestReadWrite(TestCase):
 
     def test_read_write(self):
 
@@ -26,10 +24,10 @@ class TestReadWrite(unittest.TestCase):
                 Lipsum.generate_lorem_ipsum(32), font_color=X11Color.YELLOW_MUNSELL
             )
         )
-        PDF.write(what=d, where_to="assets/test_read_write_001.pdf")
+        TestCase.write(what=d, where_to="test_read_write_001.pdf")
 
         # STEP 2: read PDF
-        d = PDF.read(where_from="assets/test_read_write_001.pdf")
+        d = TestCase.read(where_from="test_read_write_001.pdf")
 
         # STEP 3: add content to PDF
         p = d.get_page(0)
@@ -45,4 +43,4 @@ class TestReadWrite(unittest.TestCase):
         ).paint(available_space=(x, y, w, h - 15), page=p)
 
         # STEP 4: write PDF
-        PDF.write(what=d, where_to="assets/test_read_write_002.pdf")
+        TestCase.write(what=d, where_to="test_read_write_002.pdf")

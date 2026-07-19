@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf import (
     Document,
@@ -7,14 +6,14 @@ from borb.pdf import (
     SingleColumnLayout,
     Paragraph,
     Lipsum,
-    PDF,
     PageLayout,
     TableOfContents,
     Heading,
 )
+from tests.test_case import TestCase
 
 
-class TestTableOfContents(unittest.TestCase):
+class TestTableOfContents(TestCase):
 
     def test_table_of_contents_001(self):
         d: Document = Document()
@@ -30,7 +29,7 @@ class TestTableOfContents(unittest.TestCase):
         l.append_layout_element(Heading("Heading 2"))
         l.append_layout_element(Heading("Heading 3", outline_level=1))
 
-        PDF.write(what=d, where_to="assets/test_table_of_contents_001.pdf")
+        TestCase.write(what=d, where_to="test_table_of_contents_001.pdf")
 
     def test_table_of_contents_002(self):
         d: Document = Document()
@@ -54,4 +53,4 @@ class TestTableOfContents(unittest.TestCase):
                         Paragraph(Lipsum.generate_lorem_ipsum(300), font_size=12)
                     )
 
-        PDF.write(what=d, where_to="assets/test_table_of_contents_002.pdf")
+        TestCase.write(what=d, where_to="test_table_of_contents_002.pdf")

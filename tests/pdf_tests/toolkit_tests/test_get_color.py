@@ -1,7 +1,4 @@
-import unittest
-
 from borb.pdf import (
-    PDF,
     Document,
     Page,
     PageLayout,
@@ -14,9 +11,10 @@ from borb.pdf import (
 )
 from borb.pdf.toolkit.pipeline import Pipeline
 from borb.pdf.toolkit.source.operator.source import Source
+from tests.test_case import TestCase
 
 
-class TestGetColor(unittest.TestCase):
+class TestGetColor(TestCase):
 
     def test_get_color(self):
 
@@ -39,10 +37,10 @@ class TestGetColor(unittest.TestCase):
             )
         )
         l.append_layout_element(Paragraph(Lipsum.generate_lorem_ipsum(512)))
-        PDF.write(what=d, where_to="assets/output.pdf")
+        TestCase.write(what=d, where_to="output.pdf")
 
         # step 2: read PDF
-        d: Document = PDF.read("assets/output.pdf")
+        d: Document = TestCase.read("output.pdf")
 
         # step 3: process
         colors = Pipeline(

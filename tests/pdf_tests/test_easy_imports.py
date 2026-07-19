@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf import (
     Document,
@@ -7,12 +6,12 @@ from borb.pdf import (
     SingleColumnLayout,
     Paragraph,
     Lipsum,
-    PDF,
     PageLayout,
 )
+from tests.test_case import TestCase
 
 
-class TestEasyImports(unittest.TestCase):
+class TestEasyImports(TestCase):
 
     def test_easy_imports(self):
         d: Document = Document()
@@ -27,4 +26,4 @@ class TestEasyImports(unittest.TestCase):
             Paragraph(Lipsum.generate_lorem_ipsum(300), font_size=4)
         )
 
-        PDF.write(what=d, where_to="assets/test_easy_imports.pdf")
+        TestCase.write(what=d, where_to="test_easy_imports.pdf")

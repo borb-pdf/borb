@@ -1,5 +1,3 @@
-import unittest
-
 from borb.pdf import (
     Document,
     SingleColumnLayout,
@@ -7,11 +5,11 @@ from borb.pdf import (
     Lipsum,
     X11Color,
     Page,
-    PDF,
 )
+from tests.test_case import TestCase
 
 
-class TestAddPagesToDocument(unittest.TestCase):
+class TestAddPagesToDocument(TestCase):
 
     def test_add_pages_to_document(self):
 
@@ -26,7 +24,7 @@ class TestAddPagesToDocument(unittest.TestCase):
                     Lipsum.generate_lorem_ipsum(512), font_color=X11Color.YELLOW_MUNSELL
                 )
             )
-        # PDF.write(what=doc01, where_to='assets/test_add_pages_to_document_01.pdf')
+        # TestCase.write(what=doc01, where_to='test_add_pages_to_document_01.pdf')
 
         # second document
         doc02: Document = Document()
@@ -39,8 +37,8 @@ class TestAddPagesToDocument(unittest.TestCase):
                     Lipsum.generate_lorem_ipsum(512), font_color=X11Color.PRUSSIAN_BLUE
                 )
             )
-        # PDF.write(what=doc02, where_to='assets/test_add_pages_to_document_02.pdf')
+        # TestCase.write(what=doc02, where_to='assets/test_add_pages_to_document_02.pdf')
 
         # merge
         doc01.append_page(doc02.get_page(0))
-        PDF.write(what=doc01, where_to="assets/test_add_pages_to_document_03.pdf")
+        TestCase.write(what=doc01, where_to="test_add_pages_to_document_03.pdf")

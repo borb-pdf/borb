@@ -1,5 +1,4 @@
 import random
-import unittest
 
 from borb.pdf import (
     Document,
@@ -8,16 +7,16 @@ from borb.pdf import (
     Paragraph,
     Lipsum,
     PageLayout,
-    PDF,
     Source,
     Pipeline,
     SquareAnnotation,
     X11Color,
 )
 from borb.pdf.toolkit.sink.regex import Regex
+from tests.test_case import TestCase
 
 
-class TestRegex(unittest.TestCase):
+class TestRegex(TestCase):
 
     def test_regex(self):
 
@@ -42,10 +41,10 @@ class TestRegex(unittest.TestCase):
             )
 
         # store
-        PDF.write(what=d, where_to="assets/test_regex.pdf")
+        TestCase.write(what=d, where_to="test_regex.pdf")
 
         # step 2: read PDF
-        d: Document = PDF.read("assets/test_regex.pdf")
+        d: Document = TestCase.read("test_regex.pdf")
 
         # step 3: process
         rectangles = Pipeline(
@@ -66,4 +65,4 @@ class TestRegex(unittest.TestCase):
                 )
 
         # store
-        PDF.write(what=d, where_to="assets/test_regex_marked.pdf")
+        TestCase.write(what=d, where_to="test_regex_marked.pdf")
