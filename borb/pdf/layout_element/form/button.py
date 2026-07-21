@@ -186,8 +186,8 @@ class Button(FormField):
             name("AA"): {name('D'): {name('Type'): name("Action"), name("S"): name("ResetForm")}},
             name('AP'): {
                 name("N"): stream({
-                    name("Bytes"): b"x\\xda\\xd3\\x0f\\xa9Pp\\xf2uVp\\xf5u\\x06\\x00\\x11\\xa7\\x02\\xe3",
-                    name("Length"): 10,
+                    name("Bytes"): b"x\xda\xd3\x0f\xa9Pp\xf2uVp\xf5u\x06\x00\x11\xa7\x02\xe3",
+                    name("Length"): 19,
                     name("Type"): name("XObject"),
                     name("Subtype"): name("Form"),
                     name("BBox"): [0, 0, 0, 0],

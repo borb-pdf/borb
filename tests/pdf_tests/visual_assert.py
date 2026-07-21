@@ -30,6 +30,7 @@ import pathlib
 import subprocess
 import threading
 import typing
+from subprocess import CompletedProcess
 
 from PIL import Image  # type: ignore[import-not-found]
 
@@ -91,7 +92,7 @@ class VisualAssert:
         results_per_thread[thread_index] = delta / norm
 
     @staticmethod
-    def __convert_pdf_to_png(pdf: pathlib.Path) -> pathlib.Path:
+    def __convert_pdf_to_png(pdf: pathlib.Path) -> typing.Tuple[pathlib.Path, int]:
         today: datetime.date = datetime.date.today()
         day: int = today.day
         month: int = today.month
@@ -109,8 +110,8 @@ class VisualAssert:
             f"-sOutputFile={png}",  # output filename
             str(pdf),  # input PDF
         ]
-        subprocess.run(cmd, check=True)
-        return png
+        cmp: CompletedProcess = subprocess.run(cmd, check=True)
+        return png, cmp.returncode
 
     #
     # PUBLIC
@@ -151,10 +152,12 @@ class VisualAssert:
 
         # useful for creating the ground truth files
         if not pdf_or_image_0.exists() and create_ground_truth_if_missing:
-            tmp = VisualAssert.__convert_pdf_to_png(pdf=pathlib.Path(pdf_or_image_1))
+            tmp_file, err_code = VisualAssert.__convert_pdf_to_png(
+                pdf=pathlib.Path(pdf_or_image_1)
+            )
             if not pdf_or_image_0.parent.exists():
                 pdf_or_image_0.parent.mkdir()
-            tmp.rename(pdf_or_image_0.parent / (pdf_or_image_0.stem + ".png"))
+            tmp_file.rename(pdf_or_image_0.parent / (pdf_or_image_0.stem + ".png"))
 
         assert pdf_or_image_0.exists()
 
@@ -169,14 +172,18 @@ class VisualAssert:
         # THEN convert to an image
         delete_pdf_or_image_0: bool = False
         if pdf_or_image_0.suffix == ".pdf":
-            pdf_or_image_0 = VisualAssert.__convert_pdf_to_png(pdf=pdf_or_image_0)
+            pdf_or_image_0, err_code_0 = VisualAssert.__convert_pdf_to_png(
+                pdf=pdf_or_image_0
+            )
             delete_pdf_or_image_0 = True
 
         # IF pdf_or_image_1 is a PDF
         # THEN convert to an image
         delete_pdf_or_image_1: bool = False
         if pdf_or_image_1.suffix == ".pdf":
-            pdf_or_image_1 = VisualAssert.__convert_pdf_to_png(pdf=pdf_or_image_1)
+            pdf_or_image_1, err_code_1 = VisualAssert.__convert_pdf_to_png(
+                pdf=pdf_or_image_1
+            )
             delete_pdf_or_image_1 = True
 
         # load pdf_or_image_0

@@ -54,17 +54,13 @@ class TestWriteTwice(TestCase):
                 [["Lorem", "Ipsum"], [1, 2], [3, 4]]
             ).set_padding_on_all_cells(5, 5, 5, 5)
         )
-        TestCase.write(
-            what=d1, where_to="test_write_read_write_without_copy_a.pdf"
-        )
+        TestCase.write(what=d1, where_to="test_write_read_write_without_copy_a.pdf")
 
         # read
         d1 = TestCase.read(where_from="test_write_read_write_without_copy_a.pdf")
 
         # write
-        TestCase.write(
-            what=d1, where_to="test_write_read_write_without_copy_b.pdf"
-        )
+        TestCase.write(what=d1, where_to="test_write_read_write_without_copy_b.pdf")
 
     def test_write_twice_without_copy(self):
 

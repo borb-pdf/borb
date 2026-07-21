@@ -422,9 +422,13 @@ class Shape(LayoutElement):
         LayoutElement._append_to_content_stream(page=page, bytes_or_string=f"1 J\n")
 
         # set dash pattern
-        LayoutElement._append_to_content_stream(
-            page=page, bytes_or_string=f"{self.__dash_pattern} {self.__dash_phase} d\n"
-        )
+        if self.__dash_pattern:
+            dash_pattern_str: str = (
+                "[" + " ".join(str(x) for x in self.__dash_pattern) + "]"
+            )
+            LayoutElement._append_to_content_stream(
+                page=page, bytes_or_string=f"{dash_pattern_str} {self.__dash_phase} d\n"
+            )
 
         # draw/fill path
         min_x: float = math.inf
