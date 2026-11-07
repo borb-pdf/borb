@@ -79,7 +79,7 @@ class TestCompareTextEvents(TestCase):
             TestCompareTextEvents.FIRST_PAGE_PDF_DIR / f"{pdf_nr:04d}.pdf"
         )
         glyphs_02: typing.List[Glyph] = Pipeline([Source(), AllTextEvents()]).process(
-            PDF.read(where_from=pdf_file)
+            PDF.read(where_from=pdf_file)  # type: ignore[arg-type]
         )[0]
 
         # compare
@@ -140,7 +140,7 @@ class TestCompareTextEvents(TestCase):
             ys2 += [average]
 
         # plot
-        import matplotlib.pyplot as plt
+        import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 
         fig, ax = plt.subplots()
 
