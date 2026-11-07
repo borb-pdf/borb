@@ -37,10 +37,10 @@ class TestGetColor(TestCase):
             )
         )
         l.append_layout_element(Paragraph(Lipsum.generate_lorem_ipsum(512)))
-        TestCase.write(what=d, where_to="output.pdf")
+        TestCase.write(what=d, where_to="test_get_color.pdf")
 
         # step 2: read PDF
-        d: Document = TestCase.read("output.pdf")
+        d: Document = TestCase.read("test_get_color.pdf")
 
         # step 3: process
         colors = Pipeline(

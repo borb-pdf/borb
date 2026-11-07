@@ -8,6 +8,7 @@ from borb.pdf import Source, Pipeline, PDF, Above, Pipe, Event, Sink, Page, GetT
 from borb.pdf.primitives import stream
 from borb.pdf.toolkit.source.event.text_event import TextEvent
 from borb.pdf.visitor.read.compression.decode_stream import decode_stream
+from tests.test_case import TestCase
 
 
 @dataclasses.dataclass
@@ -31,13 +32,15 @@ class AllTextEvents(Sink):
             w: int = int(evt.get_width())
             s: str = evt.get_text()
             for i, c in enumerate(s):
-                self.__glyphs += [Glyph(char=c, x=x + i * (w / len(s)), y=y)]
+                self.__glyphs += [Glyph(char=c,
+                                        x=int(x + i * (w / len(s))),
+                                        y=y)]
 
     def get_output(self) -> typing.Any:
         return {0: self.__glyphs}
 
 
-class TestCompareTextEvents(unittest.TestCase):
+class TestCompareTextEvents(TestCase):
 
     # Path to the directory containing a collection of PDF documents used for testing.
     #
@@ -71,7 +74,9 @@ class TestCompareTextEvents(unittest.TestCase):
                 w: int = obj["width"]
                 s: str = obj["text"]
                 for i, c in enumerate(s):
-                    glyphs_01 += [Glyph(char=c, x=x + i * (w / len(s)), y=y)]
+                    glyphs_01 += [Glyph(char=c,
+                                        x=int(x + i * (w / len(s))),
+                                        y=y)]
 
         # glyphs according to borb
         pdf_file: pathlib.Path = (
@@ -151,5 +156,5 @@ class TestCompareTextEvents(unittest.TestCase):
         ax.set_ylabel("Matching Percentage")
         ax.legend()
 
-        fig.savefig("test_compare_text_events.png", dpi=300, bbox_inches="tight")
+        fig.savefig(self.get_assets_dir() / "test_compare_text_events.png", dpi=300, bbox_inches="tight")
         plt.close(fig)

@@ -21,7 +21,7 @@ We’re excited to have you contribute to **borb**! Follow these guidelines to m
 If you have questions about **borb**, please:
 
 - Check [Stack Overflow](https://stackoverflow.com/questions/tagged/borb) for answers.
-- If you’re a customer with a [support agreement](https://borbpdf.com/pricing.html), you can directly contact us.
+- If you’re a customer with a [support agreement](https://borbpdf.com/contact-us.html), you can directly contact us.
 
 ---
 
@@ -29,8 +29,8 @@ If you have questions about **borb**, please:
 
 Found a bug in the source code or documentation? Help us by:
 
-1. Reporting it on [GitHub](https://github.com/jorisschellekens/borb/issues).
-2. Submitting a [Pull Request](https://github.com/jorisschellekens/borb/pulls) with a fix.
+1. Reporting it on [GitHub](https://github.com/borb-pdf/borb/issues).
+2. Submitting a [Pull Request](https://github.com/borb-pdf/borb/pulls) with a fix.
 
 See the [Submission Guidelines](#submission-guidelines) for details.
 
@@ -41,7 +41,7 @@ See the [Submission Guidelines](#submission-guidelines) for details.
 If you’d like to propose a feature:
 
 - **For Major Changes:** Discuss with us first at [borbpdf@gmail.com](mailto:borbpdf@gmail.com) to coordinate efforts.
-- **For Small Changes:** Submit them directly to the [GitHub Repository](https://github.com/jorisschellekens/borb/pulls) as a Pull Request.
+- **For Small Changes:** Submit them directly to the [GitHub Repository](https://github.com/borb-pdf/borb/pulls) as a Pull Request.
 
 ---
 
@@ -155,11 +155,11 @@ A commit message includes:
 
 ## Signing the CLA
 
-All contributors must sign the [Contributor License Agreement (CLA)][cla] before submitting code. 
+All contributors must sign the [Contributor License Agreement (CLA)](https://github.com/borb-pdf/borb/blob/master/CONTRIBUTOR_LICENSE_AGREEMENT.md) before submitting code. 
 The process is simple and can be completed digitally.
 
 ---
 
 ## Contributor Code of Conduct
 
-By contributing to this project, you agree to adhere to the [Contributor Code of Conduct](https://github.com/jorisschellekens/borb/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to adhere to the [Contributor Code of Conduct](https://github.com/borb-pdf/borb/blob/master/CODE_OF_CONDUCT.md).

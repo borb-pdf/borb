@@ -3,9 +3,10 @@ import unittest
 
 from borb.pdf import Document, PDF, Pipeline, Source
 from borb.pdf.toolkit.sink.draw_bounding_boxes import DrawBoundingBoxes
+from tests.test_case import TestCase
 
 
-class TestDrawBoundingBoxes(unittest.TestCase):
+class TestDrawBoundingBoxes(TestCase):
 
     # Path to the directory containing a collection of PDF documents used for testing.
     #
@@ -34,4 +35,4 @@ class TestDrawBoundingBoxes(unittest.TestCase):
             ]
         ).process(d.get_page(0))
 
-        PDF.write(what=d, where_to="assets/0004_b.pdf")
+        self.write(what=d, where_to="test_draw_bounding_boxes.pdf")
