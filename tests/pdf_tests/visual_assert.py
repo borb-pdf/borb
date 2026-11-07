@@ -235,8 +235,11 @@ class VisualAssert:
             except:
                 pass
 
-        # return
+        # assert
         max_tolerance: float = 10**-4
         assert (
             sum(results_per_thread) <= max_tolerance
         ), f"maximum tolerance exceeded: {max_tolerance} < {sum(results_per_thread)}"
+
+        # return
+        return sum(results_per_thread) / len(results_per_thread)
