@@ -53,8 +53,8 @@ class TestChart(TestCase):
         TestCase.write(what=d, where_to="test_chart_001.pdf")
 
     def test_chart_002(self):
-        import numpy as np  # type: ignore[import-untyped]
-        import pandas as pd  # type: ignore[import-untyped]
+        import numpy as np  # type: ignore[import-untyped, import-not-found]
+        import pandas as pd  # type: ignore[import-untyped, import-not-found]
 
         day_order = [
             "Monday",
