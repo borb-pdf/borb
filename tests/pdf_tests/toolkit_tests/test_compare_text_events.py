@@ -32,9 +32,7 @@ class AllTextEvents(Sink):
             w: int = int(evt.get_width())
             s: str = evt.get_text()
             for i, c in enumerate(s):
-                self.__glyphs += [Glyph(char=c,
-                                        x=int(x + i * (w / len(s))),
-                                        y=y)]
+                self.__glyphs += [Glyph(char=c, x=int(x + i * (w / len(s))), y=y)]
 
     def get_output(self) -> typing.Any:
         return {0: self.__glyphs}
@@ -74,9 +72,7 @@ class TestCompareTextEvents(TestCase):
                 w: int = obj["width"]
                 s: str = obj["text"]
                 for i, c in enumerate(s):
-                    glyphs_01 += [Glyph(char=c,
-                                        x=int(x + i * (w / len(s))),
-                                        y=y)]
+                    glyphs_01 += [Glyph(char=c, x=int(x + i * (w / len(s))), y=y)]
 
         # glyphs according to borb
         pdf_file: pathlib.Path = (
@@ -156,5 +152,9 @@ class TestCompareTextEvents(TestCase):
         ax.set_ylabel("Matching Percentage")
         ax.legend()
 
-        fig.savefig(self.get_assets_dir() / "test_compare_text_events.png", dpi=300, bbox_inches="tight")
+        fig.savefig(
+            self.get_assets_dir() / "test_compare_text_events.png",
+            dpi=300,
+            bbox_inches="tight",
+        )
         plt.close(fig)

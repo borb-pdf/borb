@@ -17,7 +17,7 @@
 
 ## ✨ Features
 
-Explore `borb`’s capabilities in the [examples repository](https://github.com/jorisschellekens/borb-examples) for practical, real-world applications, including:
+Explore `borb`’s capabilities in the [examples repository](https://github.com/borb-pdf/borb_examples) for practical, real-world applications, including:
 
 - PDF Metadata Management (reading, editing)
 - Text and Image Extraction
@@ -78,7 +78,7 @@ The AGPL (Affero General Public License) is an open-source license, but commerci
 - Use `borb` in closed-source projects
 - Distribute `borb` in any closed-source product
 
-For more information, [contact our sales team](https://borbpdf.com/).
+For more information, [contact our sales team](https://borbpdf.com/contact-us.html).
 
 ## 🙏 Acknowledgements
 
