@@ -285,6 +285,15 @@ class Chunk(LayoutElement):
     def get_size(
         self, available_space: typing.Tuple[int, int]
     ) -> typing.Tuple[int, int]:
+        """
+        Calculate and return the size of the layout element based on available space.
+
+        This function uses the available space to compute the size (width, height)
+        of the layout element in points.
+
+        :param available_space: Tuple representing the available space (width, height).
+        :return:                Tuple containing the size (width, height) in points.
+        """
         return self.__get_intrinsic_size()
 
     def get_text(self) -> str:

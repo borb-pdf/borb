@@ -4,6 +4,7 @@ from borb.pdf import Document, Page, SingleColumnLayout, Paragraph, Lipsum, PDF
 from tests.test_case import TestCase
 import cProfile
 
+
 class TestProfile(TestCase):
 
     def test_profile_paragraph(self):
