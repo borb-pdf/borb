@@ -19,13 +19,15 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 Sed at ante eu turpis dignissim rutrum.
 """
 
+
 def median(xs: typing.List[float]) -> float:
     sorted_xs: typing.List[float] = sorted(xs)
     middle: int = len(sorted_xs) // 2
     if len(sorted_xs) % 2 == 1:
-            return sorted_xs[middle]
+        return sorted_xs[middle]
     else:
         return (sorted_xs[middle - 1] + sorted_xs[middle]) / 2
+
 
 def main():
 
@@ -46,6 +48,7 @@ def main():
         from borb.pdf import Page
         from borb.pdf import SingleColumnLayout
         from borb.pdf import Paragraph
+
         delta = time.time() - delta
         import_times.append(delta)
 
@@ -62,7 +65,7 @@ def main():
 
         # persisting
         delta = time.time()
-        PDF.write(what=doc, where_to='output.pdf')
+        PDF.write(what=doc, where_to="output.pdf")
         delta = time.time() - delta
         write_times.append(delta)
 
@@ -75,7 +78,7 @@ def main():
                     "avg": sum(import_times) / len(import_times),
                     "median": median(import_times),
                 },
-                "layout":{
+                "layout": {
                     "min": min(layout_times),
                     "max": max(layout_times),
                     "avg": sum(layout_times) / len(layout_times),
@@ -86,11 +89,12 @@ def main():
                     "max": max(write_times),
                     "avg": sum(write_times) / len(write_times),
                     "median": median(write_times),
-                }
+                },
             },
             output,
             indent=4,
         )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

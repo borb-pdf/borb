@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 
-import argparse
 import json
 import pathlib
 import typing
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 
 
 def main() -> None:
     """Load per-commit benchmark results and create a stacked bar chart."""
 
-    results_dir: pathlib.Path = pathlib.Path(__file__).resolve().parent / 'assets'
-    output_file: pathlib.Path = pathlib.Path(__file__).resolve().parent / 'assets' / 'assets.png'
+    results_dir: pathlib.Path = pathlib.Path(__file__).resolve().parent / "assets"
+    output_file: pathlib.Path = (
+        pathlib.Path(__file__).resolve().parent / "assets" / "assets.png"
+    )
 
     result_files: typing.List[pathlib.Path] = sorted(
         results_dir.glob("*.json"),
@@ -46,9 +47,7 @@ def main() -> None:
     positions: typing.List[int] = list(range(len(commits)))
     left: typing.List[float] = [0.0] * len(commits)
 
-    figure, axis = plt.subplots(
-        figsize=(12, max(5, len(commits) * 0.55))
-    )
+    figure, axis = plt.subplots(figsize=(12, max(5, len(commits) * 0.55)))
 
     for measurement_name in measurement_names:
         values: typing.List[float] = [
@@ -64,10 +63,7 @@ def main() -> None:
             label=measurement_name,
         )
 
-        left = [
-            accumulated + value
-            for accumulated, value in zip(left, values)
-        ]
+        left = [accumulated + value for accumulated, value in zip(left, values)]
 
     axis.set_yticks(positions)
     axis.set_yticklabels(commits)
