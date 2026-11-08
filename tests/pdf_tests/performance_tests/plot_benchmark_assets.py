@@ -1,4 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Plot existing benchmarks (JSON) results.
+
+Displays the results of existing benchmark tests as a stacked bar chart.
+"""
 
 import json
 import pathlib
@@ -9,7 +15,6 @@ import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 
 def main() -> None:
     """Load per-commit benchmark results and create a stacked bar chart."""
-
     results_dir: pathlib.Path = pathlib.Path(__file__).resolve().parent / "assets"
     output_file: pathlib.Path = (
         pathlib.Path(__file__).resolve().parent / "assets" / "assets.png"
