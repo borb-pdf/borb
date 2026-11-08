@@ -3,7 +3,7 @@ import json
 import time
 import typing
 
-import tqdm
+import tqdm # type: ignore[import-not-found, import-untyped]
 
 from borb.pdf import PDF
 
