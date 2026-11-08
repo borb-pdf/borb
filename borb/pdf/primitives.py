@@ -332,7 +332,8 @@ class stream(dict):
         which is used to store large sequences of binary data such as images, font data, or page content.
         """
         super().__init__()
-        self[name("Bytes")] = b""
+        self[name("Bytes")] = bytearray()
+        # self[name("DecodedBytes")] = bytearray()
         self[name("Length")] = 0
         self[name("Filter")] = name("FlateDecode")
         if d is not None:
@@ -346,13 +347,13 @@ class stream(dict):
     def __getitem__(self, item):
         """Return self[key]."""
         # IF the requested item is not /Bytes or /DecodedBytes
-        if item not in [name("Bytes"), name("DecodedBytes")]:
+        if item != "Bytes" and item != "DecodedBytes":
             return super().__getitem__(item)
 
         # IF the stream is compressed using anything other that FlateDecode
         # THEN don't perform auto-sync between /Bytes and /DecodedBytes
         filter: typing.Optional[name] = self.get("Filter", None)  # type: ignore[annotation-unchecked]
-        if filter not in [name("FL"), name("FlateDecode")]:
+        if filter != "FL" and filter != "FlateDecode":
             return super().__getitem__(item)
 
         # IF the item being requested is /Bytes
@@ -377,7 +378,9 @@ class stream(dict):
                 import zlib
 
                 self["DecodedBytes"] = (
-                    b"" if len(self["Bytes"]) == 0 else zlib.decompress(self["Bytes"])
+                    bytearray()
+                    if len(self["Bytes"]) == 0
+                    else zlib.decompress(self["Bytes"])
                 )
                 self.__bytes_is_up_to_date = True
                 self.__decoded_bytes_is_up_to_date = True

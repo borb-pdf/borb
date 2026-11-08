@@ -203,6 +203,35 @@ class Chunk(LayoutElement):
         # return
         return s2
 
+    @functools.cache
+    def __get_intrinsic_size(self) -> typing.Tuple[int, int]:
+        """
+        Calculate and cache the intrinsic size of this Chunk.
+
+        The intrinsic size of a Chunk is independent of the available space.
+        It is determined solely by its text, font, font size, character spacing,
+        word spacing, and padding.
+
+        This calculation is separated from get_size() because get_size() is
+        called repeatedly during layout, potentially with different available
+        space constraints. Caching the intrinsic size avoids recalculating font
+        metrics and padding for each call.
+
+        :return: A tuple containing the intrinsic width and height in points.
+        """
+        w: int = self.__font.get_width(
+            font_size=self.__font_size,
+            text=self.__text,
+            character_spacing=self.__character_spacing,
+            word_spacing=self.__word_spacing,
+        )
+        h: int = self.__font_size
+
+        return (
+            w + self.get_padding_left() + self.get_padding_right(),
+            h + self.get_padding_bottom() + self.get_padding_top(),
+        )
+
     #
     # PUBLIC
     #
@@ -253,30 +282,10 @@ class Chunk(LayoutElement):
         """
         return self.__font_size
 
-    @functools.cache
     def get_size(
         self, available_space: typing.Tuple[int, int]
     ) -> typing.Tuple[int, int]:
-        """
-        Calculate and return the size of the layout element based on available space.
-
-        This function uses the available space to compute the size (width, height)
-        of the layout element in points.
-
-        :param available_space: Tuple representing the available space (width, height).
-        :return:                Tuple containing the size (width, height) in points.
-        """
-        w: int = self.__font.get_width(
-            font_size=self.__font_size,
-            text=self.__text,
-            character_spacing=self.__character_spacing,
-            word_spacing=self.__word_spacing,
-        )
-        h: int = self.__font_size
-        return (
-            w + self.get_padding_left() + self.get_padding_right(),
-            h + self.get_padding_bottom() + self.get_padding_top(),
-        )
+        return self.__get_intrinsic_size()
 
     def get_text(self) -> str:
         """
@@ -320,16 +329,17 @@ class Chunk(LayoutElement):
             page["Resources"]["Font"] = {}
 
         # create new font_name
-        font_name: typing.Optional[str] = next(
-            iter(
-                [
-                    k
-                    for k, v in page["Resources"]["Font"].items()
-                    if Chunk.__cmp_font_dictionaries(v, self.__font)
-                ]
-            ),
-            None,
-        )
+        font_resources: typing.Dict[str, Font] = page["Resources"]["Font"]
+        font_name: typing.Optional[str] = None
+        for k, v in font_resources.items():
+            if v is self.__font:
+                font_name = k
+                break
+        if font_name is None:
+            for k, v in font_resources.items():
+                if Chunk.__cmp_font_dictionaries(v, self.__font):
+                    font_name = k
+                    break
         if font_name is None:
             font_name = "F1"
             while font_name in page["Resources"]["Font"]:
