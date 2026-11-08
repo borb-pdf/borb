@@ -1,9 +1,15 @@
+"""
+Benchmark PDF generation performance.
+
+Measures import, layout, and PDF serialization times.
+"""
+
 import argparse
 import json
 import time
 import typing
 
-import tqdm # type: ignore[import-not-found, import-untyped]
+import tqdm  # type: ignore[import-not-found, import-untyped]
 
 from borb.pdf import PDF
 
@@ -21,6 +27,12 @@ Sed at ante eu turpis dignissim rutrum.
 
 
 def median(xs: typing.List[float]) -> float:
+    """
+    Calculate the median of a list of numbers.
+
+    :param xs:      The list of numbers.
+    :returns:       The median.
+    """
     sorted_xs: typing.List[float] = sorted(xs)
     middle: int = len(sorted_xs) // 2
     if len(sorted_xs) % 2 == 1:
@@ -29,8 +41,8 @@ def median(xs: typing.List[float]) -> float:
         return (sorted_xs[middle - 1] + sorted_xs[middle]) / 2
 
 
-def main():
-
+def main() -> None:
+    """Execute the benchmark from the command line."""
     # process command-line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True)
